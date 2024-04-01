@@ -1,0 +1,1422 @@
+{% comment %} {% extends 'jobPortal/base.html' %} 
+{% block main-content %} {% endcomment %}
+{% block content %}
+{% load static %}
+{% load tag_exists %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gravitonweb.com </title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'dash/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'dash/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'dash/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+   <link rel="shortcut icon" type="image/png" href="{% static 'jobPortal/gravitonLogo.png'  %}" />
+   <!--Font Awesme 5-->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <style>
+    #page-inner {
+    width: 100%;
+    margin: 10px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+    min-height: auto;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+.hideContent {
+    overflow: hidden;
+    line-height: 1em;
+    height: 2em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+
+
+/*! CSS Used from: https://gravitonweb.com/static/jobPortal/css/bootstrap.css */
+a{background-color:transparent;}
+a:active,a:hover{outline:0;}
+@media print{
+*,*:before,*:after{color:#000!important;text-shadow:none!important;background:transparent!important;-webkit-box-shadow:none!important;box-shadow:none!important;}
+a,a:visited{text-decoration:underline;}
+a[href]:after{content:" (" attr(href) ")";}
+h2{orphans:3;widows:3;}
+h2{page-break-after:avoid;}
+}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+a{color:#337ab7;text-decoration:none;}
+a:hover,a:focus{color:#23527c;text-decoration:underline;}
+a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+h2{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+h2{margin-top:20px;margin-bottom:10px;}
+h2{font-size:30px;}
+ul{margin-top:0;margin-bottom:10px;}
+.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{position:relative;min-height:1px;padding-right:15px;padding-left:15px;}
+.col-xs-12{float:left;}
+.col-xs-12{width:100%;}
+@media (min-width: 768px){
+.col-sm-12{float:left;}
+.col-sm-12{width:100%;}
+}
+@media (min-width: 992px){
+.col-md-12{float:left;}
+.col-md-12{width:100%;}
+}
+@media (min-width: 1200px){
+.col-lg-12{float:left;}
+.col-lg-12{width:100%;}
+}
+/*! CSS Used from: https://gravitonweb.com/static/jobPortal/css/font-awesome.css */
+.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.fa-check-square:before{content:"\f14a";}
+/*! CSS Used from: https://gravitonweb.com/static/jobPortal/css/style_II.css */
+a{color:#797979;text-decoration:none;}
+a:hover,a:focus{color:#707070;text-decoration:none;outline:none;}
+h2{font-family:'Montserrat', sans-serif;line-height:1.1;color:#222222;margin:0;padding:0;}
+ul{list-style:none;margin:0;padding:0;}
+.about_text_wrapper{float:left;width:100%;}
+.about_text_wrapper h2{font-size:20px;font-weight:bold;color:#000000;text-transform:uppercase;position:relative;}
+.about_text_wrapper h2:before{content:'';border:1px solid #23c0e9;width:8px;position:absolute;bottom:-15px;left:0;}
+.about_text_wrapper h2:after{content:'';border:1px solid #23c0e9;width:30px;position:absolute;bottom:-15px;left:12px;}
+.about_text_wrapper ul{margin:0;padding:0;list-style:none;}
+.abt_2_para{padding-top:60px;}
+.about_text_wrapper ul li:first-child{padding-top:0px;}
+.about_text_wrapper ul li{padding-top:20px;font-size:16px;}
+.about_text_wrapper ul li a{color:#999999;-webkit-transition:all .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all .5s;transition:all .5s;}
+.about_text_wrapper a:hover{color:#9a558f;-webkit-transition:all .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all .5s;transition:all .5s;}
+.about_text_wrapper ul li i{padding-right:10px;color:#23c0e9;}
+/*! CSS Used fontfaces */
+@font-face{font-family:'FontAwesome';src:url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfont3e6e.eot?v=4.7.0');src:url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfontd41d.eot#iefix&v=4.7.0') format('embedded-opentype'), url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfont3e6e.woff2?v=4.7.0') format('woff2'), url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfont3e6e.woff?v=4.7.0') format('woff'), url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfont3e6e.ttf?v=4.7.0') format('truetype'), url('https://gravitonweb.com/static/jobPortal/fonts/fontawesome-webfont3e6e.svg?v=4.7.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/rBHvpRWBkgyW99dXT88n7yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/NX1NravqaXESu9fFv7KuqiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/SKK6Nusyv8QPNMtI4j9J2yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/gFXtEMCp1m_YzxsBpKl68iEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;}
+</style>
+   
+
+</head>
+<body>
+    
+    <div id="wrapper" style="background-color:white;">
+        
+
+        <!-- </nav>    -->
+
+      
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0; margin-top:0px; background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+            <div class="navbar-header" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only" >Toggle navigation</span>
+                    <span class="icon-bar" ></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'jobs:home' %}" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">gravitonweb.com</a> 
+            </div>
+<!-- <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">  {{ request.user.role }}  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
+<div style="color: white; padding: 15px ; float: right; margin-right:5px; font-size: 16px;"> <i class="fas fa-sign-in-alt">&nbsp;  <a href="{% url 'accounts:logout' %}" 
+    style="color:white; font-size:20px;">  Logout </a>   &nbsp;</i></div>
+
+<div style="color: white; padding: 15px; float: right;  font-size: 16px;"> <i class="fas fa-user-plus">&nbsp;<a style="color:white; font-size:20px;"> {{ request.user.first_name }} </a>  &nbsp;</i></div>
+
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation" style="display:block; background-color:white;">
+            <div class="sidebar-collapse" >
+                    <ul class="nav" id="main-menu">
+                        
+                        <!-- <li class="text-center">
+                        <div style="width:100px; height:100px; border-radius:50px; border:1px solid black; border-color:black; 
+                         margin:10px;">
+                         <img src="https://thedailyq.org/wp-content/uploads/2020/08/Person.jpg" style="width:60%; margin:10px;">
+                         <span>information</span>
+                         
+                    </div>
+                    
+                         </li> -->
+                        
+                        
+                        <li class="active"><a style="background-color: white; color:black;"  href="{% url 'jobs:employer-dashboard' %}">
+                            <i class="fas fa-briefcase"  style="color:#248ae4; font-size: 20px; "></i>Dashboard</a></li>
+
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:companyProfile' %}"><i class="fas fa-user"
+                         style="color:#248ae4; font-size: 20px; "></i>Company Profile</a> </li>
+
+                         <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:viewProfile' %}"><i class="fas fa-user"
+                            style="color:#248ae4; font-size: 20px; "></i>Edit Profile</a> </li>
+
+                        <li><a  style="background-color: white; color:black;" href="{% url 'jobs:postjobDash' %}"><i class="fas fa-file-alt"
+                            style="color:#248ae4; font-size: 20px; "></i></i>Post Jobs</a></li>
+
+                       
+                            <li><a  style="background-color: white; color:black;" href="{% url 'jobs:myjobs' %}"><i class="fas fa-file-alt"
+                                style="color:#248ae4; font-size: 20px; "></i></i>My Jobs</a></li>
+                                
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:changepassword' %}"><i class="fas fa-user-lock"
+                            style="color:#248ae4; font-size: 20px; "></i>Change Password</a></li>
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:faqEmp' %}"><i class="fas fa-user-lock"
+                                style="color:#248ae4; font-size: 20px; "></i>Faq</a></li>
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"
+                            style="color:#248ae4; font-size: 20px; "></i>Logout</a></li>
+
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:supportEmp' %}"><i class="fas fa-user-lock"
+                                style="color:#248ae4; font-size: 20px; "></i>Support</a></li>
+                      </ul>
+                      
+			
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner" style="padding:20px; margin:0px;">
+               
+                 <!-- /. ROW  -->
+                 <div class="tab-content">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span> How to post a job on gravitonweb?
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Login to gravitonweb.com on Browser
+                                Sign up/Login using your email 
+                                Upload your company documents it will be verified in 2 hours 
+                                Fill in the required details to post a job.
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span> How many job posts can an employer make?
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Employer can use our post a job feature to post up to unlimited jobs at any given time 
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                     
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Any payment required posting my job on gravitonweb?
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                gravitonweb is a free Job Posting portal for recruiters
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                     
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>What should I avoid when posting a job?
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Candidates search for a job by using the details of your job title and description. Therefore, the Job Posting should be clear, with brief job descriptions and concise title.
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Does gravitonweb review my job post before making it visible to job seekers?
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Internal operations team validate the Job Posting (until then the post will show ‘Under Review’) and make it live, which will then be visible to the candidates who can apply on jobs or call the recruiter.
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>How long does it take my job to be visible on gravitonweb?
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                It takes just 15 minutes after your free job posting to be visible on Job Hai (on a working day).
+
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Why do I need to complete my Company KYC?
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Document Verification enables the jobseeker to trust the company they are applying for and to ensure protection against fake recruiters.
+
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+
+                      
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>How can I Upload company documents?
+
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                If your Company Document is not uploaded, you will see a message on your dashboard. Follow the below steps:-
+
+
+
+                                </a>
+                            </li>
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Choose the document you want to upload from the list
+
+
+
+                                </a>
+                            </li>
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Type the document registration number
+                                Click on Upload Button and choose the document from your device
+                                   Choose the document you want to upload from the list
+
+
+
+                                </a>
+                            </li>
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Click on Submit Button
+
+
+
+
+                                </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>My company is new hence I do not have government-approved documents yet. What to do in that case?
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                We are eager to onboard you and assist you in staff hiring for your new company, however, we will not be able to post your job without authentic documents.
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Can I upload my personal documents to get the job post live?
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                To complete the Company KYC, we accept authentic Company documents only. This ensures smooth Recruiter onboarding and quicker job posting.
+
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Why is my job rejected?
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                There can be multiple reasons for your job post being rejected. <br>
+                                You can check for the exact reason on the support button on your Employer Dashboard.
+                                
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>How do I edit the details in my job posting?
+
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                You can click on the edit link on your job card. Once you have saved the changes, your posted job will be reviewed before making it live
+                                
+                              </br>
+                              Please note: The freshness of your job post will not be affected.
+                                
+                                
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>We are from the hiring team; management will not give us documents to upload. What to do in that case?
+
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                As much as we are eager to post and advertise your job we are also firm with Company KYC hence the documents are mandatory. You can share your Recruiter login details with the authorized member in order to upload the document from their end.
+                              </br> Please be rest assured the company documents will not be misused or forwarded to any third party.
+                                
+                                
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <div class="about_text_wrapper abt_2_para">
+                          <div class="section_heading section_2_heading">
+                            <h2><span>Why is uploading documents compulsory?
+
+
+
+
+
+
+                            </span></h2>
+                          </div>
+              
+                          <ul style="margin-top: 20px">
+                         
+                            <li>
+                              <i class="fa fa-check-square" aria-hidden="true" style="color: #466bee"></i>
+                              <a href="">
+                               
+                                Document Upload/ Account verification enables gravitonweb to create a pool of genuine Jobs only and eliminate the fake hiring activity from recruiters.
+
+                                
+
+                                </a>
+                            </li>
+                           
+                          </ul>
+                        </div>
+                      </div>
+                          <!---view Profile---->
+                          <!-- <div id="view" class="tab-pane fade ">
+                            <h3 class="text-center"><b>View Company Profile</b></h3>
+                            <div id="page-inner">
+                                <div class="tab-content">
+                                     <div class="tab-pane fade active in" id="home">
+                                          -->
+                                             <!-- <div class="panel-heading">
+                                                 View Profile
+                                             </div> -->
+                                             <!-- <div class="panel-body">
+                                        {% if viewProfileVar is not None %}
+                                             {% for x in viewProfile %}
+                                             <div class="panel-body" style="padding: 0px !important;">
+                                                <div class="col-lg-12 col-md-offset-1 col-sm-12">
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between; 
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Email</b></h5>
+                                                     <h5 style=" color:#466bee;">srishtisrija@gmail.com</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Phone Number</b></h5>
+                                                     <h5 style=" color:#466bee;">9340083841</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Address</b></h5>
+                                                     <h5 style=" color:#466bee;">ncl colony singrauli</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px; margin-bottom:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                             
+                                    {% else %}
+                                    Upload the details 
+                                    {% endif %}
+                                </div>
+                                         
+                                     </div>
+                                 </div>
+                               </div>
+                                 <div id="page-inner">
+                                 <div class="tab-content">
+                                      <div class="tab-pane fade active in" id="home">
+                                        <form action="{% url 'jobs:updateProfile' %}" method="post">
+                                            {% csrf_token %}
+                                            {% for field in form %}
+                                                {% if field.name == 'gender' %}
+                            
+                                                    <div class="form-group">
+                                                        <label for="gender">Gender</label>
+                                                        <br>
+                                                        <div class="form-check form-check-inline">
+                                                            <input required class="form-check-input" {% if field.value == 'male' %} checked {% endif %}
+                                                                   type="radio" name="gender" id="male gender"
+                                                                   value="male">
+                                                            <label class="form-check-label" for="male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input required class="form-check-input" {% if field.value == 'female' %} checked {% endif %}
+                                                                   type="radio" name="gender" id="female"
+                                                                   value="female">
+                                                            <label class="form-check-label" for="female">Female</label>
+                                                        </div>
+                                                    </div>
+                            
+                                                {% else %}
+                            
+                                                    <div class="form-group">
+                                                        <label for="id_{{ field.name }}">{{ field.label }}</label>
+                                                        <input required type="{{ field.field.widget.input_type }}"
+                                                               class="form-control"
+                                                               name="{{ field.name }}"
+                                                               id="id_{{ field.name }}"
+                                                               value="{{ field.value }}"
+                                                               placeholder="{{ field.field.widget.attrs.placeholder }}">
+                                                    </div>
+                            
+                                                {% endif %}
+                                            {% endfor %}
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-outline-white-primary">
+                                                    <i class="fa fa-signing"></i> Update
+                                                </button>
+                                            </div>
+                                        </form>
+                                      </div>
+                                  </div>
+                                </div> 
+                              </div>                     
+
+
+
+                            </div>
+
+                    <div id="postjob" class="tab-pane fade">
+                        <div class="text-center">
+                            <h3><b> post jobs</b></h3>
+                         </div>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ field.label }}: {{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                           
+    
+                                <div class="tab-content">
+                                   
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">                                                        
+                                            <form id="job-main-form"   method="post" action="{% url 'jobs:employer-jobs-create' %}" class="job-add-form">
+                                                {% csrf_token %}
+                            <div class="col-md-9">
+                             <label>Job Title</label>
+                             <input required id="title" name="title" type="text" style="border-color:#248ae4;"  class="form-control" value="{{ form.title.value|default_if_none:"" }}">
+                            </div>
+
+                            <div class="col-md-9" style="margin-bottom:20px;">
+                            <label for="type">Job Type</label>
+                            <select id="type" name="type" style="border-color:#248ae4;"  placeholder="Choose job type"
+                                    class="form-control select2">
+                                <option value="1" {% if form.type.value == "1" %} selected {% endif %}>Full time</option>
+                                <option value="2" {% if form.type.value == "2" %} selected {% endif %}>Part time</option>
+                                <option value="3" {% if form.type.value == "3" %} selected {% endif %}>Internship</option>
+                            </select>
+                                                            </div>
+                                                            <div class="col-md-12 ">      
+                                                                <h3 style="margin-bottom:10px;">Job Description</h3>                                                                <label>Job Summary</label>
+                                                                <textarea id="text" name="description" rows="5" style="border-color:#248ae4;"  class="form-control">{{ form.description.value|default_if_none:"" }}</textarea>
+                                                                <div>Max 250 characters</div>
+                                                            </div>
+                                                       
+                                                    </div>
+                                                        </div>
+    
+                                                        <div class="row" style="margin-top:30px;">
+                                                            <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                <div class="text-center"><h3>Matching Criteria</h3></div> -->
+                                                                <!-- <div class="col-md-12">
+                                                                    <label  style="margin-top:20px !important;">Keyword/skills*</label>
+                                                                    <input required class="form-control" style="border-color:#248ae4;"  placeholder="e.g: Software development,dot net,java etc." />
+                                                                </div> -->
+                                                                <!-- <div class="col-sm-12">
+
+                                                             <div class="col-md-6">
+                                                                <div style="margin-top:20px !important;">
+                                                                    <label>MinExperience*</label>
+                                                                     <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                            <option value="(0-1 year)">(0-1 year)</option>
+                                                                            <option value="(1-2 year)">(1-2 year)</option>
+                                                                            <option value="(2-3 year)">(2-3 year)</option>
+                                                                            <option value="(>3 year )">(>3 year )</option>
+                                                                           
+                                                                        </select>
+                                                                     </div>
+                                                                     </div>
+
+                                                                     <div class="col-md-6">
+
+                                                                        <div style="margin-top:20px !important;">
+                                                                            <label> Max Experience*</label> -->
+                                                                            <!-- <div class="col-md-6"> -->
+                                                                             <!-- <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                                    <option value="(0-1 year)">(0-1 year)</option>
+                                                                                    <option value="(1-2 year)">(1-2 year)</option>
+                                                                                    <option value="(2-3 year)">(2-3 year)</option>
+                                                                                    <option value="(>3 year )">(>3 year )</option>
+                                                                                   
+                                                                                </select> -->
+                                                                             <!-- </div>  -->
+                                                                             <!-- </div>
+                                                                         </div>
+                                                                         </div>
+                                                            
+                                                                        <div class="col-sm-12">
+                                                                         <div class="col-md-6"> 
+                                                                <label  style="margin-top:22px !important;">Category*</label>
+                                                                <div class="form-group" style="margin-top:0px;">
+                                                                    <select id="category" name="category" style="border-color:#248ae4;"  class="form-control select2">
+                                                                        <option value="web-design" {% if form.category.value == "web-design" %} selected {% endif %}>Web design</option>
+                                                                        <option value="graphic-design" {% if form.category.value == "graphic-design" %} selected {% endif %}>Graphic design</option>
+                                                                        <option value="web-development" {% if form.category.value == "web-development" %} selected {% endif %}>Web development</option>
+                                                                        <option value="human-resource" {% if form.category.value == "human-resource" %} selected {% endif %}>Human Resources</option>
+                                                                        <option value="support" {% if form.category.value == "support" %} selected {% endif %}>Support</option>
+                                                                        <option value="android" {% if form.category.value == "android" %} selected {% endif %}>Android</option>
+                                                                    </select>
+                                                                    </div>
+                                                                    
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label  style="margin-top:20px !important;">Nationality</label>
+                                                                        <select class="form-control"  name="maincategory" style="margin:5px; border-color:#248ae4;">
+                                                                            <option value="1">developer</option>
+                                                                            <option  value="2">technology</option>
+                                                                            <option  value="3">accounting</option>
+                                                                            <option  value="4">medical</option>
+                                                                            <option  value="5">government</option>
+                                                                        </select>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <div class="col-md-6">
+                                                                       
+                                                                        <label for="location" style="margin-top:10px;" > JobLocation</label>
+                                                                        <input required id="location"  name="location" style="border-color:#248ae4;"  type="text" placeholder="e.g. Dhaka, Bangladesh"
+                                                                               class="form-control" value="{{ form.location.value|default_if_none:"" }}">
+                                                                        </div>
+                                                            <div class="col-md-6">  -->
+                                                            <!-- <form autocomplete="off" action="/action_page.php"> -->
+                                                                <!-- <div class="autocomplete " style="width:100%; margin-top:22px !important;">
+                                                                  <input id="myInput" type="text" name="myCountry" placeholder="Keywords/Skills">
+                                                                </div>
+                                                                -->
+                                                              <!-- </form> -->
+                                                              <!-- </div>
+                                                              </div>
+                                                              <div class="col-lg-12 col-md-12 col-am-12" style="margin-bottom:10px;">
+                                                                <div class="col-md-6">
+                                                                    <label>Qualification</label>
+                                                                    <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                        <option value="1">developer</option>
+                                                                        <option  value="2">technology</option>
+                                                                        <option  value="3">accounting</option>
+                                                                        <option  value="4">medical</option>
+                                                                        <option  value="5">government</option>
+                                                                    </select>
+                                                                    </div>
+                                                                    <div class="col-md-6"  style="margin-top:24px;">
+                                                                        <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                            <option value="1">Specialization</option>
+                                                                            <option  value="2">technology</option>
+                                                                            <option  value="3">accounting</option>
+                                                                            <option  value="4">medical</option>
+                                                                            <option  value="5">government</option>
+                                                                        </select>
+                                                                        </div>
+                                                                        </div>
+                                                                                           
+                                                                                               
+                                                                                               
+                                                                            
+                                                                            
+                                                                                        </div>
+                                                                   
+                                                                </div>
+                                                                <div class="row" style="margin-top:30px;">
+                                                                    <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+    
+                                                                        <div class="text-center"> <h3>Company Owner Details</h3></div>
+                                                                
+                                                                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                                                                <div class="col-md-4">
+                                                                    <label for="company_name">Company name</label>
+                                <input required id="company_name" name="company_name" type="text" class="form-control" style="margin-bottom:1px; border-color:#248ae4;" value="{{ form.company_name.value|default_if_none:"" }}">
+                                                                </div> 
+                                                                <div class="col-md-4" style="margin-top:5px;">
+                                                                    <label for="company_website">Company Url</label>
+                                <input required id="company_website" name="website" type="url" style="border-color:#248ae4;"  class="form-control" value="{{ form.website.value|default_if_none:"" }}">
+                                                                </div>
+                                                                <div class="col-md-4" style="margin-top:1px;">
+                                                                    <label for="company_website">Phone Number</label>
+                                <input required id="company_website" name="phoneNumber" type="text" style="border-color:#248ae4;"  class="form-control" >
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-bottom:20px;">
+                                                                    <p class="text-danger">{{ form.company_description.errors }}</p>#}
+                                                                    <label for="company_description">Company Description</label>
+                                                                    <textarea id="company_description" name="company_description" rows="3"
+                                                                    style="border-color:#248ae4;"    class="form-control" required>{{ form.company_description.value|default_if_none:"" }}</textarea>
+                                                                </div> 
+                                                                </div>
+                                                                 
+                                                                </div>
+                                                                </div>
+                                                                      
+                                                             <div class="row" style=" margin-top:10px;">
+                                                                <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">    
+                                                                    <div class="text-center">
+                                                                     <h3 style="margin-bottom:20px;">Scheduled Job</h3>
+                                                                    </div>
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <div class="col-md-6" style="margin-bottom:20px;border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                    <label for="type">Make live</label>
+                                                                    <select id="day" name="day"></select>
+                                                                    <script>
+                                                                        (function (){
+                                                                            let day_selected = new Date()
+                                                                            let option = '';
+                                                                            for (let i=1; i<15; i++){
+                                                                                day_selected.setDate(new Date().getDate()+i-1)
+                                                                                option += '<option value =" ' + day_selected+' " ' +'>' + day_selected.toDateString() +'</option>';
+                                                                            }
+                                                                            document.getElementById("day").innerHTML = option;
+
+                                                                        })();
+                                                                    </script>
+                             
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                <label for="salary">Closing Date</label>
+                                                                <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <div class="col-md-4">
+                                                                    <label for="salary">From</label>
+                                                                    <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                 </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="salary">To</label>
+                                                                        <input required id="salary" name="last_date" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                     </div>
+                                                                     
+                                                                        <div class="col-md-3">
+                                                                            <label for="salary">Auto Renew</label> -->
+                                                                            <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                            <!-- <select class="form-control"  name="auto_renew" style=" border-color:#248ae4;">
+                                                                                <option value="1">disabled</option>
+                                                                                <option  value="2">Every Week</option>
+                                                                                <option  value="3">Every Fortnight</option>
+                                                                                <option  value="4">Every Month</option>
+                                                                            </select>
+                                                                            </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                                                            <div class="col-md-2" >
+                                                                                <label for="salary" style="margin-top:20px !important;">in lacs</label> -->
+                                                                                <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                                <!-- <select class="form-control"  name="inlacs" style=" border-color:#248ae4;"> -->
+                                                                                  <!-- {% for x in valuecount %}
+                                                                                    <option value="1">{{x}}</option>
+                                                                                  {% endfor %} -->
+                                                                                  <!-- <option value="1">1</option>
+                                                                                </select>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                    <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <label for="salary" style="margin-top:20px !important;">in lacs</label>
+                                                                                        <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                            <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                            </div>
+                                                                                            </div>
+                                                                
+                                                                </div>
+                                                                </div>
+                                                                </div> 
+
+                                                                <div class="row" style=" margin-top:30px;">
+                                                                    <div class="col-md-6" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                <label>Checkboxes</label>
+                                                                
+                                                                
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox"  value="" /> send auto-matched resumes from database
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value=""/>keep company name confidential
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value=""/>Don't send applications in email
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> Reveal contact details to job applicants
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> showcase this job to women on the go
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> use screening for this job
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            </div> -->
+                                                           
+                                                     
+                        
+                                                    
+                                                   
+                                                    
+                                                <!-- </div> -->
+                                            <!-- </div>
+                                        </div>
+                                        <button  type="submit" class="btn btn-primary save-btn"   style="margin-top:20px; font-family: 'Lato', sans-serif;
+                                        font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                        background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); text-align: center; text-transform: uppercase;
+                                        border-radius: 10px; transition: all 0.5s;"> Post Job</button> -->
+                                        <!-- <button type="submit"> Post Job</button> -->
+                                    <!-- </form>
+               
+                 <div id="candidates" class="tab-pane fade">
+                     <h3><b>Candidates</b></h3>
+                     {% for applicant in allApplicant %}
+                     
+                     <div class="col-lg-6">
+                         <div class="box applicant">
+                             <div class="row">
+                                 <div class="col-md-3 mr-4">
+                                     <p class="intro"></p>
+                                     <div class="image">
+                                         <img src="{% static 'img/avatar.png' %}" alt=""
+                                              class="img-fluid rounded-circle">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-8">
+                                     <h4><a href="{% url 'jobs:applied-applicant-view' applicant.job.id applicant.id %}">{{ applicant.user.get_full_name }}</a><small>({{ applicant.get_status }})</small></h4>
+                                     <h6>Skills:
+                                         {% for tag in applicant.user.profile.tags.all %}
+                                             <span style="color: #ffffff;" class="badge featured-badge badge-secondary">{{ tag.name }}</span>
+                                         {% endfor %}
+                                     </h6>
+                                     <a href="mailto:{{ applicant.user.email }}?Subject=Interested"
+                                        class="btn btn-outline-white-secondary btn-sm">
+                                         <i class="fa fa-envelope"></i>Contact
+                                     </a>
+                                     <p>
+                                         <span class="badge badge-info">Applied {{ applicant.created_at.astimezone }}</span>
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 {% endfor %}  
+                                     
+                     </div>
+                    -->
+                    <!-- <div id="message" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                    <div id="changepswd" class="tab-pane fade">
+                        <h3 class="text-center">Change Password</h3>
+                        <div class="row" style=" margin:10px; ">
+                           
+                        <div class="col-lg-6 col-md-6 col-sm-6 align-middle" >
+                            <form action="{% url 'jobs:changePasswordEmp' %}" method="POST">
+                                {% csrf_token %}
+                             <div class="form-group has-warning has-feedback align-middle">
+                                <label class="control-label" for="password">Old Password</label>
+                                <input required type="password" class="form-control" id="password"  name="old" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">New Password</label>
+                                <input required type="password" class="form-control" name="new" id="password" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">Retype Password</label>
+                                <input required type="password" class="form-control"  name="new1" id="password" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 align-middle">
+                            <img src="{% static 'lap.png' %}" style="width:100%;">
+                            </div>
+
+
+                        </div>
+                        <div class="text-center ">
+                        <button type="submit" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); 
+                        width:40%; font-size:20px; border:1px solid #248ae4; border-radius:10px; color:white;
+                        padding:5px; margin-top:20px; ">change password</button>
+                        </div>
+                    </form>
+                    </div> -->
+                    
+                      <!-- <div id="logout" class="tab-pane fade">
+                          
+                        <h3>Menu 3</h3>
+                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                      </div> -->
+                      </div>
+                  </div>
+                </div>
+                
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    
+    <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        /*An array containing all the country names in the world:*/
+        var countries = ["Application developer","Apple iOS","Application Servers","Application","Application Support",
+        "Apps","Application Security","Application Packaging","application Developers","Application Engineer","Application Development",
+        "Application Testing","Bartender","Banking Operations","Banquet Sales","Basic","Base24","BAAN","Banking","BA","Backend","Back Office",
+        "Backup Engineer","Backup Administrator","Back-office Operations","Backend Developer","Backend Executive","CA","CAll Center Executive",
+        "Cabin Crew","Cashier","Cash Management","Cardiologist","Cash Management Operations","Calypso","Catia",
+        "Data Entry","Database Administrator","Database Architect","Data Processing","database","Data Structures","datastage","Database Developer",
+        "Acoustical engineering","space engineering","Agricultural engineering",
+"Aquatic and environmental engineering",
+"Architectural engineering and Architecture",
+"Automotive systems engineering (or Automotive engineering)",
+"Biological engineering",
+"Biomaterials engineering",
+"Biomedical engineering",
+"Bioresource engineering",
+"Building services engineering",
+"Ceramic engineering",
+"Chemical engineering",
+"Civil engineering",
+"Coastal engineering",
+"Combat engineering: the use of engineering skills for military purposes",
+"Commercial engineering",
+"Communication engineering Communication",
+"Computer engineering",
+"Conservation engineering Conservation",
+"Conversion engineering Conversion",
+"Construction engineering Construction",
+"Control systems engineering (or Control engineering)",
+"Demolition engineering Demolition",
+"Electrical engineering",
+"Electromechanical engineering",
+"Electronic warfare (EW) engineering",
+"Electronics engineering (or Microelectronics engineering, Microelectronics and semiconductor engineering)",
+"Engineering physics (or Engineering science)",
+"Environmental engineering",
+"Fire protection engineering",
+"Food process engineering",
+"Forensic engineering",
+"Forest engineering",
+"Genetic engineering",
+"Geomatics engineering",
+"Geotechnical engineering",
+"Industrial engineering",
+"Information technology Information",
+"Instrumentation engineering Instrumentation",
+"Landscape engineering See: Landscape Architecture",
+"Logistic engineering",
+"Manufacturing engineering Production",
+"Marine engineering",
+"Materials engineering",
+"Mechanical engineering",
+"Mechatronics",
+"Microsystems engineering",
+"Military engineering",
+"Minerals process engineering",
+"Mining engineering",
+"Nanoengineering",
+"Naval architecture",
+"Nuclear engineering",
+"Ocean engineering",
+"Optical engineering",
+"Paper engineering",
+"Petroleum engineering",
+"Plastics engineering",
+"Preservation engineering Preservation",
+"Quality assurance engineering (or Quality engineering)",
+"Reliability engineering",
+"Renovation engineering Renovation",
+"Residential engineering",
+"Restoration engineering Restoration",
+"Retro-engineering",
+"Safety engineering",
+"Security engineering",
+"Sewage engineering",
+"Software engineering",
+"Structural engineering",
+"Support engineering",
+"Surveying",
+"Systems engineering (or Systems design engineering)",
+"Traffic engineering",];
+        
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), countries);
+        </script>
+    <script src="{% static 'dash/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'dash/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'dash/assets/js/custom.js' %}"></script>
+
+    
+    <script>
+        var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "rgba(0,0,255,0.1)",
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+        </script>
+   
+</body>
+</html>
+{% endblock content %}
+{% comment %} {% endblock main-content %} {% endcomment %}
+

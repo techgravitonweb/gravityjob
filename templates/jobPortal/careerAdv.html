@@ -1,0 +1,239 @@
+{% extends 'jobPortal/base.html' %} 
+{% block main-content %}
+<style>
+    * {box-sizing: border-box}
+    
+    /* Set height of body and the document to 100% */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
+    
+    /* Style tab links */
+    .tablink {
+      background-color: white;
+      color: black;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 25%;
+    }
+    
+    .tablink:hover {
+      background-color: white;
+    }
+    
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: white;
+      display: none;
+      padding: 100px 20px;
+      height: 50%;
+    }
+    
+    #Home {background-color: white;}
+    #News {background-color: white;}
+    #Contact {background-color: white;}
+    #About {background-color: white;}
+    </style>
+<div class="aboutus_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+          <div class="about_text_wrapper">
+            <div class="section_heading section_2_heading">
+              <h2>Career <span>Advice</span></h2>
+            </div>
+            <p>
+              gravitonweb is one of the fastest growing HR Firms with focus on
+              Premium Placement Service. Our Endeavour is to provide simple,
+              strong, fast, dynamic and responsive experience to our valued
+              customers in their quest for searching the best man-power
+              available. Our well trained Staff combines speed and experience to
+              find the best possible talent, in the most demanding skill areas
+              too.
+            </p>
+            <!-- <ul>
+                            <li><i class="fa fa-check-square" aria-hidden="true"></i>                           <a href="">                                         We sell all over the world.</a>
+                            </li>
+                            <li><i class="fa fa-check-square" aria-hidden="true"></i>                           <a href="">                                         Satisfaction or money refund guaranteed.</a>
+                            </li>
+                            <li><i class="fa fa-check-square" aria-hidden="true"></i>                           <a href="">                                         Lifetime updates & support.</a>
+                                    </li>
+                        </ul> -->
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+          <div class="about_image_wrapper">
+            <img
+              class="img-responsive"
+              src="images/content/register_bg.jpg"
+              alt="about-img"
+            />
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <div class="about_text_wrapper abt_2_para">
+            <div class="section_heading section_2_heading">
+              <h2>Our<span> Values</span></h2>
+            </div>
+
+            <ul style="margin-top: 20px">
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i
+                ><a href=""
+                  >We believe in disciplined people thoughts and actions.</a
+                >
+              </li>
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i>
+                <a href="">
+                  We recognize our responsibility the careers and lines through
+                  our insight, advice and solutions..</a
+                >
+              </li>
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i>
+                <a href="">
+                  We strictly adhere to code of Professional ethics with an
+                  emphasis on honesty and integrity.</a
+                >
+              </li>
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i>
+                <a href="">
+                  We ensure quality through efficient and tailor-made process
+                  for all the function.
+                </a>
+              </li>
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i>
+                <a href="">
+                  As a partnership, we value long term relationship of our own
+                  people and in technology.
+                </a>
+              </li>
+              <li>
+                <i
+                  class="fa fa-check-square"
+                  aria-hidden="true"
+                  style="color: #466bee"
+                ></i>
+                <a href="">
+                  This distinctive culture continues to attract exceptional
+                  people to our firm and we are resolves to continue teaching
+                  pinnacle of professionalism of work.
+                </a>
+              </li>
+            </ul>
+            <!-- <p>Proin gravida nibh vel velit auctor aliquet. aks Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem.consequat ipsum,rmentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit sum, nec sagittis sem.consequat ipsum,rmentum nunc. Etiam pharetra, mauris egestas quam, ut aliquam massa nisl quis neque. Suspendissenec sagittis sem.conse nec sagittis sem nibh id elit.Donec vesquat ipsum, nec sa tibulum justo a diam ultricies. pel lentesque. Quisque mattis diam vel.</p>
+                        <p>Lorem Ipsum has been the industry's standard dummy text ever sincer they 1500s, when an unknown printer took and galley onsequat ipsum, orbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad a diam ultricie of type and scrambled. nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <button class="tablink" onclick="openPage('Home', this, 'white')">Career Management</button>
+    <button class="tablink" onclick="openPage('News', this, 'white')" id="defaultOpen">Students/Internship</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'white')">Jobs by Location</button>
+    <button class="tablink" onclick="openPage('About', this, 'white')">Graduates</button>
+    
+    <div id="Home" class="tabcontent">
+     <div class="row" style="border:1px solid black;">
+         <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+            <img src="">
+            <h4>Career Mang</h4>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+            <img src="">
+            <h4>Career Mang</h4>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+            <img src="">
+            <h4>Career Mang</h4>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+            <img src="">
+            <h4>Career Mang</h4>
+        </div>
+     </div>
+    </div>
+    
+    <div id="News" class="tabcontent">
+        <div class="row" style="border:1px solid black;">
+            <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+               <img src="">
+               <h4>Women</h4>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+               <img src="">
+               <h4>Women</h4>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+               <img src="">
+               <h4>Women</h4>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12" style="border:1px solid black;"> 
+               <img src="">
+               <h4>Women</h4>
+           </div>
+        </div>
+    </div>
+    
+    <div id="Contact" class="tabcontent">
+      <h3>Contact</h3>
+      <p>Get in touch, or swing by for a cup of coffee.</p>
+    </div>
+    
+    <div id="About" class="tabcontent">
+      <h3>About</h3>
+      <p>Who we are and what we do.</p>
+    </div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+{% endblock main-content %} 

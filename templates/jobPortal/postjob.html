@@ -1,0 +1,1274 @@
+{% load static %}
+{% load tag_exists %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gravitonweb.com </title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'dash/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'dash/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'dash/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!--Font Awesme 5-->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <style>
+    #page-inner {
+    width: 100%;
+    margin: 10px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+    min-height: auto;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+</style>
+   
+</head>
+<body>
+    
+    <div id="wrapper" style="background-color:white;">
+        
+        <!-- <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0;background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+            <div class="navbar-header" style="background-color:#093dfb0a;">
+                 <div  style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 15px;"> 
+                    <i class="fas fa-phone-alt"></i>
+                    <span>&nbsp Phone &nbsp +9826669306 &nbsp 
+                        <i class="fas fa-envelope"></i>&nbsp; Email:&nbsp; Email@gmail.com</span>
+                </div> 
+                
+                <!-- <a class="navbar-brand" href="index.html" style="background-color:#4d4d4d;">logo</a>  -->
+            <!-- </div>
+<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 20px;"> 
+    <i class="fab fa-facebook-f" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);">&nbsp;</i>&nbsp;
+    <i class="fab fa-twitter" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);">&nbsp;</i>&nbsp;
+    <i class="fab fa-linkedin-in" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);">&nbsp;</i>&nbsp;
+    <i class="fab fa-google-plus-g" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);">&nbsp;</i>&nbsp;
+    <i class="fab fa-pinterest-p" style="margin-right:50px; color:rgba(255, 255, 255, 0.719);">&nbsp;</i>
+
+    <i class="fas fa-user-plus">&nbsp;<a> {{ request.user.first_name }} </a>  &nbsp;</i>
+    <i class="fas fa-sign-in-alt">&nbsp;  <a href="{% url 'accounts:logout' %}">  Logout </a>   &nbsp;</i>
+    </div> -->
+    <!-- Last access : 30 May 2014 &nbsp;  -->
+    <!-- <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
+ 
+
+        <!-- </nav>    -->
+
+        <div class="fluid-container">
+            <nav class="navbar navbar-inverse" style="background-color:white; border-color:white; padding: 20px 50px 0px 10px;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header" style="background-color:white;">
+                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                        <span class="sr-only" style="background-color:black;">Toggle navigation</span>
+                        <span class="icon-bar" style="background-color:black;"></span>
+                        <span class="icon-bar" style="background-color:black;"></span>
+                        <span class="icon-bar" style="background-color:black;"></span>
+                    </button>
+                    <!-- <a href="#" class="navbar-brand">gravitonweb</a> -->
+                     <div class="gc_logo" style="margin:10px;">
+                        <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png'  %}" style="width: 100px; padding-top:10px;  height: auto;"  alt="Logo" title="gravitonweb" class="img-responsive"></a>
+                    </div> 
+                </div>
+                <!-- Collection of nav links, forms, and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav"  style="margin-top:5px;">
+                        <li ><a href="{% url 'jobs:jobs' %}" style="color:black; font-size:17px;">Jobs</a></li>
+                        <li><a href="{% url 'jobs:member' %}" style="color:black; font-size:17px;">member</a></li>
+                        <li><a href="{% url 'jobs:about' %}" style="color:black; font-size:17px;">About Us</a></li>
+                        <li><a href="{% url 'jobs:blog' %}" style="color:black; font-size:17px;">blogs</a></li>
+                        <li><a href="{% url 'jobs:contact' %}" style="color:black; font-size:17px;">contact</a></li>
+                       
+                    </ul>
+                    <form class="navbar-form navbar-right" style="display:flex;">
+                        <!-- <div class="input-group"  style="display:flex;">
+                            <input required type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn" style="position:absolute; top:5px; right:30px; ">
+                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button> 
+
+                            </span>
+                        </div> -->
+                        <!-- <button class="btn btn-primary save-btn"   style="margin-left:20px; font-family: 'Lato', sans-serif;
+                        font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                        background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);text-align: center; text-transform: uppercase;
+                        border-radius: 10px; transition: all 0.5s;"><i class="fas fa-plus-circle"></i>  <a href="{% url 'jobs:postjob' %}" 
+                        style="color:white;"> Post Job</a></button> -->
+                        <!-- <button class="btn btn-primary" style="margin-left:20px; background-color: #db4c3e; margin-top:6px; height:40%;"><i class="fas fa-plus-circle"></i> Post Job</button> -->
+
+                        
+                    </form>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" style="color:black; font-size:17px;">Login</a></li>
+                    </ul> -->
+
+                    
+                </div>
+
+            </nav>
+        </div>
+      
+        <!-- /. NAV SIDE  -->
+        <div id="" >
+          <div id="page-inner" style="padding:20px; margin:0px;">
+             
+               <!-- /. ROW  -->
+               <div class="tab-content">
+            
+{% if messagePost %}
+<p style="color: green;">succsfully stored</p>
+
+{% endif %}
+                  <div id="postjob" >
+                      <div class="text-center">
+                          <h3><b> post jobs</b></h3>
+                       </div>
+                      <!-- <div class="panel panel-default"> -->
+                          {% if form.errors %}
+                          {% for field in form %}
+                              {% for error in field.errors %}
+                                  <div class="alert alert-danger alert-dismissable">
+                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                      <strong>{{ field.label }}: {{ error|escape }}</strong>
+                                  </div>
+                              {% endfor %}
+                          {% endfor %}
+                      {% endif %}
+                          <!-- <div class="panel-body"> -->
+                              <!-- <ul class="nav nav-tabs">
+                                  <li class="active"><a href="fulltimejob" data-toggle="tab">Post JOB</a>
+                                  </li> -->
+                                  <!-- <li class=""><a href="#contractjob" data-toggle="tab">Contract job</a>
+                                  </li>
+                                  <li class=""><a href="#walkin" data-toggle="tab">Walk-in job</a>
+                                  </li> -->
+                                  
+                              <!-- </ul> -->
+  
+                              <div class="tab-content">
+                                  <div class="tab-pane fade active in" id="fulltimejob">
+                                      <!-- <div class="panel panel-default"> -->
+                                          <!-- <div class="panel-heading"> -->
+                                              <!-- Post Job  -->
+                                          <!-- </div> -->
+                                          <div class="panel-body">
+                                              <div class="row">
+                                                  <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">                                                        
+                                          <form id="job-main-form"   method="post" action="{% url 'jobs:postjob' %}" class="job-add-form">
+                                              {% csrf_token %}
+                          <div class="col-md-9">
+                           <label>Job Title </label>
+                           <input required id="title" name="title" type="text" style="border-color:#248ae4;"  class="form-control" value="{{ form.title.value|default_if_none:"" }}">
+                          </div>
+
+                          <div class="col-md-3" style="margin-bottom:20px;">
+                          <label for="type">Job Type</label>
+                          <select id="type" name="type" style="border-color:#248ae4;"  placeholder="Choose job type"
+                                  class="form-control select2">
+                              <option value="1" {% if form.type.value == "1" %} selected {% endif %}>Full time</option>
+                              <option value="2" {% if form.type.value == "2" %} selected {% endif %}>Part time</option>
+                              <option value="3" {% if form.type.value == "3" %} selected {% endif %}>Internship</option>
+                          </select>
+                                                          </div>
+                                                          <div class="col-md-12 ">      
+                                                              <h3 style="margin-bottom:10px;">Job Description</h3>                                                                <label>Job Summary</label>
+                                                              <textarea id="text" name="description" rows="5" style="border-color:#248ae4;"  class="form-control">{{ form.description.value|default_if_none:"" }}</textarea>
+                                                              <div>Max 250 characters</div>
+                                                          </div>
+                                                     
+                                                  </div>
+                                                      </div>
+  
+                                                      <div class="row" style="margin-top:30px;">
+                                                          <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                              <div class="text-center"><h3>Matching Criteria</h3></div>
+                                                              <!-- <div class="col-md-12">
+                                                                  <label  style="margin-top:20px !important;">Keyword/skills*</label>
+                                                                  <input required class="form-control" style="border-color:#248ae4;"  placeholder="e.g: Software development,dot net,java etc." />
+                                                              </div> -->
+                                                              <div class="col-sm-12">
+
+                                                           <div class="col-md-6">
+                                                              <div style="margin-top:20px !important;">
+                                                                  <label>Min Experience*</label>
+                                                                   <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                      <option value="0">0</option>
+                                                                      <option value="1">1</option>
+                                                                      <option value="2">2</option>
+                                                                      <option value="3">3</option>
+                                                                      <option value="4">4</option>
+                                                                      <option value="5">5</option>
+                                                                      <option value="6">6</option>
+                                                                      <option value="7">7</option>
+                                                                      <option value="8">8</option>
+                                                                      <option value="9">9</option>
+                                                                      <option value="10">10</option>
+                                                                         
+                                                                      </select>
+                                                                   </div>
+                                                                   </div>
+                                                                   <div class="col-md-6">
+                                                                      <div style="margin-top:20px !important;">
+                                                                          <label>Max Experience*</label>
+                                                                           <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                                  <option value="0">0</option>
+                                                                                  <option value="1">1</option>
+                                                                                  <option value="2">2</option>
+                                                                                  <option value="3">3</option>
+                                                                                  <option value="4">4</option>
+                                                                                  <option value="5">5</option>
+                                                                                  <option value="6">6</option>
+                                                                                  <option value="7">7</option>
+                                                                                  <option value="8">8</option>
+                                                                                  <option value="9">9</option>
+                                                                                  <option value="10">10</option>
+                                                                              </select>
+                                                                           </div>
+                                                                           </div>
+                                                                           </div>
+                                                                          
+                                                                          
+                                                                           <div class="col-sm-12">
+                                                                              
+                                                                       
+                                                             <!-- <input type="text" value="nome" name="tags"> -->
+                                                                  <!-- <div class="col-md-12" style="margin-bottom:20px; margin-top:20px;">
+                                                                  <label for="tags">Required skills</label>
+                                                                  <select id="tags" class="js-select2 form-control" style="border-color:#248ae4;"  name="tags" style="border-radius: 0" multiple="multiple" data-placeholder="Select Tags">
+                                                                      {% for tag in tags %}
+                                                                          {% tag_exists tag.id form.tags.value as tag_already_exists %}
+                                                                          <option value="{{ tag.id }}" {% if tag_already_exists %} selected {% endif %}>{{ tag.name }}</option>
+                                                                      {% endfor %}
+                                                                  </select>
+                                                                  </div> -->
+                                                                  <!-- <div class="col-md-6">
+                                                                      <label for="apply_url">Apply URL <span
+                                                                          class="note">(users will apply on your website)</span></label>
+                                                                  <input required id="apply_url" type="url" style="border-color:#248ae4;"  class="form-control">
+                                                                      </div> -->
+                                                                     
+                                                                  <div class="col-md-4">
+                                                                     
+                                                                      <label for="location" style="margin-top:15px;" > JobLocation</label>
+                                                                      <input required id="myInput1"  name="location" style="border-color:#248ae4;"  type="text" placeholder="e.g. Dhaka, Bangladesh"
+                                                                             class="form-control">
+                                                                      </div>
+                                                                      <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                          <label style="margin-top:20px;">Select Category</label>
+                                                                         <select id="countrySelect"  name ="category" size="1" onchange="makeSubmenu(this.value)" style="border-color:#248ae4;"  class="form-control" required>
+                                                                            <option value="" disabled selected>Select Category</option>
+                                                                            <option>Admin</option>
+                                                                            <option>Customer_Services</option>
+                                                                            <option>Finance_Accounts</option>
+                                                                            <option>Human_Resources</option>
+                                                                            <option>IT</option>
+                                                                            <option>Legal</option>
+                                                                            <option>Marketting</option>
+                                                                            <option>Sales_Buisiness_Development</option>
+                                                                            <option>TV_Film_Production</option>
+                                                                            <option>Architecture</option>
+                                                                            <option>Graphic_Design</option>
+                                                                            <option>Digital_Marketing</option>
+                                                                            <option>Engineering_Chemical</option>
+                                                                            <option>Engineering_Electrical</option>
+                                                                            <option>Engineering-Electronic_Communication</option>
+                                                                            <option>Enginnering-Mechanical_Automative_Industrial</option>
+                                                                            <option>Fashion_Apparels</option>
+                                                                            <option>Security_Services</option>
+                                                                            <option>IT_Hardware_Telecom_Support</option>
+                                                                            <option>IT_Software_development_Application_Programming</option>
+                                                                            <option>IT_Software_Development_Client_Server</option>
+                                                                            <option>IT_DBA_Datawarehousing</option>
+                                                                            <option>IT_Mainframe</option>
+                                                                            <option>IT_Software_Development_Network_Administration</option>
+                                                                            <option>IT_Software_Development_Other</option>
+                                                                            <option>IT_Software_Development_QA&Testing</option>
+                                                                            <option>System_Programming</option>
+                                                                            <option>Journalism_ContentWriting_Editing_Correspondent</option>
+                                                                            <option>Marine_Services</option>
+                                                                            <option>Marketing_Research&Analysis</option>
+                                                                            <option>Operations</option>
+                                                                            <option>Performing_Arts</option>
+                                                                            <option>PersonalCare_Beauty_Fitness</option>
+                                                                            <option>Product_mangement</option>
+                                                                            <option>Public_Relations</option>
+                                                                            <option>Quality_Control_Assurance</option>
+                                                                            <option>Sales_Corporate</option>
+                                                                            <option>Sales_Engineering_Technical_IT</option>
+                                                                            <option>Sales_Financial_Services</option>
+                                                                            <option>Sales_Retail_General</option>
+                                                                            <option>Sales_Telesales_Telemarketing</option>
+                                                                            </select>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                              <label style="margin-top:20px;">Select Role</label>
+                                                                            <select id="citySelect" size="1" style="border-color:#248ae4;"  class="form-control">
+                                                                            <option value="" disabled selected>Select Role</option>
+                                                                            <option></option>
+                                                                            </select>
+                                                                            </div>
+                                                       
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12 col-am-12" style="margin-bottom:10px;">
+                                                              <div class="col-md-4"> 
+                                                                  <!-- <form autocomplete="off" action="/action_page.php"> -->
+                                                                      <div class="autocomplete " style="width:100%; margin-top:25px !important;">
+                                                                        <input id="myInput" type="text" name="myCountry" placeholder="Keywords/Skills">
+                                                                      </div>
+                                                                     
+                                                                    <!-- </form> -->
+                                                                    </div>
+                                                              <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                  <label style="margin-top:10px;">Qualification</label>
+                                                                  <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                    
+                                                                    <option value="Aviation">Aviation</option>
+                                                                    <option value="Bachelor of Arts (B.A)">Bachelor of Arts (B.A)</option>
+                                                                    <option value="Bachelor of Architecture">Bachelor of Architecture</option>
+                                                                    <option value="Bachelor of Business (B.B.)"> Bachelor of Business (B.B.)</option>
+                                                                    <option value="Bachelor of Business Administration (B.B.A.)">Bachelor of Business Administration (B.B.A.)</option>
+                                                                    <option value="Bachelor of Science in Business (B.S.B.)">Bachelor of Science in Business (B.S.B.)</option>
+                                                                    <option value="Bachelor of Commerce (B.com">Bachelor of Commerce (B.com</option>
+                                                                    <option value="Bachelor of Computer Science (B.C.S.)">Bachelor of Computer Science (B.C.S.)</option>
+                                                                    <option value="Bachelor of Education (B.Ed.)">Bachelor of Education (B.Ed.)</option>
+                                                                    <option value="Bachelor of Science in Education (B.S.Ed.)">Bachelor of Science in Education (B.S.Ed.)</option>
+                                                                    <option value="Bachelor of Engineering (B.E./B.Eng.)">Bachelor of Engineering (B.E./B.Eng.)</option>
+                                                                    <option value="Bachelor of Technology (B.T./B.Tech.)">Bachelor of Technology (B.T./B.Tech.)</option>
+                                                                    <option value="Bachelor of Science in Chemistry (B.S.Ch.)">Bachelor of Science in Chemistry (B.S.Ch.)</option>
+                                                                    <option value="Bachelor of Science (B.S.)">Bachelor of Science (B.S.)</option>
+                                                                    <option value="Bachelor of Pharmacy (B.Pharm.)">Bachelor of Pharmacy (B.Pharm.)</option>
+                                                                    <option value="Bachelor of Science in Nursing (B.S.N.)">Bachelor of Science in Nursing (B.S.N.)</option>
+                                                                    <option value="Bachelor of Nursing (B.N.)">Bachelor of Nursing (B.N.)</option>
+                                                                    <option value="Bachelor of Literature (B.Lit.)">Bachelor of Literature (B.Lit.)</option>
+                                                                    <option value="Bachelor of Laws (LL.B.)">Bachelor of Laws (LL.B.)</option>
+                                                                    <option value="Bachelor of Journalism (B.J.)">Bachelor of Journalism (B.J.)</option>
+                                                                    <option value="Bachelor of Forestry (B.F.)">Bachelor of Forestry (B.F.)</option>
+                                                                    <option value="B.S.M.E.T.">Bachelor of Science in Mechanical Engineering Technology (B.S.M.E.T.)</option>
+                                                                    <option value="Charted Accounted">Charted Accounted</option>
+                                                                    <option value="Company Secretry">Company Secretry</option>
+                                                                    <option value="ICWA">ICWA </option>
+                                                                    <option value="">ICWA internr</option>
+                                                                       
+                                                                  </select>
+                                                                  </div>
+                                                                  <div class="col-md-4"  style="margin-top:10px;">
+                                                                    <label style="margin-top:10px;">MainCategory</label>
+                                                                      <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                        
+                                                                          
+                                                                          <option  value="2">technology</option>
+                                                                          <option  value="3">accounting</option>
+                                                                          <option  value="4">medical</option>
+                                                                          <option  value="5">government</option>
+                                                                      </select>
+                                                                      </div>
+                                                                      </div>
+                                                                  <!-- <div class="col-md-6" style="margin-bottom:20px;" >
+                                                                    
+                                                                      <input required id="validity" name="opening" type="date" style="border-color:#248ae4;"  class="form-control" value="1" hidden>
+
+                                                                      </div> -->
+                                                                  
+                                                                      
+                                                                      
+                                                     
+                                                          
+                                                                          <!-- <div class="col-md-4"> -->
+                                                                              <!-- <label>job location</label>
+                                                                              <select class="form-control"  style="margin:5px; ">
+                                                                                  <option>Select job location</option>
+                                                                                  <option>Mumbai</option>
+                                                                                  <option>Hydrabad</option>
+                                                                                  <option>Chennai</option>
+                                                                                  <option>Pune</option>
+                                                                              </select> -->
+                                                                              <!-- <label for="location"  style="margin-top:20px !important;"> JobLocation</label>
+                                                                              <input required id="location" style="margin:2px;" name="location" style="border-color:#248ae4;"  type="text" placeholder="e.g. Dhaka, Bangladesh"
+                                                                                     class="form-control" value="{{ form.location.value|default_if_none:"" }}">
+                                                                              </div>
+
+                                                                              <div class="col-md-4">
+                                                                                  <label  style="margin-top:20px !important;">Nationality</label>
+                                                                                  <select class="form-control"  name="maincategory" style="margin:5px; border-color:#248ae4;">
+                                                                                      <option value="1">developer</option>
+                                                                                      <option  value="2">technology</option>
+                                                                                      <option  value="3">accounting</option>
+                                                                                      <option  value="4">medical</option>
+                                                                                      <option  value="5">government</option>
+                                                                                  </select>
+                                                                                  </div>
+-->
+
+                                                                              
+                                                                              <!-- <div class="col-md-6" style="margin-top:4px;">
+                                                                                  <label for="validity">Validity of the post</label>
+                                                                                  <input required id="validity" name="last_date" type="date" style="margin-bottom:5px; border-color:#248ae4;"   class="form-control" value="{{ form.last_date.value|default_if_none:"" }}">
+                                                                                  </div> -->
+                                                                                <!-- <div class="col-lg-12 col-md-12 col-am-12">
+                                                                                      <div class="col-md-6">
+                                                                                          <label  style="margin-top:10px !important;">Qualification</label>
+                                                                                          <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                                              <option value="1">developer</option>
+                                                                                              <option  value="2">technology</option>
+                                                                                              <option  value="3">accounting</option>
+                                                                                              <option  value="4">medical</option>
+                                                                                              <option  value="5">government</option>
+                                                                                          </select>
+                                                                                          </div>
+                                                                                          <div class="col-md-6"  style="margin-top:34px !important;">
+                                                                                              <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                                                  <option value="1">Specialization</option>
+                                                                                                  <option  value="2">technology</option>
+                                                                                                  <option  value="3">accounting</option>
+                                                                                                  <option  value="4">medical</option>
+                                                                                                  <option  value="5">government</option>
+                                                                                              </select>
+                                                                                              </div>
+                                                                                              </div>
+                                                                                          </div> -->
+                                                                                         
+                                                                                             
+                                                                                             
+                                                                          
+                                                                          
+                                                                                      </div>
+                                                                 
+                                                              </div>
+                                                              <div class="row" style="margin-top:30px;">
+                                                                  <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+  
+                                                                      <div class="text-center"> <h3>Company Owner Details</h3></div>
+                                                              
+                                                              <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                                                              <div class="col-md-4">
+                                                                  <label for="company_name">Company name</label>
+                              <input required id="company_name" name="company_name" type="text" class="form-control" style="margin-bottom:1px; border-color:#248ae4;" value="{{ form.company_name.value|default_if_none:"" }}">
+                                                              </div> 
+                                                              <div class="col-md-4" style="margin-top:5px;">
+                                                                  <label for="company_website">Company Url</label>
+                              <input  id="company_website" name="website" type="url" style="border-color:#248ae4;"  class="form-control" value="{{ form.website.value|default_if_none:"" }}">
+                                                              </div>
+                                                              <div class="col-md-4" style="margin-top:1px;">
+                                                                  <label for="company_website">Phone Number</label>
+                              <input required id="company_website" name="phoneNumber" type="text" style="border-color:#248ae4;"  class="form-control" >
+                                                              </div>
+                                                              <div class="col-md-12" style="margin-bottom:20px;">
+                                                                  <p class="text-danger">{{ form.company_description.errors }}</p>#}
+                                                                  <label for="company_description">Company Description</label>
+                                                                  <textarea id="company_description" name="company_description" rows="3"
+                                                                  style="border-color:#248ae4;"    class="form-control" required>{{ form.company_description.value|default_if_none:"" }}</textarea>
+                                                              </div> 
+                                                              </div>
+                                                               
+                                                              </div>
+                                                              </div>
+                                                                    
+                                                           <div class="row" style=" margin-top:10px;">
+                                                              <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">    
+                                                                  <div class="text-center">
+                                                                   <h3 style="margin-bottom:20px;">Scheduled Job</h3>
+                                                                  </div>
+                                                          <div class="form-group">
+                                                              <div class="col-lg-12 col-md-12 col-sm-12">
+                                                              <div class="col-md-6" style="margin-bottom:20px;">
+                                                                  <label for="type">Make live</label>
+                                                                  <select id="day" name="day" style="border:1px solid #248ae4; 
+
+                                                                  width:100%; padding:6px; border-radius:5px;" onchange="myFunction11()">
+                                                                  
+                                                                  </select>
+
+                                                                  <script>
+                                                                      // console.log( document.getElementById("day").value)
+                                                                      (function (){
+                                                                          let day_selected = new Date()
+                                                                          let option = '';
+                                                                          option += '<option value =" ' + "Live Now"+' " ' +'>' + "Live Now" +'</option>';
+                                                                          option += '<option value =" ' + "Do It Later"+' " ' +'>' + "Do It Later" +'</option>';
+                                                                          option += '<option value =" ' + "Select Dynamic Date"+' " ' +'disabled'+'>' + "Select Dynamic Date" +'</option>';
+                                                                          for (let i=1; i<15; i++){
+                                                                              day_selected.setDate(new Date().getDate()+i-1)
+                                                                              option += '<option value =" ' + day_selected+' " ' +'>' + day_selected.toDateString() +'</option>';
+                                                                          }
+                                                                          document.getElementById("day").innerHTML = option;
+
+                                                                      })();
+                                                                      function myFunction11(){
+                                                                         
+                                                                          var thisone=document.getElementById("day").value;
+                                                                          
+                                                                          console.log(thisone.charAt(1));
+                                                                          if (thisone[1] ==="D"){
+                                                                            document.getElementById("salary11212").disabled=true
+                                                                              console.log("hello")
+                                                                              let day_selected = new Date()
+                                                                              day_selected.setDate(new Date().getDate()+30)
+                                                                              console.log(day_selected)
+                                                                          }
+                                                                          else {
+                                                                            document.getElementById("salary11212").disabled=false
+                                                                              let day_selected =document.getElementById("day").value;
+                                                                              console.log(typeof day_selected )
+                                                                              day_selected.setDate(day_selected.getDate()+30)
+                                                                              console.log(day_selected)
+
+                                                                          }
+                                                                      }
+                                                                      function thisoneone(){
+                                                                          console.log("day time value")
+                                                                      }
+                                                                  </script>
+                              <!-- <select id="type" name="type" style="border-color:#248ae4;"  placeholder="Choose job type"
+                                      class="form-control select2">
+                                  <option value="1" {% if form.type.value == "1" %} selected {% endif %}>Full time</option>
+                                  <option value="2" {% if form.type.value == "2" %} selected {% endif %}>Part time</option>
+                                  <option value="3" {% if form.type.value == "3" %} selected {% endif %}>Internship</option>
+                              </select> -->
+                                                              </div>
+                                                              <div class="col-md-6">
+                                                              <label for="salary">Closing Date</label>
+                                                              <input required id="salary11212" name="last_date" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                              </div>
+                                                              </div>
+                                                             
+                                                              <!-- <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                  <div class="col-md-3">
+                                                                      <label for="salary">Auto Renew</label>
+                                                                      <select class="form-control"  name="auto_renew" style=" border-color:#248ae4;">
+                                                                          <option value="1">disabled</option>
+                                                                          <option  value="2">Every Week</option>
+                                                                          <option  value="3">Every Fortnight</option>
+                                                                          <option  value="4">Every Month</option>
+                                                                      </select>
+                                                                      </div>
+                                                              <div class="col-md-4">
+                                                                  <label for="salary">From</label>
+                                                                  <input  id="salary" style="border-color:#248ae4;"  type="date"  class="form-control" >
+                                                               </div>
+                                                                  <div class="col-md-4">
+                                                                      <label for="salary">To</label>
+                                                                      <input style="border-color:#248ae4;"  type="date" class="form-control" >
+                                                                   </div>
+                                                                   
+                                                                   <div id="remember" data-role="fieldcontain">
+                                                                    <label for="remember">Salary Disclosed Later</label>       
+                                                                    <input id="remember" name="remember" type="checkbox" onclick="validate()" />
+                                                                </div>
+                                                                
+                                                                          </div> -->
+
+                                                                          <div class="col-md-12 col-lg-12 col-sm-12">
+                                                                          <div class="col-md-2" >
+                                                                              <label for="salary" style="margin-top:20px !important;">in lacs</label>
+                                                                              <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                              <select class="form-control" id="minSalarylakh" name="minSalarylakh" style=" border-color:#248ae4;">
+                                                                                <!-- {% for x in valuecount %}
+                                                                                  <option value="1">{{x}}</option>
+                                                                                {% endfor %} -->
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="6">6</option>
+                                                                                <option value="7">7</option>
+                                                                                <option value="8">8</option>
+                                                                                <option value="9">9</option>
+                                                                                <option value="10">10</option>
+                                                                                <option value="11">11</option>
+                                                                                <option value="12">12</option>
+                                                                                <option value="13">13</option>
+                                                                                <option value="14">14</option>
+                                                                                <option value="15">15</option>
+                                                                                <option value="16">16</option>
+                                                                                <option value="17">17</option>
+                                                                                <option value="18">18</option>
+                                                                                <option value="19">19</option>
+                                                                                <option value="20">21</option>
+                                                                                <option value="21">22</option>
+                                                                                <option value="22">23</option>
+                                                                                <option value="23">24</option>
+                                                                                <option value="25">25</option>
+                                                                                <option value="26">26</option>
+                                                                                <option value="27">27</option>
+                                                                                <option value="27">28</option>
+                                                                                
+                                                                              </select>
+                                                                              </div>
+                                                                              <div class="col-md-4">
+                                                                                  <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                  <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                                  <select class="form-control" id="minSalarythousand" name="minSalarythousand" style=" border-color:#248ae4;">
+                                                                                      <!-- {% for x in valuecount %}
+                                                                                        <option value="1">{{x}}</option>
+                                                                                      {% endfor %} -->
+                                                                                      <option value="10000">10000</option>
+                                                                                      <option value="20000">20000</option>
+                                                                                      <option value="30000">30000</option>
+                                                                                      <option value="40000">40000</option>
+                                                                                      <option value="50000">50000</option>
+                                                                                      <option value="60000">60000</option>
+                                                                                      <option value="70000">70000</option>
+                                                                                      <option value="80000">80000</option>
+                                                                                      <option value="90000">90000</option>
+                          
+                                                                                      
+                                                                                    </select>
+                                                                                  </div>
+                                                                                  <div class="col-md-2">
+                                                                                      <label for="salary" style="margin-top:20px !important;">in lacs</label>
+                                                                                      <select class="form-control" id="maxSalarylakh" name="maxSalarylakh" style=" border-color:#248ae4;">
+                                                                                          <!-- {% for x in valuecount %}
+                                                                                            <option value="1">{{x}}</option>
+                                                                                          {% endfor %} -->
+                                                                                          <option value="1">1</option>
+                                                                                          <option value="2">2</option>
+                                                                                          <option value="3">3</option>
+                                                                                          <option value="4">4</option>
+                                                                                          <option value="5">5</option>
+                                                                                          <option value="6">6</option>
+                                                                                          <option value="7">7</option>
+                                                                                          <option value="8">8</option>
+                                                                                          <option value="9">9</option>
+                                                                                          <option value="10">10</option>
+                                                                                          <option value="11">11</option>
+                                                                                          <option value="12">12</option>
+                                                                                          <option value="13">13</option>
+                                                                                          <option value="14">14</option>
+                                                                                          <option value="15">15</option>
+                                                                                          <option value="16">16</option>
+                                                                                          <option value="17">17</option>
+                                                                                          <option value="18">18</option>
+                                                                                          <option value="19">19</option>
+                                                                                          <option value="20">21</option>
+                                                                                          <option value="21">22</option>
+                                                                                          <option value="22">23</option>
+                                                                                          <option value="23">24</option>
+                                                                                          <option value="25">25</option>
+                                                                                          <option value="26">26</option>
+                                                                                          <option value="27">27</option>
+                                                                                          <option value="27">28</option>
+                                                                                          
+                                                                                        </select>                                                                                        </div>
+                                                                                      <div class="col-md-4">
+                                                                                          <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                          <select class="form-control" id="maxSalarythousand" name="maxSalarythousand" style=" border-color:#248ae4;">
+                                                                                              <!-- {% for x in valuecount %}
+                                                                                                <option value="1">{{x}}</option>
+                                                                                              {% endfor %} -->
+                                                                                              <option value="10000">10000</option>
+                                                                                              <option value="20000">20000</option>
+                                                                                              <option value="30000">30000</option>
+                                                                                              <option value="40000">40000</option>
+                                                                                              <option value="50000">50000</option>
+                                                                                              <option value="60000">60000</option>
+                                                                                              <option value="70000">70000</option>
+                                                                                              <option value="80000">80000</option>
+                                                                                              <option value="90000">90000</option>
+                                  
+                                                                                              
+                                                                                            </select>                                                                                            </div>
+                                                                                          </div>
+                                                              
+                                                              </div>
+                                                              </div>
+                                                              </div> 
+                                                              <script>
+                                                               
+                                                                function validate() {
+  
+                                                              if ( document.getElementById("minSalarylakh").disabled==false){
+                                                                document.getElementById("minSalarylakh").disabled=true
+     document.getElementById("minSalarythousand").disabled=true
+     document.getElementById("maxSalarylakh").disabled=true
+     document.getElementById("maxSalarythousand").disabled=true
+                                                              }
+                                                              else{
+                                                                document.getElementById("minSalarylakh").disabled=false
+     document.getElementById("minSalarythousand").disabled=false
+     document.getElementById("maxSalarylakh").disabled=false
+     document.getElementById("maxSalarythousand").disabled=false
+                                                              }
+                                                              
+                                                              
+                                                                
+
+}
+                                                             </script>
+                                                              <div class="row" style=" margin-top:30px;">
+                                                                  <div class="col-md-6 col-md-offset-3 style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                              <label>Checkboxes</label>
+                                                              
+                                                              
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox"  value="" /> send auto-matched resumes from database
+                                                                  </label>
+                                                              </div>
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox" value=""/>keep company name confidential
+                                                                  </label>
+                                                              </div>
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox" value=""/>Don't send applications in email
+                                                                  </label>
+                                                              </div>
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox" value="" /> Reveal contact details to job applicants
+                                                                  </label>
+                                                              </div>
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox" value="" /> showcase this job to women on the go
+                                                                  </label>
+                                                              </div>
+                                                              <div class="checkbox">
+                                                                  <label>
+                                                                      <input  type="checkbox" value="" /> use screening for this job
+                                                                  </label>
+                                                              </div>
+                                                          </div>
+                                                          </div>
+                                                          </div>
+                                                         
+                                                   
+                      
+                                                  
+                                                 
+                                                  
+                                              <!-- </div> -->
+                                          </div>
+                                      </div>
+                                      <div class="text-center">
+                                      <button  type="submit" class="btn btn-primary save-btn"   > Post Job</button>
+                                      </div>
+                                      <!-- <button type="submit"> Post Job</button> -->
+                                  </form>
+                                  <!-- </div> -->
+                              
+                          <!-- </div> -->
+                      </div>
+                  <!-- </div>  -tab content                  -->
+               <!-- </div>page inner -->
+             
+            
+                    </div>
+                </div>
+              </div>
+                </div>
+                
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    
+
+
+
+    
+    <script>
+
+var citiesByState = {
+ Admin: ["Administration Executive", "Administration Mangaer","Computer Operator","Executive Secretary","Receptionist","Secretary","Facilities Manager","Fresher","Immigration Coordinator","Typist","Dispatch Incharge","Other Adminm"],
+ Customer_Services: ['"Customer', 'Service', 'Executive', '(Voice)', 'Customer', 'Service', 'Executive', '(Non-Voice)', 'Team', 'Leader', 'Data', 'Processing', 'Executive', 'Technical', 'Support', 'Executive', '(Voice)', 'Operations', 'Manager', 'Technical', 'Support', 'Representative', '(Non-', 'Voice)', 'Account', 'Services', 'Executive', 'Manager', '-', 'Service', 'Delivery', 'Fresher', 'Trainee/Management', 'Trainee', 'Telesales', 'Executive', 'Telemarketing', 'Executive', 'Manager', '-', 'Data', 'Processing', 'Medical', 'Transcriptionist', 'Transactions', 'Processing', 'Executive', 'AR', 'Caller/AR', 'Analyst', 'Technical', 'Trainer', 'Quality', 'Assurance', '-', 'Manager', 'VP/GM', '-', 'Quality', 'Shift', 'Supervisor', 'Training', 'Manager', 'Manager', '-', 'Migrations/Transitions', 'Process/Work', 'Flow', 'Analyst', 'Quality', 'Assurance', 'Executive', 'Voice', '&', 'Accent', 'Trainer', 'Process', 'Trainer', 'Soft', 'Skills', 'Trainer', 'VP/Head', '-', 'Customer', 'Service', 'VP', '-', 'Operations/COO', 'SBU', 'Head/Profit', 'Centre', 'Head', 'CEO/MD/Country', 'Manager', 'Director', 'on', 'Board', 'External', 'Consultant', 'Other', 'Customer', 'Service/Call', 'Center"'],
+ Finance_Accounts: ["Accountant",
+ "Book Keeper/Accounts Assistant",
+ "Finance Assistant",
+ "Financial/Business Analyst",
+ "Accounts Head/GM - Accounts",
+ "Finance Manager",
+ "Chartered Accountant (CPA)",
+ "Internal Auditor",
+ "Fresher",
+ "Graduate Trainee/Management Trainee",
+ "Accounts Manager",
+ "Cost Accountant/ICWA",
+ "Financial Controller",
+ "Manager - Financial Planning/Budgeting",
+ "Head/GM - Finance",
+ "External Auditor",
+ "Commercial Executive/Manager",
+ "Credit Control & Collections",
+ "Treasury Manager",
+ "Company Secretary",
+ "Taxation - Manager",
+ "Shares Services Executive",
+ "Business/Strategic Planning - Manager",
+ "Foreign Exchange Officer",
+ "Payroll/Compensation Executive",
+ "Payroll/Compensation - Manager/Head",
+ "GM/Head/VP - Corporate Planning/Strategy",
+ "VP - Finance/CFO",
+ "External Consultant",
+"Other Finance & Accounts"],
+ Human_Resources: ['HR', 'Executive/Recruiter', 'HR', 'Manager', 'Payroll/Compensation', 'Executive', 'Recruitment', '-', 'Head/Mgr', 'Training', '&', 'Development', 'Executive', 'Training', '&', 'Development', '-', 'Head/Mgr', 'Industrial', 'Relations/Personnel', 'Manager', 'VP/GM', '-', 'HR', 'Payroll/Compensation', '-', 'Head/Mgr', 'Fresher', 'Graduate', 'Trainee/Management', 'Trainee', 'HR', 'Business', 'Partner', 'Appraisals', '-', 'Head/Mgr', 'External', 'Consultant', 'Other', 'Human', 'Resource'],
+ IT: ['Software', 'Engineer/Programmer', 'Team', 'Leader/Technical', 'Leader', 'Software', 'Test', 'Engineer', 'System', 'Administrator', 'Technical', 'Support', 'Engineer', 'Network', 'Administrator', 'Project', 'Leader/Project', 'Manager', 'H/W', 'Installation/Maintenance', 'Engg', 'System', 'Analyst/Tech', 'Architect', 'Fresher', 'Trainee', 'Systems', 'Engineer', 'Business', 'Analyst', 'Database', 'Administrator', '(DBA)', 'Database', 'Architect/Designer', 'Delivery', 'Manager', 'Program', 'Manager', 'Datawarehousing', 'Consultants', 'Network', 'Designer', 'Security', 'Analyst', 'System', 'Security', '-', 'Engineer', 'System', 'Integrator', 'Graphic', 'Designer/Animator', 'ERP/CRM', '-', 'Functional', 'Consultant', 'ERP/CRM', '-', 'Technical', 'Consultant', 'ERP/CRM', '-', 'Support', 'Engineer', 'S/W', 'Installation/Maintenance', 'Engg', 'Product', 'Manager', 'Configuration', 'Mgr/Release', 'Manager', 'Trainer/Faculty', 'Technical', 'Writer', 'VP/GM', '-', 'Quality', 'Web', 'Master/Web', 'Site', 'Manager', 'SEO', 'Expert', 'Hardware', 'Design', 'Engineer', 'Hardware', 'Design', 'Technical', 'Leader', 'Quality', 'Assurance', 'Executive', 'Quality', 'Assurance', '-', 'Manager', 'Computer', 'Operator/Data', 'Entry', 'Instructional', 'Designer', 'EDP', 'Analyst', 'IT/Networking', '(EDP)', '-', 'Manager', 'Information', 'Systems', '(MIS)', '-', 'Manager', 'MIS', 'Executive', 'VP/Head', '-', 'Technology', '(IT)', 'Chief', 'Technology', 'Officer', '(CTO)', 'Chief', 'Information', 'Officer', '(CIO)', 'VP', '-', 'Operations/COO', 'SBU', 'Head/Profit', 'Centre', 'Head', 'CEO/MD/Country', 'Manager', 'Director', 'on', 'Board', 'External', 'Consultant', 'Project', 'Co-ordinator', 'Other', 'Software/Hardware/EDP'],
+                                                                      
+ Legal: ['Fresher', 'Company', 'Secretary', 'Lawyer/Attorney', 'Legal', 'Advisor', 'Legal', 'Assistant/Apprentcie', 'Legal', 'Consultant/Solicitor', 'Law', 'Officer', 'Patent', 'Private', 'Practitioner/Lawyer', 'Proof', 'Reader', '(Law)', 'Legal', 'Editor', 'Legal', 'Services', '-', 'Manager', 'Legal', 'Head', 'Other', 'Legal/Law"'],
+                                                                       
+ Marketting: ['Marketing', '&', 'Communications', 'Marketing', 'Executive', 'Marketing', 'Manager', 'Direct', 'Marketing', '-', 'Executive', 'Direct', 'Marketing', '-', 'Manager', 'Telesales/Telemarketing', 'Executive', 'Market', 'Research', '-', 'Executive', 'Corp', 'Communications', '-', 'Manager/Executive', 'Public', 'Relations', '-', 'Executive', 'Public', 'Relations', '-', 'Manager', 'Fresher', 'Trainee/Management', 'Trainee', 'Head', '-', 'Corp', 'Communications', 'Advertising', '-', 'Executive', 'Advertising', '-', 'Manager', 'Events/Promotions', 'Manager', 'Manager/Head', '-', 'Internet', 'Marketing', 'Market', 'Research', '-', 'Manager', 'Alliances', 'Manager', 'Business', 'Analyst/Consultant', 'Brand', 'Manager', 'Product', 'Executive', 'Product', 'Manager/Product', 'Head', 'Marcom', 'Executive', 'Marcom', '-', 'Manager/Head', 'Executive', '-', 'Internet', 'Marketing', 'Social', 'Media', 'Executive', 'Head', '-', 'Direct', 'Marketing', 'Head', '-', 'Public', 'Relations', 'Head', '-', 'Advertising', 'VP/GM/Head', '-', 'Marketing', 'External', 'Consultant', 'Other', 'Marketing'],
+                                                                      
+ Sales_Buisiness_Development:['Sales', 'Exec/Sales', 'Representative', 'Business', 'Development', 'Manager', 'Area/Territory', 'Sales', 'Manager', 'Relationship', 'Mgr/Account', 'Servicing', 'Business', 'Development', 'Executive', 'Channel', 'Sales', 'Manager', 'Regional', 'Sales', 'Manager', 'Branch', 'Manager', 'Medical', 'Representative', 'Fresher', 'Sales', 'Trainee/Management', 'Trainee', 'Key', 'Accounts', 'Manager', 'Institutional', 'sales', 'Sales', 'Promotion', 'Manager', 'International', 'Business', 'Dev', 'Mgr', 'Merchandiser', 'Direct', 'Sales', 'Agent/Commission', 'Agent', 'Telesales/Telemarketing', 'Executive', 'Sales', 'Trainer', 'Presales', 'Consultant', 'Sales', 'Engineer', 'Sales', 'Coordinator', 'Team', 'Leader', 'National', 'Sales', 'Manager', 'VP/GM/Head', '-', 'Sales', 'External', 'Consultant', 'Corporate', 'Sales', 'Other', 'Sales'],
+                                                                      
+ TV_Film_Production: ['Animation/Graphic', 'Artist', 'Assistant', 'Director/Director', 'Assistant', 'Editor/Editor', 'AV', 'Editor', 'Cameraman/Technician', 'Choreographer', 'Cinematographer', 'Correspondent/Assistant', 'Editor/Associate', 'Edit', '...', 'Film', 'Producer', 'Fresher', 'Head', '-', 'Lighting', 'Head', '-', 'Special', 'Effects', 'Head/VP/GM', '-', 'Anchor', 'Head/VP/GM', '-', 'Production', 'Lighting', 'Technician', 'Locations', 'Manager', 'Music', 'Director', 'News', 'Anchor/TV', 'Presenter', 'News', 'Compiler', 'News/Features', 'Head', 'Photographer', 'Principal', 'Correspondent/Features', 'Writer/Resid', '...', 'Sound', 'Mixer/Engineer', 'Special', 'Effects', 'Technician', 'Spot', 'Boy', 'Stunt', 'Coordinator', 'Top', 'Executive/Management', 'Trainee', 'TV', 'Producer', 'Visualizer', 'Wardrobe/Make-Up/Hair', 'Artist', 'Others'],
+                                                                       
+ Architecture: ['Architect', 'Drafter/Design', 'Drafter', 'External', 'Consultant', 'Fresher', 'Head/VP/GM', '-', 'Architecture', 'Head/VP/GM', '-', 'Interior', 'Design', 'Interior', 'Designer', 'Landscape', 'Architect', 'Project', 'Architect', 'Top', 'Executive/Management', 'Town', 'Planner', 'Others"'],
+                                                                       
+ Graphic_Design: ['Animator', 'Design', 'Drafter', 'Desktop', 'Publishing', 'Artist', 'Fashion', 'Designer', 'Floral', 'Designer', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'Arts/Creative', 'Head/VP/GM', '-', 'Graphics', 'Design', 'Industrial/Product', 'Designer', 'Multimedia', 'Designer', 'Photographer', 'Supervisor/Team', 'Lead', 'Top', 'Executive/Management', 'Visual', 'Merchandiser', 'Others"'],
+                                                                      
+ Digital_Marketing: ['Affiliate', 'Marketing', 'Display', 'Marketing', 'Email', 'Marketing', 'Head/VP/GM', '-', 'Digital', 'Marketing', 'Marketing', 'Pay', 'Per', 'Click', '(PPC)', 'Search', 'Engine', 'Marketing', '(SEM)', 'Search', 'Engine', 'Optimisation', '(SEO)', 'Social', 'Media', 'Marketing', 'Customer', 'Research', 'Executive', 'Top', 'Executive/Management"'],
+                                                                       
+ Engineering_Chemical: ['Chemical', 'Engineer', 'External', 'Consultant', 'Head/VP/GM', '-', 'Chemical', 'Laboratory', 'Assistant', 'Process', 'Engineer', 'Product', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Research', '&', 'Development', '(R&D)', 'Engineer', 'Supervisor/Team', 'Lead', 'Technical', 'Writer', 'Technician/Support', 'Top', 'Executive/Management', 'Others"'],
+                                                                       
+ Engineering_Electrical: ['CAD-CAM/Electrical', 'Drafter', 'Electrical', 'Engineer', 'Electrical', 'Technician/Support', 'Head/VP/GM', '-', 'Electrical', 'Mechatronics', 'Engineer', 'Process', 'Engineer', 'Product', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Research', '&', 'Development', '(R&D)', 'Engineer', 'Supervisor/Team', 'Lead', 'Technical', 'Writer"'],
+                                                                      
+ Engineering_Electronic_Communication: ['CAD-CAM/Electronics', 'Drafter', 'Electronics', 'Engineer', 'Electronics', 'Technician/Support', 'Head/VP/GM', '-', 'Electronics/Communication', 'Mechatronics', 'Engineer', 'Process', 'Engineer', 'Product', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Research', '&', 'Development', '(R&D)', 'Engineer', 'SMT', 'Engineer', 'Supervisor/Team', 'Lead', 'Technical', 'Writer', 'Telecommunication', 'Engineer', 'Test', 'Engineer', 'Top', 'Executive/Management', 'Others', 'Test', 'Engineer', 'Top', 'Executive/Management', 'Others'],
+                                                                      
+ Enginnering_Mechanical_Automative_Industrial: ['Automotive', 'Engineer', 'CAD-CAM/Mechanical', 'Drafter', 'Head/VP/GM', '-', 'Automotive', 'Head/VP/GM', '-', 'Industrial/Production', 'Head/VP/GM', '-', 'Mechanical', 'Industrial/Production', 'Engineer', 'Mechanical', 'Engineer', 'Mechatronics', 'Engineer', 'Process', 'Engineer', 'Product', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Research', '&', 'Development', '(R&D)', 'Engineer', 'Supervisor/Team', 'Lead', 'Technical', 'Writer', 'Technician/Support', 'Top', 'Executive/Management', 'Others'],
+                                                                       
+ Fashion_Apparels: ['Accessories', 'Designer', 'Apparel/Garment', 'Designer', 'Field', 'Boy', 'Footwear', 'Designer', 'Freelancer', 'Fresher', 'Hair', 'Stylist', 'Head/VP/GM', '-', 'Fashion/Apparels', 'Intern', 'Jewellery', 'Designer', 'Make-Up', 'Artist', 'Merchandiser', 'Model', 'Stylist', 'Textile', 'Designer', 'Top', 'Executive/Management', 'Trainee', 'Others"'],
+                                                                      
+ Security_Services: ['Army/Navy/Airforce', 'Personnel', 'Chief', 'Security', 'Officer', 'Fresher', 'Head/VP/GM', '-', 'Guards/Security', 'Services', 'Personal', 'Security', 'Officer', 'Policeman', 'Security', 'Guard', 'Security', 'Manager', 'Security', 'Supervisor', 'Top', 'Executive/Management', 'Trainee', 'Others"'],
+                                                                     
+ IT_Hardware_Telecom_Support: ['Civil', 'Engineer', '-', 'Telecom', 'Customer', 'Support', 'Engineer/Technician', 'Electrical', 'Engineer', '-', 'Telecom', 'Embedded', 'Technologies', 'Engineer', 'External', 'Consultant', 'Fresher', 'GPRS', 'Engineer', 'GSM', 'Engineer', 'Technical', 'Officer', 'Junior', 'Engineers', '-', 'Telecom', 'Verification', 'Engineer', 'Client', 'Engineering', '-', 'Infrastructure', 'Network', 'Engineer', 'BGA', 'Technician', 'IT', 'Executive', 'IT', 'Manager', 'Service', 'Engineer', 'IT', 'Delivery', 'Specialist', 'IT', 'Application', 'Designer', 'Specialist', 'Technical', 'Building', 'Planning/Optimization', 'Spec', '...', 'Hardware', 'Design', 'Hardware', 'Design', 'Engineer', 'Hardware', 'Installation', 'Technician', 'Head/VP/GM', '-', 'Hardware/Telecom/Technical', 'Staff', '...', 'Maintenance', 'Engineer', 'Mechanical', 'Engineer', '-', 'Telecom', 'Network', 'Administrator', 'Network', 'Planning', 'Operations', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Radio', 'Frequency', '(RF)', 'Engineer', 'Radio', 'Frequency', '(RF)', 'Installation', 'Engineer', 'Radio', 'Frequency', '(RF)', 'System', 'Designer', 'SBU', 'Head/Profit', 'Centre', 'Head', 'Security', 'Engineer', 'Switching/Router', 'Engineer', 'System', 'Administrator', 'Technical', 'Support', 'Technology', '(Telecom/ISP)', 'Top', 'Executive/Management', 'Trainee', 'Others'],
+                                                                       
+ IT_Software_development_Application_Programming:['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'Application', 'Programming/Maintena', '...', 'Network', 'Implementation', 'Engineer', 'Devops', 'Application', 'Support', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'SDET', 'Engineer', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'iOS/Android/Mobile', 'Developer', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+                                                                       
+ IT_Software_Development_Client_Server:['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'Client', 'Server', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'SDET', 'Engineer', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+                                                                      
+ IT_DBA_Datawarehousing:['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'SDET', 'Engineer', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'DBA/Datawarehousing', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', '-', 'Manager', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+                                                                     
+ IT_Mainframe: ['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'Mainframe', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', '-', 'Manager', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'SDET', 'Engineer', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+                                                                       
+ IT_Software_Development_Network_Administration:['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'Network', 'Administration/Security', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', '-', 'Manager', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'SDET', 'Engineer', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'Hardware', 'Engineer', 'Safety', 'Officer', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+IT_Software_Development_Other: ['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', '-', 'Manager', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'SDET', 'Engineer', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technical', 'Product', 'Manager', 'Technology', '(IT)', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],          
+IT_Software_Development_QA_Testing: ['Datawarehousing', 'Technician', 'External', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Head/VP/GM', '-', 'QA', '&', 'Testing', 'Maintenance', 'Engineer', 'Practice', 'Head/Practice', 'Manager', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Subject', 'Matter', 'Expert', 'System', 'Analyst', 'System', 'Security', 'SDET', 'Engineer', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty"'],
+ System_Programming: ['Business', 'Analyst', 'Database', 'Administrator', 'Database', 'Architect/Designer', 'Datawarehousing', 'Technician', 'EDP', 'Analyst', 'ERP', 'Consultant', 'Fresher', 'Functional', 'Consultant', 'Graphic/Web', 'Designer', 'Head/VP/GM', '-', 'System', 'Programming', 'Information', 'Systems', '(MIS)', 'Instructional', 'Designer', 'IT/Networking', '-', 'Manager', 'IT/Technical', 'Content', 'Developer', 'Maintenance', 'Engineer', 'Network', 'Administrator', 'Practice', 'Head/Practice', 'Manager', 'Product', 'Management', 'Program', 'Management', 'iOS/Android/Mobile', 'Developer', 'Project', 'Management', 'Quality', 'Assurance/Control', '(QA/QC)', 'Release', 'Manager', 'Software', 'Developer', 'Solution', 'Architect/Enterprise', 'Architect', 'Subject', 'Matter', 'Expert', 'System', 'Administrator', 'System', 'Analyst', 'System', 'Integration', 'Technician', 'System', 'Security', 'SDET', 'Engineer', 'Firmware', 'Engineer', 'Technical', 'Architect', 'Technical', 'Consultant', 'Technical', 'Documentor', 'Technical', 'Support', 'Technical', 'Writer', 'Technology', '(IT)', 'Top', 'Executive/Management', 'Trainee', 'Trainer/Faculty', 'Webmaster'],
+                                                                      
+ Journalism_ContentWriting_Editing_Correspondent:['Business', 'Content', 'Developer', 'Business', 'Editor', 'Chief', 'of', 'Bureau/Editor', 'in', 'Chief', 'Content', 'Developer', 'Correspondent/Assistant', 'Editor/Associate', 'Edit', '...', 'Fashion', 'Content', 'Developer', 'Fashion', 'Editor', 'Features', 'Content', 'Developer', 'Features', 'Editor', 'Freelance', 'Journalist', 'Fresher', 'Head/VP/GM', '-', 'Journalism/Content', 'Writing/Editi', '...', 'International', 'Business', 'Content', 'Developer', 'International', 'Business', 'Editor', 'Investigative', 'Journalist', 'IT/Technical', 'Content', 'Developer', 'IT/Technical', 'Editor', 'Journalist', 'Managing', 'Editor', 'News', 'Anchor/TV', 'Presenter', 'News', 'Compiler', 'News', 'Editor', 'Political', 'Content', 'Developer', 'Political', 'Editor', 'Principal', 'Correspondent/Features', 'Writer/Resid', '...', 'Proof', 'Reader', 'Sports', 'Content', 'Developer', 'Sports', 'Editor', 'Sub', 'Editor/Reporter', 'Top', 'Executive/Management', 'Trainee', 'Others"'],
+                                                                  
+ Marine_Services: ['Aquatic', 'Veterinarian', 'Avionics', 'Maintenance', 'Chief', 'Barge', 'Engineer', 'Basic', 'Engineer/Construction/Facilities', 'Beauty', 'Casino', 'Child', 'Care', 'Combat', 'Mass', 'Communicator', 'Crane', 'Operator', 'Cyberspace', 'Officer', 'Chief', 'Deck', 'Officer', 'Deck/Marine', 'Finance/Audit', 'Fiscal/Budget', 'Technician', 'Head/VP/GM', '-', 'Marine', 'Services', 'Hotel', 'Operations', 'House', 'Keeping', 'Maintenance', 'Marine', 'Archeology', 'Marine', 'Biology', 'Marine', 'Counter', 'Intelligence/', 'Human', 'Intelligen', '...', 'Marine', 'Cybersecurity', 'Technician', 'Marine', 'Engineer', 'Marine', 'Environment', 'Educator/Oceanography', 'Marine', 'Environment', 'Specialist', 'Marine', 'Logistics/Marine', 'Chief', 'Marine', 'Mammal', 'Trainer', 'Marine', 'Researcher', 'Marine', 'Scientist', 'Ocean', 'Engineering', 'Offshore', 'Operations', 'Rig', 'Manager/Drilling', 'Superintendent', 'Safety', 'Officer', 'Scuba', 'Diving', 'Instructor', 'Shore', 'Excursion', 'Supply', 'Chain', '&', 'Material', 'Management', 'Supporting', 'Hands', 'Top', 'Executive/Management', 'Under', 'Water', 'Film', 'Maker', 'Welder'],
+                                                                   
+ Marketing_Research_Analysis: ['Account', 'Director', 'Affiliate', 'Marketing', 'Art', 'Director', 'Branch', 'Marketing', 'Business', 'Alliances', 'Business', 'Alliances', 'Client', 'Service', 'Client', 'Servicing', 'Consumer', 'Insights/Industry', 'Analysis', 'Copywriter', 'Corporate', 'Communication', 'Creative', 'Data', 'Visualization', 'Direct', 'Marketing', 'Display', 'Marketing', 'Email', 'Marketing', 'Events/Promotion', 'External', 'Consultant', 'Fresher', 'Graphic', 'Designer', 'Head/VP/GM', '-', 'Marketing', 'Research', '&', 'Analysis', 'Internal/External', 'Communication', 'Management', 'International', 'Marketing', 'Market', 'Research', 'Marketing', 'Media', 'Buying', 'Media', 'Planning', 'Online/Digital', 'Marketing', 'Pay', 'Per', 'Click', '(PPC)', 'Product/Brand', 'Management', 'Public', 'Relations', '(PR)', '&', 'Media', 'Relations', 'Manag', '...', 'Public', 'Relations', '(PR)/Corporate', 'Communication', 'Field', 'Sales', 'Executive', 'Regional', 'Marketing', 'Retail', 'Marketing', 'Rural', 'Marketing', 'Search', 'Engine', 'Marketing', '(SEM)', 'Search', 'Engine', 'Optimisation', '(SEO)', 'Social', 'Media', 'Marketing', 'Sourcing', 'Management', 'Top', 'Executive/Management', 'Others'],
+                                                           
+ Operations: ['Back', 'Office', 'Processing', 'Business/EDP', 'Analyst', 'Back', 'Office', 'Assistant', 'Data', 'Entry', '-', 'Operations', 'Dialer', 'Manager', 'Head/VP/GM', '-', 'Operations', 'Infrastructure', '&', 'Technology', 'Operations', 'Director', 'Operations', 'Executive/Supervisor', 'Operations', 'Manager', 'Process', 'Flow', 'Analyst', 'Regional', 'Manager/Manager(Operations)', 'Top', 'Executive/Management', 'Transitions/Migrations', 'Manager'],
+                                                                 
+ Performing_Arts:['Actor', 'Cameraman/Technician', 'Choreographer', 'Dancer', 'Director', 'Head/VP/GM', '-', 'Dance', 'Head/VP/GM', '-', 'Music', 'Head/VP/GM', '-', 'Theater', 'Model', 'Musician', 'Producer', 'Singer', 'Top', 'Executive/Management', 'Writer', 'Others'],
+                                                             
+ PersonalCare_Beauty_Fitnes: ['Beautician/Makeup', 'Artist', 'Centre', 'Head/Branch', 'Head/Club', 'Manager', 'Fitness', 'Trainer/Gym', 'Instructor', 'Hair', 'Stylist', 'Head/VP/GM', '-', 'Beauty', 'Head/VP/GM', '-', 'Fitness', 'Service', 'Head/VP/GM', '-', 'Personal', 'Care', 'Make-Up', 'Artist', 'Massage', 'Therapist', 'Slimming', 'Manager', 'Spa', 'Therapist', 'Top', 'Executive/Management', 'Yoga', 'Trainer', 'Others'],
+ 
+ Product_mangement: ['Head/VP/GM', '-', 'Product', 'Head/VP/GM', '-', 'UX', 'Information', 'Architect', 'Interaction', 'Designer', 'Product', 'Management', 'Program', 'Management', 'Top', 'Executive/Management', 'UI', 'Artist', 'UI', 'Designer', 'Usability', 'Researcher/Specialist/Analyst/Engin', '...', 'Usability', 'Tester', 'Customer', 'Research', 'Executive', 'User', 'Researcher', 'UX', 'Architect', 'UX', 'Content', 'Strategist', 'UX', 'Copywriter', 'UX', 'Designer', 'UX/UI', 'Development', 'UX/UI', 'Engineer', 'Visual', 'Designer'],
+                                                                     
+ Public_Relations: ['Content', 'Creation', 'Copywriter', 'Crisis/Risk', 'management', 'Event', 'Management', 'Head/VP/GM', '-', 'Public', 'Relations', 'Internal/External', 'Communication', 'Management', 'Public', 'Relations', '(PR)', '&', 'Media', 'Relations', 'Manag', '...', 'Publication', 'Design', 'Publicist', 'Relationship', 'Management', 'Reputation/Image', 'management'],
+                                                                       
+ Quality_Control_Assurance: ['Building/Construction', 'Inspection', 'Environmental', 'Protection/Conservation', 'Food', 'Safety', 'and', 'Inspection', 'Fraud', 'Investigation', 'Head/VP/GM', '-', 'Quality', 'Control/Assurance', 'ISO', 'Certification', 'Occupational', 'Health', '&', 'Safety', 'Production', 'Quality', 'Assurance', 'Six', 'Sigma/Black', 'Belt/TQM', 'Top', 'Executive/Management', 'Vehicle', 'Inspection', 'Other', '-', 'Quality', 'Assurance/Safety'],
+                                                                    
+ Sales_Corporate: ['Distributor/Channel', 'Sales', 'Head/VP/GM', '-', 'Corporate', 'Pre', 'Sales', 'Consultant', 'Regional', 'Sales', 'Sales', 'Executive/Account', 'Manager', 'Sales', 'Support', 'Coordinator', 'Customer', 'Research', 'Executive', 'Field', 'Sales', 'Executive', 'Supervisor/Team', 'Lead', 'Top', 'Executive/Management', 'Others'],
+                                                                   
+ Sales_Engineering_Technical_IT: ["Head/VP/GM", '-', "Engineering/Technical/IT", 'Pre', 'Sales', 'Consultant', 'Sales', 'Engineer', 'Sales', 'Executive/Account', 'Manager', 'Supervisor/Team', 'Lead', 'Customer', 'Research', 'Executive', 'Field', 'Sales', 'Executive', 'Top', 'Executive/Management', 'Others'],
+                                                                    
+ Sales_Financial_Services: ['Financial', 'Services', 'Consultant', 'Head/VP/GM', '-', 'Financial', 'Services', 'Head/VP/GM', '-', 'Insurance', 'Head/VP/GM', '-', 'Unit', 'Trust', 'Insurance', 'Agent', 'Sales', 'Agent', 'Supervisor/Team', 'Lead', 'Field', 'Sales', 'Executive', 'Customer', 'Research', 'Executive', 'Top', 'Executive/Management', 'Other', 'Financial', 'Services'],
+                                                                    
+ Sales_Retail_General: ['Cashier', 'Head/VP/GM', '-', 'Retail/General', 'Sales', 'Executive', 'Supervisor/Team', 'Lead', 'Customer', 'Research', 'Executive', 'Field', 'Sales', 'Executive', 'Top', 'Executive/Management', 'Others', 'Field', 'Sales', 'Executive', 'Customer', 'Research', 'Executive', 'Top', 'Executive/Management', 'Other', 'Financial', 'Services'],
+                                                                      
+ Sales_Telesales_Telemarketing: ['Head/VP/GM', '-', 'Telemarketing', 'Head/VP/GM', '-', 'Telesales', 'Sales', 'Support', 'Coordinator', 'Supervisor/Team', 'Lead', 'Telesales', 'Consultant', 'Telesales', 'Executive/Account', 'Manager', 'Field', 'Sales', 'Executive', 'Customer', 'Research', 'Executive', 'Top', 'Executive/Management', 'Others'],
+
+ 
+
+
+
+}
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+else {
+var citiesOptions = "";
+for(cityId in citiesByState[value]) {
+citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+}
+document.getElementById("citySelect").innerHTML = citiesOptions;
+}
+}
+function displaySelected() { var country = document.getElementById("countrySelect").value;
+var city = document.getElementById("citySelect").value;
+alert(country+"\n"+city);
+}
+function resetSelection() {
+document.getElementById("countrySelect").selectedIndex = 0;
+document.getElementById("citySelect").selectedIndex = 0;
+}
+
+
+
+
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        function autocomplete1(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        var lakh=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+        var city=['Adilabad', 'Agra', 'Ahmedabad', 'Ahmednagar', 'Aizawl', 'Ajitgarh', '(Mohali)', 'Ajmer', 'Akola', 'Alappuzha', 'Aligarh', 'Alirajpur', 'Allahabad', 'Almora', 'Alwar', 'Ambala', 'Ambedkar', 'Nagar', 'Amravati', 'Amreli', 'district', 'Amritsar', 'Anand', 'Anantapur', 'Anantnag', 'Angul', 'Anjaw', 'Anuppur', 'Araria', 'Ariyalur', 'Arwal', 'Ashok', 'Nagar', 'Auraiya', 'Aurangabad', 'Aurangabad', 'Azamgarh', 'Badgam', 'Bagalkot', 'Bageshwar', 'Bagpat', 'Bahraich', 'Baksa', 'Balaghat', 'Balangir', 'Balasore', 'Ballia', 'Balrampur', 'Banaskantha', 'Banda', 'Bandipora', 'Bangalore', 'Rural', 'Bangalore', 'Urban', 'Banka', 'Bankura', 'Banswara', 'Barabanki', 'Baramulla', 'Baran', 'Bardhaman', 'Bareilly', 'Bargarh', '(Baragarh)', 'Barmer', 'Barnala', 'Barpeta', 'Barwani', 'Bastar', 'Basti', 'Bathinda', 'Beed', 'Begusarai', 'Belgaum', 'Bellary', 'Betul', 'Bhadrak', 'Bhagalpur', 'Bhandara', 'Bharatpur', 'Bharuch', 'Bhavnagar', 'Bhilwara', 'Bhind', 'Bhiwani', 'Bhojpur', 'Bhopal', 'Bidar', 'Bijapur', 'Bijapur', 'Bijnor', 'Bikaner', 'Bilaspur', 'Bilaspur', 'Birbhum', 'Bishnupur', 'Bokaro', 'Bongaigaon', 'Boudh', '(Bauda)', 'Budaun', 'Bulandshahr', 'Buldhana', 'Bundi', 'Burhanpur', 'Buxar', 'Cachar', 'Central', 'Delhi', 'Chamarajnagar', 'Chamba', 'Chamoli', 'Champawat', 'Champhai', 'Chandauli', 'Chandel', 'Chandigarh', 'Chandrapur', 'Changlang', 'Chatra', 'Chennai', 'Chhatarpur', 'Chhatrapati', 'Shahuji', 'Maharaj', 'Nagar', 'Chhindwara', 'Chikkaballapur', 'Chikkamagaluru', 'Chirang', 'Chitradurga', 'Chitrakoot', 'Chittoor', 'Chittorgarh', 'Churachandpur', 'Churu', 'Coimbatore', 'Cooch', 'Behar', 'Cuddalore', 'Cuttack', 'Dadra', 'and', 'Nagar', 'Haveli', 'Dahod', 'Dakshin', 'Dinajpur', 'Dakshina', 'Kannada', 'Daman', 'Damoh', 'Dantewada', 'Darbhanga', 'Darjeeling', 'Darrang', 'Datia', 'Dausa', 'Davanagere', 'Debagarh', '(Deogarh)', 'Dehradun', 'Deoghar', 'Deoria', 'Dewas', 'Dhalai', 'Dhamtari', 'Dhanbad', 'Dhar', 'Dharmapuri', 'Dharwad', 'Dhemaji', 'Dhenkanal', 'Dholpur', 'Dhubri', 'Dhule', 'Dibang', 'Valley', 'Dibrugarh', 'Dima', 'Hasao', 'Dimapur', 'Dindigul', 'Dindori', 'Diu', 'Doda', 'Dumka', 'Dungapur', 'Durg', 'East', 'Champaran', 'East', 'Delhi', 'East', 'Garo', 'Hills', 'East', 'Khasi', 'Hills', 'East', 'Siang', 'East', 'Sikkim', 'East', 'Singhbhum', 'Eluru', 'Ernakulam', 'Erode', 'Etah', 'Etawah', 'Faizabad', 'Faridabad', 'Faridkot', 'Farrukhabad', 'Fatehabad', 'Fatehgarh', 'Sahib', 'Fatehpur', 'Fazilka', 'Firozabad', 'Firozpur', 'Gadag', 'Gadchiroli', 'Gajapati', 'Ganderbal', 'Gandhinagar', 'Ganganagar', 'Ganjam', 'Garhwa', 'Gautam', 'Buddh', 'Nagar', 'Gaya', 'Ghaziabad', 'Ghazipur', 'Giridih', 'Goalpara', 'Godda', 'Golaghat', 'Gonda', 'Gondia', 'Gopalganj', 'Gorakhpur', 'Gulbarga', 'Gumla', 'Guna', 'Guntur', 'Gurdaspur', 'Gurgaon', 'Gwalior', 'Hailakandi', 'Hamirpur', 'Hamirpur', 'Hanumangarh', 'Harda', 'Hardoi', 'Haridwar', 'Hassan', 'Haveri', 'district', 'Hazaribag', 'Hingoli', 'Hissar', 'Hooghly', 'Hoshangabad', 'Hoshiarpur', 'Howrah', 'Hyderabad', 'Hyderabad', 'Idukki', 'Imphal', 'East', 'Imphal', 'West', 'Indore', 'Jabalpur', 'Jagatsinghpur', 'Jaintia', 'Hills', 'Jaipur', 'Jaisalmer', 'Jajpur', 'Jalandhar', 'Jalaun', 'Jalgaon', 'Jalna', 'Jalore', 'Jalpaiguri', 'Jammu', 'Jamnagar', 'Jamtara', 'Jamui', 'Janjgir-Champa', 'Jashpur', 'Jaunpur', 'district', 'Jehanabad', 'Jhabua', 'Jhajjar', 'Jhalawar', 'Jhansi', 'Jharsuguda', 'Jhunjhunu', 'Jind', 'Jodhpur', 'Jorhat', 'Junagadh', 'Jyotiba', 'Phule', 'Nagar', 'Kabirdham', '(formerly', 'Kawardha)', 'Kadapa', 'Kaimur', 'Kaithal', 'Kakinada', 'Kalahandi', 'Kamrup', 'Kamrup', 'Metropolitan', 'Kanchipuram', 'Kandhamal', 'Kangra', 'Kanker', 'Kannauj', 'Kannur', 'Kanpur', 'Kanshi', 'Ram', 'Nagar', 'Kanyakumari', 'Kapurthala', 'Karaikal', 'Karauli', 'Karbi', 'Anglong', 'Kargil', 'Karimganj', 'Karimnagar', 'Karnal', 'Karur', 'Kasaragod', 'Kathua', 'Katihar', 'Katni', 'Kaushambi', 'Kendrapara', 'Kendujhar', '(Keonjhar)', 'Khagaria', 'Khammam', 'Khandwa', '(East', 'Nimar)', 'Khargone', '(West', 'Nimar)', 'Kheda', 'Khordha', 'Khowai', 'Khunti', 'Kinnaur', 'Kishanganj', 'Kishtwar', 'Kodagu', 'Koderma', 'Kohima', 'Kokrajhar', 'Kolar', 'Kolasib', 'Kolhapur', 'Kolkata', 'Kollam', 'Koppal', 'Koraput', 'Korba', 'Koriya', 'Kota', 'Kottayam', 'Kozhikode', 'Krishna', 'Kulgam', 'Kullu', 'Kupwara', 'Kurnool', 'Kurukshetra', 'Kurung', 'Kumey', 'Kushinagar', 'Kutch', 'Lahaul', 'and', 'Spiti', 'Lakhimpur', 'Lakhimpur', 'Kheri', 'Lakhisarai', 'Lalitpur', 'Latehar', 'Latur', 'Lawngtlai', 'Leh', 'Lohardaga', 'Lohit', 'Lower', 'Dibang', 'Valley', 'Lower', 'Subansiri', 'Lucknow', 'Ludhiana', 'Lunglei', 'Madhepura', 'Madhubani', 'Madurai', 'Mahamaya', 'Nagar', 'Maharajganj', 'Mahasamund', 'Mahbubnagar', 'Mahe', 'Mahendragarh', 'Mahoba', 'Mainpuri', 'Malappuram', 'Maldah', 'Malkangiri', 'Mamit', 'Mandi', 'Mandla', 'Mandsaur', 'Mandya', 'Mansa', 'Marigaon', 'Mathura', 'Mau', 'Mayurbhanj', 'Medak', 'Meerut', 'Mehsana', 'Mewat', 'Mirzapur', 'Moga', 'Mokokchung', 'Mon', 'Moradabad', 'Morena', 'Mumbai', 'City', 'Mumbai', 'suburban', 'Munger', 'Murshidabad', 'Muzaffarnagar', 'Muzaffarpur', 'Mysore', 'Nabarangpur', 'Nadia', 'Nagaon', 'Nagapattinam', 'Nagaur', 'Nagpur', 'Nainital', 'Nalanda', 'Nalbari', 'Nalgonda', 'Namakkal', 'Nanded', 'Nandurbar', 'Narayanpur', 'Narmada', 'Narsinghpur', 'Nashik', 'Navsari', 'Nawada', 'Nawanshahr', 'Nayagarh', 'Neemuch', 'Nellore', 'New', 'Delhi', 'Nilgiris', 'Nizamabad', 'North', '24', 'Parganas', 'North', 'Delhi', 'North', 'East', 'Delhi', 'North', 'Goa', 'North', 'Sikkim', 'North', 'Tripura', 'North', 'West', 'Delhi', 'Nuapada', 'Ongole', 'Osmanabad', 'Pakur', 'Palakkad', 'Palamu', 'Pali', 'Palwal', 'Panchkula', 'Panchmahal', 'Panchsheel', 'Nagar', 'district', '(Hapur)', 'Panipat', 'Panna', 'Papum', 'Pare', 'Parbhani', 'Paschim', 'Medinipur', 'Patan', 'Pathanamthitta', 'Pathankot', 'Patiala', 'Patna', 'Pauri', 'Garhwal', 'Perambalur', 'Phek', 'Pilibhit', 'Pithoragarh', 'Pondicherry', 'Poonch', 'Porbandar', 'Pratapgarh', 'Pratapgarh', 'Pudukkottai', 'Pulwama', 'Pune', 'Purba', 'Medinipur', 'Puri', 'Purnia', 'Purulia', 'Raebareli', 'Raichur', 'Raigad', 'Raigarh', 'Raipur', 'Raisen', 'Rajauri', 'Rajgarh', 'Rajkot', 'Rajnandgaon', 'Rajsamand', 'Ramabai', 'Nagar', '(Kanpur', 'Dehat)', 'Ramanagara', 'Ramanathapuram', 'Ramban', 'Ramgarh', 'Rampur', 'Ranchi', 'Ratlam', 'Ratnagiri', 'Rayagada', 'Reasi', 'Rewa', 'Rewari', 'Ri', 'Bhoi', 'Rohtak', 'Rohtas', 'Rudraprayag', 'Rupnagar', 'Sabarkantha', 'Sagar', 'Saharanpur', 'Saharsa', 'Sahibganj', 'Saiha', 'Salem', 'Samastipur', 'Samba', 'Sambalpur', 'Sangli', 'Sangrur', 'Sant', 'Kabir', 'Nagar', 'Sant', 'Ravidas', 'Nagar', 'Saran', 'Satara', 'Satna', 'Sawai', 'Madhopur', 'Sehore', 'Senapati', 'Seoni', 'Seraikela', 'Kharsawan', 'Serchhip', 'Shahdol', 'Shahjahanpur', 'Shajapur', 'Shamli', 'Sheikhpura', 'Sheohar', 'Sheopur', 'Shimla', 'Shimoga', 'Shivpuri', 'Shopian', 'Shravasti', 'Sibsagar', 'Siddharthnagar', 'Sidhi', 'Sikar', 'Simdega', 'Sindhudurg', 'Singrauli', 'Sirmaur', 'Sirohi', 'Sirsa', 'Sitamarhi', 'Sitapur', 'Sivaganga', 'Siwan', 'Solan', 'Solapur', 'Sonbhadra', 'Sonipat', 'Sonitpur', 'South', '24', 'Parganas', 'South', 'Delhi', 'South', 'Garo', 'Hills', 'South', 'Goa', 'South', 'Sikkim', 'South', 'Tripura', 'South', 'West', 'Delhi', 'Sri', 'Muktsar', 'Sahib', 'Srikakulam', 'Srinagar', 'Subarnapur', '(Sonepur)', 'Sultanpur', 'Sundergarh', 'Supaul', 'Surat', 'Surendranagar', 'Surguja', 'Tamenglong', 'Tarn', 'Taran', 'Tawang', 'Tehri', 'Garhwal', 'Thane', 'Thanjavur', 'The', 'Dangs', 'Theni', 'Thiruvananthapuram', 'Thoothukudi', 'Thoubal', 'Thrissur', 'Tikamgarh', 'Tinsukia', 'Tirap', 'Tiruchirappalli', 'Tirunelveli', 'Tirupur', 'Tiruvallur', 'Tiruvannamalai', 'Tiruvarur', 'Tonk', 'Tuensang', 'Tumkur', 'Udaipur', 'Udalguri', 'Udham', 'Singh', 'Nagar', 'Udhampur', 'Udupi', 'Ujjain', 'Ukhrul', 'Umaria', 'Una', 'Unnao', 'Upper', 'Siang', 'Upper', 'Subansiri', 'Uttar', 'Dinajpur', 'Uttara', 'Kannada', 'Uttarkashi', 'Vadodara', 'Vaishali', 'Valsad', 'Varanasi', 'Vellore', 'Vidisha', 'Viluppuram', 'Virudhunagar', 'Visakhapatnam', 'Vizianagaram', 'Vyara', 'Warangal', 'Wardha', 'Washim', 'Wayanad', 'West', 'Champaran', 'West', 'Delhi', 'West', 'Garo', 'Hills', 'West', 'Kameng', 'West', 'Khasi', 'Hills', 'West', 'Siang', 'West', 'Sikkim', 'West', 'Singhbhum', 'West', 'Tripura', 'Wokha', 'Yadgir', 'Yamuna', 'Nagar', 'Yanam', 'Yavatmal', 'Zunheboto']
+        /*An array containing all the country names in the world:*/
+        var countries = ["Application developer","Apple iOS","Application Servers","Application","Application Support",
+        "Apps","Application Security","Application Packaging","application Developers","Application Engineer","Application Development",
+        "Application Testing","Bartender","Banking Operations","Banquet Sales","Basic","Base24","BAAN","Banking","BA","Backend","Back Office",
+        "Backup Engineer","Backup Administrator","Back-office Operations","Backend Developer","Backend Executive","CA","CAll Center Executive",
+        "Cabin Crew","Cashier","Cash Management","Cardiologist","Cash Management Operations","Calypso","Catia",
+        "Data Entry","Database Administrator","Database Architect","Data Processing","database","Data Structures","datastage","Database Developer",
+        "Acoustical engineering","space engineering","Agricultural engineering",
+"Aquatic and environmental engineering",
+"Architectural engineering and Architecture",
+"Automotive systems engineering (or Automotive engineering)",
+"Biological engineering",
+"Biomaterials engineering",
+"Biomedical engineering",
+"Bioresource engineering",
+"Building services engineering",
+"Ceramic engineering",
+"Chemical engineering",
+"Civil engineering",
+"Coastal engineering",
+"Combat engineering: the use of engineering skills for military purposes",
+"Commercial engineering",
+"Communication engineering Communication",
+"Computer engineering",
+"Conservation engineering Conservation",
+"Conversion engineering Conversion",
+"Construction engineering Construction",
+"Control systems engineering (or Control engineering)",
+"Demolition engineering Demolition",
+"Electrical engineering",
+"Electromechanical engineering",
+"Electronic warfare (EW) engineering",
+"Electronics engineering (or Microelectronics engineering, Microelectronics and semiconductor engineering)",
+"Engineering physics (or Engineering science)",
+"Environmental engineering",
+"Fire protection engineering",
+"Food process engineering",
+"Forensic engineering",
+"Forest engineering",
+"Genetic engineering",
+"Geomatics engineering",
+"Geotechnical engineering",
+"Industrial engineering",
+"Information technology Information",
+"Instrumentation engineering Instrumentation",
+"Landscape engineering See: Landscape Architecture",
+"Logistic engineering",
+"Manufacturing engineering Production",
+"Marine engineering",
+"Materials engineering",
+"Mechanical engineering",
+"Mechatronics",
+"Microsystems engineering",
+"Military engineering",
+"Minerals process engineering",
+"Mining engineering",
+"Nanoengineering",
+"Naval architecture",
+"Nuclear engineering",
+"Ocean engineering",
+"Optical engineering",
+"Paper engineering",
+"Petroleum engineering",
+"Plastics engineering",
+"Preservation engineering Preservation",
+"Quality assurance engineering (or Quality engineering)",
+"Reliability engineering",
+"Renovation engineering Renovation",
+"Residential engineering",
+"Restoration engineering Restoration",
+"Retro-engineering",
+"Safety engineering",
+"Security engineering",
+"Sewage engineering",
+"Software engineering",
+"Structural engineering",
+"Support engineering",
+"Surveying",
+"Systems engineering (or Systems design engineering)",
+"Traffic engineering",];
+// var categories=["srishti","bhhh",];
+// autocomplete1(document.getElementById("myInputcategories"), categories);
+// console.log(document.getElementById("myInputcategories").value);
+
+
+
+// var lis={'it':['software','developer'],
+//          'mba':['marketting','buisiness']
+//         }
+
+// console.log(lis[cat])
+
+        // /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+         autocomplete(document.getElementById("myInput"), countries);
+        autocomplete(document.getElementById("myInput1"), city);
+        // 
+ 
+        
+
+        </script>
+
+    
+   
+        
+    <script src="{% static 'dash/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'dash/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'dash/assets/js/custom.js' %}"></script>
+
+    
+    
+   
+</body>
+</html>

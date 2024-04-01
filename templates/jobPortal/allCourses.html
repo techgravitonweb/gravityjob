@@ -1,0 +1,316 @@
+{% extends 'jobPortal/base.html' %} 
+{% block main-content %}
+<style>
+    /*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/bootstrap.min.css */
+*,::after,::before{box-sizing:border-box;}
+h3,h5{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2;}
+h3{font-size:calc(1.3rem + .6vw);}
+@media (min-width:1200px){
+h3{font-size:1.75rem;}
+}
+h5{font-size:1.25rem;}
+p{margin-top:0;margin-bottom:1rem;}
+ul{padding-left:2rem;}
+ul{margin-top:0;margin-bottom:1rem;}
+a{color:#0d6efd;text-decoration:underline;}
+a:hover{color:#0a58ca;}
+img,svg{vertical-align:middle;}
+label{display:inline-block;}
+button{border-radius:0;}
+button:focus{outline:dotted 1px;outline:-webkit-focus-ring-color auto 5px;}
+button,input{margin:0;font-family:inherit;font-size:inherit;line-height:inherit;}
+button{text-transform:none;}
+button{-webkit-appearance:button;}
+::-moz-focus-inner{padding:0;border-style:none;}
+.container{width:100%;padding-right:var(--bs-gutter-x,15px);padding-left:var(--bs-gutter-x,15px);margin-right:auto;margin-left:auto;}
+@media (min-width:576px){
+.container{max-width:540px;}
+}
+@media (min-width:768px){
+.container{max-width:720px;}
+}
+@media (min-width:992px){
+.container{max-width:960px;}
+}
+@media (min-width:1200px){
+.container{max-width:1140px;}
+}
+@media (min-width:1400px){
+.container{max-width:1320px;}
+}
+.row{--bs-gutter-x:30px;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2);}
+.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y);}
+@media (min-width:768px){
+.col-md-6{flex:0 0 auto;width:50%;}
+.col-md-8{flex:0 0 auto;width:66.6666666667%;}
+.col-md-12{flex:0 0 auto;width:100%;}
+}
+@media (min-width:992px){
+.col-lg-4{flex:0 0 auto;width:33.3333333333%;}
+.col-lg-6{flex:0 0 auto;width:50%;}
+.col-lg-8{flex:0 0 auto;width:66.6666666667%;}
+}
+@media (min-width:1200px){
+.col-xl-3{flex:0 0 auto;width:25%;}
+.col-xl-4{flex:0 0 auto;width:33.3333333333%;}
+.col-xl-9{flex:0 0 auto;width:75%;}
+}
+.ms-2{margin-left:.5rem!important;}
+/*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/magnific-popup.css */
+button::-moz-focus-inner{padding:0;border:0;}
+/*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/fontAwesome5Pro.css */
+.fal,.far,.fas{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1;}
+.fa-angle-left:before{content:"\f104";}
+.fa-angle-right:before{content:"\f105";}
+.fa-check:before{content:"\f00c";}
+.fa-star:before{content:"\f005";}
+.fa-user:before{content:"\f007";}
+.fal{font-weight:300;}
+.fal,.far{font-family:"Font Awesome 5 Pro";}
+.far{font-weight:400;}
+.fas{font-family:"Font Awesome 5 Pro";font-weight:900;}
+/*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/flaticon.css */
+i[class^="flaticon-"]:before{font-family:flaticon!important;font-style:normal;font-weight:normal!important;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.flaticon-like:before{content:"\f113";}
+.flaticon-previous:before{content:"\f114";}
+/*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/default.css */
+.mt-30{margin-top:30px;}
+.mb-10{margin-bottom:10px;}
+.mb-20{margin-bottom:20px;}
+.mb-30{margin-bottom:30px;}
+.pb-90{padding-bottom:90px;}
+/*! CSS Used from: https://themepure.net/html/eduman-prv/eduman/assets/css/style.css */
+*{margin:0;padding:0;box-sizing:border-box;}
+a{text-decoration:none;}
+a,button,span,p,i,input,li,img,svg path,*::after,*::before,h3,h5{-webkit-transition:all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-ms-transition:all 0.3s ease-out 0s;-o-transition:all 0.3s ease-out 0s;transition:all 0.3s ease-out 0s;}
+a:focus{text-decoration:none;outline:none;}
+a:focus,a:hover{color:inherit;text-decoration:none;}
+a,button{color:inherit;outline:none;border:none;background:transparent;}
+button:hover{cursor:pointer;}
+button:focus{outline:0;border:0;}
+h3,h5{font-family:"Raleway", sans-serif;color:#141517;margin-top:0px;font-weight:700;line-height:1.3;-webkit-transition:all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-ms-transition:all 0.3s ease-out 0s;-o-transition:all 0.3s ease-out 0s;transition:all 0.3s ease-out 0s;}
+h3{font-size:24px;}
+h5{font-size:16px;}
+ul{margin:0px;padding:0px;}
+li{list-style:none;}
+p{font-family:"Nunito Sans", sans-serif;font-size:16px;font-weight:normal;color:#575757;margin-bottom:15px;line-height:26px;}
+*::-moz-selection{background:#2467EC;color:#ffffff;text-shadow:none;}
+::-moz-selection{background:#2467EC;color:#ffffff;text-shadow:none;}
+::selection{background:#2467EC;color:#ffffff;text-shadow:none;}
+*::-moz-placeholder{color:#575757;font-size:14px;opacity:1;}
+*::placeholder{color:#575757;font-size:14px;opacity:1;}
+.view-details-btn{height:45px;padding:0 45px;display:inline-block;background-color:#2467EC;line-height:45px;border-radius:4px;font-size:15px;font-weight:600;color:#ffffff;-webkit-transition:all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-ms-transition:all 0.3s ease-out 0s;-o-transition:all 0.3s ease-out 0s;transition:all 0.3s ease-out 0s;}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px){
+.view-details-btn{padding:0 35px;}
+}
+.view-details-btn:hover{background:#FFB013;color:#141517;}
+.c-share-btn{width:45px;height:45px;border:1px solid #dce8fe;border-radius:4px;font-size:19px;color:#a6bce8;line-height:50px;text-align:center;-webkit-transition:all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-ms-transition:all 0.3s ease-out 0s;-o-transition:all 0.3s ease-out 0s;transition:all 0.3s ease-out 0s;}
+.c-share-btn:hover{background:#2467EC;border-color:#2467EC;color:#ffffff;}
+.wishlist-btn{width:45px;height:45px;border:1px solid #dce8fe;border-radius:4px;font-size:19px;color:#a6bce8;line-height:50px;text-align:center;-webkit-transition:all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-ms-transition:all 0.3s ease-out 0s;-o-transition:all 0.3s ease-out 0s;transition:all 0.3s ease-out 0s;}
+.wishlist-btn:focus{border:1px solid #dce8fe;}
+.wishlist-btn:hover{border-color:#2467EC;color:#2467EC;}
+.user-icon{margin-bottom:9px;}
+.user-icon a{font-size:16px;color:#a7aaaf;}
+.user-icon a:hover{color:#2467EC;}
+.user-icon i{margin-right:8px;}
+.course-icon span{font-size:15px;font-weight:600;margin-left:8px;}
+.course-icon i{font-size:15px;}
+.course-icon i.fas{color:#ffb013;font-size:13px;}
+.course-icon i.fal{color:#ccc;}
+.course-cart{background:#ffffff;padding:30px 40px;box-shadow:0px 0px 70px rgba(15, 38, 71, 0.2);min-width:380px;position:absolute;opacity:0;visibility:hidden;top:0;right:0;transition:0.3s;z-index:11;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;left:50%;transform:translateX(-50%);}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px){
+.course-cart{padding:30px 30px;min-width:340px;}
+}
+@media (max-width: 575px){
+.course-cart{display:none;}
+}
+.course-info-wrapper h3{font-size:20px;margin-bottom:5px;line-height:1.3;}
+.category-color{font-size:15px;font-weight:600;background:#6f19c5;padding:0px 10px;color:#ffffff;margin-bottom:15px;display:inline-block;height:26px;border-radius:3px;}
+.category-color.category-color-1{background:#31bf82;}
+.category-color.category-color-2{background:#6931bf;}
+.category-color.category-color-3{background:#319dbf;}
+.cart-info-body h3:hover{color:#2467EC;}
+.cart-lavel span{color:#2467EC;font-size:15px;font-weight:600;}
+.cart-lavel h5{font-size:15px;font-weight:400;font-family:"Nunito Sans", sans-serif;color:#575757;margin-bottom:25px;}
+.cart-lavel p{margin-bottom:25px;font-size:15px;}
+.info-cart-text ul{margin-bottom:30px;}
+.info-cart-text ul li{margin-bottom:5px;}
+.info-cart-text ul i{margin-right:15px;color:#2467EC;}
+.course-action{display:flex;justify-content:space-between;gap:15px;}
+.course-action .view-details-btn{flex-grow:1;}
+.course-wrapper-2{padding:0px 0px 0px 0px;position:relative;}
+.course-wrapper-2:hover .course-cart{opacity:1;visibility:visible;}
+@media (max-width: 575px){
+.course-wrapper-2:hover .course-cart{opacity:0;visibility:hidden;}
+}
+.course-wrapper-2:hover .student-course-img img{transform:scale3d(1.1, 1.1, 1.1);}
+.student-course-img{margin-bottom:15px;overflow:hidden;border-radius:8px;}
+.student-course-linkter{display:flex;margin-bottom:10px;justify-content:space-between;}
+.portfolio-price{display:flex;align-items:center;}
+.portfolio-price span{color:#2467EC;font-weight:900;font-size:16px;text-transform:uppercase;}
+.portfolio-price del{margin-left:10px;color:#575757;font-weight:600;}
+.student-course-text h3{font-size:18px;line-height:28px;}
+@media only screen and (min-width: 1200px) and (max-width: 1399px){
+.student-course-text h3{font-size:16px;}
+}
+.student-course-text h3 a:hover{color:#2467EC;}
+.course-sidebar-info ul li{margin-bottom:10px;}
+.course-sidebar-info{position:relative;display:flex;flex-direction:column;gap:30px;}
+.course-sidebar-info::after{position:absolute;top:0;right:0;content:"";font-family:"Font Awesome 5 Pro";color:#575757;cursor:pointer;transform:rotate(-180deg);}
+.edu-check-star i.fal{color:#ccc;font-size:15px;}
+.edu-check-star i.fas{color:#ffb013;font-size:13px;}
+.course-sidebar-widget{border:1px solid #edeef2;padding:28px 30px 20px 30px;background:#ffffff;border-radius:5px;margin-bottom:20px;}
+@media only screen and (min-width: 1200px) and (max-width: 1399px){
+.course-sidebar-widget{padding:28px 20px 20px 20px;}
+}
+.course-sidebar-info h3{font-size:20px;font-weight:700;cursor:pointer;position:relative;z-index:1;}
+.edu-pagination ul{display:flex;align-items:center;}
+.edu-pagination li{margin-right:15px;}
+.edu-pagination li:hover a{color:#2467EC;font-weight:600;}
+.edu-pagination i{height:45px;width:45px;background:#ffffff;line-height:43px;text-align:center;border-radius:50%;color:#575757;font-size:20px;border:1px solid #edeef2;font-weight:400;transition:0.3s;}
+.edu-pagination i:hover{border-color:#2467EC;background:#2467EC;color:#ffffff;}
+.edu-pagination ul li.active a{color:#2467EC;font-weight:600;}
+.course-sidebar-list input[type=checkbox]{border:1px solid #edeef2;border-radius:2px;appearance:none;-webkit-appearance:none;-moz-appearance:none;width:18px;height:18px;cursor:pointer;position:relative;top:5px;font-size:15px;margin-right:8px;}
+.course-sidebar-list input[type=checkbox]:checked{border:none;background-color:#2467EC;color:#ffffff;}
+.course-sidebar-list input[type=checkbox]:checked::before{position:absolute;content:"";font-family:"Font Awesome 5 Pro";line-height:16px;top:0;left:2px;}
+.course-sidebar-list input[type=radio]{border:1px solid #edeef2;border-radius:9px;appearance:none;-webkit-appearance:none;-moz-appearance:none;width:18px;height:18px;cursor:pointer;position:relative;top:5px;font-size:15px;margin-right:8px;}
+.course-sidebar-list input[type=radio]:checked::before{position:absolute;content:"";font-family:"Font Awesome 5 Pro";top:4px;left:4px;height:8px;width:8px;background:#2467EC;border-radius:50%;}
+.edu-check-label{cursor:pointer;}
+.student-course-img img{width:100%;}
+/*! CSS Used fontfaces */
+@font-face{font-family:"Font Awesome 5 Pro";font-style:normal;font-weight:300;font-display:block;src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.eot);src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.eot#iefix) format("embedded-opentype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.woff2) format("woff2"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.woff) format("woff"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.ttf) format("truetype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-light-300.svg#fontawesome) format("svg");}
+@font-face{font-family:"Font Awesome 5 Pro";font-style:normal;font-weight:400;font-display:block;src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.eot);src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.eot#iefix) format("embedded-opentype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.woff2) format("woff2"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.woff) format("woff"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.ttf) format("truetype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-regular-400.svg#fontawesome) format("svg");}
+@font-face{font-family:"Font Awesome 5 Pro";font-style:normal;font-weight:900;font-display:block;src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.eot);src:url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.eot#iefix) format("embedded-opentype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.woff2) format("woff2"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.woff) format("woff"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.ttf) format("truetype"),url(https://themepure.net/html/eduman-prv/eduman/assets/fonts/fa-solid-900.svg#fontawesome) format("svg");}
+@font-face{font-family:"flaticon";src:url("https://themepure.net/html/eduman-prv/eduman/assets/fonts/flaticon.ttf?1f4210aecd65cc243f619cf017653a71") format("truetype"), url("https://themepure.net/html/eduman-prv/eduman/assets/fonts/flaticon.woff?1f4210aecd65cc243f619cf017653a71") format("woff"), url("https://themepure.net/html/eduman-prv/eduman/assets/fonts/flaticon.woff2?1f4210aecd65cc243f619cf017653a71") format("woff2"), url("https://themepure.net/html/eduman-prv/eduman/assets/fonts/flaticon.eot?1f4210aecd65cc243f619cf017653a71#iefix") format("embedded-opentype"), url("https://themepure.net/html/eduman-prv/eduman/assets/fonts/flaticon.svg?1f4210aecd65cc243f619cf017653a71#flaticon") format("svg");}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Raleway';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/raleway/v26/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe0qMImSLYBIv1o4X1M8ccewI9tScg.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe0qMImSLYBIv1o4X1M8cce5I9tScg.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe0qMImSLYBIv1o4X1M8cceyI9tScg.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe0qMImSLYBIv1o4X1M8ccezI9tScg.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe0qMImSLYBIv1o4X1M8cce9I9s.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc9iB85gU1EQVg.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc9iB85pU1EQVg.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc9iB85iU1EQVg.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc9iB85jU1EQVg.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc9iB85tU1E.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8GBs5gU1EQVg.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8GBs5pU1EQVg.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8GBs5iU1EQVg.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8GBs5jU1EQVg.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8GBs5tU1E.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8-BM5gU1EQVg.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8-BM5pU1EQVg.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8-BM5iU1EQVg.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8-BM5jU1EQVg.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/nunitosans/v11/pe03MImSLYBIv1o4X1M8cc8-BM5tU1E.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
+
+<section class="course-content-area pb-90">
+    <div class="container">
+       <div class="row mb-10">
+         
+          <div class="col-xl-12 col-lg-12 col-md-12">
+             <div class="row">
+                 {% for x in  allCourse %}
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                   <div class="course-wrapper-2 mb-30">
+                      <div class="student-course-img">
+                         <a href="{% url 'jobs:trainingCertificates' x.pk %}">
+                         <img src="{{x.image.url}}" alt="courde-img"></a>
+                      </div>
+                      <div class="course-cart">
+                         <div class="course-info-wrapper">
+                            <div class="cart-info-body">
+                               <span class="category-color category-color-1"><a href="#">Development</a></span>
+                               <a href="{% url 'jobs:trainingCertificates' x.pk %}">
+                                  <h3>{{x.title}}</h3>
+                               </a>
+                               <div class="cart-lavel">
+                                  <!-- <h5>Level : <span>Beginner</span></h5> -->
+                                  <p>{{x.disc}}</p>
+                               </div>
+                               <div class="info-cart-text">
+                                  <ul>
+                                     <li><i class="far fa-check"></i>{{x.feature1}}</li>
+                                     <li><i class="far fa-check"></i>{{x.featured2}}</li>
+                                     <li><i class="far fa-check"></i>{{x.skill}}</li>
+                                     <li><i class="far fa-check"></i>{{x.Technology}}</li>
+                                  </ul>
+                               </div>
+                               <div class="course-action">
+                                  <a href="{% url 'jobs:trainingCertificates' x.pk %}" class="view-details-btn">View Details</a>
+                               
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="student-course-footer">
+                         <div class="student-course-linkter">
+                            <div class="course-lessons">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471" viewBox="0 0 16.471 16.471">
+                                  <g id="blackboard-8" transform="translate(-0.008)">
+                                     <path id="Path_106" data-name="Path 101" d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z" fill="#575757"></path>
+                                  </g>
+                               </svg>
+                                <span class="ms-2">Latest</span> 
+                            </div>
+                             <div class="portfolio-price">
+                               <span>Development</span>
+                              
+                            </div> 
+                         </div>
+                         <div class="student-course-text" style="display:flex; ">
+                            <h3><a href="#">{{x.title}}</a>
+                            </h3>
+                        
+                       
+                           
+                               <a href="#"><i class="fas fa-user" style="float:right; margin-left:20px"></i>Admin</a>
+                          
+                              </div>
+                      </div>
+                   </div>
+                </div>
+                {% endfor %}
+            
+             </div>
+             <div class="row">
+                <div class="edu-pagination mt-30 mb-20">
+                   <ul>
+                      <li><a href="#"><i class="fal fa-angle-left"></i></a></li>
+                      <li class="active"><a href="#"><span>01</span></a></li>
+                      <li><a href="#"><span>02</span></a></li>
+                      <li><a href="#"><i class="fal fa-angle-right"></i></a></li>
+                   </ul>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+{% endblock main-content %}

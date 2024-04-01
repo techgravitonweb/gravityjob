@@ -1,0 +1,984 @@
+{% extends 'jobPortal/base.html' %} {% block main-content %}
+
+<style>
+    /*! CSS Used from: http://18.207.247.66:8000/static/jobPortal/css/bootstrap.css */
+a{background-color:transparent;}
+a:active,a:hover{outline:0;}
+b{font-weight:bold;}
+img{border:0;}
+@media print{
+*,*:before,*:after{color:#000!important;text-shadow:none!important;background:transparent!important;-webkit-box-shadow:none!important;box-shadow:none!important;}
+a,a:visited{text-decoration:underline;}
+a[href]:after{content:" (" attr(href) ")";}
+a[href^="#"]:after{content:"";}
+img{page-break-inside:avoid;}
+img{max-width:100%!important;}
+p,h2,h3{orphans:3;widows:3;}
+h2,h3{page-break-after:avoid;}
+}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+a{color:#337ab7;text-decoration:none;}
+a:hover,a:focus{color:#23527c;text-decoration:underline;}
+a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+img{vertical-align:middle;}
+h2,h3{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+h2,h3{margin-top:20px;margin-bottom:10px;}
+h2{font-size:30px;}
+h3{font-size:24px;}
+p{margin:0 0 10px;}
+ul{margin-top:0;margin-bottom:10px;}
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;}
+@media (min-width: 768px){
+.container{width:750px;}
+}
+@media (min-width: 992px){
+.container{width:970px;}
+}
+@media (min-width: 1200px){
+.container{width:1170px;}
+}
+.col-md-4,.col-md-8,.col-md-12{position:relative;min-height:1px;padding-right:15px;padding-left:15px;}
+@media (min-width: 992px){
+.col-md-4,.col-md-8,.col-md-12{float:left;}
+.col-md-12{width:100%;}
+.col-md-8{width:66.66666667%;}
+.col-md-4{width:33.33333333%;}
+}
+.container:before,.container:after{display:table;content:" ";}
+.container:after{clear:both;}
+.hide{display:none!important;}
+.show{display:block!important;}
+/*! CSS Used from: http://18.207.247.66:8000/static/jobPortal/css/style_II.css */
+a{color:#797979;text-decoration:none;}
+a:hover,a:focus{color:#707070;text-decoration:none;outline:none;}
+h2,h3{font-family:'Montserrat', sans-serif;line-height:1.1;color:#222222;margin:0;padding:0;}
+ul{list-style:none;margin:0;padding:0;}
+/*! CSS Used from: Embedded */
+*,*::before,*::after{box-sizing:border-box;}
+*{-webkit-overflow-scrolling:touch;font-family:"Roboto", sans-serif!important;font-weight:normal;font-style:normal;}
+h2,h3{margin-top:0;margin-bottom:0;}
+p{margin-top:0;margin-bottom:0;}
+ul{margin-top:0;margin-bottom:1rem;padding:0;list-style:none;}
+b{font-weight:500;}
+img{vertical-align:middle;border-style:none;}
+.hide{display:none!important;}
+.container:after,.container:before{content:" ";display:table;}
+a{text-decoration:none;}
+h2{font-size:18px;font-weight:500;line-height:28px;letter-spacing:normal;color:#272c37;}
+:focus{outline:-webkit-focus-ring-color auto 5px;}
+@media (min-width: 768px){
+h2{font-size:24px;line-height:34px;}
+}
+.container{width:100%;display:inline-block;padding-left:15px;padding-right:15px;}
+@media (min-width: 768px){
+.container{width:750px;display:block;margin-left:auto;margin-right:auto;}
+}
+@media (min-width: 992px){
+.container{width:970px;}
+}
+@media (min-width: 1200px){
+.container{width:1170px;}
+}
+.container{clear:both;}
+h3{color:#272c37;}
+a{color:#1179ef;text-decoration:none;cursor:pointer;}
+a:hover,a:focus{color:#0a5dc9;outline:0;}
+img{max-width:100%;height:auto;}
+img.blend-mode[src]{filter:alpha(opacity=0);animation:simageScroll 0.3s forwards;-webkit-animation:simageScroll 0.3s forwards;-webkit-backface-visibility:hidden;backface-visibility:hidden;}
+.clear{display:block;clear:both;}
+h2{font-size:20px;line-height:1.3;color:#272c37;font-weight:400;margin-top:56px;letter-spacing:1px;}
+h2 b{font-weight:500;}
+h3{font-size:16px;font-weight:500;margin:40px 0 0;line-height:1.5;letter-spacing:0.5px;color:#272c37;}
+li{color:#51565e;font-size:14px;line-height:1.43;}
+.more{display:block;margin:24px auto 0 auto;font-size:14px;font-weight:500;text-align:center;}
+p{color:#51565e;font-size:14px;line-height:1.57;}
+@media (max-width: 767px){
+.container{padding-left:15px;padding-right:15px;}
+}
+@media (min-width: 992px) and (max-width: 1199px){
+.container{width:100%;display:inline-block;padding:0 30px;}
+}
+@media (min-width: 992px){
+p{font-size:16px;line-height:1.5;}
+h2{font-size:32px;line-height:1.33;letter-spacing:1.5px;}
+h3{font-size:20px;}
+}
+@media (min-width: 1200px){
+h2{margin-top:64px;}
+}
+@media (max-width: 767px){
+h3{margin-top:32px;}
+}
+@media (max-width: 991px){
+.intro_view{display:block;width:300px;height:168px;margin:40px auto 0 auto;position:relative;text-align:center;border-radius:4px;overflow:hidden;}
+.intro_view::before{content:"";display:inline-block;width:100%;position:absolute;top:0;right:0;bottom:0;left:0;background:#000;opacity:0.8;z-index:1;}
+.intro_view img{width:100%;height:100%;position:absolute;top:0;bottom:0;left:0;color:transparent;}
+.intro_view .intro_icon{width:0px;height:100%;display:inline-block;vertical-align:middle;}
+.intro_view .intro-text{display:inline-block;vertical-align:middle;position:relative;z-index:2;color:#fff;padding-left:65px;text-align:left;font-weight:400;line-height:20px;font-size:14px;}
+.intro_view .intro-text::before{content:"";width:52px;height:52px;display:inline-block;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)         no-repeat;background-position:-58px -290px;position:absolute;left:0;margin-top:-5px;}
+.intro_view .intro-text b{display:block;font-weight:500;}
+}
+@media (min-width: 992px){
+.intro_view img{display:none;}
+}
+@media (max-width: 320px){
+.intro_view{width:100%;}
+}
+#ViewMore{text-align:center;}
+#ViewMore a{font-weight:500;font-size:14px;}
+.overview{background:#fff;padding-bottom:56px;}
+.overview p{margin-top:24px;}
+.overview ul{margin-top:24px;margin-bottom:0;}
+.overview ul.icon-list li{padding-left:44px;position:relative;margin-bottom:24px;display:inline-block;width:100%;min-height:24px;}
+.overview ul.icon-list li:before{content:"";width:24px;height:24px;display:inline-block;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)       no-repeat;background-position:-214px -248px;position:absolute;left:0;top:0px;}
+.overview ul.icon-list li:last-child{margin-bottom:0;}
+.overview .skill ul#skill-covered li:before{background-position:-447px -130px;top:4px;}
+.intro_view{display:block;}
+@media (min-width: 992px){
+.overview{padding-bottom:64px;}
+.overview p{margin-top:32px;font-size:14px;line-height:1.57;}
+.overview .col-md-8{width:660px;float:left;position:relative;padding-right:40px;}
+.overview .col-md-4{width:calc(100% - 660px);float:left;position:relative;padding-left:30px;}
+.overview .col-md-4::before{content:"";width:1px;height:56px;display:inline-block;background:#d2d6de;position:absolute;left:0;top:40px;}
+.overview .col-md-4.intro{padding-top:20px;}
+.overview .col-md-4.skill:before{top:132px;height:99px;}
+.overview #ViewMore{text-align:left;}
+.overview h3{margin-top:48px;}
+.intro_view{display:inline-block;}
+.intro_view span{display:inline-block;vertical-align:middle;}
+.intro_icon{width:100px;height:100px;display:inline-block;position:relative;}
+.intro_icon::before,.intro_icon::after{content:"";display:inline-block;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)         no-repeat;position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;}
+.intro_icon::before{width:60px;height:60px;background-position:-36px -94px;border-radius:50%;z-index:1;}
+.intro_icon::after{content:"";width:100px;height:100px;background-position:-16px -74px;-webkit-animation:intro 2s infinite;animation:intro 2s infinite;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;}
+.intro-text{font-size:14px;line-height:1.43;margin-left:20px;}
+.intro-text b{display:block;font-weight:500;}
+.key-features{padding-right:0;}
+.key-features ul.icon-list{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;overflow:hidden;}
+.key-features ul.icon-list li{display:block;float:left;width:50%;padding-right:30px;margin-bottom:32px;}
+.overview ul.icon-list{margin-top:40px;}
+.overview ul#skill-covered{position:relative;top:-6px;}
+.overview .skill a{text-align:left;width:auto;margin-left:44px;font-size:14px;font-weight:500;}
+}
+@media (min-width: 1200px){
+.overview .col-md-8{width:712px;padding-right:52px;}
+.overview .col-md-4{width:calc(100% - 712px);padding-left:70px;}
+.key-features ul li{padding-right:42px;}
+}
+.benefits{display:inline-block;width:100%;}
+.benefits .benefit-rows li{color:#51565e;}
+.tab a{display:inline-block;color:#1179ef;text-align:left;font-weight:500;cursor:pointer;font-size:16px;left:0;width:100%;padding:11px 0;line-height:1.7;border-radius:4px;background-color:#ebf1f8;padding-left:20px;position:relative;}
+.tab a::after{content:"";width:22px;height:22px;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)       no-repeat;background-position:-124px -245px;position:absolute;right:15px;top:0;bottom:0;margin:auto;}
+.tab li{box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.1);}
+.tab li .tabcontent{display:none;}
+.tab li.active a{background-color:#1179ef;color:#fff;}
+.tab li.active a::after{background-position:-125px -195px;}
+.tab li.active .tabcontent{display:block;}
+.hire,.salarys{padding:0 15px;}
+.graphic span.heading{font-size:14px;font-weight:500;color:#272c37;display:inline-block;width:100%;margin:24px 0 8px 5px;}
+.graphic span.heading::after{content:"";width:25px;height:2px;background-color:#1179ef;display:block;position:relative;left:0;top:8px;margin-bottom:20px;}
+.hire-companys{margin-top:0;text-align:center;}
+.hire-company{max-height:60px;margin:40px 20px 0px 0;width:auto;}
+.hire{padding-bottom:24px;}
+.hire-logos-wrapper div{display:inline-block;vertical-align:middle;}
+@media (max-width: 991px){
+.benefit-rows{display:none;}
+.tab ul li{border:1px solid #d2d6de;margin-bottom:8px;border-radius:4px;}
+.graphic{margin-top:32px;}
+.benefits p{margin-top:24px!important;}
+}
+@media (min-width: 992px){
+.tab a{color:#272c37;text-align:center;cursor:pointer;font-size:14px;left:0;width:280px;padding:18.6px 0;line-height:1.7;border-bottom:1px solid #d2d6de;}
+.tab a::after{display:none;}
+.tab .three a{padding:29px 0;}
+.tabcontent{padding:0 12px;float:right;width:calc(92% - 200px);height:242px;position:absolute;left:280px;top:-1px;}
+.benefits li{font-size:16px;font-weight:500;line-height:1.25;letter-spacing:0.4px;color:#272c37;margin:0;display:inline-block;padding:0;width:100%;}
+.benefits ul{margin-top:30px;display:inline-block;margin-bottom:0;width:100%;position:relative;}
+.tab ul{border:1px solid #d2d6de;min-height:272px;margin-top:0;border-radius:4px;overflow:hidden;}
+.tab ul li{box-shadow:none;}
+.tab ul li a{border-radius:0;border-right:1px solid #d2d6de;}
+.tab ul li:first-child a{border-radius:4px 0 0 0;}
+.tab ul li:last-child a{border-bottom:0;border-radius:0 0 0 4px;}
+.tab ul li.active a{border-right:0;}
+.benefit-rows ul{display:flex;text-align:center;margin-top:0;}
+.tabcontent span{clear:both;position:absolute;bottom:19px;left:92px;}
+.tab li.active a{background-color:#fff;color:#1179ef;}
+.hire-company{margin:18px;}
+.salarys{width:50%;height:271px;overflow:hidden;display:inline-block;vertical-align:middle;padding-bottom:16px;}
+.salary-line{margin:80px 0 0;}
+.salarys span{display:none;}
+.hire-companys span{display:none;}
+.graphic{margin-top:24px;}
+.benefit-rows{margin-top:32px;}
+.benefits p{margin-top:24px!important;font-size:14px;line-height:1.57;}
+.benefit-rows ul li:first-child{max-width:280px;}
+.benefits h3 + p{max-width:850px;}
+}
+@media (max-width: 991px){
+.tab ul{margin-top:0;}
+.tab ul .salarys{min-height:150px;}
+.tab ul li.active{border-color:#1179ef;}
+.salarys{min-height:100px;}
+.tab li.active a{border-radius:0;}
+}
+.salary-line{text-align:center;display:inline-block;width:100%;margin:46px 0 0;}
+.salarys .active{text-align:center;position:relative;border-bottom:1px solid #000;width:auto;display:inline-block;padding:0 10px;}
+.salarys .dual-bar{width:40px;height:128px;background-color:#79bdf6;display:inline-block;margin-left:15px;vertical-align:bottom;position:relative;}
+.salarys .dual-bar .price{font-size:10px;font-weight:500;color:#272c37;position:absolute;top:-16px;right:0;left:0;margin:auto;}
+.salarys .dual-bar .price::after{display:none;}
+.salarys .dual-bar .percent{top:inherit;bottom:-20px;}
+.salarys .dual-bar:first-child{margin-left:0;height:20px;}
+.salarys .dual-bar:nth-child(2),.salarys .dual-bar:nth-child(4){height:60px;}
+.salarys .dual-bar:nth-child(5){height:20px;}
+.salarys .salary-sourse{font-size:12px;font-weight:400;text-align:center;display:block;position:relative;left:0;top:16px;margin-top:14px;color:#51565e;}
+.salarys .salary-sourse::after{display:none;}
+@media (min-width: 768px){
+.graphic .hire-logos-wrapper{max-height:175px;overflow:hidden;}
+.graphic .hire-logos-wrapper div{height:86px;}
+.graphic .hire-logos-wrapper div::before{content:"";display:inline-block;vertical-align:middle;width:0;height:100%;}
+.graphic .hire-logos-wrapper div img{margin-top:0;display:inline-block;vertical-align:middle;}
+.salarys{width:50%;display:inline-block;vertical-align:top;}
+.hire{width:50%;display:inline-block;vertical-align:middle;}
+.hire-companys{height:100%;min-height:189px;}
+.tab ul .hire{min-height:292px;}
+.hire span{font-size:14px;font-weight:500;color:#272c37;display:block;clear:both;margin-left:5px;}
+.hire{padding-bottom:0;position:relative;}
+.hire .hire-source{padding-bottom:16px;}
+.hire-companys{min-height:205px;}
+.hire-companys span.hire-source{position:absolute;left:0;right:0;text-align:center;bottom:20px;z-index:1;height:20px;top:inherit;}
+.salary-line{margin:26px 0 0;}
+.salarys .salary-sourse{padding-bottom:16px;}
+}
+@media (min-width: 992px){
+.salarys .dual-bar .price{display:block;}
+.graphic span.heading{display:none;}
+.graphic .tab li.active a{cursor:default;}
+.graphic .tab li.active a::after{display:none;}
+.tab a:hover{background-color:#d2d9e4;}
+.graphic .hire-logos-wrapper div{height:74px;}
+.graphic .hire-logos-wrapper div img{margin-bottom:0;}
+}
+@media (max-width: 1199px){
+.salarys .dual-bar{width:34px;}
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+.hire-companys{max-height:195px;overflow:hidden;margin-top:40px;}
+.salary-info .tab li.active a{cursor:default;}
+.salary-info .tab li.active a::after{display:none;}
+.salarys{padding-bottom:16px;}
+.salary-line{margin:80px 0 0;}
+}
+.salarys .salary-line .active{position:relative;border-bottom:1px solid #000;width:auto;padding:0 10px;text-align:center;display:inline-block;}
+.hire .hire-source{font-size:12px;font-weight:400;text-align:center;display:block;position:relative;left:0;top:0px;color:#51565e;}
+@media (min-width: 992px){
+.graphic .salarys{padding-bottom:0;height:242px;}
+.graphic span.heading{display:inline-block;width:1px;overflow:hidden;height:242px;vertical-align:middle;margin:0;position:static;background:#fff;color:#fff;}
+.graphic span.heading::after{display:none;}
+.graphic .salary-line{margin:auto;display:inline-block;vertical-align:middle;width:calc(100% - 1px);margin-top:2px;}
+.graphic .hire-companys{margin:0;min-height:10px;width:calc(100% - 1px);display:inline-block;vertical-align:middle;}
+.graphic .tab ul{min-height:10px;height:242px;box-shadow:0 2px 8px 0 rgba(0, 0, 0, 0.1);}
+.graphic .tab ul .hire{min-height:242px;}
+.graphic .hire .hire-source,.graphic .salarys .salary-sourse{padding:0;margin:0;margin-top:16px;}
+.graphic .hire-logos-wrapper{max-height:148px;overflow:hidden;}
+.graphic .hire-company{margin:20px 18px 20px 18px;}
+}
+@media (min-width: 1200px){
+.hire-companys{min-height:159px;margin-top:80px;}
+.salary-line{margin:80px 0 0;}
+.graphic .hire-logos-wrapper{max-height:160px;}
+}
+@media (max-width: 767px){
+.hire .hire-source{margin-top:24px;}
+}
+@media (max-width: 991px){
+.hire-companys span.hire-source{bottom:12px;}
+}
+.course-tip{font-size:14px;margin-top:16px;color:#27ba44;font-weight:500;padding:0;position:relative;display:inline-block;border-radius:16px;border:solid 1px #61cfa2;line-height:29px;padding-right:40px;min-width:271px;}
+.course-tip .q-mark{display:inline-block;text-align:center;width:20px;height:20px;line-height:24px;padding:1px;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)       no-repeat;background-position:-483px -361px;font-size:16px;cursor:pointer;position:absolute;right:10px;top:0;bottom:0;margin:auto;background-size:572px;}
+.course-tip .course-tiptext{display:none;font-size:14px;width:248px;color:#fff;text-align:left;padding:16px 15px;position:absolute;z-index:3;top:25px;right:-78px;border-radius:4px;box-shadow:0 2px 8px 0 rgba(0, 0, 0, 0.1);background-color:#51565e;}
+.course-tip .course-tiptext::after{content:"";position:absolute;top:-8px;right:0;left:152px;width:8px;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid #51565e;}
+.course-tip .q-mark:hover .course-tiptext{display:block;}
+.course-tip::before{content:"";width:22px;height:22px;display:inline-block;background:url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)       no-repeat;background-position:-371px -332px;position:relative;left:0;top:5px;margin:0 10px 0 15px;}
+.moneyBackGuarantee .course-tip::before{background-position:-406px -332px;}
+@media (min-width: 768px){
+.course-tip{margin:24px 30px 0 0;min-width:auto;}
+.course-tip .course-tiptext{width:412px;right:-196px;}
+.course-tip .course-tiptext::after{left:0;margin:0 auto;}
+.key-features h3{width:auto;display:inline-block;margin-right:20px;}
+.moneyBackGuarantee{display:inline-block;}
+}
+@media (min-width: 992px){
+.course-tip{margin-top:32px;}
+}
+@media (max-width: 1199px){
+.course-tip:hover .course-tiptext{display:block;}
+}
+@media (max-width: 991px){
+li.active{font-weight:400;}
+}
+::-webkit-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-ms-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-webkit-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-ms-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+/*! CSS Used from: Embedded */
+a{background:transparent;}
+a:active,a:hover{outline:0;}
+img{border:0;}
+@media print{
+*{text-shadow:none!important;color:#000!important;background:transparent!important;box-shadow:none!important;}
+a,a:visited{text-decoration:underline;}
+a[href]:after{content:" (" attr(href) ")";}
+img{page-break-inside:avoid;}
+img{max-width:100%!important;}
+h2,p{orphans:3;widows:3;}
+h2{page-break-after:avoid;}
+}
+h2{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+h2{margin-top:20px;margin-bottom:10px;}
+h2{font-size:30px;}
+p{margin:0 0 10px;}
+ul{margin-top:0;margin-bottom:10px;}
+p{font-size:14px;line-height:21px;font-family:OpenSans, Arial, sans-serif;}
+*,:after,:before{-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;}
+a{color:"#0062e4";}
+a:focus,a:hover{color:"#004eb6";}
+a:focus{outline:thin dotted;}
+p{font-size:14px;line-height:21px;font-family:OpenSans, Arial, sans-serif;}
+h2{margin:0;padding:0;}
+p{margin-bottom:10px;}
+ul{font-size:1em;outline:0;}
+@media print{
+a:link:after,a:visited:after{content:""!important;}
+}
+a{background-color:transparent;-webkit-text-decoration-skip:objects;}
+a:active,a:hover{outline-width:0;}
+img{border-style:none;}
+::-webkit-input-placeholder{color:inherit;opacity:0.54;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";filter:alpha(opacity=54);}
+*,:after,:before{box-sizing:inherit;}
+h2{margin-top:0;margin-bottom:0.5rem;}
+p{margin-top:0;margin-bottom:1rem;}
+ul{margin-bottom:1rem;}
+ul{margin-top:0;}
+a{color:#0062e4;text-decoration:none;}
+a:focus,a:hover{text-decoration:underline;}
+a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+img{vertical-align:middle;}
+a{-ms-touch-action:manipulation;touch-action:manipulation;}
+*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+h2{font-family:OpenSans-light, Arial, sans-serif;}
+h2{font-size:2.125rem;line-height:2.625rem;}
+@media print{
+*{overflow:visible!important;}
+}
+h2,p{max-width:100%;}
+/*! CSS Used from: Embedded */
+*,*::before,*::after{box-sizing:border-box;}
+*{-webkit-overflow-scrolling:touch;font-family:"Roboto", sans-serif!important;font-weight:normal;font-style:normal;}
+h2,h3{margin-top:0;margin-bottom:0;}
+p{margin-top:0;margin-bottom:0;}
+ul{margin-top:0;margin-bottom:1rem;padding:0;list-style:none;}
+b{font-weight:500;}
+.hide{display:none!important;}
+.container:after,.container:before{content:" ";display:table;}
+a{text-decoration:none;}
+h2{font-size:18px;font-weight:500;line-height:28px;letter-spacing:normal;color:#272c37;}
+:focus{outline:-webkit-focus-ring-color auto 5px;}
+@media (min-width: 768px){
+h2{font-size:24px;line-height:34px;}
+}
+.container{width:100%;display:inline-block;padding-left:15px;padding-right:15px;}
+@media (min-width: 768px){
+.container{width:750px;display:block;margin-left:auto;margin-right:auto;}
+}
+@media (min-width: 992px){
+.container{width:970px;}
+}
+@media (min-width: 1200px){
+.container{width:1170px;}
+}
+.container{clear:both;}
+h3{color:#272c37;}
+a{color:#1179ef;text-decoration:none;cursor:pointer;}
+a:hover,a:focus{color:#0a5dc9;outline:0;}
+.clear{display:block;clear:both;}
+h2{font-size:20px;line-height:1.3;color:#272c37;font-weight:400;margin-top:56px;letter-spacing:1px;}
+h2 b{font-weight:500;}
+h3{font-size:16px;font-weight:500;margin:40px 0 0;line-height:1.5;letter-spacing:0.5px;color:#272c37;}
+li{color:#51565e;font-size:14px;line-height:1.43;}
+.more{display:block;margin:24px auto 0 auto;font-size:14px;font-weight:500;text-align:center;}
+p{color:#51565e;font-size:14px;line-height:1.57;}
+@media (max-width: 767px){
+.container{padding-left:15px;padding-right:15px;}
+}
+@media (min-width: 992px) and (max-width: 1199px){
+.container{width:100%;display:inline-block;padding:0 30px;}
+}
+@media (min-width: 992px){
+p{font-size:16px;line-height:1.5;}
+h2{font-size:32px;line-height:1.33;letter-spacing:1.5px;}
+h3{font-size:20px;}
+}
+@media (min-width: 1200px){
+h2{margin-top:64px;}
+}
+@media (max-width: 767px){
+h3{margin-top:32px;}
+}
+@media (max-width: 991px){
+li.active{font-weight:400;}
+}
+::-webkit-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-ms-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-webkit-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+::-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-ms-input-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+:-moz-placeholder{font-size:14px;font-weight:normal;color:#6c7480;}
+/*! CSS Used keyframes */
+@-webkit-keyframes simageScroll{0%{opacity:0;filter:alpha(opacity=0);}25%{opacity:0.3;filter:alpha(opacity=30);}50%{opacity:0.5;filter:alpha(opacity=50);}75%{opacity:0.8;filter:alpha(opacity=80);}100%{opacity:1;filter:alpha(opacity=100);visibility:visible;}}
+@-moz-keyframes simageScroll{0%{opacity:0;filter:alpha(opacity=0);}25%{opacity:0.3;filter:alpha(opacity=30);}50%{opacity:0.5;filter:alpha(opacity=50);}75%{opacity:0.8;filter:alpha(opacity=80);}100%{opacity:1;filter:alpha(opacity=100);visibility:visible;}}
+@-o-keyframes simageScroll{0%{opacity:0;filter:alpha(opacity=0);}25%{opacity:0.3;filter:alpha(opacity=30);}50%{opacity:0.5;filter:alpha(opacity=50);}75%{opacity:0.8;filter:alpha(opacity=80);}100%{opacity:1;filter:alpha(opacity=100);visibility:visible;}}
+@keyframes simageScroll{0%{opacity:0;filter:alpha(opacity=0);}25%{opacity:0.3;filter:alpha(opacity=30);}50%{opacity:0.5;filter:alpha(opacity=50);}75%{opacity:0.8;filter:alpha(opacity=80);}100%{opacity:1;filter:alpha(opacity=100);visibility:visible;}}
+@keyframes intro{from{-webkit-transform:scale(0.5);transform:scale(0.5);}50%{-webkit-transform:scale(0.9);transform:scale(0.9);}to{-webkit-transform:scale(0.5);transform:scale(0.5);}}
+@keyframes intro{from{-webkit-transform:scale(0.5);transform:scale(0.5);}50%{-webkit-transform:scale(0.9);transform:scale(0.9);}to{-webkit-transform:scale(0.5);transform:scale(0.5);}}
+@keyframes intro{from{-webkit-transform:scale(0.5);transform:scale(0.5);}50%{-webkit-transform:scale(0.9);transform:scale(0.9);}to{-webkit-transform:scale(0.5);transform:scale(0.5);}}
+/*! CSS Used fontfaces */
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/rBHvpRWBkgyW99dXT88n7yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/NX1NravqaXESu9fFv7KuqiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/SKK6Nusyv8QPNMtI4j9J2yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/gFXtEMCp1m_YzxsBpKl68iEAvth_LlrfE80CYdSH47w.woff2) format('woff2');unicode-range:U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;src:local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;}
+@font-face{font-family:"Roboto";src:url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff2)         format("woff2"),       url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff)         format("woff");font-weight:400;font-display:swap;}
+@font-face{font-family:"Roboto";src:url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff2)         format("woff2"),       url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff)         format("woff");font-weight:500;font-display:swap;}
+@font-face{font-family:"Roboto";src:url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff2)         format("woff2"),       url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff)         format("woff");font-weight:400;font-display:swap;}
+@font-face{font-family:"Roboto";src:url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff2)         format("woff2"),       url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff)         format("woff");font-weight:500;font-display:swap;}
+@font-face{font-family:"OpenSans";font-weight:normal;font-style:normal;font-display:swap;src:url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.eot);src:url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.eot?#iefix)         format("embedded-opentype"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-regular.woff2)         format("woff2"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-regular.woff)         format("woff"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.ttf)         format("truetype"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.svg#OpenSans-Regular)         format("svg");}
+@font-face{font-family:"OpenSans";font-weight:bold;font-style:normal;font-display:swap;src:url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.eot);src:url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.eot?#iefix)         format("embedded-opentype"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-700.woff2)         format("woff2"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-700.woff)         format("woff"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.ttf)         format("truetype"),       url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.svg#OpenSans-Bold)         format("svg");}
+</style>
+
+<!-- <div class="jp_tittle_main_wrapper">
+  <div class="jp_tittle_img_overlay"></div> -->
+  <!-- <div class="container" style="max-height:100px;"> -->
+
+  <div class="row" style="border:1px solid black; background-color:black; max-height:400px;">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h2 style="padding:10px; color:white;">Training & certifications</h2>
+      <p style="margin-left:20px; color:white;">hye there im using whatsapp</p>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <img class="img " alt="ITIL 4 Foundation" style="width:100%; height:60%; margin-top:40px;" src="https://cdn.educba.com/img/Selenium-Training-Certification.jpg">
+
+    </div>
+    </div>
+    <!-- </div>
+    </div> -->
+    
+  
+ <!-- <div class="jp_tittle_main_wrapper">
+    <div class="jp_tittle_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <h2>hhhhhhhhhhh</h2> -->
+                <!-- <div class="jp_tittle_heading_wrapper">
+                    <div class="jp_tittle_heading">
+                        <h2>Training & Certifications</h2>
+                    </div> -->
+                    <!-- <div class="jp_tittle_breadcrumb_main_wrapper">
+                        <div class="jp_tittle_breadcrumb_wrapper">
+                            <ul>
+                                <li><a href="{% url 'jobs:home' %}">Home</a> <i class="fa fa-angle-right" style="color:#248ae4;"></i></li>
+                                
+                                <li style="color:#248ae4;">Training details
+                                 </li>
+                            </ul>
+                            
+                               
+                              
+                            </div>
+                        </div> -->
+                    <!-- </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                                
+                                    
+                  <img class="img " alt="ITIL 4 Foundation" style="width:50%; height:50%" src="https://cdn.educba.com/img/Selenium-Training-Certification.jpg">
+            
+          </div>
+            </div>
+        </div>
+    </div>
+</div>  -->
+
+<section>
+
+    <div class="container overview sticky_place" id="Overview" data-sticky-name="Overview" >
+      <h2>{{x.title}} <b></b></h2>
+      <div class="col-md-8">
+        <p>
+      {{x.skill}}
+        </p>
+      </div>
+      <div class="col-md-4 col-sm-12 intro" id="coIntro">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <a class="" href="{% url 'jobs:memberplanPricing' x.pk %}" >
+            <!-- <img data-gumlet="false"
+              class="gm-added gm-lazy blend-mode"
+              src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fbuy-now-button-buy-now-rounded-blue-sign-buy-now-gm1175734204-327523245&psig=AOvVaw0NNxW9ZvBvx8Pa9zm9-Yg8&ust=1650191184725000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLDV26msmPcCFQAAAAAdAAAAABAD"
+              width="375"
+              height="211"
+              alt="AWS Solutions Architect" /> -->
+            <!-- <span class="intro-text"> Click <b></b></span></a> -->
+            <span class="intro-text"> <button class="button2" 
+              style=" background-color: white;  color: black;   border: 2px solid #008CBA;
+              width:200px; font-size:18px; padding:10px; border-radius:10px; ">Buy</button></span>
+              </a>
+           
+        </div>
+      </div>
+      <div>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "AWS Certified Solutions architect associate Level | Simplilearn",
+            "description": "Hello and welcome to the introductory lesson of the AWS Solution Architect Associate Level course offered by Simplilearn. In this lesson, you will get a brief overview about the course and how the certification can help your career. ",
+            "thumbnailUrl": "https://img.youtube.com/vi/wpELpfFXKgc/hqdefault.jpg",
+            "uploadDate": "2016-05-30 05:55:10",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Simplilearn Americas, Inc.",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.simplilearn.com/logo.png",
+                "width": 160,
+                "height": 90
+              }
+            },
+            "contentUrl": "https://www.youtube.com/embed/wpELpfFXKgc",
+            "embedUrl": "https://www.youtube.com/embed/wpELpfFXKgc"
+          }
+        </script>
+      </div>
+      <div class="clear"></div>
+      <div class="col-md-8 key-features">
+        <h3>{{x.title}}</h3>
+        <div id="moneyBackGuarantee" class="moneyBackGuarantee">
+          <div class="course-tip">
+            100% Money Back Guarantee
+            <div class="q-mark">
+              <div class="course-tiptext">
+              {{x.disc}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="icon-list">
+          <li>
+           {{x.feature1}}
+          </li>
+          <li> {{x.featured2}}</li>
+          <li> {{x.featured3}}</li>
+          <li> {{x.featured4}}</li>
+          <li> {{x.featured5}}</li>
+          <li> {{x.featured6}}</li>
+        </ul>
+      </div>
+      <div class="col-md-4 skill">
+        <h3>Skills Covered</h3>
+        <ul id="skill-covered" class="icon-list">
+          <li class="">{{x.skill}}</li>
+          <li class="">{{x.Technology}}</li>
+          <li class="">{{x.benifits}}</li>
+          <li class="">{{x.price}}</li>
+          <!-- <li class="hide">AWS implementation optimization</li>
+          <li class="hide">AWS data IO</li> -->
+        </ul>
+       
+      </div>
+      <div class="clear"></div>
+      <div class="salary-info">
+        <div class="col-md-12 benefits csm-benfit">
+          <div class="container">
+            <h3>Benefits</h3>
+            <p>
+              {{x.benifits}}
+            </p>
+            <div class="benefit-rows">
+              <ul>
+                <li>Designation</li>
+                <li>Annual Salary</li>
+                <li>Hiring Companies</li>
+              </ul>
+            </div>
+            <div class="graphic">
+              <div class="tab" id="BenifitTab">
+                <ul>
+                  <li id="BenifitTab0" class="active tab-0 TabSection three">
+                    <div
+                      data-tabclass="tab"
+                      class="active __sl-tab-button"
+                      data-index="0"
+                      data-toggle-class="active"
+                      data-placeholder="BenifitTab"
+                      data-tabplaceholder="TabSection"
+                      data-isaccordion="0"
+                      data-name="Cloud Solution Architect"
+                    >
+                      <a class="" href="#" aria-label=""
+                        >Cloud Solution Architect</a
+                      >
+                    </div>
+                    <div class="tabcontent">
+                      <div class="salarys">
+                        <span class="heading">Annual Salary</span>
+                        <div class="salary-line">
+                          <div id="job_salary_0" class="active">
+                            <div class="dual-bar">
+                              <span class="price">₹6.6L</span
+                              ><span class="price percent">Min</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹16L</span
+                              ><span class="price percent">Average</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹33L</span
+                              ><span class="price percent">Max</span>
+                            </div>
+                          </div>
+                          <span class="salary-sourse"
+                            >Source:
+                            <!-- -->Glassdoor</span
+                          >
+                        </div>
+                      </div>
+                      <div class="hire">
+                        <span class="heading">Hiring Companies</span>
+                        <div class="hire-companys">
+                          <div class="hire-logos-wrapper">
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/TaTa-motors.png"
+                                alt="TaTa motors"
+                                title="TaTa motors"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Accenture.png"
+                                alt="Accenture"
+                                title="Accenture"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/IBM.png"
+                                alt="IBM"
+                                title="IBM"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Dell.png"
+                                alt="Dell"
+                                title="Dell"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Fujitsu.png"
+                                alt="Fujitsu"
+                                title="Fujitsu"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Cognizant-Technology-Solutions.png"
+                                alt="Cognizant Technology Solutions"
+                                title="Cognizant Technology Solutions"
+                              />
+                            </div>
+                          </div>
+                          <span class="hire-source"
+                            >Source:
+                            <!-- -->Indeed</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li id="BenifitTab1" class="tab-1 TabSection three">
+                    <div
+                      data-tabclass="tab"
+                      class="__sl-tab-button"
+                      data-index="1"
+                      data-toggle-class="active"
+                      data-placeholder="BenifitTab"
+                      data-tabplaceholder="TabSection"
+                      data-isaccordion="0"
+                      data-name="Cloud Administrator"
+                    >
+                      <a class="" href="#" aria-label="">Cloud Administrator</a>
+                    </div>
+                    <div class="tabcontent">
+                      <div class="salarys">
+                        <span class="heading">Annual Salary</span>
+                        <div class="salary-line">
+                          <div id="job_salary_1" class="active">
+                            <div class="dual-bar">
+                              <span class="price">₹4.1L</span
+                              ><span class="price percent">Min</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹11L</span
+                              ><span class="price percent">Average</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹16L</span
+                              ><span class="price percent">Max</span>
+                            </div>
+                          </div>
+                          <span class="salary-sourse"
+                            >Source:
+                            <!-- -->Glassdoor</span
+                          >
+                        </div>
+                      </div>
+                      <div class="hire">
+                        <span class="heading">Hiring Companies</span>
+                        <div class="hire-companys">
+                          <div class="hire-logos-wrapper">
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/IBM.png"
+                                alt="IBM"
+                                title="IBM"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Accenture.png"
+                                alt="Accenture"
+                                title="Accenture"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/General-Electric.png"
+                                alt="GE"
+                                title="GE"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Amazon.png"
+                                alt="Amazon"
+                                title="Amazon"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Intuit.png"
+                                alt="Intuit"
+                                title="Intuit"
+                              />
+                            </div>
+                          </div>
+                          <span class="hire-source"
+                            >Source:
+                            <!-- -->Indeed</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li id="BenifitTab2" class="tab-2 TabSection three">
+                    <div
+                      data-tabclass="tab"
+                      class="__sl-tab-button"
+                      data-index="2"
+                      data-toggle-class="active"
+                      data-placeholder="BenifitTab"
+                      data-tabplaceholder="TabSection"
+                      data-isaccordion="0"
+                      data-name="Cloud Developer"
+                    >
+                      <a class="" href="#" aria-label="">Cloud Developer</a>
+                    </div>
+                    <div class="tabcontent">
+                      <div class="salarys">
+                        <span class="heading">Annual Salary</span>
+                        <div class="salary-line">
+                          <div id="job_salary_2" class="active">
+                            <div class="dual-bar">
+                              <span class="price">₹3.4L</span
+                              ><span class="price percent">Min</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹8.4L</span
+                              ><span class="price percent">Average</span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price"></span
+                              ><span class="price percent"></span>
+                            </div>
+                            <div class="dual-bar">
+                              <span class="price">₹12L</span
+                              ><span class="price percent">Max</span>
+                            </div>
+                          </div>
+                          <span class="salary-sourse"
+                            >Source:
+                            <!-- -->Glassdoor</span
+                          >
+                        </div>
+                      </div>
+                      <div class="hire">
+                        <span class="heading">Hiring Companies</span>
+                        <div class="hire-companys">
+                          <div class="hire-logos-wrapper">
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Vodafone.png"
+                                alt="Vodafone"
+                                title="Vodafone"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Amazon.png"
+                                alt="Amazon"
+                                title="Amazon"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/TCS.png"
+                                alt="Tata Consultancy Services"
+                                title="Tata Consultancy Services"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/Accenture.png"
+                                alt="Accenture"
+                                title="Accenture"
+                              />
+                            </div>
+                            <div>
+                              <img
+                                class="hire-company gm-lazy blend-mode"
+                                width="16"
+                                height="9"
+                                data-gumlet="false"
+                                src="https://www.simplilearn.com/ice9/logos/IBM.png"
+                                alt="IBM"
+                                title="IBM"
+                              />
+                            </div>
+                          </div>
+                          <span class="hire-source"
+                            >Source:
+                            <!-- -->Indeed</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+
+{% endblock main-content %}

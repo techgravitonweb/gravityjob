@@ -1,0 +1,744 @@
+{% extends 'dash/user/baseDash.html' %}
+{% load static %}
+{% block content %}
+
+
+  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2">
+
+      <div class="container-fluid py-1">
+        
+        <!-- </nav> -->
+        <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
+
+          
+          <ul class="navbar-nav justify-content-end">
+            
+            <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <a href="javascript:;" class="nav-link text-body p-0 mt-4" id="iconNavbarSidenav">
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                  </div>
+                </a>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 ms-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="{% static 'userDash/assets/img/team-2.jpg' %}" class="avatar avatar-sm me-3">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img
+                          src="https://demos.creative-tim.com/soft-ui-dashboard/assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark me-3">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid" >
+      <div class="page-header min-height-150 border-radius-xl mt-4"
+        style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%; ">
+        <span class="mask bg-gradient-primary opacity-6" style="height:150px;"></span>
+      </div>
+      <div class="card card-body blur shadow-blur mt-2 mx-4 mt-n6 overflow-hidden">
+        <div class="row gx-4 mt-2">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              {% for x in s %}
+              <img src="{{x.profileImgae.url}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              {% empty %}
+              <img src="{% static 'employee.jpg' %}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                {{ request.user.first_name }} {{ request.user.last_name }}
+              </h5>
+              <p class="mb-0 font-weight-bold text-sm">
+               {{request.user.role}}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 active "  href="{% url 'jobs:home' %}" 
+                    aria-selected="true">
+                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1"
+                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716.000000, 291.000000)">
+                            <g transform="translate(603.000000, 0.000000)">
+                              <path class="color-background"
+                                d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z">
+                              </path>
+                              <path class="color-background"
+                                d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z"
+                                opacity="0.7"></path>
+                              <path class="color-background"
+                                d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z"
+                                opacity="0.7"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <span class="ms-1">Home</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 " href="{% url 'jobs:profile' %}" 
+                    aria-selected="false">
+                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1"
+                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>document</title>
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716.000000, 291.000000)">
+                            <g transform="translate(154.000000, 300.000000)">
+                              <path class="color-background"
+                                d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z"
+                                opacity="0.603585379"></path>
+                              <path class="color-background"
+                                d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
+                              </path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <span class="ms-1">Profile</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mb-0 px-0 py-1 "  href="{% url 'accounts:logout' %}" 
+                    aria-selected="false">
+                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1"
+                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>settings</title>
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716.000000, 291.000000)">
+                            <g transform="translate(304.000000, 151.000000)">
+                              <polygon class="color-background" opacity="0.596981957"
+                                points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667">
+                              </polygon>
+                              <path class="color-background"
+                                d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"
+                                opacity="0.596981957"></path>
+                              <path class="color-background"
+                                d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z">
+                              </path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <span class="ms-1">Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row ">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+              role="tab" aria-controls="home" aria-selected="true"
+              style="color:#248ae4;">My Profile</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+              role="tab" aria-controls="profile" aria-selected="false"
+              style="color:#248ae4;">My Resume</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+              role="tab" aria-controls="contact" aria-selected="false"
+              style="color:#248ae4;">View Profile</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          {% if profileShow is None %}
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <form method="POST" action="{% url 'jobs:profile' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row g-3 border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+                <div class="col-md-4 ">
+
+                  <label for="formFile" class="form-label">upload image</label>
+                  <input class="form-control" type="file" id="formFile" name="profileImgae">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                  <input type="text" required class="form-control" id="exampleInputEmail1" name="fullName">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" required class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+                  <input type="text" required class="form-control" id="exampleInputEmail1"  name="phoneNumber" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputPassword1" class="form-label">Age</label>
+                  <input type="text" required class="form-control"  name="age" id="exampleInputPassword1">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">gender</label>
+                  <select class="form-select" aria-label="Default select example" name="gender">
+                    <option selected></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="others">others</option>
+                  </select>
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Qualification</label>
+                 <!---- <input type="text" required class="form-control"  name="qualification" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+                  <select class="form-select" aria-label="Default select example" name="qualification">
+                    <option selected></option>
+                    <option value="Aviation">Aviation</option>
+                    <option value="Bachelor of Arts (B.A)">Bachelor of Arts (B.A)</option>
+                    <option value="Bachelor of Architecture">Bachelor of Architecture</option>
+                    <option value="Bachelor of Business (B.B.)"> Bachelor of Business (B.B.)</option>
+                    <option value="Bachelor of Business Administration (B.B.A.)">Bachelor of Business Administration (B.B.A.)</option>
+                    <option value="Bachelor of Science in Business (B.S.B.)">Bachelor of Science in Business (B.S.B.)</option>
+                    <option value="Bachelor of Commerce (B.com">Bachelor of Commerce (B.com</option>
+                    <option value="Bachelor of Computer Science (B.C.S.)">Bachelor of Computer Science (B.C.S.)</option>
+                    <option value="Bachelor of Education (B.Ed.)">Bachelor of Education (B.Ed.)</option>
+                    <option value="Bachelor of Science in Education (B.S.Ed.)">Bachelor of Science in Education (B.S.Ed.)</option>
+                    <option value="Bachelor of Engineering (B.E./B.Eng.)">Bachelor of Engineering (B.E./B.Eng.)</option>
+                    <option value="Bachelor of Technology (B.T./B.Tech.)">Bachelor of Technology (B.T./B.Tech.)</option>
+                    <option value="Bachelor of Science in Chemistry (B.S.Ch.)">Bachelor of Science in Chemistry (B.S.Ch.)</option>
+                    <option value="Bachelor of Science (B.S.)">Bachelor of Science (B.S.)</option>
+                    <option value="Bachelor of Pharmacy (B.Pharm.)">Bachelor of Pharmacy (B.Pharm.)</option>
+                    <option value="Bachelor of Science in Nursing (B.S.N.)">Bachelor of Science in Nursing (B.S.N.)</option>
+                    <option value="Bachelor of Nursing (B.N.)">Bachelor of Nursing (B.N.)</option>
+                    <option value="Bachelor of Literature (B.Lit.)">Bachelor of Literature (B.Lit.)</option>
+                    <option value="Bachelor of Laws (LL.B.)">Bachelor of Laws (LL.B.)</option>
+                    <option value="Bachelor of Journalism (B.J.)">Bachelor of Journalism (B.J.)</option>
+                    <option value="Bachelor of Forestry (B.F.)">Bachelor of Forestry (B.F.)</option>
+                    <option value="B.S.M.E.T.">Bachelor of Science in Mechanical Engineering Technology (B.S.M.E.T.)</option>
+                    <option value="Charted Accounted">Charted Accounted</option>
+                    <option value="Company Secretry">Company Secretry</option>
+                    <option value="ICWA">ICWA </option>
+                    <option value="">ICWA internr</option>
+                  </select>
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">languages</label>
+                  <input type="text" required class="form-control" name="language"  id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">job title</label>
+                  <input type="text" required class="form-control" name="jobTitle"  id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Experience Time</label>
+                  <!-- <input type="text" required class="form-control" name="experienceTime"  id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+                  <select class="form-select" aria-label="Default select example" name="experienceTime">
+                    <option selected></option>
+                    <option value="0-1">0-1</option>
+                    <option value="1-2">1-2</option>
+                    <option value="2-3">2-3</option>
+                    <option value="3-4">3-4</option>
+                    <option value="4-5">4-5</option>
+                    <option value="5-6">5-6</option>
+                    <option value="6-7">6-7</option>
+                     <option value="7-8">7-8</option>
+                     <option value="8-9">8-9</option>
+                     <option value="9-10">9-10</option>
+                     <option value="10-11">10-11</option>
+                     <option value="more than 15 year">more than 15 years</option>
+                     <option value="more than 20 year"> more than 20 years</option>
+                    
+                  </select>
+                </div>
+                <div class="col-md-4 ">
+                  <label for="exampleInputEmail1" class="form-label">Salary expected</label>
+                  <input type="text" required class="form-control" name="salaryType" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-4 mb-4">
+                  <label for="exampleInputEmail1" class="form-label">Categories</label>
+                  <!-- <input type="text" required class="form-control" name="categories" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+                  <select class="form-select" aria-label="Default select example" name="categories">
+                    <option selected></option>
+                    <option value="1">Ac Technician</option>
+                    <option value="2">Accountant</option>
+                    <option value="3">Aircraft Maintainence</option>
+                    <option value="3">Animation</option>
+                    <option value="3">Architect</option>
+                    <option value="3">Bartender</option>
+                    <option value="3">Beautician</option>
+                    <option value="3">Bouncer</option>
+                    <option value="3">BPO/Telecaller</option>
+                    <option value="3">Buisiness Analyst</option>
+                    <option value="3">Cameraman</option>
+                    <option value="3">Care Taker/Nanny</option>
+                    <option value="3">Carpainter</option>
+                    <option value="3">Cashier</option>
+                    <option value="3">Cleaner</option>
+                    <option value="3">Construction/Labourer</option>
+                    <option value="3">Content Writer</option>
+                    <option value="3">Control Room/Operator</option>
+                    <option value="3">Cook/Chief</option>
+                    <option value="3">Corporatr trainee</option>
+                    <option value="3">Counseller</option>
+                    <option value="3">Data Collection/Survey</option>
+                    <option value="3">Data Entry/Back Office</option>
+                    <option value="3">Data Scientist</option>
+                    <option value="3">Database/System/Linux/Administrator</option>
+                    <option value="3">Delivery collection</option>
+                    <option value="3">Designer</option>
+                    <option value="3">Digital Marketing</option>
+                    <option value="3">Doctor</option>
+                    <option value="3">Draftman</option>
+                    <option value="3">Driver</option>
+                    <option value="3">Dtp operator/print consultant</option>
+                    <option value="3">Dubbing Artist</option>
+                    <option value="3">Dye Maker</option>
+                    <option value="3">Editor</option>
+                    <option value="3">Electrician</option>
+                    <option value="3">electroplater</option>
+                    <option value="3">Engineer</option>
+                    <option value="3">Event Planeer/Event Management</option>
+                    <option value="3">Fashion Designer</option>
+                    <option value="3">Fitness Trainee</option>
+                  </select>
+                </div>
+              </div>
+            
+            <div class="row border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+              <h6>Social Network</h6>
+
+              <div class="col-md-6 mt-2 ">
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Network</option>
+                  <option value="1">Facebook</option>
+                  <option value="2">Linkdin</option>
+                  <option value="3">Instagram</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-2 mb-4">
+                <input type="text"  class="form-control" name="socialNetwork"  placeholder="URL" aria-label="Last name">
+              </div>
+            </div>
+
+            <!-- <div class="row border border-light rounded-2 shadow p-3 mb-5 bg-body mt-5">
+              <h6>Skills*</h6>
+
+              <div class="col-md-6 mt-2 mb-4">
+                <input type="text" class="form-control" placeholder="Title" aria-label="Last name">
+              </div>
+              <div class="col-md-6 mt-2 mb-4 ">
+                <input type="text" class="form-control" placeholder="Percentage" aria-label="Last name">
+              </div>
+            </div> -->
+
+
+            <div class="row border border-light rounded-2 shadow p-3 mb-5 bg-body g-2 mt-5">
+              <h6 class="text-center">Contact Information</h6>
+
+              <div class="col-md-6 mt-2 mb-2">
+                 <div class="autocomplete" > 
+                  <input id="myInput" type="text"  name="location" placeholder="location" style="width:100%;" >
+                 </div> 
+                <!-- <select class="form-select" aria-label="Default select example" name="location">
+                  <option selected>Location</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select> -->
+              </div>
+              <div class="col-md-6 mt-2 ">
+                <input type="text" required class="form-control" placeholder="Friendly Address" aria-label="Last name">
+              </div>
+              <div class=" mb-2">
+                <textarea class="form-control" placeholder="Give concies text to attract right seekers"
+                  id="floatingTextarea2" style="height: 100px" required  name="address" ></textarea>
+                <label for="floatingTextarea2">Max 800 characters</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3"
+            style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);
+            color:white;">Save Profile</button>
+          </form>
+          </div>
+          {% else %}
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="col-lg-9 col-md-9 col-sm-12 m-5" style="border:1px solid rgba(128, 128, 128, 0.349);
+            box-shadow:5px 5px rgba(128, 128, 128, 0.541);">
+              <div class="text-center">
+          <h4 style="color:rgba(0, 0, 0, 0.685); padding:5px;">Already Successfully Upoloaded</h4>
+          </div>
+          </div>
+          </div>
+          {% endif %}
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- <div class="border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+
+            
+            </div> -->
+            {% if resumeshow is  None %}
+            <form action="{% url 'jobs:profile' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+              <div class="row g-2 justify-content-between">
+                <div class="col-md-4 m-3 ">
+                  <h6>Resume</h6>
+                  <input class="form-control" type="file"  name="resume1" id="formFile">
+                  <p>upload file .pdf, .doc, .docx</p>
+                </div>
+                <div class="col-md-4 m-3">
+                  <h6>Portfolio Url</h6>
+                  <input class="form-control" type="url" id="formFile" name="PortfolioUrl">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3"
+            style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);
+            color:white;">Save Resume</button>
+          </form>
+          {% else %}
+          <h2>Resume already upoded</h2>
+          <h4>want to uploaed new resume</h4>
+          <form action="{% url 'jobs:profile' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+            <div class="row g-2 justify-content-between">
+              <div class="col-md-4 m-3 ">
+                <h6>Resume</h6>
+                <input class="form-control" type="file"  name="resume1" id="formFile">
+                <p>upload file .pdf, .doc, .docx</p>
+              </div>
+              <div class="col-md-4 m-3">
+                <h6>Portfolio Url</h6>
+                <input class="form-control" type="url" id="formFile" name="PortfolioUrl">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3"
+          style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);
+          color:white;">Save Resume</button>
+        </form>
+          {% endif %}
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="row border border-light rounded-2 shadow p-3 mb-5 bg-body mt-4">
+          
+             
+                      <div class="card-body pt-3 p-5">
+                       
+                        <ul class="list-group" style="list-style-type:none;">
+{% for x in profiledata %}
+                  
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Full Name</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.fullName}}
+                        </div>
+                      </li>
+                      
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Email</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.email}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Phone Number</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.phoneNumber}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Age</label>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.age}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Gender</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.gender}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Skills</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          js,java,python,django
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Qualification</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.qualification}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Location</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.location}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Job Title</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.jobTitle}}
+                        </div>
+                      </li>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-0  bg-gray-100 border-radius-lg">
+                        <div class="d-flex align-items-center">
+                        <!-- <input type="checkbox"> -->
+                            <label class="mb-1 text-dark text-sm">Experience</label></span>
+                      </div>
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          {{x.experienceTime}}
+                        </div>
+                      </li>
+
+                      {% endfor %}
+                      </ul>
+                      
+                    
+                     
+                 
+          </div>
+         
+        </div>
+      </div>
+        
+       
+      
+     
+    </div>
+</main>
+
+<script>
+  function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+  
+  /*An array containing all the country names in the world:*/
+        var countries = ['Adoni', 'Amaravati', 'Anantapur', 'Chandragiri', 'Chittoor', 'Dowlaiswaram', 'Eluru', 'Guntur', 'Kadapa', 'Kakinada', 'Kurnool', 'Machilipatnam', 'Nagarjunakoṇḍa', 'Rajahmundry', 'Srikakulam', 'Tirupati', 'Vijayawada', 'Visakhapatnam', 'Vizianagaram', 'Yemmiganur', 'Arunachal', 'Pradesh', 'Itanagar', 'Assam', 'Dhuburi', 'Dibrugarh', 'Dispur', 'Guwahati', 'Jorhat', 'Nagaon', 'Sivasagar', 'Silchar', 'Tezpur', 'Tinsukia', 'Bihar', 'Ara', 'Barauni', 'Begusarai', 'Bettiah', 'Bhagalpur', 'Bihar', 'Sharif', 'Bodh', 'Gaya', 'Buxar', 'Chapra', 'Darbhanga', 'Dehri', 'Dinapur', 'Nizamat', 'Gaya', 'Hajipur', 'Jamalpur', 'Katihar', 'Madhubani', 'Motihari', 'Munger', 'Muzaffarpur', 'Patna', 'Purnia', 'Pusa', 'Saharsa', 'Samastipur', 'Sasaram', 'Sitamarhi', 'Siwan', 'Chandigarh', '(union', 'territory)', 'Chandigarh', 'Chhattisgarh', 'Ambikapur', 'Bhilai', 'Bilaspur', 'Dhamtari', 'Durg', 'Jagdalpur', 'Raipur', 'Rajnandgaon', 'Dadra', 'and', 'Nagar', 'Haveli', 'and', 'Daman', 'and', 'Diu', '(union', 'territory)', 'Daman', 'Diu', 'Silvassa', 'Delhi', '(national', 'capital', 'territory)', 'Delhi', 'New', 'Delhi', 'Goa', 'Madgaon', 'Panaji', 'Gujarat', 'Ahmadabad', 'Amreli', 'Bharuch', 'Bhavnagar', 'Bhuj', 'Dwarka', 'Gandhinagar', 'Godhra', 'Jamnagar', 'Junagadh', 'Kandla', 'Khambhat', 'Kheda', 'Mahesana', 'Morbi', 'Nadiad', 'Navsari', 'Okha', 'Palanpur', 'Patan', 'Porbandar', 'Rajkot', 'Surat', 'Surendranagar', 'Valsad', 'Veraval', 'Haryana', 'Ambala', 'Bhiwani', 'Chandigarh', 'Faridabad', 'Firozpur', 'Jhirka', 'Gurugram', 'Hansi', 'Hisar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Panipat', 'Pehowa', 'Rewari', 'Rohtak', 'Sirsa', 'Sonipat', 'Himachal', 'Pradesh', 'Bilaspur', 'Chamba', 'Dalhousie', 'Dharmshala', 'Hamirpur', 'Kangra', 'Kullu', 'Mandi', 'Nahan', 'Shimla', 'Una', 'Jammu', 'and', 'Kashmir', '(union', 'territory)', 'Anantnag', 'Baramula', 'Doda', 'Gulmarg', 'Jammu', 'Kathua', 'Punch', 'Rajouri', 'Srinagar', 'Udhampur', 'Jharkhand', 'Bokaro', 'Chaibasa', 'Deoghar', 'Dhanbad', 'Dumka', 'Giridih', 'Hazaribag', 'Jamshedpur', 'Jharia', 'Rajmahal', 'Ranchi', 'Saraikela', 'Karnataka', 'Badami', 'Ballari', 'Bengaluru', 'Belagavi', 'Bhadravati', 'Bidar', 'Chikkamagaluru', 'Chitradurga', 'Davangere', 'Halebid', 'Hassan', 'Hubballi-Dharwad', 'Kalaburagi', 'Kolar', 'Madikeri', 'Mandya', 'Mangaluru', 'Mysuru', 'Raichur', 'Shivamogga', 'Shravanabelagola', 'Shrirangapattana', 'Tumakuru', 'Vijayapura', 'Kerala', 'Alappuzha', 'Vatakara', 'Idukki', 'Kannur', 'Kochi', 'Kollam', 'Kottayam', 'Kozhikode', 'Mattancheri', 'Palakkad', 'Thalassery', 'Thiruvananthapuram', 'Thrissur', 'Ladakh', '(union', 'territory)', 'Kargil', 'Leh', 'Madhya', 'Pradesh', 'Balaghat', 'Barwani', 'Betul', 'Bharhut', 'Bhind', 'Bhojpur', 'Bhopal', 'Burhanpur', 'Chhatarpur', 'Chhindwara', 'Damoh', 'Datia', 'Dewas', 'Dhar', 'Dr.', 'Ambedkar', 'Nagar', '(Mhow)', 'Guna', 'Gwalior', 'Hoshangabad', 'Indore', 'Itarsi', 'Jabalpur', 'Jhabua', 'Khajuraho', 'Khandwa', 'Khargone', 'Maheshwar', 'Mandla', 'Mandsaur', 'Morena', 'Murwara', 'Narsimhapur', 'Narsinghgarh', 'Narwar', 'Neemuch', 'Nowgong', 'Orchha', 'Panna', 'Raisen', 'Rajgarh', 'Ratlam', 'Rewa', 'Sagar', 'Sarangpur', 'Satna', 'Sehore', 'Seoni', 'Shahdol', 'Shajapur', 'Sheopur', 'Shivpuri', 'Ujjain', 'Vidisha', 'Maharashtra', 'Ahmadnagar', 'Akola', 'Amravati', 'Aurangabad', 'Bhandara', 'Bhusawal', 'Bid', 'Buldhana', 'Chandrapur', 'Daulatabad', 'Dhule', 'Jalgaon', 'Kalyan', 'Karli', 'Kolhapur', 'Mahabaleshwar', 'Malegaon', 'Matheran', 'Mumbai', 'Nagpur', 'Nanded', 'Nashik', 'Osmanabad', 'Pandharpur', 'Parbhani', 'Pune', 'Ratnagiri', 'Sangli', 'Satara', 'Sevagram', 'Solapur', 'Thane', 'Ulhasnagar', 'Vasai-Virar', 'Wardha', 'Yavatmal', 'Manipur', 'Imphal', 'Meghalaya', 'Cherrapunji', 'Shillong', 'Mizoram', 'Aizawl', 'Lunglei', 'Nagaland', 'Kohima', 'Mon', 'Phek', 'Wokha', 'Zunheboto', 'Odisha', 'Balangir', 'Baleshwar', 'Baripada', 'Bhubaneshwar', 'Brahmapur', 'Cuttack', 'Dhenkanal', 'Kendujhar', 'Konark', 'Koraput', 'Paradip', 'Phulabani', 'Puri', 'Sambalpur', 'Udayagiri', 'Puducherry', '(union', 'territory)', 'Karaikal', 'Mahe', 'Puducherry', 'Yanam', 'Punjab', 'Amritsar', 'Batala', 'Chandigarh', 'Faridkot', 'Firozpur', 'Gurdaspur', 'Hoshiarpur', 'Jalandhar', 'Kapurthala', 'Ludhiana', 'Nabha', 'Patiala', 'Rupnagar', 'Sangrur', 'Rajasthan', 'Abu', 'Ajmer', 'Alwar', 'Amer', 'Barmer', 'Beawar', 'Bharatpur', 'Bhilwara', 'Bikaner', 'Bundi', 'Chittaurgarh', 'Churu', 'Dhaulpur', 'Dungarpur', 'Ganganagar', 'Hanumangarh', 'Jaipur', 'Jaisalmer', 'Jalor', 'Jhalawar', 'Jhunjhunu', 'Jodhpur', 'Kishangarh', 'Kota', 'Merta', 'Nagaur', 'Nathdwara', 'Pali', 'Phalodi', 'Pushkar', 'Sawai', 'Madhopur', 'Shahpura', 'Sikar', 'Sirohi', 'Tonk', 'Udaipur', 'Sikkim', 'Gangtok', 'Gyalshing', 'Lachung', 'Mangan', 'Tamil', 'Nadu', 'Arcot', 'Chengalpattu', 'Chennai', 'Chidambaram', 'Coimbatore', 'Cuddalore', 'Dharmapuri', 'Dindigul', 'Erode', 'Kanchipuram', 'Kanniyakumari', 'Kodaikanal', 'Kumbakonam', 'Madurai', 'Mamallapuram', 'Nagappattinam', 'Nagercoil', 'Palayamkottai', 'Pudukkottai', 'Rajapalayam', 'Ramanathapuram', 'Salem', 'Thanjavur', 'Tiruchchirappalli', 'Tirunelveli', 'Tiruppur', 'Thoothukudi', 'Udhagamandalam', 'Vellore', 'Telangana', 'Hyderabad', 'Karimnagar', 'Khammam', 'Mahbubnagar', 'Nizamabad', 'Sangareddi', 'Warangal', 'Tripura', 'Agartala', 'Uttar', 'Pradesh', 'Agra', 'Aligarh', 'Amroha', 'Ayodhya', 'Azamgarh', 'Bahraich', 'Ballia', 'Banda', 'Bara', 'Banki', 'Bareilly', 'Basti', 'Bijnor', 'Bithur', 'Budaun', 'Bulandshahr', 'Deoria', 'Etah', 'Etawah', 'Faizabad', 'Farrukhabad-cum-Fatehgarh', 'Fatehpur', 'Fatehpur', 'Sikri', 'Ghaziabad', 'Ghazipur', 'Gonda', 'Gorakhpur', 'Hamirpur', 'Hardoi', 'Hathras', 'Jalaun', 'Jaunpur', 'Jhansi', 'Kannauj', 'Kanpur', 'Lakhimpur', 'Lalitpur', 'Lucknow', 'Mainpuri', 'Mathura', 'Meerut', 'Mirzapur-Vindhyachal', 'Moradabad', 'Muzaffarnagar', 'Partapgarh', 'Pilibhit', 'Prayagraj', 'Rae', 'Bareli', 'Rampur', 'Saharanpur', 'Sambhal', 'Shahjahanpur', 'Sitapur', 'Sultanpur', 'Tehri', 'Varanasi', 'Uttarakhand', 'Almora', 'Dehra', 'Dun', 'Haridwar', 'Mussoorie', 'Nainital', 'Pithoragarh', 'West', 'Bengal', 'Alipore', 'Alipur', 'Duar', 'Asansol', 'Baharampur', 'Bally', 'Balurghat', 'Bankura', 'Baranagar', 'Barasat', 'Barrackpore', 'Basirhat', 'Bhatpara', 'Bishnupur', 'Budge', 'Budge', 'Burdwan', 'Chandernagore', 'Darjeeling', 'Diamond', 'Harbour', 'Dum', 'Dum', 'Durgapur', 'Halisahar', 'Haora', 'Hugli', 'Ingraj', 'Bazar', 'Jalpaiguri', 'Kalimpong', 'Kamarhati', 'Kanchrapara', 'Kharagpur', 'Cooch', 'Behar', 'Kolkata', 'Krishnanagar', 'Malda', 'Midnapore', 'Murshidabad', 'Nabadwip', 'Palashi', 'Panihati', 'Purulia', 'Raiganj', 'Santipur', 'Shantiniketan', 'Shrirampur', 'Siliguri', 'Siuri', 'Tamluk', 'Titagarh']
+  
+  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  autocomplete(document.getElementById("myInput"), countries);
+  </script>
+  
+{% endblock %}

@@ -1,0 +1,584 @@
+{% extends 'jobPortal/base.html' %} 
+{% block main-content %}
+{% block content %}
+{% load static %} 
+{% load tag_exists %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style>
+      .gm-control-active > img {
+        box-sizing: content-box;
+        display: none;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .gm-control-active > img:nth-child(1) {
+        display: block;
+      }
+      .gm-control-active:hover > img:nth-child(1) {
+        display: none;
+      }
+      .gm-control-active:active > img:nth-child(1) {
+        display: none;
+      }
+      .gm-control-active:disabled > img:nth-child(1) {
+        display: none;
+      }
+      .gm-control-active:hover > img:nth-child(2) {
+        display: block;
+      }
+      .gm-control-active:active > img:nth-child(3) {
+        display: block;
+      }
+      .gm-control-active:disabled > img:nth-child(4) {
+        display: block;
+      }
+    </style>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400&amp;lang=en"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Google+Sans+Text:400&amp;text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&amp;lang=en"
+    />
+    <style>
+      .gm-ui-hover-effect {
+        opacity: 0.6;
+      }
+      .gm-ui-hover-effect:hover {
+        opacity: 1;
+      }
+      .gm-ui-hover-effect > span {
+        background-color: #000;
+      }
+      @media (forced-colors: active), (prefers-contrast: more) {
+        .gm-ui-hover-effect > span {
+          background-color: ButtonText;
+        }
+      }
+    </style>
+    <style>
+      .gm-style .gm-style-cc a,
+      .gm-style .gm-style-cc button,
+      .gm-style .gm-style-cc span,
+      .gm-style .gm-style-mtc div {
+        font-size: 10px;
+        box-sizing: border-box;
+      }
+      .gm-style .gm-style-cc a,
+      .gm-style .gm-style-cc button,
+      .gm-style .gm-style-cc span {
+        outline-offset: 3px;
+      }
+    </style>
+    <style>
+      @media print {
+        .gm-style .gmnoprint,
+        .gmnoprint {
+          display: none;
+        }
+      }
+      @media screen {
+        .gm-style .gmnoscreen,
+        .gmnoscreen {
+          display: none;
+        }
+      }
+    </style>
+    <style>
+      .dismissButton {
+        background-color: #fff;
+        border: 1px solid #dadce0;
+        color: #1a73e8;
+        border-radius: 4px;
+        font-family: Roboto, sans-serif;
+        font-size: 14px;
+        height: 36px;
+        cursor: pointer;
+        padding: 0 24px;
+      }
+      .dismissButton:hover {
+        background-color: rgba(66, 133, 244, 0.04);
+        border: 1px solid #d2e3fc;
+      }
+      .dismissButton:focus {
+        background-color: rgba(66, 133, 244, 0.12);
+        border: 1px solid #d2e3fc;
+        outline: 0;
+      }
+      .dismissButton:focus:not(:focus-visible) {
+        background-color: #fff;
+        border: 1px solid #dadce0;
+        outline: none;
+      }
+      .dismissButton:focus-visible {
+        background-color: rgba(66, 133, 244, 0.12);
+        border: 1px solid #d2e3fc;
+        outline: 0;
+      }
+      .dismissButton:hover:focus {
+        background-color: rgba(66, 133, 244, 0.16);
+        border: 1px solid #d2e2fd;
+      }
+      .dismissButton:hover:focus:not(:focus-visible) {
+        background-color: rgba(66, 133, 244, 0.04);
+        border: 1px solid #d2e3fc;
+      }
+      .dismissButton:hover:focus-visible {
+        background-color: rgba(66, 133, 244, 0.16);
+        border: 1px solid #d2e2fd;
+      }
+      .dismissButton:active {
+        background-color: rgba(66, 133, 244, 0.16);
+        border: 1px solid #d2e2fd;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+          0 1px 3px 1px rgba(60, 64, 67, 0.15);
+      }
+      .dismissButton:disabled {
+        background-color: #fff;
+        border: 1px solid #f1f3f4;
+        color: #3c4043;
+      }
+    </style>
+    <style>
+      .gm-style-moc {
+        background-color: rgba(0, 0, 0, 0.45);
+        pointer-events: none;
+        text-align: center;
+        transition: opacity ease-in-out;
+      }
+      .gm-style-mot {
+        color: white;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 22px;
+        margin: 0;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+      }
+    </style>
+    <style>
+      .gm-style img {
+        max-width: none;
+      }
+      .gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <title>gravitonweb.com</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Job Pro" />
+    <meta name="keywords" content="Job Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--srart theme style -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/fonts.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/owl.carousel.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/owl.theme.default.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/flaticon.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/magnific-popup.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/style_II.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/jobPortal/css/responsive2.css"
+    />
+    <!-- favicon links -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="images/header/favicon.ico"
+    />
+    <script
+      async=""
+      src="https://www.google-analytics.com/analytics.js"
+    ></script>
+    <script src="/google_analytics_auto.js"></script>
+    <style></style>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/common.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/util.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/map.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/marker.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/onion.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="UTF-8"
+      src="https://maps.googleapis.com/maps-api-v3/api/js/48/9/controls.js"
+    ></script>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin="true"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swa"
+    />
+  </head>
+  <body>
+      <!-- jp Tittle Wrapper Start -->
+      <div class="jp_tittle_main_wrapper">
+        <div class="jp_tittle_img_overlay"></div>
+        <div class="container">
+          <div class="row">
+            {% for x in job_list %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="col-lg-9 col-md-9 col-sm-12">
+                <div class="jp_tittle_heading_wrapper">
+                  <div class="jp_tittle_heading">
+                    <h2>{{x.title}} ({{x.location}})</h2>
+                  </div>
+                  <div class="jp_tittle_breadcrumb_main_wrapper">
+                    <div class="jp_tittle_breadcrumb_wrapper">
+                      <ul>
+                        <li>
+                          <a href="/en/"> Home</a>
+                          <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                          <a href=""> Jobs</a> <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>{{x.company_name}}  ({{x.location}})</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- jp Contact form Wrapper Start -->
+      <div class="jp_contact_form_main_wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7  col-lg-offset-3  col-md-offset-3 col-sm-12 col-xs-12">
+              <div class="jp_contact_form_heading_wrapper">
+                <h2>Post Jobs</h2>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+              {% if update is not None%}
+              <p style="color:green"> successfully stored</p>
+              {% endif %}
+              <form  method="POST" action="{% url 'jobs:updateJob' %}">
+                {% csrf_token %}
+                {% for job in job_list %}
+                 <input type="number" name="primary"  value="{{job.pk}}" hidden>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label class="label label-default"> Job Title</label>
+                <div class="jp_contact_inputs_wrapper">
+                
+               
+                <input
+                        type="text"
+                        name="JobTitle"
+                        placeholder="Title"
+                        required=""
+                        value="{{job.title}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs2_wrapper"
+                    >
+                     <input
+                        type="text"
+                        name="typeJob"
+                        placeholder="Email *"
+                        required=""
+                        value="{{job.type}}" hidden
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> Last Date</label><input
+                        type="text"
+                        name="last_date"
+                        placeholder="Subject"
+                        required=""
+                        value="{{job.last_date}}" disabled
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> Company Name</label><input
+                        type="text"
+                        name="company_name"
+                        placeholder="Subject"
+                        required=""
+                        value="{{job.company_name}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> website</label><input
+                        type="text"
+                        name="website"
+                        placeholder="website"
+                        required=""
+                        value="{{job.website}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> Created At</label><input
+                        type="text"
+                        name="created_at"
+                        placeholder="created_at"
+                        required=""
+                        value="{{job.created_at}}" disabled
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                     <input
+                        type="text"
+                        name="filled"
+                        placeholder="filled"
+                        required=""
+                        value="{{job.filled}}" hidden
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> salary</label><input
+                        type="text"
+                        name="salary"
+                        placeholder="salary"
+                        required=""
+                        value="{{job.salary}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                      <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required=""
+                        value="{{job.tags}}" hidden
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> Opening</label><input
+                        type="text"
+                        name="opening"
+                        placeholder="opening"
+                        required=""
+                        value="{{job.opening}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper"
+                    >
+                    <label class="label label-default"> Phone Number</label><input
+                        type="text"
+                        name="phoneNumber"
+                        placeholder="phoneNumber"
+                        required=""
+                        value="{{job.phoneNumber}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div
+                      class="jp_contact_inputs_wrapper jp_contact_inputs4_wrapper"
+                    >
+                    <label class="label label-default" style="margin-top: 10px;"> Description</label><textarea
+                        rows="6"
+                        name="description"
+                        placeholder="Type Your Message *"
+                        required=""
+                        value="{{job.description}}"
+                      >
+                    {{job.description}}
+
+
+
+</textarea>
+
+                    </div>
+                
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_contact_form_btn_wrapper">
+                      <ul>
+                        <li>
+                         <button
+                              type="submit"
+                              style="
+                                width: 100%;
+                                border-radius: 10px;
+                                font-size: 30px;
+                                border: 1px solid #248ae4;
+                                padding:10px;
+                                color:white;
+                                background-image: linear-gradient(
+                                  95deg,
+                                  #64afef,
+                                  #248ae4 50%,
+                                  #244ee4 100%
+                                );
+                              "
+                            >
+                              <i class="fa fa-plus-circle"></i> Update
+                            </button>
+                          </form>
+                        </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                {% endfor %}
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <!-- jp Contact form Wrapper End -->
+      <!--main js file start-->
+      <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"
+      ></script>
+      <script src="/static/jobPortal/js/bootstrap.js"></script>
+      <script src="/static/jobPortal/js/jquery.menu-aim.js"></script>
+      <script src="/static/jobPortal/js/jquery.countTo.js"></script>
+      <script src="/static/jobPortal/js/jquery.inview.min.js"></script>
+      <script src="/static/jobPortal/js/owl.carousel.js"></script>
+      <script src="/static/jobPortal/js/modernizr.js"></script>
+      <script src="/static/jobPortal/js/custom.js"></script>
+      <!--main js file end-->
+      <script>
+        function initMap() {
+          var uluru = { lat: -36.742775, lng: 174.731559 };
+          var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            scrollwheel: false,
+            center: uluru,
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+          });
+        }
+      </script>
+      <script
+        async=""
+        defer=""
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBctr8WYTfFDi_oGbPEolSDzn4VZaAKVK0&amp;callback=initMap"
+      ></script>
+    </body>
+  </body>
+</html>
+{% endblock %}
+{% endblock main-content %} 

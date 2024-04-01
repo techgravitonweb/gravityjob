@@ -1,0 +1,391 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>{% block title %}Home{% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/top.css' %}" rel="stylesheet">
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+    <link href="{% static 'css/chat.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    {% include 'includes/navbar.html' %}
+    <!-- HOME PAGE STARTS -->
+    <div class="container">
+        {% block content %}
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-7">
+                <div class="tile is-parent">
+                    <article class="tile is-child">
+                        <div class="content">
+                            <figure class="image is-4by3">
+                                <img src="{% static 'images/home.svg'%}">
+                            </figure>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-vertical is-5">
+                <article class="tile is-child mx-3">
+                    <div class="content mt-6"><br><br><br><br>
+                        <h1 class=" mx-5 mt-4 has-text-bold">About Us</h1>
+                        <div class="content mx-5">
+                            <p class="has-text-justified">Procareers is one of the fastest growing HR Firms with focus on Premium Placement Service
+
+                              Our Endeavour is to provide simple, strong, fast, dynamic and responsive experience to our
+                              
+                              valued customers in their quest for searching the best man-power available.
+                              
+                              Our well trained Staff combines speed and experience to find the best possible talent, in the
+                              
+                              most demanding skill areas too</p>
+                            <a href="#about">
+
+                                <button class="button is-light "
+                                    style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i
+                                            class="fas fa-arrow-circle-down"></i> Get
+                                        Started</strong></button>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        {% include 'includes/messages.html' %}
+    </div>
+    <!-- HOME PAGE ENDS -->
+    <br><br><br>
+    <!-- SECTION STARTS -->
+    <section class="hero is-small is-bold" style="background-color:#F5F5F5" id="about">
+        <div class="hero-body">
+            <div class="container">
+                <div class="tile is-ancestor">
+                    <div class="tile is-6 is-vertical is-parent">
+                        <article class="tile is-child box">
+                            <div class="content">
+                                <figure class="image is-4by3">
+                                    <img src="{% static 'images/business.svg'%}">
+                                </figure>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <div class="tile is-child ">
+                            <h1 class="title mt-6">OBJECTIVES</h1>
+                            <ul>
+                                <li><b>1.</b> Developing the students to meet the Industries recruitment process</li>
+                                <br>
+                                <li><b>2.</b> To motivate students to develop Technical knowledge and soft skills in
+                                    terms of career planning, goal setting</li><br>
+                                <li><b>3.</b>Development for everyone, everywhere & in every field.</li><br>
+                                <li><b>4.</b>To provide job related knowledge to the Candidates.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION ENDS -->
+    <!-- UPCOMING EVENTS STARTS -->
+    <div class="container">
+        {% if user.is_authenticated %}
+        {% include 'includes/Events_login.html' %}
+        {% else %}
+        {% include 'includes/Events_not_login.html'%}
+        {% endif %}
+    </div>
+    <!-- UPCOMING EVENT ENDS -->
+    <br>
+    <!-- COMPANIES STARTS -->
+
+    <!-- COMPANIES ENDS -->
+    <div class="container" id="stats">
+      <br><br>
+      {% endblock %}
+      <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+    
+      <div class="chat-popup" id="myForm">
+          <form class="form-container">
+              <iframe style="border: none;border-radius: 5px;" width="280" height="390" allow="microphone;"
+                  src="https://console.dialogflow.com/api-client/demo/embedded/7dec0910-2f92-4902-849c-5c6f90718781">
+              </iframe>
+
+              <button type="button" class="button cancel is-fullwidth"
+                  style="background-color: rgba(105, 0, 255, 0.11);color:#6900FF;"
+                  onclick="closeForm()"><strong>Close</strong></button>
+          </form>
+       </div>
+              <!-- More card -->
+                
+              
+              <!-- End -->         
+        <!-- Footor -->
+              
+    <div class="footer" style="margin-left: 0px;">
+        <div class="contain">
+            <div class="col">
+                <b>Address:</b>
+                <h2>#12 Second Floor, 3rd Cross, Patel Narayana Reddy Layout,KML Bangalore, Karnataka -560095</h2>
+            </div>
+           
+            <div class="col">
+                <b>All Courses</b>>
+                <ul>
+                    <li><a href="/TPO_app/">Full Stack Developer</a> </li>
+                    <li><a href="/TPO_app/">Front End Developer</a> </li>
+                    <li><a href="/TPO_app/">Back End Developer</a> </li>
+                    <li><a href="/TPO_app/">React Js Course</a></li>
+                  
+                </ul>
+
+
+
+            </div>
+            <div class="col">
+               <b>Heloful Links</b>
+                <ul>
+                    <li><a href="#">Copyright policy</a></li>
+                    <li><a ref="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                  
+                   
+                </ul>
+            </div>
+            <div class="col">
+                <b>For Support</b>
+                
+                <ul>
+                    <li>Contact-</li>9606910681 
+                    <li>Email-</li>hrd@procareers.in  
+
+
+                    
+                </ul>
+            </div>
+            <div class="col social">
+                <b>Social Links</b>
+                <ul>
+                    <!-- Facebook -->
+       <a style="color: #3b5998;" href="https://www.facebook.com/profile.php?id=100085441720438" role="button"
+      ><i class="fab fa-facebook-f fa-lg"></i
+></a>
+
+<!-- Linkedin -->
+<a style="color: #55acee;" href="https://www.linkedin.com/in/procareers-infotech-solutions-54567124b/" role="button"
+  ><i class="fab fa-linkedin fa-lg"></i
+></a>
+
+
+<!-- Instagram -->
+<a style="color: #ac2bac;" href="#!" role="button"
+  ><i class="fab fa-instagram fa-lg"></i
+></a>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <footer class="foot">
+               
+            </footer>
+        </div>
+    </div>
+
+        <!-- Footor end -->
+        <style>
+ .col{
+    margin-left: 20;
+    margin-right: 20;
+ }
+ .footer {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    height: auto;
+    background-color:whitesmoke;
+  }
+  .footer .col {
+    width: 190px;
+    height: 80px;
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0px 20px 20px 20px;
+  }
+  .footer .col h1 {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 17px;
+    padding: 20px 0px 5px 0px;
+    color: orange;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.250em;
+  }
+  .footer .col ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer .col ul li {
+    color: #999999;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+    cursor: pointer;
+    transition: .2s;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+  }
+  .social ul li {
+    display: inline-block;
+    padding-right: 5px;
+  }
+  
+  .footer .col ul li:hover {
+    color: #ffffff;
+    transition: .1s;
+    -webkit-transition: .1s;
+    -moz-transition: .1s;
+  }
+  .clearfix {
+    clear: both;
+  }
+
+  .foot {
+    border-top: 1px solid #e2e2e2;
+  }
+
+
+
+
+
+/*======== I M P O R T A N T   P A R T ============ */
+
+
+  @media only screen and (min-width: 1280px) {
+    .contain {
+      width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  @media only screen and (max-width: 1139px) {
+    .contain .social {
+      width: 1000px;
+      display: block;
+    }
+    .social h1 {
+      margin: 0px;
+    }
+  }
+  @media only screen and (max-width: 950px) {
+    .head {
+        height: 30%;
+    }
+    .page {
+        height: 40%;
+    }
+    .footer .col {
+      width: 33%;
+    }
+    .footer .col h1 {
+      font-size: 14px;
+    }
+    .footer .col ul li {
+      font-size: 13px;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .head {
+        height: 30%;
+    }
+.rool {
+  font-size: 60px;
+}
+      .footer .col {
+        width: 50%;
+      }
+      .footer .col h1 {
+        font-size: 14px;
+      }
+      .footer .col ul li {
+        font-size: 13px;
+      }
+  }
+  @media only screen and (max-width: 340px) {
+    .footer .col {
+      width: 100%;
+    }
+  }
+
+  @keyframes drop {
+    0% {
+      opacity: 0;
+      transform: translateY(-80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
+        </style>
+        
+        
+
+        <!-- Footor end -->
+        
+        
+    </div>
+    <!-- JS FILES -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/tabs.js' %}"></script>
+    <script>
+        // ===== Scroll to Top ==== 
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                $('#return-to-top').fadeIn(200);    // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+            }
+        });
+        $('#return-to-top').click(function () {      // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0                       // Scroll to top of body
+            }, 500);
+        });
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+        $("#button").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#about").offset().top
+            }, 1000);
+        });
+        $("#button1").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#events").offset().top
+            }, 1000);
+        });
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="{% static 'js/counter.js' %}"></script>
+</body>
+
+</html>

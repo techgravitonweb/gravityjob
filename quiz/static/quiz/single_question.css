@@ -1,0 +1,182 @@
+/* background for whole page */
+body {
+  background-color: #181818;
+}
+
+/* Centers question and answers and adds outline */
+.full_container {
+    text-align: center;
+    margin-left: 250px;
+    margin-right: 250px;
+    background-color: #232323;
+    border-radius: 60px;
+    border: 10px solid #fff;
+    margin-top: 40px;
+    padding-bottom: 40px;
+
+}
+
+/* Formats question title */
+.question_title {
+    font-size: 70px;
+    color: white;
+    font-family: Roboto;
+    background-color: #3b3b3b;
+    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0px;
+    margin-bottom: 35px;
+}
+
+/* Makes radio buttons invisible */
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+/* Formats label as button */
+.radio-toolbar label {
+    display: inline-block;
+    background-color: #232323;
+    width: 700px;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    font-family: Roboto;
+    font-size: 50px;
+    color: white;
+    border: 4px solid #fff;
+    border-radius: 50px;
+
+}
+
+/* Sets button appearance when chosen */
+.radio-toolbar input[type="radio"]:checked + label {
+    background-color:#61bf8a;
+    border: 4px solid;
+    border-color: #2d9058;
+}
+
+/* Sets button appearance when focused on */
+.radio-toolbar input[type="radio"]:focus + label {
+    border-color: #2d9058;
+}
+
+/* Sets button appearance when hovered over */
+.radio-toolbar label:hover {
+  background-color: #5e5d5d;
+  cursor: pointer;
+}
+
+/* Styles submit button */
+.submit_button {
+    margin-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #61bf8a;
+    font-size: 50px;
+    color: white;
+    border: 0px solid;
+    border-color: white;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+/* Styles submit button when hovered over */
+.submit_button:hover {
+    background-color: #2d9058;
+    cursor: pointer;
+}
+
+/* Styles submit button when clicked */
+.submit_button:focus {
+    background-color: #f9f9f9;
+    color: #212121;
+
+}
+
+/* Styles error message */
+strong {
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+
+
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    z-index: -10;
+}
+.waveWrapperInner {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+    background-image: linear-gradient(to top, #3f3f3f 20%, #202020 80%);
+}
+.bgTop {
+    z-index: 15;
+    opacity: 0.5;
+}
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.75;
+}
+.bgBottom {
+    z-index: 5;
+}
+.wave {
+    position: fixed;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+.waveTop {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+   -webkit-animation: move-wave 3s;
+   -webkit-animation-delay: 1s;
+   animation-delay: 1s;
+}
+.waveMiddle {
+    background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}

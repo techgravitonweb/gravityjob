@@ -1,0 +1,179 @@
+{% extends 'jobPortal/base.html' %}
+{% block main-content %}
+{% load static %}
+
+    <!-- Header W rapper End -->
+    <!-- jp listing sidebar Wrapper Start -->
+    <div class="jp_listing_sidebar_main_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="jp_rightside_job_categories_wrapper jp_job_location_wrapper">
+                                <div class="jp_rightside_job_categories_heading" style="background-image: linear-gradient(95deg,#2284da,#248ae4 50%,#466bee 100%);">
+                                    <h4>Job By Company</h4>
+                                </div>
+                                <div class="jp_rightside_job_categories_content">
+                                    <div class="handyman_sec1_wrapper">
+                                        <div class="content">
+                                            <div class="box">
+                                                {% for x in company %}
+                                                <a href="{% url 'jobs:shortValueCompany' x.pk %}"> <p>
+                                                  {{x.company_name}} <span></span>
+                                                   </p>
+                                                </a> 
+                                                   {% endfor %}
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><i class="fa fa-plus-circle"></i> <a href="{% url 'jobs:jobs' %}">SHOW MORE</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="jp_rightside_job_categories_wrapper jp_job_location_wrapper">
+                                <div class="jp_rightside_job_categories_heading" style="background-image: linear-gradient(95deg,#2284da,#248ae4 50%,#466bee 100%);">
+                                    <h4>Jobs by Location</h4>
+                                </div>
+                                <div class="jp_rightside_job_categories_content">
+                                    <div class="handyman_sec1_wrapper">
+                                        <div class="content">
+                                            <div class="box">
+                                                {% for x in location %}
+                                                <a href="{% url 'jobs:shortValueLocation' x.pk %}"> <p>
+                                                  {{x.location}} <span></span>
+                                                   </p>
+                                                </a> 
+                                                   {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+                            <div class="jp_add_resume_wrapper">
+                                <div class="jp_add_resume_img_overlay"></div>
+                                <div class="jp_add_resume_cont">
+                                  <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                                    <h4>Career Advice</h4>
+                                    <h5 style="color:white; margin-top:30px;">+91 838 004 4677</h5>
+                                    <p style="color:white;">hr@gravitonweb.com.</p>
+                                    <ul>
+                                        <!-- <button id="myBtn"> <li><a href="#email_section"><i class="fa fa-plus-circle"></i> &nbsp;Enter Email</a></li></button> -->
+                                        <li><a href="{% url 'jobs:career' %}"><i class="fa fa-plus-circle"></i> &nbsp;View More</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 jp_cl_right_bar">
+                    <div class="row">
+                        {% for x in applicant %}
+                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="jp_recent_resume_box_wrapper">
+								<div class="jp_recent_resume_img_wrapper">
+                                    {% ifequal x.profileImage None %}
+                                    <img src="{% static 'img/userimage.jpg' %}" style="width:70px; height:70px;" />                                {% else %}
+                                    {% endifequal %}
+								</div>
+								<div class="jp_recent_resume_cont_wrapper">
+									<h3>{{ x.get_full_name }}</h3>
+                                    {% for tag in x.user.profile.tags.all %}
+                                    <p><i class="fa fa-folder-open-o"></i>                            <a href="">                                         {{ tag.name }}</a></p>
+                                {% endfor %}
+								</div>
+								<div class="jp_recent_resume_btn_wrapper">
+									<ul>
+										<li><a href="{% url 'jobs:candidatesFull' x.pk %}">View Profile</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-sm visible-xs">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="jp_rightside_job_categories_wrapper">
+                                <div class="jp_rightside_job_categories_heading">
+                                    <h4>Jobs by Company</h4>
+                                </div>
+                                <div class="jp_rightside_job_categories_content">
+                                    <div class="handyman_sec1_wrapper">
+                                        <div class="content">
+                                            <div class="box">
+                                                {% for x in company %}
+                                                <a href="{% url 'jobs:shortValueCompany' x.pk %}"> <p>
+                                                  {{x.company_name}} <span></span>
+                                                   </p>
+                                                </a> 
+                                                   {% endfor %}
+                                               
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><i class="fa fa-plus-circle"></i>                            <a href="">                                         SHOW MORE</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="jp_rightside_job_categories_wrapper jp_job_location_wrapper">
+                                <div class="jp_rightside_job_categories_heading" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                                    <h4>Jobs by Location</h4>
+                                </div>
+                                <div class="jp_rightside_job_categories_content">
+                                    <div class="handyman_sec1_wrapper">
+                                        <div class="content">
+                                            <div class="box">
+                                                {% for x in location %}
+                                                <a href="{% url 'jobs:shortValueLocation' x.pk %}"> <p>
+                                                  {{x.location}} <span>(-)</span>
+                                                   </p>
+                                                </a> 
+                                                   {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="jp_add_resume_wrapper jp_job_location_wrapper">
+                                <div class="jp_add_resume_img_overlay"></div>
+                                <div class="jp_add_resume_cont">
+                                    <img src="images/content/resume_logo.png" alt="logo" />
+                                    <h4>Get Best Matched Jobs On your Email. Add Resume NOW!</h4>
+                                    <ul>
+                                        <li>                           <a href="">                                         <i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 visible-sm visible-xs">
+                            <div class="pager_wrapper gc_blog_pagination">
+                                <ul class="pagination">
+                                    <li>                           <a href="">                                         Priv.</a></li>
+                                    <li>                           <a href="">                                         1</a></li>
+                                    <li>                           <a href="">                                         2</a></li>
+                                    <li>                           <a href="">                                         3</a></li>
+                                    <li class="hidden-xs">                           <a href="">                                         4</a></li>
+                                    <li>                           <a href="">                                         Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+  {% endblock main-content %} 

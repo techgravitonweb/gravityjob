@@ -1,0 +1,752 @@
+{% extends 'jobPortal/base.html' %} {% block main-content %}
+{% load static %}
+<style>
+    /*! CSS Used from: https://media.monsterindia.com/trex/public/default/dist/css/career-services.css?ver=301120211110 */
+a{color:#5d4da8;cursor:pointer;text-decoration:none;}
+a:hover{color:#4a2189;}
+i{font-style:normal;}
+label{cursor:pointer;}
+.wrapper{margin:0 auto;max-width:1188px;}
+a{-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
+.wrapper{box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+@media only screen and (max-width:736px){
+.container{max-width:100%!important;padding-left:0!important;padding-right:0!important;}
+}
+select::-ms-expand{display:none;}
+*{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.wrapper{-webkit-transition:all .2s linear;-moz-transition:all .2s linear;transition:all .2s linear;}
+.container{margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;clear:both;}
+.container:after,.container:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+@media (min-width:320px){
+.container{max-width:480px;}
+}
+@media (min-width:480px){
+.container{max-width:480px;}
+}
+@media (min-width:640px){
+.container{max-width:640px;}
+}
+@media (min-width:768px){
+.container{max-width:768px;}
+}
+@media (min-width:990px){
+.container{max-width:990px;}
+}
+@media (min-width:1188px){
+.container{max-width:1188px;}
+}
+.container-fluid{margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;clear:both;}
+.container-fluid:after,.container-fluid:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+.row{clear:both;margin-left:-10px;margin-right:-10px;}
+.row:after,.row:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+.col-md-4,.col-md-5,.col-md-7,.col-md-8,.col-md-12{position:relative;min-height:1px;padding-left:10px;padding-right:10px;width:100%;}
+@media (min-width:768px){
+.col-md-4,.col-md-5,.col-md-7,.col-md-8,.col-md-12{float:left;}
+.col-md-4{width:33.33333%;}
+.col-md-5{width:41.66667%;}
+.col-md-7{width:58.33333%;}
+.col-md-8{width:66.66667%;}
+.col-md-12{width:100%;}
+}
+.btn:disabled,.cs-full-section .btn-link:disabled{cursor:not-allowed;opacity:.5;}
+.cs-card-main{display:flex;flex-wrap:wrap;min-height:100px;width:100%;max-width:1045px;margin:30px auto 0;}
+@media only screen and (max-width:1024px){
+.cs-card-main{margin-top:16px;}
+}
+.cs-card-main .cs-card{margin:32px 16px;width:100%;min-width:calc(33.33% - 22px);max-width:calc(33.33% - 22px);padding:20px;border:1px solid #cdcdcd;border-radius:10px 10px 10px 10px;-webkit-border-radius:10px 10px 10px 10px;-moz-border-radius:10px 10px 10px 10px;}
+@media only screen and (max-width:1024px){
+.cs-card-main .cs-card{margin:16px;}
+}
+@media only screen and (max-width:768px){
+.cs-card-main .cs-card{min-width:calc(50% - 16px);max-width:calc(50% - 16px);}
+}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card{min-width:calc(50% - 8px);max-width:calc(50% - 8px);margin:8px 8px 0;padding:0;border:none;border-radius:8px 8px 8px 8px;-webkit-border-radius:8px 8px 8px 8px;-moz-border-radius:8px 8px 8px 8px;}
+}
+.cs-card-main .cs-card .cs-card-left{width:100%;height:180px;display:flex;align-items:center;justify-content:center;border-radius:10px 10px 10px 10px;-webkit-border-radius:10px 10px 10px 10px;-moz-border-radius:10px 10px 10px 10px;position:relative;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-left{border-radius:8px 8px 8px 8px;-webkit-border-radius:8px 8px 8px 8px;-moz-border-radius:8px 8px 8px 8px;height:160px;padding:16px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card .cs-card-left{height:130px;}
+}
+.cs-card-main .cs-card .cs-card-left img{width:100%;max-width:185px;height:auto;margin:0 auto;display:block;}
+.cs-card-main .cs-card .cs-card-right{width:100%;padding:24px 0;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right{padding-top:11px;}
+}
+.cs-card-main .cs-card .cs-card-right .content-box{width:100%;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .content-box{text-align:center;}
+}
+.cs-card-main .cs-card .cs-card-right .content-box .star-with-text{display:none;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .content-box .star-with-text{display:inline-block;margin:0;font-size:14px;}
+.cs-card-main .cs-card .cs-card-right .content-box .star-with-text:before{font-size:1.143em;line-height:26px;}
+}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .content-box .heading-h2{font-size:1.143em;line-height:21px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card .cs-card-right .content-box .heading-h2{font-size:14px;}
+}
+.cs-card-main .cs-card .cs-card-right .content-box .sub-heading{color:#8c8c8c;font-size:1.143em;line-height:21px;margin-bottom:20px;margin-top:2px;min-height:44px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .content-box .sub-heading{display:none;}
+}
+.cs-card-main .cs-card .cs-card-right .card-button-box{width:100%;max-width:309px;margin-top:20px;display:flex;justify-content:space-between;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-DT{display:none;}
+}
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-MOB{display:none;}
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-MOB span{font-size:1.143em;line-height:22px;color:#8c8c8c;padding:0 3px;}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-MOB span{font-size:14px;}
+}
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-MOB span.csf-semibold{font-family:SourceSansPro-Regular;font-weight:400;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .card-button-box.box-MOB{display:flex;justify-content:center;flex-wrap:wrap;margin-top:2px;}
+}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card .cs-card-right .card-button-box{margin-right:8px;}
+}
+.cs-card-main .cs-card .cs-card-right .card-button-box .btn,.cs-full-section .cs-card-main .cs-card .cs-card-right .card-button-box .btn-link{position:relative;min-width:100px;}
+.cs-card-main .cs-card:nth-child(3n+1){margin-left:0;}
+.cs-card-main .cs-card:nth-child(3n){margin-right:0;}
+@media only screen and (max-width:768px){
+.cs-card-main .cs-card:nth-child(3n){margin-right:16px;margin-left:0;}
+}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card:nth-child(3n){margin-right:8px;}
+}
+@media only screen and (max-width:768px){
+.cs-card-main .cs-card:nth-child(2n){margin-right:0;margin-left:16px;}
+}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card:nth-child(2n){margin-left:8px;}
+}
+@media only screen and (max-width:768px){
+.cs-card-main .cs-card:nth-child(odd){margin-left:0;}
+}
+.cs-card-main .cs-card.xpress-resume .cs-card-left{background:#e4f0ff;}
+.cs-card-main .cs-card.xpress-resume .cs-card-left img{max-width:150px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.xpress-resume .cs-card-left img{max-width:122px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.xpress-resume .cs-card-left img{max-width:95px;}
+}
+.cs-card-main .cs-card.right-resume .cs-card-left{background:#eff8ec;}
+.cs-card-main .cs-card.right-resume .cs-card-left img{max-width:93px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.right-resume .cs-card-left img{max-width:75px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.right-resume .cs-card-left img{max-width:65px;}
+}
+.cs-card-main .cs-card.career-booster .cs-card-left{background:#ffedf5;}
+.cs-card-main .cs-card.career-booster .cs-card-left img{max-width:176px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.career-booster .cs-card-left img{max-width:135px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.career-booster .cs-card-left img{max-width:95px;}
+}
+.cs-card-main .cs-card.resume-highlighter .cs-card-left{background:#fff8e9;}
+.cs-card-main .cs-card.resume-highlighter .cs-card-left img{max-width:152px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.resume-highlighter .cs-card-left img{max-width:117px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.resume-highlighter .cs-card-left img{max-width:95px;}
+}
+.cs-card-main .cs-card.linkedin-makeover .cs-card-left{background:#d7fdfe;}
+.cs-card-main .cs-card.linkedin-makeover .cs-card-left img{max-width:134px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.linkedin-makeover .cs-card-left img{max-width:111px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.linkedin-makeover .cs-card-left img{max-width:85px;}
+}
+.cs-card-main .cs-card.mock-interview .cs-card-left{background:#e7e0fc;}
+.cs-card-main .cs-card.mock-interview .cs-card-left img{max-width:183px;}
+@media only screen and (max-width:576px){
+.cs-card-main .cs-card.mock-interview .cs-card-left img{max-width:158px;}
+}
+@media only screen and (max-width:360px){
+.cs-card-main .cs-card.mock-interview .cs-card-left img{max-width:105px;}
+}
+.star-with-text{display:inline-block;position:relative;padding-left:20px;font-size:12px;font-family:SourceSansPro-smbold;margin-left:7px;line-height:28px;}
+.star-with-text:before{position:absolute;left:0;content:"\C802";font-size:1.429em;line-height:24px;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:fonticoncs;}
+@media only screen and (max-width:768px){
+.star-with-text{display:block;margin-left:0;}
+}
+@media only screen and (max-width:640px){
+.star-with-text{display:inline-block;margin-left:7px;}
+}
+.cs-card-tag{display:inline-block;background:#000;color:#fff;width:auto;height:28px;padding:5px 10px;position:absolute;left:-24px;top:-8px;font-size:.857em;line-height:17px;font-family:SourceSansPro-smbold;white-space:nowrap;}
+@media only screen and (max-width:576px){
+.cs-card-tag{left:-4px;display:none;}
+}
+.cs-card-tag i{margin-right:5px;font-size:16px;}
+.cs-card-tag .cornor{position:absolute;width:4px;height:6px;background:transparent;left:0;top:100%;}
+.cs-card-tag .cornor:before{position:absolute;content:"";left:0;top:0;border:4px solid transparent;border-top-color:#000;border-right-width:0;}
+.cs-card-tag:after,.cs-card-tag:before{width:0;height:0;border:14px solid transparent;position:absolute;content:"";right:-7px;top:0;border-right-color:transparent;border-right-width:7px;}
+.cs-card-tag:after{border-top-color:#000;}
+.cs-card-tag:before{border-bottom-color:#000;}
+.cs-card-tag.tag-green{background:#62ba46;}
+.cs-card-tag.tag-green:after{border-top-color:#62ba46;}
+.cs-card-tag.tag-green:before{border-bottom-color:#62ba46;}
+.cs-card-tag.tag-yellow{background:#fcb827;}
+.cs-card-tag.tag-yellow:after{border-top-color:#fcb827;}
+.cs-card-tag.tag-yellow:before{border-bottom-color:#fcb827;}
+.buttonWrapper{background-color:#f98200;display:flex;justify-content:center;align-items:center;width:285px;height:80px;border:1px solid #f98200;box-shadow:0 2px 5px #2f7cf640;border-radius:10px;cursor:pointer;}
+@media only screen and (max-width:1024px){
+.buttonWrapper{width:190px;height:48px;margin-left:50px;}
+}
+@media only screen and (max-width:768px){
+.buttonWrapper{margin:0 auto;width:285px;height:80px;margin-bottom:25px;}
+}
+.buttonWrapper .iconHolder{width:54px;height:54px;display:flex;justify-content:center;align-items:center;border-radius:50%;background-color:#fff;}
+@media only screen and (max-width:1024px){
+.buttonWrapper .iconHolder{width:35px;height:35px;}
+}
+@media only screen and (max-width:768px){
+.buttonWrapper .iconHolder{width:54px;height:54px;}
+}
+@media only screen and (max-width:1024px){
+.buttonWrapper .iconHolder img{width:27px;height:17px;}
+}
+@media only screen and (max-width:768px){
+.buttonWrapper .iconHolder img{width:27px;height:27px;}
+}
+.buttonWrapper .description{width:210px;padding-left:10px;color:#fff;}
+.buttonWrapper .description .desHeading{text-transform:uppercase;font-weight:700;font-size:18px;}
+.buttonWrapper .description .desSubHeading{font-size:16px;}
+@media only screen and (max-width:1024px){
+.buttonWrapper .description .desSubHeading{display:none;}
+}
+@media only screen and (max-width:768px){
+.buttonWrapper .description .desSubHeading{display:block;}
+}
+.career-contact-us-anchor{display:block;height:92px;margin-top:-92px;visibility:hidden;}
+.career-contact-us .wrapper{background:#e2f0ff url(https://media.monsterindia.com/trex/public/default/dist/images/background.svg?dc4ff674ca2ae02554b253bb8d0997ab) no-repeat;display:flex;flex-wrap:wrap;min-height:100px;width:100%;max-width:1045px;margin:30px auto 0;border-radius:7px;padding:19px 40px;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper{margin-top:16px;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper{flex-direction:column-reverse;align-items:center;background:#e2f0ff;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper{padding:19px 10px;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .leftSection{display:flex;flex-direction:column-reverse;align-items:center;padding-top:60px;}
+}
+.career-contact-us .wrapper .leftHeading{margin:25px 0 0 30px;}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .leftHeading{margin-top:25px;margin-left:0;text-align:center;}
+}
+.career-contact-us .wrapper .leftHeading div{font-size:18px;line-height:21px;color:#454647;margin-bottom:7px;font-weight:600;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftHeading div{font-size:16px;}
+}
+.career-contact-us .wrapper .leftHeading div:first-child{font-size:24px;color:#1d1e1f;margin-bottom:13px;font-family:avenir-bold;font-weight:900;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftHeading div:first-child{font-size:18px;}
+}
+.career-contact-us .wrapper .leftHeading div:last-child{margin-bottom:33px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftImageHolder{width:209px;height:157px;}
+}
+.career-contact-us .wrapper .leftImageHolder img{width:320px;height:241px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftImageHolder img{width:100%;height:100%;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .rightSection{width:100%;display:flex;justify-content:center;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightSection .rightBody{width:100%;height:100%;}
+}
+.career-contact-us .wrapper .rightHeading{color:#454647;font-size:16px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightHeading{font-size:14px;}
+}
+.career-contact-us .wrapper .rightHeading div:first-child{text-transform:uppercase;font-size:20px;font-family:avenir-bold;font-weight:900;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightHeading div:first-child{font-size:18px;}
+}
+.career-contact-us .wrapper .rightInputBoxes>*{display:block;}
+.career-contact-us .wrapper .rightInputBoxes{font-size:14px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes label{margin-top:14px;margin-bottom:8px;}
+.career-contact-us .wrapper .rightInputBoxes span{color:#ff5257;}
+.career-contact-us .wrapper .rightInputBoxes input{width:536px;height:46px;padding-left:17px;border-radius:3px;border:1px solid #cdcdcd;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes input{width:400px;height:40px;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes input{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:440px;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:315px;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes .mobileDetailsWrapper{display:flex;gap:10px;align-items:center;}
+.career-contact-us .wrapper .rightInputBoxes .isdInput{position:relative;width:85px;min-width:85px;cursor:pointer;overflow:hidden;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes .isdInput{width:75px;min-width:75px;}
+}
+.career-contact-us .wrapper .rightInputBoxes .isdInput input{width:100%;cursor:pointer;}
+.career-contact-us .wrapper .rightInputBoxes .isdInput .mqfi-arrow-filled-down{position:absolute;top:54%;right:0;color:#505050;-webkit-transform:translate(-10px,-50%);-moz-transform:translate(-10px,-50%);-o-transform:translate(-10px,-50%);-ms-transform:translate(-10px,-50%);transform:translate(-10px,-50%);}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes .mobile-box,.career-contact-us .wrapper .rightInputBoxes .mobile-box .mobile-boxHolder{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes select{width:100%;height:100%;position:absolute;left:0;top:0;z-index:1;min-width:300px;}
+.career-contact-us .wrapper .cta-btn-link{width:240px;height:46px;padding:12px 18px;margin-top:24px;font-size:1.143em;line-height:normal;display:inline-block;cursor:pointer;border:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#007aff;border:1px solid #007aff;color:#fff;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;text-transform:uppercase;}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .cta-btn-link{width:100%;}
+}
+.monster-education{display:flex;flex-wrap:wrap;width:auto;margin:48px -37px 50px;border-top:7px solid #efefef;padding:48px 50px 0;}
+@media only screen and (max-width:1024px){
+.monster-education{margin-top:24px;margin-bottom:20px;padding:48px 38px 0;}
+}
+@media only screen and (max-width:640px){
+.monster-education{border:none;margin-top:0;padding-top:0;width:100%;}
+}
+.monster-education .left{width:100%;min-width:349px;max-width:349px;min-height:283px;background:#f5f8fc;padding:15px;border-radius:0 5px 5px 0;-webkit-border-radius:0 5px 5px 0;-moz-border-radius:0 5px 5px 0;}
+@media only screen and (max-width:768px){
+.monster-education .left{min-width:100%;max-width:100%;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;}
+}
+.monster-education .left img{width:100%;max-width:255px;display:block;margin:27px auto 0;}
+.monster-education .right{width:100%;min-width:calc(100% - 349px);max-width:calc(100% - 349px);padding-left:30px;}
+@media only screen and (max-width:768px){
+.monster-education .right{padding:21px;min-width:100%;max-width:100%;}
+}
+@media only screen and (max-width:576px){
+.monster-education .right{padding:16px 14px;}
+}
+.monster-education .right .contecnt .education-heading img{width:100%;max-width:252px;height:auto;}
+.monster-education .right .contecnt .education-sub-heading{width:100%;max-width:315px;color:#454647;font-size:1.143em;line-height:21px;margin-top:16px;}
+.monster-education .right .contecnt .education-list{display:flex;flex-wrap:wrap;width:100%;margin-top:40px;}
+.monster-education .right .contecnt .education-list .list{min-width:50%;max-width:50%;position:relative;padding-left:35px;padding-right:35px;margin-bottom:20px;}
+@media only screen and (max-width:1024px){
+.monster-education .right .contecnt .education-list .list{min-width:100%;max-width:100%;}
+}
+.monster-education .right .contecnt .education-list .list i{position:absolute;left:0;color:rgba(0,122,255,.34);}
+.monster-education .right .contecnt .education-list .list a{color:#007aff;}
+.monster-education .right .contecnt .education-list .list a h3{font-size:1.143em;}
+.monster-education .right .contecnt .education-list .all-list{padding-left:0;margin-bottom:0;text-align:right;}
+@media only screen and (max-width:768px){
+.monster-education .right .contecnt .education-list .all-list{padding-right:0;margin-top:38px;text-align:left;}
+}
+.monster-education .right .contecnt .education-list .all-list .view-all{color:#006de3;text-decoration:underline;display:inline-block;}
+@media only screen and (max-width:768px){
+.monster-education .right .contecnt .education-list .all-list .view-all{padding:12px 18px;font-size:1.143em;line-height:normal;text-decoration:none;cursor:pointer;border:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#e2f0ff;border:1px solid #e2f0ff;color:#007aff;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;}
+}
+*{margin:0;outline:none;padding:0;font-weight:400;list-style:none;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+section{display:block;}
+a{background-color:transparent;}
+a:active,a:hover{outline:0;}
+img{border:0;}
+button,input,select{color:inherit;font:inherit;margin:0;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button{-webkit-appearance:button;cursor:pointer;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input{line-height:normal;}
+[class^=mqfi-]:before{display:inline-block;speak:none;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:fontello;}
+.mqfi-arrow-filled-down:before{content:"\E809";font-size:18px;}
+[class^=mqfics-]:before{display:inline-block;speak:none;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:fonticoncs;}
+.mqfics-star:before{content:"\C802";}
+.mqfics-education-cap-2:before{content:"\C805";}
+input[type=email]:focus,input[type=text]:focus{background-size:100% 1px;}
+input[type=email],input[type=text]{background-image:-webkit-linear-gradient(#3c3c3c,#3c3c3c);background-image:linear-gradient(#3c3c3c,#3c3c3c);background-size:0 1px;background-repeat:no-repeat;background-position:bottom,50% calc(100% - 1px);-webkit-transition:background .3s ease-out;transition:background .3s ease-out;}
+.input{border:1px solid #a9a9aa;box-shadow:none;color:#787878;font-size:14px;padding:15px 15px 13px;}
+.input:focus{color:#3c3c3c;border:1px solid #575757;}
+.cs-full-section .btn,.cs-full-section .btn-link{padding:12px 18px;font-size:1.143em;line-height:normal;display:inline-block;cursor:pointer;border:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#007aff;border:1px solid #007aff;color:#fff;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;}
+.cs-full-section .btn-link:hover,.cs-full-section .btn:hover{opacity:1;background:#007aff;border:1px solid #007aff;color:#fff;}
+.cs-full-section .btn-link:disabled,.cs-full-section .btn:disabled{background:#cdcdcd;border:1px solid #cdcdcd;opacity:1;}
+.cs-full-section .btn-link,.cs-full-section .btn-link:hover{background:transparent;border:1px solid transparent;color:#007aff;}
+.cs-full-section .btn-link:hover{opacity:1;text-decoration:underline;}
+.heading-default{color:#1d1e1f;font-size:1.714em;line-height:33px;font-family:avenir-bold;font-weight:900;}
+.sub-heading-default{color:#8c8c8c;font-size:1.286em;line-height:24px;}
+.heading-h2{color:#454647;font-size:1.429em;line-height:27px;font-family:avenir-bold;font-weight:900;}
+.csf-semibold{font-family:SourceSansPro-smbold;font-weight:600;}
+.cs-color-green{color:#62ba46;}
+.cs-color-yellow{color:#fcb827;}
+@media (min-width:320px) and (min-width:320px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:480px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:640px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:768px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:990px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:1180px){
+.career-services .container{max-width:1385px;}
+}
+.cs-full-section{padding-left:27px;padding-right:27px;font-family:SourceSansPro-Regular;}
+@media only screen and (max-width:1180px){
+.cs-full-section{padding-left:14px;padding-right:14px;}
+}
+.display-ib{display:inline-block;}
+/*! CSS Used from: Embedded */
+@media only screen and (max-width:768px){
+.reverseDir{display:flex;flex-direction:column-reverse;}
+}
+/*! CSS Used fontfaces */
+@font-face{font-family:SourceSansPro-Regular;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.ttf?001) format("truetype");font-style:normal;font-weight:400;}
+@font-face{font-family:SourceSansPro-Regular;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.ttf?001) format("truetype");font-style:normal;font-weight:400;}
+@font-face{font-family:SourceSansPro-smbold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.ttf?001) format("truetype");font-style:normal;font-weight:600;}
+@font-face{font-family:SourceSansPro-smbold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.ttf?001) format("truetype");font-style:normal;font-weight:600;}
+@font-face{font-family:fonticoncs;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fonticoncs.svg?27fc1de1788e632d03935caebc226c08#fonticoncs) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:avenir-bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.ttf?001) format("truetype");font-style:normal;font-weight:900;}
+@font-face{font-family:avenir-bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.ttf?001) format("truetype");font-style:normal;font-weight:900;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.eot?2fa952a2fde505296d492f6ad795961e);src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.eot?2fa952a2fde505296d492f6ad795961e#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.woff?2fa952a2fde505296d492f6ad795961e) format("woff"),url(https://media.monsterindia.com/trex/search/public/fonts/fontello.ttf?2fa952a2fde505296d492f6ad795961e) format("truetype"),url(https://media.monsterindia.com/trex/search/public/fonts/fontello.svg?2fa952a2fde505296d492f6ad795961e#fontello) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fontello.svg?7a7582aed9753c03aa0bff6cff018a18#fontello) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fontello.svg?7a7582aed9753c03aa0bff6cff018a18#fontello) format("svg");font-style:normal;font-weight:400;}
+</style>
+<section class="container-fluid cs-full-section">
+  <div class="container">
+    <div class="row reverseDir">
+      <div class="col-md-8">
+        <h1 class="heading-default">Buy Career services</h1>
+        <div class="sub-heading-default">Give your job hunt a boost</div>
+      </div>
+      <div class="col-md-4 buttonWrapper">
+        <div class="iconHolder">
+          <img
+            src="//media.monsterindia.com/trex/public/default/images/career-services/career-contactUs/phone.svg"
+            alt="phone"
+            class="load-lazily"
+          />
+        </div>
+        <div class="description">
+          <div class="desHeading">Call me back</div>
+          <div class="desSubHeading">
+            Our executive will get in touch with you soon
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!---->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="cs-card-main">
+          <div class="cs-card xpress-resume">
+            <div class="cs-card-left">
+              <!---->
+              <!---->
+              <img
+                width="185"
+                height="199"
+                src="//media.monsterindia.com/trex/public/default/images/career-services/xpress-resume.png"
+                alt="Featured Profile"
+                class="load-lazily"
+              />
+            </div>
+            <div class="cs-card-right">
+              <div class="content-box">
+                <!---->
+                <!---->
+                <h2 class="heading-h2">Featured Profile</h2>
+                <div class="sub-heading">
+                  Better your chances of getting shortlisted
+                </div>
+              </div>
+              <div class="card-button-box box-DT">
+                <a href="javascript:void(0);" class="btn"
+                  >Starting at
+                  <span class="display-ib csf-semibold">Rs. 999</span></a
+                >
+               
+                <a href="{% url 'jobs:featuredProfile' %}">click here</a>
+              
+              </div>
+              <div class="card-button-box box-MOB">
+                <span class="display-ib csf-semibold">Rs. 999</span>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <div class="cs-card right-resume">
+            <div class="cs-card-left">
+              <!---->
+              <!---->
+              <img
+                width="185"
+                height="199"
+                src="//media.monsterindia.com/trex/public/default/images/career-services/right-resume.png"
+                alt="Resume Writing"
+                class="load-lazily"
+              />
+            </div>
+            <div class="cs-card-right">
+              <div class="content-box">
+                <!---->
+                <!---->
+                <h2 class="heading-h2">Resume Writing</h2>
+                <div class="sub-heading">
+                  Professionally written resume + cover letter
+                </div>
+              </div>
+              <div class="card-button-box box-DT">
+                <a href="javascript:void(0);" class="btn"
+                  >Starting at
+                  <span class="display-ib csf-semibold">Rs. 1499</span></a
+                >
+                <a href="{% url 'jobs:resumeWriting' %}">click here</a>
+              </div>
+              <div class="card-button-box box-MOB">
+                <span class="display-ib csf-semibold">Rs. 1499</span>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <div class="cs-card career-booster">
+            <div class="cs-card-left">
+              <div class="cs-card-tag tag-green">
+                <span class="cornor"></span
+                ><i class="mqfics-star"></i> RECOMMENDED
+              </div>
+              <!---->
+              <img
+                width="185"
+                height="199"
+                src="//media.monsterindia.com/trex/public/default/images/career-services/career-booster.png"
+                alt="Career Booster"
+                class="load-lazily"
+              />
+            </div>
+            <div class="cs-card-right">
+              <div class="content-box">
+                <div class="star-with-text cs-color-green">RECOMMENDED</div>
+                <!---->
+                <h2 class="heading-h2">Career Booster</h2>
+                <div class="sub-heading">
+                  Get the power of two in one and speed up your job search
+                </div>
+              </div>
+              <div class="card-button-box box-DT">
+                <a href="javascript:void(0);" class="btn"
+                  >Starting at
+                  <span class="display-ib csf-semibold">Rs. 1999</span></a
+                >
+                <a href="{% url 'jobs:careerBooster' %}">click here</a>
+              </div>
+              <div class="card-button-box box-MOB">
+                <span class="display-ib csf-semibold">Rs. 1999</span>
+              </div>
+            </div>
+            <!---->
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <span id="career-contact-us" class="career-contact-us-anchor"></span>
+    <div class="container career-contact-us">
+      <div class="row wrapper">
+        <div class="col-md-5 leftSection">
+          <div class="leftHeading">
+            <div>Talk to Us</div>
+            <div>Toll Free No:----</div>
+            <div>Toll No: -----</div>
+          </div>
+          <div class="leftImageHolder">
+            <img
+              src="//media.monsterindia.com/trex/public/default/images/career-services/career-contactUs/humanFig.svg"
+              alt="humanFig"
+              class="load-lazily"
+            />
+          </div>
+        </div>
+        <div class=" rightSection">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <form action="{% url 'jobs:contact' %}" method="POST">
+                  {% csrf_token %}
+                  <div class="jp_contact_form_box">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="jp_contact_inputs_wrapper">
+                        <i class="fa fa-user"></i
+                        ><input type="text" name="name" placeholder="Name *" required />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="jp_contact_inputs_wrapper jp_contact_inputs2_wrapper">
+                        <i class="fa fa-envelope"></i
+                        ><input
+                          type="text"
+                          name="email"
+                          placeholder="Email *"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper">
+                        <i class="fa fa-pencil-square-o"></i
+                        ><input
+                          type="text"
+                          name="subject"
+                          placeholder="Subject"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="jp_contact_inputs_wrapper jp_contact_inputs4_wrapper">
+                        <i class="fa fa-text-height"></i
+                        ><textarea
+                          rows="6"
+                          name="message"
+                          placeholder="Type Your Message *"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="jp_contact_form_btn_wrapper">
+                        <ul>
+                          <li>
+                            <a href="">
+                              <button
+                                type="submit"
+                                style="
+                                  width: 100%;
+                                  border-radius: 10px;
+                                  border: 1px solid #248ae4;
+                                  background-image: linear-gradient(
+                                    95deg,
+                                    #64afef,
+                                    #248ae4 50%,
+                                    #244ee4 100%
+                                  );
+                                "
+                              >
+                                <i class="fa fa-plus-circle"></i> send
+                              </button></a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="monster-education">
+          <div class="left">
+            <img
+              src="//media.monsterindia.com/trex/public/default/images/career-services/monster-education.png"
+              width="255"
+              height="175"
+              alt="Monster Education"
+              class="load-lazily"
+            />
+          </div>
+          <div class="right">
+            <div class="contecnt">
+              <div class="education-heading">
+                <img
+                  src="{% static 'jobPortal/gravitonLogo.png'  %}"
+                  width="252"
+                  height="18"
+                  alt="Monster Education"
+                  class="load-lazily"
+                />
+              </div>
+              <div class="education-sub-heading">
+                Expand your learnings and skills, take an online certificate
+                course to further your career growth.
+              </div>
+              <div class="education-list">
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/technology/1/"
+                    ><h3>Technology Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/law-and-security/4/"
+                    ><h3>Law &amp; Security Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/business-and-management/2/"
+                    ><h3>Business &amp; Management Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/finance-management/3/"
+                    ><h3>Finance Management Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/marketing-and-communication/5/"
+                    ><h3>Marketing &amp; Communication Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/quality-management/6/"
+                    ><h3>Quality Management Courses</h3></a
+                  >
+                </div>
+                <div class="list">
+                  <i class="mqfics-education-cap-2"></i>
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications/category/recruitment-and-staffing/7/"
+                    ><h3>Recruiting &amp; Communication Courses</h3></a
+                  >
+                </div>
+                <div class="list all-list">
+                  <a
+                    href="https://www.monsterindia.com/courses-certifications"
+                    class="view-all"
+                    >View All Courses</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main-content %}

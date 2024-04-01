@@ -1,0 +1,488 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- 
+Template Name: Job Pro
+Version: 1.0.0
+Author: 
+Website: 
+Purchase: 
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+
+<!-- Mirrored from webstrot.com/html/jobpro/job_light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Jan 2022 10:30:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <title>Job Pro Responsive HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Job Pro" />
+    <meta name="keywords" content="Job Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/font-awesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/owl.carousel.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/owl.theme.default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/flaticon.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/responsive.css' %}" />
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/flaticon.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_II.css" /> -->
+    <!-- favicon links -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'jobPortal/gravitonLogo.png'  %}" />
+<script src='../../../google_analytics_auto.js'></script></head>
+
+<body>
+    <!-- preloader Start -->
+    <div id="preloader">
+        <div id="status"><img src="images/header/loadinganimation.gif" id="preloader_image" alt="loader">
+        </div>
+    </div>
+    <!-- Top Scroll End -->
+    <!-- Header Wrapper Start -->
+    <div class="jp_top_header_img_wrapper">
+        <div class="jp_slide_img_overlay"></div>
+        <div class="gc_main_menu_wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
+                        <div class="gc_header_wrapper">
+                            <div class="gc_logo">
+                                <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png'  %}" style="width: 100px; padding-top:10px;  height: auto;"  alt="Logo" title="gravitonweb" class="img-responsive"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12 center_responsive">
+                        <div class="header-area hidden-menu-bar stick" id="sticker">
+                            <!-- mainmenu start -->
+                            <div class="mainmenu">
+                                
+                                 <ul class="float_left">
+                                    <li class="has-mega gc_main_navigation"><a href="{% url 'jobs:home' %}" class="gc_main_navigation">  Home&nbsp;</a>
+                                        <!-- mega menu start -->
+                
+                                    </li>
+                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Job&nbsp;</a>
+                                        <!-- mega menu start
+                                        <ul>
+                                            <li class="parent"><a href="listing_left.html">Listing-Left</a></li>
+                                            <li class="parent"><a href="listing_right.html">Listing-Right</a></li>
+                                            <li class="parent"><a href="listing_single.html">Listing-Single</a></li>
+
+                                        </ul> -->
+                                    </li>
+                                    <li class="parent gc_main_navigation"><a href="#" class="gc_main_navigation">candidates &nbsp;</a>
+                                        <!-- sub menu start -->
+                                        <!-- <ul>
+                                           
+                                            <li class="parent"><a href="company_listing.html">Company-Listing</a></li>
+                                            <li class="parent"><a href="company_listing_single.html">Company-Single</a></li>
+                                            <li class="parent"><a href="candidate_listing.html">candidate-Listing</a></li>
+                                            <li class="parent"><a href="candidate_profile.html">candidate-Profile</a></li>
+                                           
+                                               
+                                        </ul> -->
+                                        <!-- sub menu end -->
+                                    </li>
+									<li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Pages &nbsp;</a>
+                                        <!-- mega menu start -->
+                                        <!-- <ul>
+                                             <li class="parent"><a href="about.html">About-Us</a></li>
+                                            <li class="parent"><a href="404_error.html">404</a></li>
+                                            <li class="parent"><a href="add_postin.html">Add-Posting</a></li>
+											 <li class="parent"><a href="login.html">Login</a></li>
+                                            <li class="parent"><a href="register.html">Register</a></li>
+                                            <li class="parent"><a href="pricing.html">Pricing</a></li>
+                                        </ul> -->
+                                    </li>
+                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Blog&nbsp;</a>
+                                        <!-- mega menu start -->
+                                        <!-- <ul>
+                                            <li class="parent"><a href="blog_left.html">Blog-Left</a></li>
+                                            <li class="parent"><a href="blog_right.html">Blog-Right</a></li>
+                                            <li class="parent"><a href="blog_single_left.html">Blog-Single-Left</a></li>
+                                            <li class="parent"><a href="blog_single_right.html">Blog-Single-Right</a></li>
+
+                                        </ul> -->
+                                    </li>
+                                    <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- mainmenu end -->
+                            <!-- mobile menu area start -->
+                            <header class="mobail_menu">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6">
+                                            <div class="gc_logo">
+                                                <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png'  %}" alt="Logo" title="Grace Church"></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6">
+                                            <div class="cd-dropdown-wrapper" style="background-color:black;">
+                                                <a class="house_toggle" href="#0" style="background-color:black;">
+													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px"><g><g><path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#ffffff"/></g><g><path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#ffffff"/></g></g></svg>
+													</a>
+                                                <nav class="cd-dropdown">
+                                                    <h2>  <a href=""> Job<span>Pro</span></a></h2>
+                                                    <a href="#0" class="cd-close">Close</a>
+                                                    <ul class="cd-dropdown-content">
+                                                        <li>
+                                                            <form class="cd-search">
+                                                                <input type="search" placeholder="Search...">
+                                                            </form>
+                                                        </li>
+                                                        <li class="has-children">
+                                                            <a href="{% url 'jobs:home' %}">Home</a>
+
+                                                           
+                                                        {% else %}
+                                                        <li>
+                                                            <a href="{% url 'jobs:employer-dashboard' %}"> {{ request.user.first_name }}</a>
+                                                        </li>
+                                                           
+                                                        {% endif %}
+                        
+                        
+                                                        {% else %}
+                                                                                <li>
+                                                                                    <a href="{% url 'accounts:employee-register' %}">Sign Up</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="{% url 'accounts:login' %}">Login</a>
+                                                                                </li>
+                        
+                        
+                                                                                {% endif %}
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:home' %}">Home</a>
+                        
+                                                                                   
+                                                                                    <!-- .cd-secondary-dropdown -->
+                                                                                </li>
+                                                                                <!-- .has-children -->
+                        
+                        
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:jobs' %}">Job</a>
+                        
+                                                                                  
+                                                                                    <!-- .cd-secondary-dropdown -->
+                                                                                </li>
+                                                                                <!-- .has-children -->
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:member' %}">Member </a>
+                        
+                                                                                  
+                                                                                    <!-- .cd-secondary-dropdown -->
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:about' %}">AboutUs</a>
+                        
+                                                                                   
+                                                                                    <!-- .cd-secondary-dropdown -->
+                                                                                </li>
+                                                                                <!-- .has-children -->
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:blog' %}">Blog</a>
+                        
+                                                                                
+                                                                                    <!-- .cd-secondary-dropdown -->
+                                                                                </li>
+                                                                                <!-- .has-children -->
+                                                                                <li>
+                                                                                    <a href="{% url 'jobs:contact' %}">Contact</a>   
+                                                                                </li>
+                        
+                                                                                <li>
+                                                                                    <a href="{% url 'course:home' %}">Course</a>   
+                                                                                </li>
+                                                                            
+                        
+                                                                            </ul>
+                                                                            <!-- .cd-dropdown-content -->
+                        
+                        
+                        
+                                                                        </nav>
+                                                                        <!-- .cd-dropdown -->
+                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- .cd-dropdown-wrapper -->
+                                                    </header>
+                        </div>
+                    </div>
+                    <!-- mobile menu area end -->
+                    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                        <div class="jp_navi_right_btn_wrapper">
+                            <ul>
+                                <li><a href="{% url 'accounts:employee-register' %}"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
+                                <li><a href="{% url 'accounts:login' %}"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jp_banner_heading_cont_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_job_heading_wrapper">
+                            <div class="jp_job_heading">
+                                <h1><span>3,000+</span> Browse Jobs</h1>
+                                <p>Find Jobs, Employment & Career Opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form  method="get" action="{% url 'jobs:search' %}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_header_form_wrapper">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input type="text"  name="position" placeholder="Keyword e.g. (Job Title, Description, Tags)">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="jp_form_location_wrapper">
+                                    <i class="fa fa-dot-circle-o first_icon"></i><select name="location">
+								<option value="bangalore">Banglore</option>
+								<option value="lucknow">lucknow</option>
+								<option value="Mysure">Mysure</option>
+								
+							</select><i class="fa fa-angle-down second_icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="jp_form_exper_wrapper">
+                                    <i class="fa fa-dot-circle-o first_icon"></i><select>
+								<option>Experience</option>
+								<option>Experience</option>
+								<option>Experience</option>
+								<option>Experience</option>
+								<option>Experience</option>
+							</select><i class="fa fa-angle-down second_icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                <!-- <div class="jp_form_btn_wrapper"> -->
+                                    <div class="button_search" style="border:1px solid #23c0e9; width:40%; height:50%; padding:10px; background-color:#23c0e9; border-radius:10px;">
+                                    <ul>
+                                        
+                                        <li><a  href="#"><Search class="fa fa-search" style="color:white; margin-left:20px;"><button type="submit" style="border:none; background-color:#23c0e9;color:white;  font-size: 20px;">Search</button></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_banner_main_jobs_wrapper">
+                            <div class="jp_banner_main_jobs">
+                                <ul>
+                                    <li><i class="fa fa-tags"></i> Trending Keywords :</li>
+                                    {% for tag in tags %}
+                                    <li><i class="fa fa-tags"></i> {{tag.name}} :</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jp_banner_jobs_categories_wrapper">
+            <div class="container">
+                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border jp_job_cate_left_border_bottom">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-code"></i>
+                        <h3>                           <a href="">                                         Developer</a></h3>
+                        <p>(240 jobs)</p>
+                    </div>
+                </div>
+                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-laptop"></i>
+                        <h3>                           <a href="">                                         Technology</a></h3>
+                        <p>(504 jobs)</p>
+                    </div>
+                </div>
+                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-bar-chart"></i>
+                        <h3>                           <a href="">                                         Accounting</a></h3>
+                        <p>(2250 jobs)</p>
+                    </div>
+                </div>
+                <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-medkit"></i>
+                        <h3>                           <a href="">                                         Medical</a></h3>
+                        <p>(202 jobs)</p>
+                    </div>
+                </div>
+                <div class="jp_top_jobs_category_wrapper">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-university"></i>
+                        <h3>                           <a href="">                                         Government</a></h3>
+                        <p>(1457 jobs)</p>
+                    </div>
+                </div>
+                <div class="jp_top_jobs_category_wrapper">
+                    <div class="jp_top_jobs_category">
+                        <i class="fa fa-th-large"></i>
+                        <h3>                           <a href="">                                         All Jobs</a></h3>
+                        <p>(2000+ jobs)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    
+    <div class="jp_footer_main_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_footer_logo_wrapper">
+                        <div class="jp_footer_logo">
+                                                       <a href="">                                         <img src="images/content/resume_logo.png" alt="footer_logo"/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp_footer_three_sec_main_wrapper">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="jp_footer_first_cont_wrapper">
+                            <div class="jp_footer_first_cont">
+                                <h2>Who We Are</h2>
+                                <p>This is Photoshop's version of Lom Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum.<br><br> Proin akshay handge vel velit auctor aliquet. Aenean sollicitudin,</p>
+                                <ul>
+                                    <li><i class="fa fa-plus-circle"></i>                            <a href="">                                         READ MORE</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="jp_footer_candidate_wrapper jp_footer_candidate_wrapper2">
+                            <div class="jp_footer_candidate">
+                                <h2>For candidate</h2>
+                                <ul>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Add a Resume</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> candidate Dashboard</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Past Applications</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Job Alerts</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Bookmarks</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> My Account</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Your Jobs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="jp_footer_candidate_wrapper jp_footer_candidate_wrapper3">
+                            <div class="jp_footer_candidate">
+                                <h2>For Employers</h2>
+                                <ul>
+                                    <li><a href="{% url 'jobs:candidates' %}"><i class="fa fa-caret-right" aria-hidden="true"></i> Browse candidates</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Employer Dashboard</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Add Job</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Job Page</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Job Packages</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Work Process</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> My Account</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="jp_footer_candidate_wrapper jp_footer_candidate_wrapper4">
+                            <div class="jp_footer_candidate">
+                                <h2>Information</h2>
+                                <ul>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Terms & Conditions</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Privacy Policy</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Careers with Us</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Sitemap</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> Contact Us</a></li>
+                                    <li>                           <a href="">                                         <i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_bottom_footer_Wrapper">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="jp_bottom_footer_left_cont">
+                                    <p>© 2019-20 Job Pro. All Rights Reserved.</p>
+                                </div>
+                                <div class="jp_bottom_top_scrollbar_wrapper">
+                                    <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="jp_bottom_footer_right_cont">
+                                    <ul>
+                                        <li>                           <a href="">                                         <i class="fa fa-facebook"></i></a></li>
+                                        <li>                           <a href="">                                         <i class="fa fa-twitter"></i></a></li>
+                                        <li>                           <a href="">                                         <i class="fa fa-pinterest-p"></i></a></li>
+                                        <li>                           <a href="">                                         <i class="fa fa-linkedin"></i></a></li>
+                                        <li class="hidden-xs">                           <a href="">                                         <i class="fa fa-google-plus"></i></a></li>
+                                        <li class="hidden-xs">                           <a href="">                                         <i class="fa fa-vimeo"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jp footer Wrapper End -->
+<!--main js file start-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{% static 'jobPortal/js/bootstrap.js' %}"></script>
+<script src="{% static 'jobPortal/js/jquery.menu-aim.js' %}"></script>
+<script src="{% static 'jobPortal/js/jquery.countTo.js' %}"></script>
+<script src="{% static 'jobPortal/js/jquery.inview.min.js' %}"></script>
+<script src="{% static 'jobPortal/js/owl.carousel.js' %}"></script>
+<script src="{% static 'jobPortal/js/modernizr.js' %}"></script>
+<script src="{% static 'jobPortal/js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'jobPortal/js/custom_II.js' %}"></script>
+<!--main js file end-->
+<script>
+    function initMap() {
+        var uluru = {lat: -36.742775, lng:  174.731559};
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        scrollwheel: false,
+        center: uluru
+        });
+        var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+        });
+        }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBctr8WYTfFDi_oGbPEolSDzn4VZaAKVK0&callback=initMap">
+</script>
+</body>
+
+</html>

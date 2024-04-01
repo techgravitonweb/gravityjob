@@ -1,0 +1,86 @@
+/* background for whole page */
+body {
+  background-color: #181818;
+}
+
+/* Centers quiz name and info and adds outline */
+.full_container {
+    text-align: center;
+    /* margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 125px; */
+    background-color: #232323;
+    border-radius: 40px;
+    border: 10px solid #fff;
+    padding-bottom: 50px;
+    width:40% !important;
+    margin-top:20px !important;
+    margin:auto;
+    margin-bottom:20px;
+}
+
+.button{
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    color: #ffffff;
+    border: 1px solid #f36969;
+    background: #f36969;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius:10px;
+    
+}
+
+
+.quiz_title {
+    font-size: 50px;
+    color: white;
+    font-family: Roboto;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    border-radius: 50px;
+    background-color: #3b3b3b;
+}
+
+
+.num_questions {
+    font-size: 30px;
+    color: white;
+    font-family: Roboto;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+
+.home_button {
+    width: 10px;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #232323;
+    font-size: 25px;
+    color: white;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+
+
+}
+
+/* Styles submit button when hovered over */
+.home_button:hover {
+    background-color: #5e5d5d;
+    cursor: pointer;
+}
+
+/* Styles submit button when clicked */
+.home_button:focus {
+    background-color: #f9f9f9;
+    color: #212121;
+    cursor: pointer;
+
+}

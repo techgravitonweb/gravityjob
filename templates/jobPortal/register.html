@@ -1,0 +1,142 @@
+{% extends 'jobPortal/base.html' %}
+{% block main-content %}
+{% block content %}
+    <!-- Header Wrapper End -->
+    <!-- jp Tittle Wrapper Start -->
+    <div class="jp_tittle_main_wrapper">
+        <div class="jp_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_tittle_heading_wrapper">
+                        <div class="jp_tittle_heading">
+                            <h2>Register</h2>
+                        </div>
+                        <div class="jp_tittle_breadcrumb_main_wrapper">
+                            <div class="jp_tittle_breadcrumb_wrapper">
+                                <ul>
+                                    <li>                           <a href="">                                         Home</a> <i class="fa fa-angle-right"></i></li>
+                                    
+                                    <li>Register</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp Tittle Wrapper End -->
+
+    <!-- jp register wrapper start -->
+    <div class="register_section">
+        <!-- register_form_wrapper -->
+        <div class="register_tab_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div role="tabpanel">
+
+                            <!-- Nav tabs -->
+                            <ul id="tabOne" class="nav register-tabs">
+                                <li class="active"><a href="#contentOne-1" data-toggle="tab"
+                                style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);
+                                ">personal account <br>
+                                        <span>i am looking for a job</span></a>
+                                </li>
+                                <li><a href="{% url 'accounts:employer-register' %}">company account <br> <span>We are hiring
+                                            Employees</span></a>
+                                </li>
+                            </ul>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active register_left_form" id="contentOne-1">
+                                    <div class="jp_regiter_top_heading">
+                                        <p>Fields with * are mandetory </p>
+                                    </div>
+                                    <div class="row">
+                                        <form action="" method="post" data-toggle="validator">
+                                            <!--Form Group-->
+                                            {% csrf_token %}
+                                            {% for field in form %}
+                                               <!--Form Group-->
+                                               {% if field.name == 'gender' %}
+                                               <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                   <div class="form-group">
+                                                       <label for="gender">Gender</label>
+                                                       <br>
+                                                       <div class="form-check form-check-inline">
+                                                           <input class="form-check-input" type="radio" name="gender" id="male gender"
+                                                                  value="male">
+                                                           <label class="form-check-label" for="male">Male</label>
+                                                       </div>
+                                                       <div class="form-check form-check-inline">
+                                                           <input class="form-check-input" type="radio" name="gender" id="female"
+                                                                  value="female">
+                                                           <label class="form-check-label" for="female">Female</label>
+                                                       </div>
+                                                   </div>
+                           
+                                               </div>
+                                               {% else %}
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <label for="">{{ field.label }}</label>
+                                                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="" placeholder="{{ field.field.widget.attrs.placeholder }}*"  id="id_{{ field.name }}"
+                                                    required>
+                                            </div>
+                                         
+                                            {% endif %}
+                                            {% endfor %}
+                                          
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="check-box text-center">
+                                                    <input type="checkbox" name="shipping-option" id="account-option_1" required>
+                                                    &ensp;
+                                                    <label for="account-option_1">I agreed to the <a href="{% url 'jobs:terms' %}"
+                                                            class="check_box_anchr">Terms and Conditions</a> governing
+                                                        the
+                                                        use of jobportal</label>
+                                                </div>
+                                            </div>
+                                            <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
+                                                <button type="submit" class="btn btn-primary login_btn"
+                                                style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);
+                                                ">register</button>
+                                                <!-- <a type="submit" href="javascript:;" class="btn btn-primary login_btn"> register </a> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="login_message">
+                                        <p>Already a member? <a href="{% url 'accounts:login' %}"> Login Here </a> </p>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <p class="btm_txt_register_form">In case you are using a public/shared computer we recommend
+                                that you logout to prevent any un-authorized access to your account</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp register wrapper end -->
+
+   {% endblock %}
+   {% endblock main-content %} 

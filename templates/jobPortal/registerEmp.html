@@ -1,0 +1,237 @@
+{% extends 'jobPortal/base.html' %}
+{% block main-content %}
+{% load static %}
+<!DOCTYPE html>
+<!-- 
+Template Name: Job Pro
+Version: 1.0.0
+Author: 
+Website: 
+Purchase: 
+-->
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Job Pro" />
+    <meta name="keywords" content="Job Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/font-awesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/owl.carousel.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/owl.theme.default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/flaticon.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/style_II.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'jobPortal/css/responsive2.css' %}" />
+    <!-- favicon links -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'jobPortal/gravitonLogo.png'  %}" />
+<script src='/google_analytics_auto.js'></script></head>
+
+<body>
+    <!-- preloader Start -->
+   
+    <!-- Top Scroll End -->
+    <!-- Top Header Wrapper Start -->
+    <!-- <div class="jp_top_header_main_wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="jp_top_header_left_wrapper">
+                        <div class="jp_top_header_left_cont">
+                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+123456789</p>
+                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email  :&nbsp;<a
+                                    href="#">Email@example.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="jp_top_header_right_wrapper">
+                        <div class="jp_top_header_right_cont">
+                            <ul>
+                                <li><a href="register.html"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
+                                <li><a href="login.html"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                            </ul>
+                        </div>
+                        <div class="jp_top_header_right__social_cont">
+                            <ul>
+                                <li>                           <a href="">                                         <i class="fa fa-facebook"></i></a></li>
+                                <li>                           <a href="">                                         <i class="fa fa-twitter"></i></a></li>
+                                <li>                           <a href="">                                         <i class="fa fa-pinterest-p"></i></a></li>
+                                <li>                           <a href="">                                         <i class="fa fa-linkedin"></i></a></li>
+                                <li>                           <a href="">                                         <i class="fa fa-google-plus"></i></a></li>
+                                <li>                           <a href="">                                         <i class="fa fa-vimeo"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Top Header Wrapper End -->
+    <!-- jp Tittle Wrapper Start -->
+    <div class="jp_tittle_main_wrapper">
+        <div class="jp_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_tittle_heading_wrapper">
+                        <div class="jp_tittle_heading">
+                            <h2>Register</h2>
+                        </div>
+                        <div class="jp_tittle_breadcrumb_main_wrapper">
+                            <div class="jp_tittle_breadcrumb_wrapper">
+                                <ul>
+                                    <li>                           <a href="">                                         Home</a> <i class="fa fa-angle-right"></i></li>
+                                    
+                                    <li>Register</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp Tittle Wrapper End -->
+
+    <!-- jp register wrapper start -->
+    <div class="register_section">
+        <!-- register_form_wrapper -->
+        <div class="register_tab_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div role="tabpanel">
+
+                            <!-- Nav tabs -->
+                            <ul id="tabOne" class="nav register-tabs">
+                                <li ><a href="{% url 'accounts:employee-register' %}" >personal account <br>
+                                        <span>i am looking for a job</span></a>
+                                </li>
+                                <li class="active"><a href="#contentOne-2" data-toggle="tab">company account <br> <span>We are hiring
+                                            Employees</span></a>
+                                </li>
+                            </ul>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane fade in active register_left_form" id="contentOne-2">
+                                    <div class="jp_regiter_top_heading">
+                                        <p>Fields with * are mandetory </p>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <form action="" method="post" data-toggle="validator">
+                                            <!--Form Group-->
+                                            {% csrf_token %}
+                                            {% for field in form %}
+                                               <!--Form Group-->
+                                               {% if field.name == 'gender' %}
+                                               <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                   <div class="form-group">
+                                                       <label for="gender">Gender</label>
+                                                       <br>
+                                                       <div class="form-check form-check-inline">
+                                                           <input class="form-check-input" type="radio" name="gender" id="male gender"
+                                                                  value="male">
+                                                           <label class="form-check-label" for="male">Male</label>
+                                                       </div>
+                                                       <div class="form-check form-check-inline">
+                                                           <input class="form-check-input" type="radio" name="gender" id="female"
+                                                                  value="female">
+                                                           <label class="form-check-label" for="female">Female</label>
+                                                       </div>
+                                                   </div>
+                           
+                                               </div>
+                                               {% else %}
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <label for="">{{ field.label }}</label>
+                                                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" value="" placeholder="{{ field.field.widget.attrs.placeholder }}*"  id="id_{{ field.name }}"
+                                                    required>
+                                            </div>
+                                         
+                                            {% endif %}
+                                            {% endfor %}
+                                          
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="check-box text-center">
+                                                    <input type="checkbox" name="shipping-option" id="account-option_1" required>
+                                                    &ensp;
+                                                    <label for="account-option_1">I agreed to the <a href="{% url 'jobs:terms' %}"
+                                                            class="check_box_anchr">Terms and Conditions</a> governing
+                                                        the
+                                                        use of jobportal</label>
+                                                </div>
+                                            </div>
+                                            <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
+                                                <button type="submit"
+                                                    class="btn btn-primary login_btn">register</button>
+                                                <!-- <a type="submit" href="javascript:;" class="btn btn-primary login_btn"> register </a> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="login_message">
+                                        <p>Already a member?                            <a href="{% url 'accounts:login' %}">                                          Login Here </a> </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="btm_txt_register_form">In case you are using a public/shared computer we recommend
+                                that you logout to prevent any un-authorized access to your account</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp register wrapper end -->
+
+    <!-- jp Newsletter Wrapper Start -->
+        <!-- jp Newsletter Wrapper End -->
+
+    <!--main js file start-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'jobPortal/js/bootstrap.js' %}"></script>
+    <script src="{% static 'jobPortal/js/jquery.menu-aim.js' %}"></script>
+    <script src="{% static 'jobPortal/js/jquery.countTo.js' %}"></script>
+    <script src="{% static 'jobPortal/js/jquery.inview.min.js' %}"></script>
+    <script src="{% static 'jobPortal/js/owl.carousel.js' %}"></script>
+    <script src="{% static 'jobPortal/js/modernizr.js' %}"></script>
+    <script src="{% static 'jobPortal/js/custom.js' %}"></script>
+    
+    <script src="{% static 'jobPortal/js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'jobPortal/js/custom_II.js' %}"></script>
+    <!--main js file end-->
+
+
+</body>
+
+</html>
+{% endblock main-content %} 

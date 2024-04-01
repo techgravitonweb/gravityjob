@@ -1,0 +1,251 @@
+{% extends 'jobPortal/base.html' %} 
+{% block main-content %} 
+{% block content %}
+{% load static %}
+
+<!-- Header Wrapper End -->
+<!-- jp Tittle Wrapper Start -->
+<div class="jp_tittle_main_wrapper">
+  <div class="jp_tittle_img_overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="jp_tittle_heading_wrapper">
+          <div class="jp_tittle_heading">
+            <h2>Blog Categories</h2>
+          </div>
+          <div class="jp_tittle_breadcrumb_main_wrapper">
+            <div class="jp_tittle_breadcrumb_wrapper">
+              <ul>
+                <li>
+                  <a href="/en/"> Home</a> <i class="fa fa-angle-right"></i>
+                </li>
+
+                <li>Blog</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="jp_blog_cate_main_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="row">
+          {% for x in userBlogList %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="jp_blog_cate_left_main_wrapper">
+                    <div class="jp_first_blog_post_main_wrapper">
+                        <div class="jp_first_blog_post_img">
+                            <img src="{{x.imageBlog.url }}" class="img-responsive" alt="blog_img" />
+                        </div>
+                        <div class="jp_first_blog_post_cont_wrapper">
+                            <ul>
+                                <li><a href="{% url 'jobs:blogShow' x.pk  %}"><i class="fa fa-calendar"></i> &nbsp;&nbsp;{{x.blogdate}}</a></li>
+                                <li><a href="{% url 'jobs:blogShow' x.pk  %}"><i class="fa fa-clone"></i> &nbsp;&nbsp;IT jobs</a></li>
+                            </ul>
+                            <h3><a href="{% url 'jobs:blogShow' x.pk  %}">{{x.name}}!</a></h3>
+                            <p>{{x.desc1short}}</p>
+                        </div>
+                        <div class="jp_first_blog_bottom_cont_wrapper">
+                            <div class="jp_blog_bottom_left_cont">
+                                <ul>
+                                    <li><img src="/static/jobPortal/images/content/blog_small_img.jpg"  alt="small_img" class="img-circle" />&nbsp;&nbsp; {{x.usernameBlog}}</li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="jp_blog_bottom_right_cont">
+                                <p class="hidden-xs"><a href="#" class="hidden-xs"><i class="fa fa-comments"></i></a></p>
+                                <ul>
+                                    <li>SHARE :</li>
+                                    <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                  
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="hidden-xs"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="hidden-xs"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+         
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                <div class="pager_wrapper gc_blog_pagination">
+                    <ul class="pagination">
+                        <li><a href="#">Priv.</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="hidden-xs"><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin_top">
+        <div class="row">
+         
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="jp_rightside_job_categories_wrapper jp_blog_right_box">
+              <div
+                class="jp_rightside_job_categories_heading"
+                style="
+                  background-image: linear-gradient(
+                    95deg,
+                    #64afef,
+                    #248ae4 50%,
+                    #244ee4 100%
+                  );
+                "
+              >
+                <h4>Jobs by Category</h4>
+              </div>
+              <div class="jp_rightside_job_categories_content">
+                <ul>
+                  <li>
+                    <i class="fa fa-caret-right"></i>
+                    <a href="/en/category/5">Government <span>(214)</span></a>
+                  </li>
+                  <li>
+                    <i class="fa fa-caret-right"></i>
+                    <a href="/en/category/1">Developer <span>(514)</span></a>
+                  </li>
+                  <li>
+                    <i class="fa fa-caret-right"></i>
+                    <a href="/en/category/2">Technology <span>(554)</span></a>
+                  </li>
+                  <li>
+                    <i class="fa fa-caret-right"></i>
+                    <a href="/en/category/3">Accounting <span>(457)</span></a>
+                  </li>
+                  <li>
+                    <i class="fa fa-caret-right"></i>
+                    <a href="/en/category/4">Medical<span>(1254)</span></a>
+                  </li>
+                
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="jp_add_resume_wrapper">
+                <div class="jp_add_resume_img_overlay"></div>
+                <div class="jp_add_resume_cont">
+                  <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                    <h4>Career Advice</h4>
+                    <h5 style="color:white; margin-top:30px;">+91 838 004 4677</h5>
+                    <p style="color:white;">hr@gravitonweb.com.</p>
+                    <ul>
+                        <!-- <button id="myBtn"> <li><a href="#email_section"><i class="fa fa-plus-circle"></i> &nbsp;Enter Email</a></li></button> -->
+                        <li><a href="{% url 'jobs:career' %}"><i class="fa fa-plus-circle"></i> &nbsp;View More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+          {% comment %} <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="jp_spotlight_main_wrapper">
+                <div class="spotlight_header_wrapper">
+                    <h4>Job Spotlight</h4>
+                </div>
+                <div class="jp_spotlight_slider_wrapper">
+                    <div class="owl-carousel owl-theme">
+                        {% for x in featured1 %}
+                        <div class="item">
+                            <div class="jp_spotlight_slider_img_Wrapper">
+                                <img src="{% static '/static/jobPortal/images/content/spotlight_img.jpg' %}" alt="spotlight_img" />
+                            </div>
+                            <div class="jp_spotlight_slider_cont_Wrapper">
+                                <h4>{{x.title}} ({{x.experence}} Exp.)</h4>
+                                <p>{{x.company_name}}</p>
+                                <ul>
+                                    <li><i class="fa fa-cc-paypal"></i>&nbsp;{{x.salary}}P.A.</li>
+                                    <li><i class="fa fa-map-marker"></i>&nbsp;{{x.location}}</li>
+                                </ul>
+                            </div>
+                            <div class="jp_spotlight_slider_btn_wrapper">
+                                <div class="jp_spotlight_slider_btn">
+                                    <ul>
+                                        <li><a href="{% url 'jobs:jobs-detail' x.id %}><i class="fa fa-plus-circle"></i> &nbsp;Apply</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                      
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        {% comment %} <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="jp_rightside_career_wrapper jp_best_deal_right_sec_wrapper">
+              <div class="jp_rightside_career_heading">
+                  <h4>Jobs by Location</h4>
+              </div>
+              <div class="jp_rightside_job_categories_content">
+                  <ul>
+                    {% for x in location %}
+                      <li><i class="fa fa-caret-right"></i> <a href="{% url 'jobs:shortValueLocation' x.pk %}"> <p></li>
+                   {% endfor %}
+                  </ul>
+              </div>
+          </div>
+      </div> {% endcomment %}
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="jp_add_resume_wrapper jp_blog_right_box">
+              <div class="jp_add_resume_img_overlay"></div>
+              <div class="jp_add_resume_cont">
+            
+                <img
+                  src="/static/jobPortal/newgravitonweb.png"
+                  alt="logo"
+                />
+                <h4>Get Best Matched Jobs On your Email. Add Resume NOW!</h4>
+                <ul>
+                  <li>
+                    <a
+                      href="/en/testCandidate/"
+                      style="
+                        background-image: linear-gradient(
+                          95deg,
+                          #64afef,
+                          #248ae4 50%,
+                          #244ee4 100%
+                        );
+                      "
+                    >
+                      <i class="fa fa-plus-circle"></i> &nbsp;ADD RESUME</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 visible-sm visible-xs"
+          >
+            <div class="pager_wrapper gc_blog_pagination">
+              <ul class="pagination">
+                <li><a href=""> Priv.</a></li>
+                <li><a href=""> 1</a></li>
+                <li><a href=""> 2</a></li>
+                <li><a href=""> 3</a></li>
+                <li class="hidden-xs"><a href=""> 4</a></li>
+                <li><a href=""> Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
+{% endblock main-content %}

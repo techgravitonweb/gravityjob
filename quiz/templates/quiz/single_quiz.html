@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/single_quiz.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Single Quiz</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body style="background-color:rgba(0, 0, 0, 0.849);">
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(310deg,#35a9effc,#093efb);
+    ">
+           <a class="navbar-brand" href="#" style="color:white;"><i class="fa-solid fa-phone" ></i></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+         
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                 <a class="nav-link" href="#" style="color:white;">Phone  &nbsp;+9826669306 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="#" style="color:white;"><i class="fa-solid fa-envelope"></i>&nbsp;Email:&nbsp;Email@gmail.com</a>
+               </li>
+             </ul>
+    
+             <ul style="display:flex; list-style-type:none; margin:auto;">
+                 <li> <i class="fa-brands fa-facebook-f" style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+               <li><i class="fa-brands fa-twitter"  style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+              <li>
+               <i class="fa-brands fa-linkedin-in"  style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+               <li><i class="fa-brands fa-google-plus-g"  style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+               <li>
+                   <i class="fa-brands fa-pinterest-p"  style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+                   <li><i class="fa-brands fa-vimeo-v" style="margin:20px; font-size:22px; color:rgba(255, 255, 255, 0.644);"></i></li>
+                 
+             </ul>
+              
+               <i class="fa-solid fa-user-plus" style="color:white;font-size:16px;"></i>&nbsp;<span style="color:white; font-size:16px; margin-right:10px;">Signup</span>&nbsp;
+               <i class="fa-solid fa-arrow-right-to-bracket" style="color:white; font-size:16px;"></i>&nbsp;<span style="color:white;font-size:16px;">Login</span>
+             </form>
+           </div>
+         </nav>
+    
+          <!---second nav---->
+          <nav class="navbar navbar-expand-lg" style="background-color:white; ">
+            <div class="container-fluid">
+                <!-- <a href="{% url 'jobs:home' %}" class="navbar-brand" >
+                    <img src="{% static 'img/logo-small.png' %}" alt="logo" class="d-none d-lg-block">
+                    <span class="sr-only">Home</span>
+                </a> -->
+                <div class="gc_logo">
+                    <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png'  %}" style="width: 100px; padding-top:10px;  height: auto;"  alt="Logo" title="gravitonweb" class="img-responsive"></a>
+                </div>
+                <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars"></i>
+                </button>
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                    {% with request.resolver_match.url_name as url_name %}
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
+                            <a href="{% url 'jobs:home' %}" class="nav-link" style="color:black;">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'jobs' %}active{% endif %}">
+                            <a href="{% url 'jobs:jobs' %}" class="nav-link" style="color:black;">Jobs</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'jobs' %}active{% endif %}">
+                            <a href="{% url 'jobs:jobs' %}" class="nav-link" style="color:black;">Member</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/{{ LANGUAGE_CODE }}/about-us/" class="nav-link" style="color:black;">About Us</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'jobs' %}active{% endif %}">
+                            <a href="{% url 'jobs:jobs' %}" class="nav-link" style="color:black;">Blog</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'jobs' %}active{% endif %}">
+                            <a href="{% url 'jobs:jobs' %}" class="nav-link" style="color:black;">Contact</a>
+                        </li>
+                        <button class="button">Dashboard</button>
+    
+                    </ul>
+                    {% endwith %}
+                </div>
+            </div>
+        </nav>
+    
+
+<!---Test---->
+<div class="row mb-5">
+    <div class="col-md-4" style="border:5px solid white; border-radius:20px; margin:auto; margin-top:20px;">
+        <h1 class="text-center text-white " style="border:1px solid black; border-radius:10px;
+        background-color:rgba(0, 0, 0, 0.575);">{{ quiz.quiz_title }}</h1>
+        <h4 class="text-center text-white mt-3">{{ num_questions }} questions</h4>
+        <div class="text-center mt-5 "> <a  href="{% url 'quiz:single_question' quiz.id 1 %}" class="btn btn-outline-secondary " 
+            style="border-color:white; color:white; width:60%; font-size:25px;
+             border-radius:10px;">Start Quiz</a></div>
+
+
+    
+<div class="text-center mt-4 mb-3">
+    <a  href="{% url 'quiz:index' %}" class="btn btn-outline-secondary" style="border-color:white; color:white;
+    width:30%; font-size:20px; border-radius:25px;">Home</a>
+
+</div>
+    </div>
+</div>
+
+
+
+    <div class="footer__copyright" style="background-color:black; ">
+        <div class="container" style="height:600px;">
+            <div class="row" >
+                <div class="col-md-12  text-center">
+                    <div class="gc_logo" style="text-align:center;">
+                        <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png'  %}" style="width: 100px; padding-top:10px;  height: auto;"  alt="Logo" title="gravitonweb" class="img-responsive"></a>
+                    </div>               
+                     <div style="border:1px solid rgba(255, 255, 255, 0.062); max-width:300%; margin-top:20px;"></div>
+                 </div>
+             </div>
+             <div class="row1" style="display:flex; margin-top:50px;">
+                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-12"> -->
+                    <h3 style="font-size: 20px; color: #ffffff; font-weight: 400; text-transform: uppercase;
+                    position: relative; font-family: 'Montserrat', sans-serif; line-height: 1.1;">who we are</h3> 
+                    <div style="display:flex; ">
+                    <div style="border:1px solid #23c0e9; width:10px;"></div>
+                    <div style="border:1px solid #23c0e9; width:30px; margin-left:5px;"></div>
+                    </div>
+                    <p style="margin-top:30px; color:#ffffffd9; font-family:'Lato', sans-serif;
+                    font-size:14px; text-transform:lowercase; font-weight: 100; line-height: 23px; ">Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Corporis sit ipsum adipisci 
+                        <br>
+                        <br>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <ul style="list-style-type:none; margin-top:20px;">
+                        <li><i class="fa-solid fa-circle-plus" style=" color: #23c0e9;"></i>
+                        <a href="#" style=" color: #23c0e9;">
+                            Read more</a></li>
+                    </ul>
+                 </div>
+                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <h3 style="font-size: 20px; color: #ffffff; font-weight: 400; text-transform: uppercase;
+                    position: relative; font-family: 'Montserrat', sans-serif; line-height: 1.1;">for candidate</h3> 
+                     <div style="display:flex; ">
+                        <div style="border:1px solid #23c0e9; width:10px;"></div>
+                        <div style="border:1px solid #23c0e9;; width:30px; margin-left:5px;"></div>
+                        </div>
+    
+                <ul style="list-style-type:none; margin-top:30px; float: left;">
+                    <li style="margin-bottom:10px; ">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px; ">add a resume</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">candidate dashboard</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">past applicants</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">Job Alerts</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">bookmarks</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">my account</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">your jobs</a>
+                    </li>
+                </ul>
+    
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <h3 style="font-size: 20px; color: #ffffff; font-weight: 400; text-transform: uppercase;
+                    position: relative; font-family: 'Montserrat', sans-serif; line-height: 1.1;">for employers</h3> 
+                     <div style="display:flex; ">
+                        <div style="border:1px solid #23c0e9;; width:10px;"></div>
+                        <div style="border:1px solid #23c0e9; width:30px; margin-left:5px;"></div>
+                        </div>
+    
+                <ul style="list-style-type:none; margin-top:30px; float: left;">
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">browse candidate</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">employer dashboard</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9;">add job</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">Job page</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">job package</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">work process</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">my account</a>
+                    </li>
+                </ul>
+    
+                </div>             
+                
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <h3 style="font-size: 20px; color: #ffffff; font-weight: 400; text-transform: uppercase;
+                    position: relative; font-family: 'Montserrat', sans-serif; line-height: 1.1;">information</h3> 
+                     <div style="display:flex; ">
+                        <div style="border:1px solid #23c0e9; width:10px;"></div>
+                        <div style="border:1px solid #23c0e9; width:30px; margin-left:5px;"></div>
+                        </div>
+    
+                <ul style="list-style-type:none; margin-top:30px; float: left;">
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">about us</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">terms & conditions</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">privacy policy</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">careers with us</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">sitemap</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">contact us</a>
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <i class="fa-solid fa-caret-right" style="color:#f36969;"></i>
+                        <a href="#" style="color:#ffffffd9; margin-left:5px;">faq</a>
+                    </li>
+                </ul>
+    
+                </div>       
+              </div>
+              <div style="border:1px solid rgba(255, 255, 255, 0.062); max-width:300%; margin-top:80px;"></div>
+    
+         </div>
+     </div>
+    
+        <div class="footer__copyright" style="background-color:black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-md-left text-center" style="color:rgba(255, 255, 255, 0.534); margin-top:10px;">
+                        <p>&copy;{% now "Y" %} © 2019-20 Job Pro. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-8 text-center text-md-right ">
+                                                   <a href="">                                         <i class="fa-brands fa-facebook-f" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i></a>
+                        <!-- <a href="https://github.com/manjurulhoque/django-job-portal" target="_blank" rel="noopener">
+                            <img alt="stars" src="https://img.shields.io/github/stars/manjurulhoque/django-job-portal?style=social"/>
+                        </a> -->
+                        <i class="fa-brands fa-twitter" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i>                        <!-- <a href="https://github.com/manjurulhoque/django-job-portal/issues" target="_blank" rel="noopener">
+                            <img alt="issues" src="https://img.shields.io/github/issues/manjurulhoque/django-job-portal?style=social"/>
+                        </a> -->
+                        <!-- <a href="https://github.com/manjurulhoque/django-job-portal/#contributors-" target="_blank" rel="noopener">
+                            <img alt="translation" src="https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square"/>
+                        </a> -->
+                        <i class="fa-brands fa-pinterest-p" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i>
+                        <i class="fa-brands fa-linkedin-in" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i>
+                        <i class="fa-brands fa-google-plus-g" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i>
+                        <i class="fa-brands fa-vimeo-v" style="color:rgba(255, 255, 255, 0.664); font-size:18px; margin:20px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+
+</body>
+</html>

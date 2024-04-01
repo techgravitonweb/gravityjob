@@ -1,0 +1,5 @@
+Collecting reportlab
+  Using cached reportlab-3.6.7-cp310-cp310-win_amd64.whl (2.3 MB)
+Requirement already satisfied: pillow>=4.0.0 in c:\users\lenovo\appdata\local\programs\python\python310\lib\site-packages (from reportlab) (9.0.1)
+Installing collected packages: reportlab
+Successfully installed reportlab-3.6.7

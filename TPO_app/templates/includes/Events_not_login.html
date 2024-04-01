@@ -1,0 +1,115 @@
+{% load static %}
+
+<div class="tile is-ancestor mt-6">
+    <div class="tile is-parent">
+        <div class="tile is-child " id="events">
+            {% if user.is_superuser %}
+            <a href="/upcoming_events">
+                <button class="button is-light is-outlined is-pulled-right"
+                    style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-plus-circle" aria-hidden="true"></i>  Add Events</strong></button>
+            </a>
+
+            {% endif %}
+            <p class="title mx-4">All Courses</p>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child ">
+                        <div class="card mx-4">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="{% static 'images/inplant.png'%}" alt="Event 1">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title">Full Stack Developer Course</p>
+                                <div class="content" style="width: 150; height: 120;">
+                                 <p style="width:200px; word-wrap: break-word;">A Full Stack Developer course provides you opportunities that allow you to become Front End, Back End, or Database Developers.</p></a>
+                                    <a href="/TPO_app">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF; width: 150px;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child ">
+                        <div class="card mx-4">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="{% static 'images/ML.gif'%}" alt="Event 1">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title">Front End Developer Course </p>
+                                <div class="content"  style="width: 150; height: 120;">
+                                  <p style="width:200px; word-wrap: break-word;">Job-perception based Front End Developer course makes you a better Front End Developer in getting job within a short duration. . </p>
+                                    <a href="/TPO_app">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child ">
+                        <div class="card mx-4">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="{% static 'images/BC.gif'%}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title">Back End Developer Course </p>
+                                <div class="content" style="width: 150; height: 120;">
+                                   <p style="width:200px; word-wrap: break-word;">The Back End Developer course is one of the best job guarantee courses in Bangalore. We can help you become a Certified Back End.</p>
+                                    <a href="/TPO_app">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="width: 150px;background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
+                                    </a>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child ">
+                        <div class="card mx-4">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="{% static 'images/VR.gif' %}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title">React Js Course</p>
+                                <div class="content" style="width: 150; height: 140;">
+                                 <p style="width:200px; word-wrap: break-word;">Certainly, a course in React counts as an industry-demanding course. Placements are assured if you are proficient in reactjs </p>
+                                <br>
+                                </a>
+                                    <a href="/TPO_app">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;width: 160px;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .title{
+        font-size: 20;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+</style>

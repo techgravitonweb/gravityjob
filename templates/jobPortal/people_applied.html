@@ -1,0 +1,210 @@
+{% extends 'jobPortal/base.html' %} 
+{% block main-content %}
+{% block content %}
+<style>
+    .dropbtn {
+      background-image: linear-gradient(95deg,#2284da,#248ae4 50%,#466bee 100%);
+            color: white;
+            border-radius:10px; 
+
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin:10px;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #f1f1f1}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+    </style>
+    <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+      <div class="jp_rightside_job_categories_wrapper jp_rightside_listing_single_wrapper"  style="padding:20px;" >
+        <div class="jp_rightside_job_categories_heading" style="background-image: linear-gradient(95deg,#2284da,#248ae4 50%,#466bee 100%);
+        ">                                  
+         <h4>Job Overview</h4>
+        </div>
+        <div class="jp_jop_overview_img_wrapper">
+            <div class="jp_jop_overview_img">
+                <img src="/static/jobPortal/images/content/job_post_img1.jpg" alt="post_img">
+            </div>
+        </div>
+        <div class="jp_job_listing_single_post_right_cont">
+            <div class="jp_job_listing_single_post_right_cont_wrapper">
+                <h4>{{jobs.title}} ({{jobs.experence}})</h4>
+                <p>TeleInfo</p>
+            </div>
+        </div>
+        <div class="jp_job_post_right_overview_btn_wrapper">
+            <div class="jp_job_post_right_overview_btn">
+                <ul>
+                    <li>                           <a href="">                                         <i class="fa fa-heart-o"></i></a></li>
+                    {% if jobs.type is '1' %}
+                    <li>                           <a href="">                                         Full Time</a></li>
+                    {% elif jobs.type=='2'}
+                    <li>                           <a href="">                                         Part  Time</a></li>
+                    {% elif jobs.type=='3'}
+                    <li>                           <a href="">                                         Internship</a></li>
+                    {% else %}
+                    <li>                           <a href="">                                         Remotely</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="jp_listing_overview_list_outside_main_wrapper">
+            <div class="jp_listing_overview_list_main_wrapper">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>Date Posted:</li>
+                        <li>{{jobs.created_at}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>Location:</li>
+                        <li>{{jobs.location}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-info-circle"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>Job Title:</li>
+                        <li>{{jobs.title}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>website:</li>
+                        <li>{{jobs.website}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-money"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>Salary:</li>
+                        <li>{{jobs.salary}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-th-large"></i>
+                </div>
+               
+            </div>
+            <div class="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
+                <div class="jp_listing_list_icon">
+                    <i class="fa fa-star"></i>
+                </div>
+                <div class="jp_listing_list_icon_cont_wrapper">
+                    <ul>
+                        <li>Experience:</li>
+                        <li>{{jobs.experence}}</li>
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    </div>
+    <form style="display: flex;" method="POST">
+        {% csrf_token %}
+    <select name="location" id="cars">
+        <option value="">Location</option>
+        <option value="bangalore">bangalore</option>
+        <option value="pune">pune</option>
+        
+      </select>
+
+      <select name="experence" id="cars">
+        <option value="1">0-1</option>
+        <option value="2">1-2</option>
+        <option value="3">2-3</option>
+        <option value="4">3-4</option>
+      </select>
+
+      <button type="submit">FIlter</button>
+
+    </form>
+{% for applicant in applicant_list  %}
+<div class="col-lg-7 col-md-offset-1 col-sm-12" style="margin-top:10px; margin-bottom:5px; border:1px solid grey;
+box-shadow: 5px 10px #888888; border-radius:10px;">
+    
+<div class="col-lg-8 col-md-8 col-sm-12" style="margin-top:5px; padding:20px; ">
+    
+    <a href="{% url 'jobs:candidatesFull' applicant.user.id %}">
+    <h5>{{applicant.user}}</h5>
+</a>
+</div>
+<div class="col-lg-2 col-md-2  col-sm-12" style="margin-top:10px;">
+    <div class="dropdown">
+        <button class="dropbtn" >Status
+        </button>
+        <div class="dropdown-content">
+        <a href="{% url 'jobs:statusChange' applicant.pk 2 %}">Accepted</a>
+        <a href="{% url 'jobs:statusChange' applicant.pk 1 %}">Pending</a>
+        <a href="{% url 'jobs:statusChange' applicant.pk 3 %}">Rejected</a>
+        </div>
+      </div>
+    </div>
+      <div class="col-lg-2 col-md-2  col-sm-12" style="margin-top:10px;">
+      <button class="dropbtn">{{applicant.get_status}}</button>
+</div>
+</div>
+{% empty  %}
+
+<div class="text-center " style="background-color: #888888; padding: 24px; font-size: 20px; color: red; margin-top: 5px;">
+    No one Applied Yet
+</div>
+
+{% endfor %}
+{% endblock %}
+{% endblock main-content %} 

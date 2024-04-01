@@ -1,0 +1,1790 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Binary Admin</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'dash/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'dash/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'dash/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!--Font Awesme 5-->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<style>
+    .save-btn:hover{
+        background-color: blue;
+    }
+</style>
+   
+</head>
+<body>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <div style="margin:auto; width:100px; height:100px; border-radius:50px; border:1px solid black;"> 
+              </div>
+              <h3 style="margin-left:230px;">user name</h3>
+              <h5 style="margin-left:250px;">user profile</h5>
+              <div style="display:flex; ">
+                <button style=" margin-left:180px; width:20%; height:40px; border-radius:10px;
+                background-color: #f36969; border-color:#f36969; color:white;font-size:16px;">Accept</button>
+                <button style=" margin-left:3px; width:20%; border-radius:10px; font-size:16px;
+                border-color:#3edb7ae1; background-color:hsla(143, 76%, 36%, 0.882); color:white;">Message</button>
+            </div>
+            </div>
+            <div class="modal-body">
+                <i class='fas fa-calendar-alt' style='font-size:16px'></i>&nbsp;<label for="fname" style="font-size:16px;">DOB</label>
+                <span>1/7/1999</span>
+                <hr >
+                <!-- <input type="text" id="" name="fname" style="border:1px solid black; border-color:white;border-bottom-color:black; background-color:white;">  -->
+               
+                <i class="fa fa-percent" style="font-size:16px;"></i>&nbsp;<label for="fname" style="font-size:16px;" >Percentage</label>
+                <span>77</span>
+                <hr >
+               
+                <!-- <input type="text" id="" name="fname" style="border:1px solid black; border-color:white;border-bottom-color:black; background-color:white;">  -->
+
+                <i class='fas fa-book' style="font-size:16px;"></i>&nbsp;<label for="fname" style="font-size:16px;">Skills</label>
+                <span style="font-size:16px";>js,react,html/css</span>
+                
+
+                
+             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div id="wrapper" style="background-color:white;">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0; background-color:#428bca;">
+            <div class="navbar-header" style="background-color:#428bca;">
+                 <div  style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 15px;"> 
+                    <i class="fas fa-phone-alt"></i>
+                    <span>&nbsp Phone &nbsp +9826669306 &nbsp 
+                        <i class="fas fa-envelope"></i>&nbsp; Email:&nbsp; Email@gmail.com</span>
+                </div> 
+                
+                <!-- <a class="navbar-brand" href="index.html" style="background-color:#4d4d4d;">logo</a>  -->
+            </div>
+<div style="color: white; padding: 15px 50px 5px 50px; float: right;"> 
+    <i class="fab fa-facebook-f" style="margin-right:20px; color:rgba(255, 255, 255, 0.719); font-size:16px;">&nbsp;</i>&nbsp;
+    <i class="fab fa-twitter" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);  font-size:16px;">&nbsp;</i>&nbsp;
+    <i class="fab fa-linkedin-in" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);  font-size:16px;">&nbsp;</i>&nbsp;
+    <i class="fab fa-google-plus-g" style="margin-right:20px; color:rgba(255, 255, 255, 0.719);  font-size:16px;">&nbsp;</i>&nbsp;
+    <i class="fab fa-pinterest-p" style="margin-right:50px; color:rgba(255, 255, 255, 0.719);  font-size:16px;">&nbsp;</i>
+    <i class="fas fa-user-plus" style="font-size:14px;">&nbsp; <a href="#"  style="font-size: 14px; font-weight: bold; font-family: 'Lato', sans-serif; color:white;">Signup </a>&nbsp;</i>
+    <i class="fas fa-sign-in-alt" style="font-size:14px;">&nbsp;<a href="#"  style="font-size: 14px; font-weight: bold; font-family: 'Lato', sans-serif; color:white;">Login</a> &nbsp;</i>
+    </div>
+    <!-- Last access : 30 May 2014 &nbsp;  -->
+    <!-- <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
+ 
+
+        </nav>   
+
+
+        <div class="fluid-container">
+            <nav class="navbar navbar-inverse" style="background-color:white; border-color:white;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header"  style="background-color:white;">
+                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" style="background-color:black;">
+                        <span class="sr-only" >Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a href="#" class="navbar-brand">gravitonweb</a> -->
+                    <div class="gc_logo">
+                        <a href="{% url 'jobs:home' %}"><img src="{% static 'jobPortal/gravitonLogo.png' %}" alt="Logo"  title="gravitonweb" style="width: 100px; padding-top:10px;  height: auto;" class="img-responsive"></a>
+                    </div> 
+                </div>
+                <!-- Collection of nav links, forms, and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav"  style="margin-top:5px;">
+                        <li ><a href="#" style="color:black; font-size:14px; font-family: 'Montserrat', sans-serif;">Jobs</a></li>
+                        <li><a href="#" style="color:black; font-size:14px; font-family: 'Montserrat', sans-serif;">Candidates</a></li>
+                        <li><a href="#" style="color:black; font-size:14px; font-family: 'Montserrat', sans-serif;">Pages</a></li>
+                        <li><a href="#" style="color:black; font-size:14px; font-family: 'Montserrat', sans-serif;">blogs</a></li>
+                        <li><a href="#" style="color:black; font-size:14px; font-family: 'Montserrat', sans-serif;">content</a></li>
+                       
+                    </ul>
+                    <form class="navbar-form navbar-right" style="display:flex;">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn" style="vertical-align: bottom!important; position:absolute; top:5px; right:30px; ">
+                                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button> 
+
+                            </span>
+                        </div>
+                        <button class="btn btn-primary" style="margin-left:20px;  margin-top:0px; font-family: 'Lato', sans-serif;
+                        font-size: 16px; float: left; width: 150px; height: 50px;  color: #ffffff;
+                        border: 1px solid #f36969; background: #f36969; text-align: center; text-transform: uppercase;
+                         border-radius: 10px; transition: all 0.5s;"><i class="fas fa-plus-circle"></i> Post Job</button>
+
+                        
+                    </form>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" style="color:black; font-">Login</a></li>
+                    </ul> -->
+
+                    
+                </div>
+
+            </nav>
+        </div>
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="background-color:#4d4d4d;">logo</a> 
+            </div>
+<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+ 
+
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side my-nav" role="navigation" style="display:block; background-color:white;">
+            <div class="sidebar-collapse" >
+                    <ul class="nav" id="main-menu">
+                        
+                        <li class="text-center">
+                        <div style="width:100px; height:100px; border-radius:50px; border:1px solid black; border-color:black; 
+                         margin:10px;">
+                         <img src="https://thedailyq.org/wp-content/uploads/2020/08/Person.jpg" style="width:60%; margin:10px;">
+                          </div>
+                        </li>
+                        
+                        
+                        <li class="active"><a style="background-color: white; color:black;" data-toggle="pill" href="#home">
+                            <i class="fas fa-briefcase"></i>Dashboard</a></li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#profile"><i class="fas fa-user"></i>User Profile</a> </li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#postjob"><i class="fas fa-file-alt"></i></i>Post Jobs</a></li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#candidates"><i class="fas fa-tasks"></i>Candidates Alert</a></li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#message"><i class="fas fa-comments"></i>Messages</a></li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#changepswd"><i class="fas fa-user-lock"></i>Change Password</a></li>
+                        <li><a  style="background-color: white; color:black;" data-toggle="pill" href="#logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+
+
+                      </ul>
+                      
+			
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner" style="padding:20px; margin:0px;">
+               
+                 <!-- /. ROW  -->
+                 <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>Application statistics</h3>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 5px 10px 20px #23c0e9 inset;">
+                        <span class="icon-box bg-color-red set-icon">
+                            <i class="fas fa-briefcase"></i>                        </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Posted Jobs</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 5px 10px 20px #23c0e9 inset;">
+                        <span class="icon-box bg-color-green set-icon">
+                            <i class="fas fa-address-card"></i>                        </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Application</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 5px 10px 20px #23c0e9 inset;">
+                        <span class="icon-box bg-color-blue set-icon">
+                            <i class="fas fa-comment-alt"></i>                        </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Review</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 5px 10px 20px #23c0e9 inset; ">
+                        <span class="icon-box bg-color-brown set-icon">
+                            <i class="fas fa-bookmark"></i>                        </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Shortlist</p>
+                        </div>
+                     </div>
+                     </div>
+
+                     <div class="row"  >
+                        <div class="col-md-3 col-sm-12 col-xs-12" >
+                            <div class="panel panel-primary  bg-color-white" style="box-shadow: 5px 5px 5px rgba(156, 156, 248, 0.63);" >
+                                <div class="panel-heading text-center" style="font-size: 16px; font-family: 'Montserrat', sans-serif;
+                                color: #ffffff;">
+            Jobs By Category
+        </div>
+                           
+        <ul style="list-style:none; margin:20px;">
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red!important; display: inline-block;
+             border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+            padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Graphic Designer</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Engineering Jobs  </label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Mainframe Jobs</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Legal Jobs</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">IT Jobs</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">R&D Jobs</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Government Jobs</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">PSU Jobs</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li  style="font-family: 'Lato', sans-serif; font-size: 14px;
+             font-weight: bold;
+             color: #23c0e9;
+             text-transform: uppercase;">
+                <i class="fas fa-plus-circle"></i><span class="text-center">SHOW MORE</span>
+             </li>
+             
+            
+          </ul>
+            
+            
+                        </div>
+                        </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;  ">
+                   
+                        <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.459); border-left-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);" >
+                            
+                            <div class="panel-body" style="display:flex; ">
+                                <div style="display:flex;">
+                                <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                    <img src="">
+                                </div>
+                                <div style="position:absolute; left:120px; top:0px;">
+                                    <h4>user name</h4>
+                                    <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+
+                                </div>
+                                </div>
+                                <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                        outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+
+                            </div>
+                        </div>
+                        
+                        </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;">
+                   
+                            <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.548); border-right-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);">
+                                
+                                <div class="panel-body" style="display:flex;">
+                                    <div class="table-responsive">
+
+                                    <div style="display:flex;">
+                                    <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                        <img src="">
+                                    </div>
+                                    <div style="position:absolute; left:120px; top:0px;">
+                                        <h4>user name</h4>
+                                        <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+    
+                                    </div>
+                                    </div>
+                                    <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                    outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+    
+                                </div>
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;">
+                   
+                                <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.507); border-left-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);">
+                                    
+                                    <div class="panel-body" style="display:flex;">
+                                        <div style="display:flex;">
+                                        <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                            <img src="">
+                                        </div>
+                                        <div style="position:absolute; left:120px; top:0px;">
+                                            <h4>user name</h4>
+                                            <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+        
+                                        </div>
+                                        </div>
+                                        <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                        outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+        
+                                    </div>
+                                </div>
+                                
+                                </div>
+                       
+                    </div>
+
+        <!----Last section-->
+         <div class="row" >
+        <div class="col-md-3 col-sm-12 col-xs-12" style="margin-top:10px;">
+        <div class="panel panel-primary  bg-color-white" style="box-shadow: 5px 5px 5px rgba(156, 156, 248, 0.63);" >
+        <div class="panel-heading text-center" style="font-size: 16px; font-family: 'Montserrat', sans-serif;
+        color: #ffffff;">
+             Jobs By location
+        </div>
+                           
+        <ul style="list-style:none; margin:20px;">
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Delhi</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Mumbai  </label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Bangalore</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+            <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+            border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+           padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+            <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+            max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Chennai</label><span class="text-color-blue">(214)</span>
+            </li>
+            <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Hydrabad</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Pune</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in Noida</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li>
+                <input type="checkbox" style="border: 1px solid #ff5353; border-color:red; display: inline-block;
+                border-radius: 4px; font: 16px/1em sans-serif; height: 16px; margin: 0.2em 0.56em .0 .0;
+               padding: 0; vertical-align: top; width: 16px;cursor: pointer; color: #000000; font-weight: 500;">
+                <label style="font-family: 'Lato', sans-serif; font-size: 16px; line-height: 23px;display: inline-block;
+                max-width: 100%; margin-bottom: 5px; cursor: pointer;color: #000000; font-weight: 500;">Jobs in lucknow</label><span class="text-color-blue">(214)</span>
+             </li>
+             <li  style="font-family: 'Lato', sans-serif; font-size: 14px;
+             font-weight: bold;
+             color: #23c0e9;
+             text-transform: uppercase;">
+                <i class="fas fa-plus-circle"></i><span class="text-center">SHOW MORE</span>
+             </li>
+             
+            
+          </ul>
+         </div>
+         </div>
+        
+                        <div class="col-md-4 col-sm-4" style="margin-top:10px; " >
+                        <div class="panel-body" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%);  display:flex;border-top-left-radius:10px; border-top-right-radius:10px; border:1px solid white;">
+                                    <div>
+                                    <b style="font-size: 14px; color: #000000; font-weight: bold; font-family: 'Montserrat', sans-serif;
+                                     line-height: 1.1;">0-1 year experience</b>
+
+                                        <h5 style="color:blue; font-family: 'Lato', sans-serif;">marketing jobs</h5>
+
+                                       <h6><i class="fas fa-map-marker-alt" style="color: #37d09c;"></i>&nbsp; <span>Bangalore,karnatka</span></h6>
+
+                                        <div><a href="#candidates" class="btn btn-danger">145 Active jobs</a></div>
+                                     </div>
+                                     <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                        <img src="">
+                                    </div>
+                                 </div>
+                                <div class="panel-footer" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%); border-bottom-left-radius:10px; border-bottom-right-radius:10px; border:1px solid  #428bca60;
+                                background-color:#428bca60;">
+                                    <i class="fas fa-mars-double" style="color:blue;"></i>
+                                    <b>Keywords:   </b><span>ui designer , developer</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4" style="margin-top:10px; " >
+                                <div class="panel-body" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%);  display:flex;border-top-left-radius:10px; border-top-right-radius:10px; border:1px solid white;">
+                                            <div>
+                                            <b style="font-size: 14px; color: #000000; font-weight: bold; font-family: 'Montserrat', sans-serif;
+                                             line-height: 1.1;">Comera job ports</b>
+        
+                                                <h5 style="color:blue; font-family: 'Lato', sans-serif;">marketing jobs</h5>
+        
+                                               <h6><i class="fas fa-map-marker-alt" style="color: #37d09c;"></i>&nbsp; <span>Bangalore,karnatka</span></h6>
+        
+                                                <div><a href="#candidates" class="btn btn-danger">145 Active jobs</a></div>
+                                             </div>
+                                             <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                                <img src="">
+                                            </div>
+                                         </div>
+                                        <div class="panel-footer" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%); border-bottom-left-radius:10px; border-bottom-right-radius:10px; border:1px solid  #428bca60;
+                                        background-color:#428bca60;">
+                                                                            <i class="fas fa-mars-double" style="color:blue; "></i>
+
+                                            <b>Keywords:   </b><span>ui designer , developer</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4" style="margin-top:20px; " >
+                                        <div class="panel-body" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%);  display:flex;border-top-left-radius:10px; border-top-right-radius:10px; border:1px solid white;">
+                                                    <div>
+                                                    <b style="font-size: 14px; color: #000000; font-weight: bold; font-family: 'Montserrat', sans-serif;
+                                                     line-height: 1.1;">Comera job ports</b>
+                
+                                                        <h5 style="color:blue; font-family: 'Lato', sans-serif;">marketing jobs</h5>
+                
+                                                       <h6><i class="fas fa-map-marker-alt" style="color: #37d09c;"></i>&nbsp; <span>Bangalore,karnatka</span></h6>
+                
+                                                        <div><a href="#candidates" class="btn btn-danger">145 Active jobs</a></div>
+                                                     </div>
+                                                     <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                                        <img src="">
+                                                    </div>
+                                                 </div>
+                                                <div class="panel-footer" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%); border-bottom-left-radius:10px; border-bottom-right-radius:10px; border:1px solid  #428bca60;
+                                                background-color:#428bca60;">
+                                                    <i class="fas fa-mars-double" style="color:blue;"></i>
+                                                    <b>Keywords:   </b><span>ui designer , developer</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4" style="margin-top:20px; " >
+                                                <div class="panel-body" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%);  display:flex;border-top-left-radius:10px; border-top-right-radius:10px; border:1px solid white;">
+                                                            <div>
+                                                            <b style="font-size: 14px; color: #000000; font-weight: bold; font-family: 'Montserrat', sans-serif;
+                                                             line-height: 1.1;">Comera job ports</b>
+                        
+                                                                <h5 style="color:blue; font-family: 'Lato', sans-serif;">marketing jobs</h5>
+                        
+                                                               <h6><i class="fas fa-map-marker-alt" style="color: #37d09c;"></i>&nbsp; <span>Bangalore,karnatka</span></h6>
+                        
+                                                                <div><a href="#candidates" class="btn btn-danger">145 Active jobs</a></div>
+                                                             </div>
+                                                             <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                                                <img src="">
+                                                            </div>
+                                                         </div>
+                                                        <div class="panel-footer" style="box-shadow: 3px 3px 5px 6px hsl(191, 44%, 95%); border-bottom-left-radius:10px; border-bottom-right-radius:10px; border:1px solid  #428bca60;
+                                                        background-color:#428bca60;">
+                                                            <i class="fas fa-mars-double" style="color:blue;"></i>
+                                                            <b>Keywords:   </b><span>ui designer , developer</span>
+                                                        </div>
+                                                    </div>
+                        
+                        <!-- <div class="col-md-4 col-sm-4">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Info Panel
+                                </div>
+                                
+                                <div class="panel-body" style="display:flex;">
+                                    <div>
+                                    <b style="font-size: 14px;
+                                    color: #000000;
+                                    font-weight: bold; font-family: 'Montserrat', sans-serif;
+    line-height: 1.1;">Comera job ports</b>
+
+                                        <h5 style="color:blue;font-family: 'Lato', sans-serif;">marketing jobs</h5>
+
+                                       <h6><i class="fas fa-map-marker-alt" style="color: #f36969;"></i>&nbsp;<span>Bangalore,karnatka</span></h6>
+
+                                        <div><a href="#" class="btn btn-danger">145 Active jobs</a></div>
+                                     </div>
+                                     <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                        <img src="">
+                                    </div>
+                                 </div>
+                                <div class="panel-footer">
+                                    <i class="fas fa-mars-double" style="color:blue;font-family: 'Lato', sans-serif;"></i>
+                                    <b>Keywords:   </b><span>ui designer , developer</span>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                       
+                       
+                           
+                       
+                    </div>
+                    </div>                   
+                 </div>
+
+
+
+                 <!-----------uSER PROFILE-->
+                    <div id="profile" class="tab-pane fade ">
+                        <h3><b>User Profile</b></h3>
+                            <div id="page-inner">
+                             <div class="tab-content">
+                                  <div class="tab-pane fade active in" id="home">
+                                      <div class="panel panel-default">
+                                          <div class="panel-heading">
+                                              Form Element Examples
+                                          </div>
+                                          <div class="panel-body">
+                                              <div class="row">
+                                                
+                                            
+                                                          <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="file-loading">
+                                                                        <input id="avatar-1" name="avatar-1" type="file" required style="border-color:#a94442;">
+                                                                    </div>
+                                                                    <h6>select logo image</h6>
+                                                                </div>
+                                                              <div class="form-group">
+                                                                  <label>employer name</label>
+                                                                  <input class="form-control" placeholder="name" style="border-color:#a94442;" />
+                                                              </div>
+                
+                                                              <div class="form-group">
+                                                                <label>phone number</label>
+                                                                <input class="form-control" placeholder="phone number"style="border-color:#a94442;" />
+                                                            </div>
+                
+                                                            <div class="form-group">
+                                                              <label>founded date</label>
+                                                              <input class="form-control" placeholder="" style="border-color:#a94442;"/>
+                                                          </div>
+                                                            <div class="form-group">
+                                                                <label>Categories</label>
+                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                    <option>One Vale</option>
+                                                                    <option>Two Vale</option>
+                                                                    <option>Three Vale</option>
+                                                                    <option>Four Vale</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                              <label>About Company</label>
+                                                              <textarea style="border-color:#a94442;" class="form-control" rows="3" placeholder="Give concise text to attract right seekers"></textarea>
+                                                              <div>Max 800 characters</div>
+                                                          </div>
+                
+                                                             
+                                                                
+                
+                                                              <h3 style="margin-top:40px;">Members</h3>
+                                                                  
+                                                              <div class="form-group">
+                                                                <label>name</label>
+                                                                  <input class="form-control" placeholder="name." style="border-color:#a94442;"/>
+                                                              </div> 
+                                                              <div class="form-group">
+                                                                <label>designation</label>
+                                                                  <input class="form-control" placeholder="designation." style="border-color:#a94442;" />
+                                                              </div> 
+                                                              <div class="form-group">
+                                                                <label>Experience</label>
+                                                                  <input class="form-control" placeholder="Experience" style="border-color:#a94442;"/>
+                                                              </div> 
+                                                              <div class="form-group">
+                                                                <label>select url</label>
+                                                                <div class="form-date">
+                                                                 <select class="form-control"  style="border-color:#a94442;">
+                                                                        <option>facebook</option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                        
+                                                                        <input class="form-control" placeholder="url" style=" margin-left:5px; border-color:#a94442;" />
+                                                                    
+                                                                    
+                                                                </div> 
+                                                                </div>
+                                                               
+
+                                                               
+                                                               
+                                                                
+                                                              
+                                          
+                                                         
+                  
+                                                   
+                      </div>
+                                                  
+                                                  <div class="col-md-6" >
+                                                      <form role="form">
+                                                        <div class="form-group">
+                                                            <div class="file-loading">
+                                                                    <input id="avatar-1" name="avatar-1" type="file" required style="border-color:#a94442;">
+                                                                </div>
+                                                                <h6>select cover photo</h6>
+                                                            </div>
+                                                          
+                                                        <div class="form-group">
+                                                          <label>Email</label>
+                                                          <input class="form-control" placeholder="john@gmail.com" style="border-color:#a94442;" />
+                                                      </div>
+                
+                                                      <div class="form-group">
+                                                        <label>Website</label>
+                                                        <input class="form-control" style="border-color:#a94442;" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Company size</label>
+                                                      <input class="form-control"  style="border-color:#a94442;"/>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label>Introduction vedio url</label>
+                                                    <input class="form-control" style="border-color:#a94442;" />
+                                                </div>
+                                                <div class="form-group" style="margin-top:40px;">
+                                                  <div class="file-loading" >
+                                                          <input id="avatar-1" name="avatar-1" type="file" required style="border-color:#a94442;">
+                                                      </div>
+                                                      <h6>select profile </h6>
+                                                  </div>
+                
+                
+                                                                  
+                                                                              
+                                                              
+                                                              <!-- <div class="checkbox">
+                                                                  <label>
+                                                                      <input type="checkbox" />Disabled Checkbox
+                                                                  </label>
+                                                                  
+                                                              </div>
+                                                              <button type="submit" class="btn btn-primary">Disabled Button</button> -->
+                                                          
+                                                      </form>
+                                                      <h3 style="margin-top:86px;">Contact Information</h3>
+                                                      <form role="form">
+                                                          <div class="form-group">
+                                                              <label>location</label>
+                                                              <select class="form-control" style="border-color:#a94442;">
+                                                                  <option>india</option>
+                                                                  <option>Mumbai</option>
+                                                                  <option>Hydrabad</option>
+                                                                  <option>Chennai</option>
+                                                                  <option>Pune</option>
+                                                              </select>
+                                                              </div>
+                                                          
+                                                          
+                                                      </form>
+                                                      <form role="form">
+                                                        <div class="form-group">
+                                                          <label>Friendly address</label>
+                                                          <input class="form-control"style="border-color:#a94442;" />
+                                                      </div>
+                                                      <label>social network</label>
+                                                      <div class="form-date">
+                                                       <select class="form-control" style="border-color:#a94442;" >
+                                                              <option>facebook</option>
+                                                              <option>Mumbai</option>
+                                                              <option>Hydrabad</option>
+                                                              <option>Chennai</option>
+                                                              <option>Pune</option>
+                                                          </select>
+                
+                                                              <input class="form-control" placeholder="url" style="border-color:#a94442;"/>
+                                                          
+                                                          
+                                                      </div>  
+                                                     
+                                                                <div class="form-group">
+                                                                  <label style="margin:8px;">Employees</label>
+                                                                    <input class="form-control" placeholder="Employees" style="border-color:#a94442;"/>
+                                                                </div> 
+                                                          </form>
+                                                          
+                                                  </div>
+                                              </div>
+                                              <button class="btn btn-primary save-btn" style="margin-left:20px;  margin-top:0px; font-family: 'Lato', sans-serif;
+                                              font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                              border: 1px solid black; background: rgba(0, 0, 0, 0.733); text-align: center; text-transform: uppercase;
+                                              border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>                     
+                         
+
+                    <div id="postjob" class="tab-pane fade">
+                        <h3><b>Post Jobs</b></h3>
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-body">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="fulltimejob" data-toggle="tab">Full Time Job</a>
+                                    </li>
+                                    <li class=""><a href="#contractjob" data-toggle="tab">Contract job</a>
+                                    </li>
+                                    <li class=""><a href="#walkin" data-toggle="tab">Walk-in job</a>
+                                    </li>
+                                    
+                                </ul>
+    
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active in" id="fulltimejob">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                Full time job
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        
+                                                        <form role="form">
+                                                            <div class="form-group">
+                                                                <label>Job Title</label>
+                                                                <input class="form-control" placeholder="e.g: Sr Manager - product management" style="border-color:#a94442;" />
+                                                                <div>Max 100 characters</div>
+                                                            </div>
+                                                            <div class="form-group" >
+                                                                <h3 style="margin-top:0px;">Job Description</h3>
+                                                                <label>Job Summary</label>
+                                                                <textarea class="form-control" rows="3" placeholder="Give concise text to attract right seekers" style="border-color:#a94442;"></textarea>
+                                                                <div>Max 250 characters</div>
+                                                            </div>
+                                                          
+                                                            
+    
+                                                            <div class="form-group">
+                                                                <label>Job Details</label>
+                                                                <textarea class="form-control" rows="3" placeholder="Job responsibility,skills,team size,reporting,travelling etc." style="border-color:#a94442;"></textarea>
+                                                                <div>Min 200 characters</div>
+                                                            </div>
+                                                        </form>
+                                                    
+                                                        
+    
+                                                        
+                                                                <h3>Matching Criteria</h3>
+                                                                <div class="form-group">
+                                                                    <label>Keyword/skills*</label>
+                                                                    <input class="form-control" placeholder="" style="border-color:#a94442;"/>
+                                                                </div>
+    
+    
+                                                                <label>Experience*</label>
+                                                                <div class="form-date">
+                                                                 <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                        <option>min</option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                        
+                                                                
+                                                                    <select class="form-control" style="margin:5px; border-color:#a94442;">
+                                                                        <option>max</option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                                                                </div>  
+                                                                <label>Category/function*</label>
+                                                                <div class="form-group">
+                                                                    <select class="form-control" style="border-color:#a94442;">
+                                                                        <option></option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Education</label>
+                                                                        <select class="form-control" style="border-color:#a94442;">
+                                                                            <option></option>
+                                                                            <option>Mumbai</option>
+                                                                            <option>Hydrabad</option>
+                                                                            <option>Chennai</option>
+                                                                            <option>Pune</option>
+                                                                        </select>
+                                                                        </div>
+                                                                     <div class="form-group">
+                                                                     <label>job location</label>
+                                                                                <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                    <option>Select job location</option>
+                                                                                    <option>Mumbai</option>
+                                                                                    <option>Hydrabad</option>
+                                                                                    <option>Chennai</option>
+                                                                                    <option>Pune</option>
+                                                                                </select>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label>industry</label>
+                                                                                    <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                        <option>set industry</option>
+                                                                                        <option>Mumbai</option>
+                                                                                        <option>Hydrabad</option>
+                                                                                        <option>Chennai</option>
+                                                                                        <option>Pune</option>
+                                                                                    </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Role</label>
+                                                                                        <select class="form-control"  style="margin:5;border-color:#a94442;">
+                                                                                            <option>set role</option>
+                                                                                            <option>Mumbai</option>
+                                                                                            <option>Hydrabad</option>
+                                                                                            <option>Chennai</option>
+                                                                                            <option>Pune</option>
+                                                                                        </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label>Specialization</label>
+                                                                                            <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                                <option></option>
+                                                                                                <option>Mumbai</option>
+                                                                                                <option>Hydrabad</option>
+                                                                                                <option>Chennai</option>
+                                                                                                <option>Pune</option>
+                                                                                            </select>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label>Nationality</label>
+                                                                                                <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                                    <option>select nationality</option>
+                                                                                                    <option>Mumbai</option>
+                                                                                                    <option>Hydrabad</option>
+                                                                                                    <option>Chennai</option>
+                                                                                                    <option>Pune</option>
+                                                                                                </select>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label>Job Details</label>
+                                                                                                    <textarea class="form-control" rows="3" placeholder="Job responsibility,skills,team size,reporting,travelling etc."style="border-color:#a94442;"></textarea>
+                                                                                                    <div>Min 200 characters</div>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <input class="form-control" placeholder="Ext." style="border-color:#a94442;" />
+                                                                                                </div> 
+                                                                                               
+                                                                            
+                                                                            
+                                                                
+    
+                                                               
+                                                                      
+                                                                
+                                                            
+                                                           
+                                                     
+                        </div>
+                                                    
+                        <div class="col-md-6">
+                       <form role="form">
+                       
+                        <h3 style="margin-top:0px;">Job Owner Detail</h3>
+                        
+                                                                    
+                        <div class="form-group">
+                            <input class="form-control" placeholder="name." style="border-color:#a94442;" />
+                        </div> 
+                        <div class="form-group">
+                            <input class="form-control" placeholder="phone."style="border-color:#a94442;" />
+                        </div> 
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email" style="border-color:#a94442;" />
+                        </div> 
+                      </form>
+                      <h3 style="margin-top:70px;">Optional Information</h3>
+                      <div class="form-group">
+                     <div class="form-group">
+                     <label>Job Type</label>
+                     <select class="form-control" style="border-color:#a94442;">
+                     <option>One Vale</option>
+                    <option>Two Vale</option>
+                     <option>Three Vale</option>
+                     <option>Four Vale</option>
+                     </select>
+                     </div>
+    
+                  <label>min</label>
+                <div class="form-group input-group" style="display:flex;">
+              <div class="form-group" style="margin:5px; width:50%;">
+                                                                        
+                <select class="form-control" style="border-color:#a94442;">
+                <option>in lacs</option>
+                 <option>Two Vale</option>
+                <option>Three Vale</option>
+               <option>Four Vale</option>
+             </select>
+             </div>
+                                                                        
+            <div class="form-group" style="margin:5px; width:50%;">
+             <select class="form-control" style="border-color:#a94442;">
+            <option>in thousands</option>
+             <option>Two Vale</option>
+             <option>Three Vale</option>
+             <option>Four Vale</option>
+            </select>
+             </div>
+            </div>
+            <label>max</label>
+           <div class="form-group input-group" style="display:flex;">
+            <div class="form-group" style="margin:5px; width:50%;">
+             <select class="form-control" style="border-color:#a94442;">
+            <option>in lacs</option>
+             <option>Two Vale</option>
+             <option>Three Vale</option>
+             <option>Four Vale</option>
+            </select>
+             </div>
+                                                                        
+             <div class="form-group" style="margin:5px; width:50%;">
+                                                                            
+             <select class="form-control" style="border-color:#a94442;">
+              <option>in thousands</option>
+              <option>Two Vale</option>
+              <option>Three Vale</option>
+              <option>Four Vale</option>
+              </select>
+              </div>
+             </div>
+                                                                
+                                                                
+                                                               
+              <h3 style="margin-top:50px;">Scheduled Jobs</h3>
+             <form role="form">
+            <div class="form-group">
+              <label>Make live</label>
+             <select class="form-control" style="border-color:#a94442;">
+             <option>set industry</option>
+            <option>Mumbai</option>
+             <option>Hydrabad</option>
+             <option>Chennai</option>
+             <option>Pune</option>
+            </select>
+                                                                </div>
+                                                            <div class="form-group has-warning">
+                                                                <div class="form-group">
+                                                                    <label>Closing dates</label>
+                                                                    <input type="date" class="form-control" placeholder="Ext." style="border-color:#a94442;" />
+    
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group has-error">
+                                                                <label>Auto Renew</label>
+                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                    <option>set industry</option>
+                                                                    <option>Mumbai</option>
+                                                                    <option>Hydrabad</option>
+                                                                    <option>Chennai</option>
+                                                                    <option>Pune</option>
+                                                                </select>
+                                                            </div>
+                                                        </form>
+                                                        <form role="form">
+                                                            <div class="form-group input-group" style="display:flex;">
+                                                                <div class="form-group" style="margin:5px;">
+                                                                    <label>from</label>
+                                                                    <input type="date" class="form-control" placeholder="from." style="border-color:#a94442;"/>
+    
+                                                                    </div>
+                                                                    <div class="form-group" style="margin:5px;">
+                                                                        <label>to</label>
+                                                                        <input type="date" class="form-control" placeholder="Ext." style="border-color:#a94442;"/>
+        
+                                                                        </div>
+                                                            </div>
+                                                            </form>
+                                                            <label style="margin-top:50px;">Checkboxes</label>
+
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="" /> send auto-matched resumes from database
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value=""/>keep company name confidential
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value=""/>Don't send applications in email
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="" /> Reveal contact details to job applicants
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="" /> showcase this job to women on the go
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="" /> use screening for this job
+                                                                </label>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        
+                                                           
+                                                    </div>
+                                                    <button class="btn btn-primary save-btn" style="margin-left:20px;  margin-top:60px; font-family: 'Lato', sans-serif;
+                                                    font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                                    border: 1px solid black; background: rgba(0, 0, 0, 0.733); text-align: center; text-transform: uppercase;
+                                                    border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="contractjob">
+                                        <div class="tab-pane fade active in" id="home">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    Contract Jobs
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            
+                                                            <form role="form">
+                                                                <div class="form-group">
+                                                                    <label>Job Title</label>
+                                                                    <input class="form-control" placeholder="e.g: Sr Manager - product management" style="border-color:#a94442;" />
+                                                                    <div>Max 100 characters</div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h3>Job Description</h3>
+                                                                    <label>Job Summary</label>
+                                                                    <textarea class="form-control" rows="3" placeholder="Give concise text to attract right seekers" style="border-color:#a94442;"></textarea>
+                                                                    <div>Max 250 characters</div>
+                                                                </div>
+                                                              
+                                                                
+        
+                                                                <div class="form-group">
+                                                                    <label>Job Details</label>
+                                                                    <textarea class="form-control" rows="3" placeholder="Job responsibility,skills,team size,reporting,travelling etc." style="border-color:#a94442;"></textarea>
+                                                                    <div>Min 200 characters</div>
+                                                                </div>
+                                                            </form>
+                                                        
+        
+                                                            
+                                                                    <h3>Matching Criteria</h3>
+                                                                    <div class="form-group">
+                                                                        <label>Keyword/skills*</label>
+                                                                        <input class="form-control" placeholder="e.g: Software development,dot net,java etc." style="border-color:#a94442;"/>
+                                                                    </div>
+        
+        
+                                                                    <label>Experience*</label>
+                                                                    <div class="form-date">
+                                                                     <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                            <option>min</option>
+                                                                            <option>Mumbai</option>
+                                                                            <option>Hydrabad</option>
+                                                                            <option>Chennai</option>
+                                                                            <option>Pune</option>
+                                                                        </select>
+                            
+                                                                    
+                                                                        <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                            <option>max</option>
+                                                                            <option>Mumbai</option>
+                                                                            <option>Hydrabad</option>
+                                                                            <option>Chennai</option>
+                                                                            <option>Pune</option>
+                                                                        </select>
+                                                                    </div>  
+                                                                    <label>Category/function*</label>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" style="border-color:#a94442;">
+                                                                            <option>set industry</option>
+                                                                            <option>Mumbai</option>
+                                                                            <option>Hydrabad</option>
+                                                                            <option>Chennai</option>
+                                                                            <option>Pune</option>
+                                                                        </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Education</label>
+                                                                            <select class="form-control" style="border-color:#a94442;">
+                                                                                <option>set industry</option>
+                                                                                <option>Mumbai</option>
+                                                                                <option>Hydrabad</option>
+                                                                                <option>Chennai</option>
+                                                                                <option>Pune</option>
+                                                                            </select>
+                                                                            </div>
+                                                                            <form role="form">
+                                                                
+                                                                                <div class="form-group">
+                                                                                    <label>job location</label>
+                                                                                    <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                        <option>Select job location</option>
+                                                                                        <option>Mumbai</option>
+                                                                                        <option>Hydrabad</option>
+                                                                                        <option>Chennai</option>
+                                                                                        <option>Pune</option>
+                                                                                    </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>industry</label>
+                                                                                        <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                            <option>set industry</option>
+                                                                                            <option>Mumbai</option>
+                                                                                            <option>Hydrabad</option>
+                                                                                            <option>Chennai</option>
+                                                                                            <option>Pune</option>
+                                                                                        </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label>Role</label>
+                                                                                            <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                                <option>set industry</option>
+                                                                                                <option>Mumbai</option>
+                                                                                                <option>Hydrabad</option>
+                                                                                                <option>Chennai</option>
+                                                                                                <option>Pune</option>
+                                                                                            </select>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label>Specialization</label>
+                                                                                                <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                                    <option>set industry</option>
+                                                                                                    <option>Mumbai</option>
+                                                                                                    <option>Hydrabad</option>
+                                                                                                    <option>Chennai</option>
+                                                                                                    <option>Pune</option>
+                                                                                                </select>
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label>Nationality</label>
+                                                                                                    <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                                        <option>set industry</option>
+                                                                                                        <option>Mumbai</option>
+                                                                                                        <option>Hydrabad</option>
+                                                                                                        <option>Chennai</option>
+                                                                                                        <option>Pune</option>
+                                                                                                    </select>
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <label>Job Details</label>
+                                                                                                        <textarea class="form-control" rows="3" placeholder="Job responsibility,skills,team size,reporting,travelling etc."style="border-color:#a94442;"></textarea>
+                                                                                                        <div>Min 200 characters</div>
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <input class="form-control" placeholder="Ext."style="border-color:#a94442;" />
+                                                                                                    </div> 
+                                                                                                   
+                                                                                
+                                                                              
+                                                                            
+                                                                        </form>
+        
+                                                                   
+                                                                    
+                                                                             
+                        
+                                                         
+                            </div>
+                                                        
+                                                        <div class="col-md-6">
+                                                            <h3 style="margin-top:0px;">Job Owner Detail</h3>
+                                                                        
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="name." style="border-color:#a94442;"/>
+                                                            </div> 
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="phone." style="border-color:#a94442;" />
+                                                            </div> 
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Email" style="border-color:#a94442;"/>
+                                                            </div> 
+                                                            <h3 style="margin-top:90px;">Optional Information</h3>
+                                                                <div class="form-group">
+                                                                    <div class="form-group">
+                                                                        <label>Job Type</label>
+                                                                        <select class="form-control" style="border-color:#a94442;">
+                                                                            <option>One Vale</option>
+                                                                            <option>Two Vale</option>
+                                                                            <option>Three Vale</option>
+                                                                            <option>Four Vale</option>
+                                                                        </select>
+                                                                    </div>
+        
+                                                                    <label>min</label>
+                                                                    <div class="form-group input-group" style="display:flex;">
+                                                                        <div class="form-group" style="margin:5px; width:50%;">
+                                                                            
+                                                                            <select class="form-control" style="border-color:#a94442;">
+                                                                                <option>in lacs</option>
+                                                                                <option>Two Vale</option>
+                                                                                <option>Three Vale</option>
+                                                                                <option>Four Vale</option>
+                                                                            </select>
+                                                                            </div>
+                                                                            
+                                                                            <div class="form-group" style="margin:5px; width:50%;">
+                                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                                    <option>in thousands</option>
+                                                                                    <option>Two Vale</option>
+                                                                                    <option>Three Vale</option>
+                                                                                    <option>Four Vale</option>
+                                                                                </select>
+                                                                                </div>
+                                                                    </div>
+                                                                    <label>max</label>
+                                                                    <div class="form-group input-group" style="display:flex;">
+                                                                        <div class="form-group" style="margin:5px; width:50%;">
+                                                                            <select class="form-control" style="border-color:#a94442;">
+                                                                                <option>in lacs</option>
+                                                                                <option>Two Vale</option>
+                                                                                <option>Three Vale</option>
+                                                                                <option>Four Vale</option>
+                                                                            </select>
+                                                                         </div>
+                                                                            
+                                                                        <div class="form-group" style="margin:5px; width:50%;">
+                                                                                
+                                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                                    <option>in thousands</option>
+                                                                                    <option>Two Vale</option>
+                                                                                    <option>Three Vale</option>
+                                                                                    <option>Four Vale</option>
+                                                                                </select>
+                                                                     </div>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                   
+                                                            
+                                                                  
+                                                            
+                                                            <h3 style="margin-top:70px;">Scheduled Jobs</h3>
+                                                            <form role="form">
+                                                                <div class="form-group">
+                                                                    <label>Make live</label>
+                                                                    <select class="form-control" style="border-color:#a94442;">
+                                                                        <option>set industry</option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                                                                    </div>
+                                                                <div class="form-group has-warning">
+                                                                    <div class="form-group">
+                                                                        <label>Closing dates</label>
+                                                                        <input type="date" class="form-control" placeholder="Ext." style="border-color:#a94442;"/>
+        
+                                                                        </div>
+                                                                </div>
+                                                                <div class="form-group has-error">
+                                                                    <label>Auto Renew</label>
+                                                                    <select class="form-control" style="border-color:#a94442;">
+                                                                        <option>set industry</option>
+                                                                        <option>Mumbai</option>
+                                                                        <option>Hydrabad</option>
+                                                                        <option>Chennai</option>
+                                                                        <option>Pune</option>
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                            
+                                                            <form role="form">
+                                                                <div class="form-group input-group" style="display:flex;">
+                                                                    <div class="form-group" style="margin:5px;">
+                                                                        <label>from</label>
+                                                                        <input type="date" class="form-control" placeholder="from."style="border-color:#a94442;" />
+        
+                                                                        </div>
+                                                                        <div class="form-group" style="margin:5px;">
+                                                                            <label>to</label>
+                                                                            <input type="date" class="form-control" placeholder="Ext."style="border-color:#a94442;" />
+            
+                                                                            </div>
+                                                                </div>
+                                                                <label style="margin-top:50px;">Checkboxes</label>
+                                                                    
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" /> send auto-matched resumes from database
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value=""/>keep company name confidential
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value=""/>Don't send applications in email
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" /> Reveal contact details to job applicants
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" /> showcase this job to women on the go
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" /> use screening for this job
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                        <button class="btn btn-primary save-btn" style="margin-left:20px;  margin-top:60px; font-family: 'Lato', sans-serif;
+                                                        font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                                        border: 1px solid black; background: rgba(0, 0, 0, 0.733); text-align: center; text-transform: uppercase;
+                                                        border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="walkin">
+                                        
+                                        <form action="/action_page.php">
+                                            <div class="container">
+                                                <div class="form-group">
+                                                    <label>Job Title</label>
+                                                    <input class="form-control" placeholder="e.g: Sr Manager - product management" style="border-color:#a94442;"/>
+                                                    <div>Max 100 characters</div>
+                                                </div>
+                                               
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h3>Walkin Details</h3>
+                                                        <div class="form-group">
+                                                            <label>Venue Address</label>
+                                                            <input class="form-control" placeholder="venue address*" style="border-color:#a94442;"/>
+                                                            <div>Max 100 characters</div>
+                                                        </div>  
+                                                                                            
+                    
+                                                              <div class="form-group">
+                                                                <label>City *</label>
+                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                    <option>Bangalore</option>
+                                                                    <option>Mumbai</option>
+                                                                    <option>Hydrabad</option>
+                                                                    <option>Chennai</option>
+                                                                    <option>Pune</option>
+                                                                </select>
+                                                            </div>        
+    
+    
+                                                        <label>Date</label>
+                                                        <div class="form-date">
+                                                         <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>min</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                
+                                                        
+                                                            <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>max</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                                                        </div>  
+                                                        <label>Category/function*</label>
+                                                        <div class="form-group">
+                                                            <select class="form-control" style="border-color:#a94442;">
+                                                                <option>set industry</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Education</label>
+                                                                <select class="form-control" style="border-color:#a94442;">
+                                                                    <option>set industry</option>
+                                                                    <option>Mumbai</option>
+                                                                    <option>Hydrabad</option>
+                                                                    <option>Chennai</option>
+                                                                    <option>Pune</option>
+                                                                </select>
+                                                                </div>
+    
+                                                        <h3>Job Owner Detail</h3>
+                                                            
+                                                        <div class="form-group">
+                                                            <label>name</label>
+                                                            <input class="form-control" placeholder="name." style="border-color:#a94442;"/>
+                                                        </div> 
+                                                        <div class="form-group">
+                                                            <label>phone</label>
+                                                            <input class="form-control" placeholder="phone." style="border-color:#a94442;" />
+                                                        </div> 
+                                                        <div class="form-group">
+                                                            <label>Ext</label>
+                                                            <input class="form-control" placeholder="Ext" style="border-color:#a94442;"/>
+                                                        </div> 
+                                                              
+                                                        <div class="form-group">
+                                                            <label>email</label>
+                                                            <input class="form-control" placeholder="Email" style="border-color:#a94442;" />
+                                                        </div> 
+                                                        
+                                                              
+                                                        
+                                                    
+                                                   
+            
+                                             
+                </div>
+                                            
+                                            <div class="col-md-6">
+                                                <form role="form">
+                                                    <h3>Job Details</h3>
+                                                    <div class="form-group">
+                                                        <label>Job Description *</label>
+                                                        <textarea class="form-control" rows="3" placeholder="Give concise text to attract right seekers" style="border-color:#a94442;"></textarea>
+                                                        <div>Max 800 characters</div>
+                                                    </div>
+                                                            <div class="form-group">
+                                                                <label>No. Of Openings</label>
+                                                <input class="form-control" style="border-color:#a94442;" />
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>keywords/skills</label>
+                                                                    <input class="form-control" placeholder="eg. software development,dot net,java etc." style="border-color:#a94442;"/>
+                                                                </div>
+                                                                <label>Experience</label>
+                                                        <div class="form-date">
+                                                         <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>min</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                
+                                                        
+                                                            <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>max</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                                                        </div>  
+                                                                    <div class="form-group">
+                                                                        <label>Job location</label>
+                                                                        <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                            <option>set industry</option>
+                                                                            <option>Mumbai</option>
+                                                                            <option>Hydrabad</option>
+                                                                            <option>Chennai</option>
+                                                                            <option>Pune</option>
+                                                                        </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Industry</label>
+                                                                            <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                                <option>set industry</option>
+                                                                                <option>Mumbai</option>
+                                                                                <option>Hydrabad</option>
+                                                                                <option>Chennai</option>
+                                                                                <option>Pune</option>
+                                                                            </select>
+                                                                            </div>
+                                                        <label>Category/function</label>
+                                                        <div class="form-date">
+                                                         <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>min</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                
+                                                        
+                                                            <select class="form-control" style="margin:5px;border-color:#a94442;">
+                                                                <option>max</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                                                        </div>  
+                                                        <div class="form-group">
+                                                            <label>Education</label>
+                                                            <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                <option>set industry</option>
+                                                                <option>Mumbai</option>
+                                                                <option>Hydrabad</option>
+                                                                <option>Chennai</option>
+                                                                <option>Pune</option>
+                                                            </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nationality</label>
+                                                                <select class="form-control"  style="margin:5px;border-color:#a94442;">
+                                                                    <option>set industry</option>
+                                                                    <option>Mumbai</option>
+                                                                    <option>Hydrabad</option>
+                                                                    <option>Chennai</option>
+                                                                    <option>Pune</option>
+                                                                </select>
+                                                                </div>
+                                                                           
+                                                                            
+                                                                           
+                                                        
+                                                       
+                                                </form>
+                                                
+                                               
+                                                    
+                                            </div>
+                                            <button class="btn btn-primary save-btn" style="margin-left:20px;  margin-top:60px; font-family: 'Lato', sans-serif;
+                                            font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                            border: 1px solid black; background: rgba(0, 0, 0, 0.733); text-align: center; text-transform: uppercase;
+                                            border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                        </div>
+                                     </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                 </div>
+                 <div id="candidates" class="tab-pane fade">
+                     <h3><b>Candidates</b></h3>
+                     <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;">
+                   
+                        <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.507); border-left-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);">
+                            
+                            <div class="panel-body" style="display:flex;">
+                                <div style="display:flex;">
+                                <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                    <img src="">
+                                </div>
+                                <div style="position:absolute; left:120px; top:0px;">
+                                    <h4>user name</h4>
+                                    <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+
+                                </div>
+                                </div>
+                                <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+
+                            </div>
+                        </div>
+                        
+                        </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;">
+                   
+                            <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.507); border-left-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);">
+                                
+                                <div class="panel-body" style="display:flex;">
+                                    <div style="display:flex;">
+                                    <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                        <img src="">
+                                    </div>
+                                    <div style="position:absolute; left:120px; top:0px;">
+                                        <h4>user name</h4>
+                                        <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+    
+                                    </div>
+                                    </div>
+                                    <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                    outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+    
+                                </div>
+                            </div>
+                            
+                            </div>    
+                            <div class="col-md-9 col-sm-12 col-xs-12" style="width:66%;">
+                   
+                                <div class="panel panel-default" style=" border-bottom-color:rgba(0, 0, 255, 0.507); border-left-color:blue; box-shadow:         2px 2px 2px 2px rgba(0, 119, 255, 0.315);">
+                                    
+                                    <div class="panel-body" style="display:flex;">
+                                        <div style="display:flex;">
+                                        <div class="uploadimg" style="width:70px; height:70px; border:1px solid black;">
+                                            <img src="">
+                                        </div>
+                                        <div style="position:absolute; left:120px; top:0px;">
+                                            <h4>user name</h4>
+                                            <i class="fas fa-folder-open" style="color:#ff5353"></i>&nbsp;<span style="font-weight: bold; color:grey;">Ui designer</span>
+        
+                                        </div>
+                                        </div>
+                                        <button type="button" class="btn btn-info btn-lg" style="position:absolute; top:30px; right:90px; font-size:16px; color:#ff5353; font-weight: bold; background-color: white;
+                                        outline:none; border-color:#ff5353;" data-toggle="modal" data-target="#myModal"><i class="far fa-address-card" style="font-size:14px;"></i>&nbsp;View Profile</button> 
+                                     </div>
+                                </div>
+                                </div>
+                                </div>
+                    
+                    <div id="message" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                    <div id="changepswd" class="tab-pane fade">
+                        <h3  style="margin-bottom:40px;">Change Password</h3>
+                        <div class="row align-middle">
+                           
+                        <div class="col-lg-6 col-md-6 col-sm-6 ">
+                            <img src="{% static 'lap.png' %}" style=" width:100%;" alt="">
+                         </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 align-middle centered">
+                            <div class="form-group has-warning has-feedback align-middle">
+                                <label class="control-label" for="password">Old Password</label>
+                                <input type="password" class="form-control" id="password" aria-describedby="passwordStatus" style="border-color:#a94442;">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">New Password</label>
+                                <input type="password" class="form-control" id="password" aria-describedby="passwordStatus" style="border-color:#a94442;">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">Retype Password</label>
+                                <input type="password" class="form-control" id="password" aria-describedby="passwordStatus" style="border-color:#a94442;">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                            </div>
+                      </div>
+                        <button class="btn btn-primary save-btn" style=" margin-top:20px; font-family: 'Lato', sans-serif;
+                        font-size: 14px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                        border: 1px solid #f36969;; background: #f36969; text-align: center; text-transform: uppercase;
+                        border-radius: 10px; transition: all 0.5s;">change password</button>
+                      </div>
+                    
+                      <div id="logout" class="tab-pane fade">
+                        <h3>Menu 3</h3>
+                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'dash/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'dash/assets/js/custom.js' %}"></script>
+
+    
+    
+   
+</body>
+</html>

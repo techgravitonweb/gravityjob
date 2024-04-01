@@ -1,0 +1,3364 @@
+{% extends 'jobPortal/base.html' %} {% block main-content %}
+<style>
+  /*! CSS Used from: Embedded */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Roboto", sans-serif !important;
+    font-weight: normal;
+    font-style: normal;
+  }
+  h2,
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  b {
+    font-weight: 500;
+  }
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+  .hide {
+    display: none !important;
+  }
+  .container:after,
+  .container:before {
+    content: " ";
+    display: table;
+  }
+  a {
+    text-decoration: none;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: normal;
+    color: #272c37;
+  }
+  :focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+  .container {
+    width: 100%;
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+  .container {
+    clear: both;
+  }
+  h3 {
+    color: #272c37;
+  }
+  a {
+    color: #1179ef;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:hover,
+  a:focus {
+    color: #0a5dc9;
+    outline: 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  img.blend-mode[src] {
+    filter: alpha(opacity=0);
+    animation: simageScroll 0.3s forwards;
+    -webkit-animation: simageScroll 0.3s forwards;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .clear {
+    display: block;
+    clear: both;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    color: #272c37;
+    font-weight: 400;
+    margin-top: 56px;
+    letter-spacing: 1px;
+  }
+  h2 b {
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 40px 0 0;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: #272c37;
+  }
+  li {
+    color: #51565e;
+    font-size: 14px;
+    line-height: 1.43;
+  }
+  .more {
+    display: block;
+    margin: 24px auto 0 auto;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+  p {
+    color: #51565e;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+  @media (max-width: 767px) {
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+      width: 100%;
+      display: inline-block;
+      padding: 0 30px;
+    }
+  }
+  @media (min-width: 992px) {
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    h2 {
+      font-size: 32px;
+      line-height: 1.33;
+      letter-spacing: 1.5px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+  }
+  @media (min-width: 1200px) {
+    h2 {
+      margin-top: 64px;
+    }
+  }
+  @media (max-width: 767px) {
+    h3 {
+      margin-top: 32px;
+    }
+  }
+  @media (max-width: 991px) {
+    .intro_view {
+      display: block;
+      width: 300px;
+      height: 168px;
+      margin: 40px auto 0 auto;
+      position: relative;
+      text-align: center;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .intro_view::before {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #000;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    .intro_view img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      color: transparent;
+    }
+    .intro_view .intro_icon {
+      width: 0px;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .intro_view .intro-text {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding-left: 65px;
+      text-align: left;
+      font-weight: 400;
+      line-height: 20px;
+      font-size: 14px;
+    }
+    .intro_view .intro-text::before {
+      content: "";
+      width: 52px;
+      height: 52px;
+      display: inline-block;
+      background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+        no-repeat;
+      background-position: -58px -290px;
+      position: absolute;
+      left: 0;
+      margin-top: -5px;
+    }
+    .intro_view .intro-text b {
+      display: block;
+      font-weight: 500;
+    }
+  }
+  @media (min-width: 992px) {
+    .intro_view img {
+      display: none;
+    }
+  }
+  @media (max-width: 320px) {
+    .intro_view {
+      width: 100%;
+    }
+  }
+  #ViewMore {
+    text-align: center;
+  }
+  #ViewMore a {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .overview {
+    background: #fff;
+    padding-bottom: 56px;
+  }
+  .overview p {
+    margin-top: 24px;
+  }
+  .overview ul {
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+  .overview ul.icon-list li {
+    padding-left: 44px;
+    position: relative;
+    margin-bottom: 24px;
+    display: inline-block;
+    width: 100%;
+    min-height: 24px;
+  }
+  .overview ul.icon-list li:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -214px -248px;
+    position: absolute;
+    left: 0;
+    top: 0px;
+  }
+  .overview ul.icon-list li:last-child {
+    margin-bottom: 0;
+  }
+  .overview .skill ul#skill-covered li:before {
+    background-position: -447px -130px;
+    top: 4px;
+  }
+  .intro_view {
+    display: block;
+  }
+  @media (min-width: 992px) {
+    .overview {
+      padding-bottom: 64px;
+    }
+    .overview p {
+      margin-top: 32px;
+      font-size: 14px;
+      line-height: 1.57;
+    }
+    .overview .col-md-8 {
+      width: 660px;
+      float: left;
+      position: relative;
+      padding-right: 40px;
+    }
+    .overview .col-md-4 {
+      width: calc(100% - 660px);
+      float: left;
+      position: relative;
+      padding-left: 30px;
+    }
+    .overview .col-md-4::before {
+      content: "";
+      width: 1px;
+      height: 56px;
+      display: inline-block;
+      background: #d2d6de;
+      position: absolute;
+      left: 0;
+      top: 40px;
+    }
+    .overview .col-md-4.intro {
+      padding-top: 20px;
+    }
+    .overview .col-md-4.skill:before {
+      top: 132px;
+      height: 99px;
+    }
+    .overview #ViewMore {
+      text-align: left;
+    }
+    .overview h3 {
+      margin-top: 48px;
+    }
+    .intro_view {
+      display: inline-block;
+    }
+    .intro_view span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .intro_icon {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      position: relative;
+    }
+    .intro_icon::before,
+    .intro_icon::after {
+      content: "";
+      display: inline-block;
+      background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+        no-repeat;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    .intro_icon::before {
+      width: 60px;
+      height: 60px;
+      background-position: -36px -94px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .intro_icon::after {
+      content: "";
+      width: 100px;
+      height: 100px;
+      background-position: -16px -74px;
+      -webkit-animation: intro 2s infinite;
+      animation: intro 2s infinite;
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+    .intro-text {
+      font-size: 14px;
+      line-height: 1.43;
+      margin-left: 20px;
+    }
+    .intro-text b {
+      display: block;
+      font-weight: 500;
+    }
+    .key-features {
+      padding-right: 0;
+    }
+    .key-features ul.icon-list {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+    .key-features ul.icon-list li {
+      display: block;
+      float: left;
+      width: 50%;
+      padding-right: 30px;
+      margin-bottom: 32px;
+    }
+    .overview ul.icon-list {
+      margin-top: 40px;
+    }
+    .overview ul#skill-covered {
+      position: relative;
+      top: -6px;
+    }
+    .overview .skill a {
+      text-align: left;
+      width: auto;
+      margin-left: 44px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .course-info div.overview .col-md-4::before {
+      display: none;
+    }
+    .course-info div.overview .col-md-8 + .col-md-4::before {
+      display: inline-block;
+    }
+  }
+  @media (min-width: 1200px) {
+    .overview .col-md-8 {
+      width: 712px;
+      padding-right: 52px;
+    }
+    .overview .col-md-4 {
+      width: calc(100% - 712px);
+      padding-left: 70px;
+    }
+    .key-features ul li {
+      padding-right: 42px;
+    }
+  }
+  /*! CSS Used from: Embedded */
+  .benefits {
+    display: inline-block;
+    width: 100%;
+  }
+  .benefits .benefit-rows li {
+    color: #51565e;
+  }
+  .tab a {
+    display: inline-block;
+    color: #1179ef;
+    text-align: left;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 16px;
+    left: 0;
+    width: 100%;
+    padding: 11px 0;
+    line-height: 1.7;
+    border-radius: 4px;
+    background-color: #ebf1f8;
+    padding-left: 20px;
+    position: relative;
+  }
+  .tab a::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -124px -245px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .tab li {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  .tab li .tabcontent {
+    display: none;
+  }
+  .tab li.active a {
+    background-color: #1179ef;
+    color: #fff;
+  }
+  .tab li.active a::after {
+    background-position: -125px -195px;
+  }
+  .tab li.active .tabcontent {
+    display: block;
+  }
+  .hire,
+  .salarys {
+    padding: 0 15px;
+  }
+  .graphic span.heading {
+    font-size: 14px;
+    font-weight: 500;
+    color: #272c37;
+    display: inline-block;
+    width: 100%;
+    margin: 24px 0 8px 5px;
+  }
+  .graphic span.heading::after {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: #1179ef;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 8px;
+    margin-bottom: 20px;
+  }
+  .hire-companys {
+    margin-top: 0;
+    text-align: center;
+  }
+  .hire-company {
+    max-height: 60px;
+    margin: 40px 20px 0px 0;
+    width: auto;
+  }
+  .hire {
+    padding-bottom: 24px;
+  }
+  .hire-logos-wrapper div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  @media (max-width: 991px) {
+    .benefit-rows {
+      display: none;
+    }
+    .tab ul li {
+      border: 1px solid #d2d6de;
+      margin-bottom: 8px;
+      border-radius: 4px;
+    }
+    .graphic {
+      margin-top: 32px;
+    }
+    .benefits p {
+      margin-top: 24px !important;
+    }
+  }
+  @media (min-width: 992px) {
+    .tab a {
+      color: #272c37;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      left: 0;
+      width: 280px;
+      padding: 18.6px 0;
+      line-height: 1.7;
+      border-bottom: 1px solid #d2d6de;
+    }
+    .tab a::after {
+      display: none;
+    }
+    .tab .three a {
+      padding: 29px 0;
+    }
+    .tabcontent {
+      padding: 0 12px;
+      float: right;
+      width: calc(92% - 200px);
+      height: 242px;
+      position: absolute;
+      left: 280px;
+      top: -1px;
+    }
+    .benefits li {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: 0.4px;
+      color: #272c37;
+      margin: 0;
+      display: inline-block;
+      padding: 0;
+      width: 100%;
+    }
+    .benefits ul {
+      margin-top: 30px;
+      display: inline-block;
+      margin-bottom: 0;
+      width: 100%;
+      position: relative;
+    }
+    .tab ul {
+      border: 1px solid #d2d6de;
+      min-height: 272px;
+      margin-top: 0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .tab ul li {
+      box-shadow: none;
+    }
+    .tab ul li a {
+      border-radius: 0;
+      border-right: 1px solid #d2d6de;
+    }
+    .tab ul li:first-child a {
+      border-radius: 4px 0 0 0;
+    }
+    .tab ul li:last-child a {
+      border-bottom: 0;
+      border-radius: 0 0 0 4px;
+    }
+    .tab ul li.active a {
+      border-right: 0;
+    }
+    .benefit-rows ul {
+      display: flex;
+      text-align: center;
+      margin-top: 0;
+    }
+    .tabcontent span {
+      clear: both;
+      position: absolute;
+      bottom: 19px;
+      left: 92px;
+    }
+    .tab li.active a {
+      background-color: #fff;
+      color: #1179ef;
+    }
+    .hire-company {
+      margin: 18px;
+    }
+    .salarys {
+      width: 50%;
+      height: 271px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      padding-bottom: 16px;
+    }
+    .salary-line {
+      margin: 80px 0 0;
+    }
+    .salarys span {
+      display: none;
+    }
+    .hire-companys span {
+      display: none;
+    }
+    .graphic {
+      margin-top: 24px;
+    }
+    .benefit-rows {
+      margin-top: 32px;
+    }
+    .benefits p {
+      margin-top: 24px !important;
+      font-size: 14px;
+      line-height: 1.57;
+    }
+    .benefit-rows ul li:first-child {
+      max-width: 280px;
+    }
+    .benefits h3 + p {
+      max-width: 850px;
+    }
+  }
+  @media (max-width: 991px) {
+    .tab ul {
+      margin-top: 0;
+    }
+    .tab ul .salarys {
+      min-height: 150px;
+    }
+    .tab ul li.active {
+      border-color: #1179ef;
+    }
+    .salarys {
+      min-height: 100px;
+    }
+    .tab li.active a {
+      border-radius: 0;
+    }
+  }
+  .salary-line {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin: 46px 0 0;
+  }
+  .salarys .active {
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #000;
+    width: auto;
+    display: inline-block;
+    padding: 0 10px;
+  }
+  .salarys .dual-bar {
+    width: 40px;
+    height: 128px;
+    background-color: #79bdf6;
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: bottom;
+    position: relative;
+  }
+  .salarys .dual-bar .price {
+    font-size: 10px;
+    font-weight: 500;
+    color: #272c37;
+    position: absolute;
+    top: -16px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+  .salarys .dual-bar .price::after {
+    display: none;
+  }
+  .salarys .dual-bar .percent {
+    top: inherit;
+    bottom: -20px;
+  }
+  .salarys .dual-bar:first-child {
+    margin-left: 0;
+    height: 20px;
+  }
+  .salarys .dual-bar:nth-child(2),
+  .salarys .dual-bar:nth-child(4) {
+    height: 60px;
+  }
+  .salarys .dual-bar:nth-child(5) {
+    height: 20px;
+  }
+  .salarys .salary-sourse {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 16px;
+    margin-top: 14px;
+    color: #51565e;
+  }
+  .salarys .salary-sourse::after {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .graphic .hire-logos-wrapper {
+      max-height: 175px;
+      overflow: hidden;
+    }
+    .graphic .hire-logos-wrapper div {
+      height: 86px;
+    }
+    .graphic .hire-logos-wrapper div::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 0;
+      height: 100%;
+    }
+    .graphic .hire-logos-wrapper div img {
+      margin-top: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .salarys {
+      width: 50%;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .hire {
+      width: 50%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .hire-companys {
+      height: 100%;
+      min-height: 189px;
+    }
+    .tab ul .hire {
+      min-height: 292px;
+    }
+    .hire span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #272c37;
+      display: block;
+      clear: both;
+      margin-left: 5px;
+    }
+    .hire {
+      padding-bottom: 0;
+      position: relative;
+    }
+    .hire .hire-source {
+      padding-bottom: 16px;
+    }
+    .hire-companys {
+      min-height: 205px;
+    }
+    .hire-companys span.hire-source {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      bottom: 20px;
+      z-index: 1;
+      height: 20px;
+      top: inherit;
+    }
+    .salary-line {
+      margin: 26px 0 0;
+    }
+    .salarys .salary-sourse {
+      padding-bottom: 16px;
+    }
+  }
+  @media (min-width: 992px) {
+    .salarys .dual-bar .price {
+      display: block;
+    }
+    .graphic span.heading {
+      display: none;
+    }
+    .graphic .tab li.active a {
+      cursor: default;
+    }
+    .graphic .tab li.active a::after {
+      display: none;
+    }
+    .tab a:hover {
+      background-color: #d2d9e4;
+    }
+    .graphic .hire-logos-wrapper div {
+      height: 74px;
+    }
+    .graphic .hire-logos-wrapper div img {
+      margin-bottom: 0;
+    }
+  }
+  @media (max-width: 1199px) {
+    .salarys .dual-bar {
+      width: 34px;
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .hire-companys {
+      max-height: 195px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .salary-info .tab li.active a {
+      cursor: default;
+    }
+    .salary-info .tab li.active a::after {
+      display: none;
+    }
+    .salarys {
+      padding-bottom: 16px;
+    }
+    .salary-line {
+      margin: 80px 0 0;
+    }
+  }
+  .salarys .salary-line .active {
+    position: relative;
+    border-bottom: 1px solid #000;
+    width: auto;
+    padding: 0 10px;
+    text-align: center;
+    display: inline-block;
+  }
+  .hire .hire-source {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0px;
+    color: #51565e;
+  }
+  @media (min-width: 992px) {
+    .graphic .salarys {
+      padding-bottom: 0;
+      height: 242px;
+    }
+    .graphic span.heading {
+      display: inline-block;
+      width: 1px;
+      overflow: hidden;
+      height: 242px;
+      vertical-align: middle;
+      margin: 0;
+      position: static;
+      background: #fff;
+      color: #fff;
+    }
+    .graphic span.heading::after {
+      display: none;
+    }
+    .graphic .salary-line {
+      margin: auto;
+      display: inline-block;
+      vertical-align: middle;
+      width: calc(100% - 1px);
+      margin-top: 2px;
+    }
+    .graphic .hire-companys {
+      margin: 0;
+      min-height: 10px;
+      width: calc(100% - 1px);
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .graphic .tab ul {
+      min-height: 10px;
+      height: 242px;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+    .graphic .tab ul .hire {
+      min-height: 242px;
+    }
+    .graphic .hire .hire-source,
+    .graphic .salarys .salary-sourse {
+      padding: 0;
+      margin: 0;
+      margin-top: 16px;
+    }
+    .graphic .hire-logos-wrapper {
+      max-height: 148px;
+      overflow: hidden;
+    }
+    .graphic .hire-company {
+      margin: 20px 18px 20px 18px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .hire-companys {
+      min-height: 159px;
+      margin-top: 80px;
+    }
+    .salary-line {
+      margin: 80px 0 0;
+    }
+    .graphic .hire-logos-wrapper {
+      max-height: 160px;
+    }
+  }
+  @media (max-width: 767px) {
+    .hire .hire-source {
+      margin-top: 24px;
+    }
+  }
+  @media (max-width: 991px) {
+    .hire-companys span.hire-source {
+      bottom: 12px;
+    }
+  }
+  @media (max-width: 991px) {
+    .course-info .container {
+      width: 100%;
+    }
+  }
+  @media (max-width: 991px) {
+    .course-info .container {
+      padding: 0 20px;
+    }
+  }
+  .course-tip {
+    font-size: 14px;
+    margin-top: 16px;
+    color: #27ba44;
+    font-weight: 500;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    border-radius: 16px;
+    border: solid 1px #61cfa2;
+    line-height: 29px;
+    padding-right: 40px;
+    min-width: 271px;
+  }
+  .course-tip .q-mark {
+    display: inline-block;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 24px;
+    padding: 1px;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -483px -361px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-size: 572px;
+  }
+  .course-tip .course-tiptext {
+    display: none;
+    font-size: 14px;
+    width: 248px;
+    color: #fff;
+    text-align: left;
+    padding: 16px 15px;
+    position: absolute;
+    z-index: 3;
+    top: 25px;
+    right: -78px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    background-color: #51565e;
+  }
+  .course-tip .course-tiptext::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 0;
+    left: 152px;
+    width: 8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #51565e;
+  }
+  .course-tip .q-mark:hover .course-tiptext {
+    display: block;
+  }
+  .course-tip::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -371px -332px;
+    position: relative;
+    left: 0;
+    top: 5px;
+    margin: 0 10px 0 15px;
+  }
+  .moneyBackGuarantee .course-tip::before {
+    background-position: -406px -332px;
+  }
+  @media (min-width: 768px) {
+    .course-tip {
+      margin: 24px 30px 0 0;
+      min-width: auto;
+    }
+    .course-tip .course-tiptext {
+      width: 412px;
+      right: -196px;
+    }
+    .course-tip .course-tiptext::after {
+      left: 0;
+      margin: 0 auto;
+    }
+    .key-features h3 {
+      width: auto;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .moneyBackGuarantee {
+      display: inline-block;
+    }
+  }
+  @media (min-width: 992px) {
+    .course-tip {
+      margin-top: 32px;
+    }
+  }
+  @media (max-width: 1199px) {
+    .course-tip:hover .course-tiptext {
+      display: block;
+    }
+  }
+  /*! CSS Used from: https://www.simplilearn.com/static-frs/css/course-lazy.0490ca.css */
+  @media (max-width: 991px) {
+    li.active {
+      font-weight: 400;
+    }
+  }
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  ::-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-ms-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  ::-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-ms-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  /*! CSS Used keyframes */
+  @-webkit-keyframes simageScroll {
+    0% {
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    25% {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+    50% {
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    75% {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+    }
+    100% {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      visibility: visible;
+    }
+  }
+  @-moz-keyframes simageScroll {
+    0% {
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    25% {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+    50% {
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    75% {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+    }
+    100% {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      visibility: visible;
+    }
+  }
+  @-o-keyframes simageScroll {
+    0% {
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    25% {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+    50% {
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    75% {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+    }
+    100% {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      visibility: visible;
+    }
+  }
+  @keyframes simageScroll {
+    0% {
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    25% {
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+    }
+    50% {
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+    75% {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+    }
+    100% {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      visibility: visible;
+    }
+  }
+  @keyframes intro {
+    from {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    to {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+  }
+  @keyframes intro {
+    from {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    to {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+  }
+  @keyframes intro {
+    from {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    to {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+  }
+  /*! CSS Used fontfaces */
+  @font-face {
+    font-family: "Roboto";
+    src: url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff2)
+        format("woff2"),
+      url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff)
+        format("woff");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff2)
+        format("woff2"),
+      url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff)
+        format("woff");
+    font-weight: 500;
+    font-display: swap;
+  }
+</style>
+<style>
+  /*! CSS Used from: Embedded */
+  .cds-7 {
+    margin: 0;
+  }
+  .cds-9 {
+    font-size: 1rem;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+  }
+  /*! CSS Used from: Embedded */
+  .cds-66 {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cds-66::-moz-focus-inner {
+    border-style: none;
+  }
+  @media print {
+    .cds-66 {
+      -webkit-print-color-adjust: exact;
+    }
+  }
+  /*! CSS Used from: Embedded */
+  .cds-37 {
+    color: rgba(0, 0, 0, 0.87);
+    padding: 6px 16px;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 4px;
+  }
+  .cds-37:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  @media (hover: none) {
+    .cds-37:hover {
+      background-color: transparent;
+    }
+  }
+  .cds-38 {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+  .cds-39 {
+    padding: 6px 8px;
+  }
+  .cds-48 {
+    box-shadow: none;
+  }
+  .cds-48:hover {
+    box-shadow: none;
+  }
+  .cds-48:active {
+    box-shadow: none;
+  }
+  /*! CSS Used from: https://d3njjcbhbojbot.cloudfront.net/webapps/r2-builds/front-page/allStyles.918c9d109679706aa26f.css */
+  section {
+    display: block;
+  }
+  a {
+    background: transparent;
+  }
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  img {
+    border: 0;
+  }
+  @media print {
+    * {
+      text-shadow: none !important;
+      color: #000 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+    img {
+      page-break-inside: avoid;
+    }
+    img {
+      max-width: 100% !important;
+    }
+    h2,
+    p {
+      orphans: 3;
+      widows: 3;
+    }
+    h2 {
+      page-break-after: avoid;
+    }
+  }
+  h2 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+  }
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  p {
+    margin: 0 0 10px;
+  }
+  ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    font-family: OpenSans, Arial, sans-serif;
+  }
+  *,
+  :after,
+  :before {
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  a {
+    color: "#0062e4";
+  }
+  a:focus,
+  a:hover {
+    color: "#004eb6";
+  }
+  a:focus {
+    outline: thin dotted;
+  }
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    font-family: OpenSans, Arial, sans-serif;
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  ul {
+    font-size: 1em;
+    outline: 0;
+  }
+  @media print {
+    a:link:after,
+    a:visited:after {
+      content: "" !important;
+    }
+  }
+  section {
+    display: block;
+  }
+  a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
+  a:active,
+  a:hover {
+    outline-width: 0;
+  }
+  img {
+    border-style: none;
+  }
+  ::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.54;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
+    filter: alpha(opacity=54);
+  }
+  *,
+  :after,
+  :before {
+    box-sizing: inherit;
+  }
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ul {
+    margin-bottom: 1rem;
+  }
+  ul {
+    margin-top: 0;
+  }
+  a {
+    color: #0062e4;
+    text-decoration: none;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+  img {
+    vertical-align: middle;
+  }
+  [role="button"] {
+    cursor: pointer;
+  }
+  [role="button"],
+  a {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h2 {
+    font-family: OpenSans-light, Arial, sans-serif;
+  }
+  h2 {
+    font-size: 2.125rem;
+    line-height: 2.625rem;
+  }
+  @media print {
+    * {
+      overflow: visible !important;
+    }
+  }
+  h2,
+  p {
+    max-width: 100%;
+  }
+  /*! CSS Used from: Embedded */
+  ._cdrzxu {
+    position: relative;
+    width: 90px;
+    padding-bottom: 33.33333333333333%;
+    height: 0px;
+  }
+  @media (max-width: 824px) {
+    ._cdrzxu {
+      max-width: 95vw;
+    }
+  }
+  @media (max-width: 608px) {
+    ._cdrzxu {
+      max-width: 90vw;
+    }
+  }
+  /*! CSS Used from: Embedded */
+  .css-1wg4got {
+    background-color: #f9f7ef;
+  }
+  .css-4c78qm {
+    color: #1f1f1f;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    margin: 0 auto;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    max-width: 975px;
+    width: 100%;
+  }
+  @media screen and (max-width: 992px) {
+    .css-4c78qm {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+  .css-17wkacp {
+    width: 50%;
+    margin-left: 35px;
+    margin-bottom: 35px;
+    line-height: 44px;
+    color: #1f1f1f;
+  }
+  @media screen and (max-width: 992px) {
+    .css-17wkacp {
+      margin: 0 auto;
+      max-width: 575px;
+      width: 100%;
+    }
+  }
+  .css-102hgme {
+    color: #1f1f1f;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 400;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    margin-bottom: 35px;
+    line-height: 52px;
+    color: #1f1f1f;
+  }
+  @media screen and (max-width: 767px) {
+    .css-102hgme {
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 48px;
+    }
+  }
+  .css-745l8r {
+    color: #1f1f1f;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 400;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    line-height: 28px;
+    font-size: 20px;
+    color: #1f1f1f;
+    margin-bottom: 1rem;
+    max-width: 90%;
+  }
+  @media screen and (max-width: 479px) {
+    .css-745l8r {
+      max-width: 100%;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+  }
+  .css-d29qp5 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  @media screen and (max-width: 479px) {
+    .css-d29qp5 {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+  }
+  .css-l8m146 {
+    border-radius: 4px;
+    text-transform: none;
+    text-align: center;
+    max-width: 320px;
+    min-width: unset;
+    -webkit-transition: none;
+    transition: none;
+    color: #0056d2;
+    background-color: #fff;
+    box-shadow: inset 0 0 0 1px #0056d2;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.1px;
+    padding: 12px 32px;
+    padding: 10px 20px;
+    margin-right: 15px;
+    background-color: transparent;
+  }
+  .css-l8m146:hover {
+    color: #00419e;
+    box-shadow: inset 0 0 0 1px #00419e;
+    background-color: #f3f8ff;
+  }
+  .css-l8m146:active {
+    color: #382d8b;
+    box-shadow: inset 0 0 0 1px #382d8b;
+    background-color: #f7f6fe;
+  }
+  .css-l8m146:active.cds-button-disableElevation::after {
+    content: unset;
+  }
+  .css-l8m146 .cds-button-label {
+    text-transform: none;
+  }
+  .css-l8m146:focus {
+    outline: none;
+  }
+  @media screen and (max-width: 479px) {
+    .css-l8m146 {
+      max-width: none;
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
+  }
+  .css-bjriq3 {
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  @media screen and (max-width: 992px) {
+    .css-bjriq3 {
+      margin: 0 auto;
+      margin-bottom: 30px;
+      max-width: 486px;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .css-tttaxl {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    padding-top: 6px;
+    text-align: center;
+  }
+  @media screen and (max-width: 767px) {
+    .css-tttaxl {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 486px;
+      width: 100%;
+    }
+  }
+  .css-1wpet1o {
+    color: #1f1f1f;
+    letter-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 400;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #382d8b;
+  }
+  @media screen and (max-width: 480px) {
+    .css-1wpet1o {
+      font-size: 20;
+      display: inline;
+      line-height: 28px;
+    }
+  }
+  .css-18zzja8 {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 0;
+    width: 100%;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    justify-content: space-evenly;
+  }
+  @media screen and (max-width: 767px) {
+    .css-18zzja8 {
+      max-width: 486px;
+      width: 100%;
+    }
+  }
+  .css-9c3b03 {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    margin-bottom: 25px;
+  }
+  @media (max-width: 480px) {
+    .css-9c3b03 {
+      margin-right: 0.8rem;
+    }
+  }
+  /*! CSS Used from: Embedded */
+  .css-jbpof6 {
+    display: block;
+    margin: 0px auto;
+  }
+  /*! CSS Used fontfaces */
+  @font-face {
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-300.svg#SourceSansPro)
+        format("svg");
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.svg#SourceSansPro)
+        format("svg");
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-600.svg#SourceSansPro)
+        format("svg");
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/source-sans-pro-v14-latin/source-sans-pro-v14-latin-700.svg#SourceSansPro)
+        format("svg");
+  }
+  @font-face {
+    font-family: "OpenSans";
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-regular.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-regular.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Regular.svg#OpenSans-Regular)
+        format("svg");
+  }
+  @font-face {
+    font-family: "OpenSans";
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.eot);
+    src: url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.eot?#iefix)
+        format("embedded-opentype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-700.woff2)
+        format("woff2"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans-v17-latin-latinext-cyrillic/opensans-700.woff)
+        format("woff"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.ttf)
+        format("truetype"),
+      url(https://d3njjcbhbojbot.cloudfront.net/web/type/opensans/OpenSans-Bold.svg#OpenSans-Bold)
+        format("svg");
+  }
+</style>
+<div class="jp_tittle_main_wrapper">
+  <div class="jp_tittle_img_overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="jp_tittle_heading_wrapper">
+          <div class="jp_tittle_heading">
+            <h2>Training</h2>
+          </div>
+          <div class="jp_tittle_breadcrumb_main_wrapper">
+            <div class="jp_tittle_breadcrumb_wrapper">
+              <ul>
+                <li>
+                  <a href="{% url 'jobs:home' %}">Home</a>
+                  <i class="fa fa-angle-right" style="color: #248ae4"></i>
+                </li>
+
+                <li style="color: #248ae4">
+                  Training & Placement & Certification
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /*! CSS Used from: Embedded */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  * {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Roboto", sans-serif !important;
+    font-weight: normal;
+    font-style: normal;
+  }
+  h2,
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  ul ul {
+    margin-bottom: 0;
+  }
+  b {
+    font-weight: 500;
+  }
+  label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .hide {
+    display: none !important;
+  }
+  .container:after,
+  .container:before {
+    content: " ";
+    display: table;
+  }
+  a {
+    text-decoration: none;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: normal;
+    color: #272c37;
+  }
+  :focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  .btn {
+    outline: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  button.btn {
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .border-btn {
+    cursor: pointer;
+  }
+  button {
+    font: inherit;
+    margin: 0;
+  }
+  button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+  }
+  button {
+    -webkit-writing-mode: horizontal-tb;
+  }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+  .container {
+    width: 100%;
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+  .strike-line {
+    text-decoration: line-through !important;
+  }
+  .container {
+    clear: both;
+  }
+  h3 {
+    color: #272c37;
+  }
+  a {
+    color: #1179ef;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:hover,
+  a:focus {
+    color: #0a5dc9;
+    outline: 0;
+  }
+  .clear {
+    display: block;
+    clear: both;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    color: #272c37;
+    font-weight: 400;
+    margin-top: 56px;
+    letter-spacing: 1px;
+  }
+  h2 b {
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 40px 0 0;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: #272c37;
+  }
+  li {
+    color: #51565e;
+    font-size: 14px;
+    line-height: 1.43;
+  }
+  .more {
+    display: block;
+    margin: 24px auto 0 auto;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .btn {
+    display: inline-block;
+    width: 100%;
+    line-height: 38px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 48px;
+    color: #fff;
+    text-align: center;
+    background: #ff8000;
+    max-width: 246px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+  }
+  .btn:hover {
+    background: #ea6400;
+  }
+  .btn:focus {
+    color: #fff;
+  }
+  .border-btn {
+    border: 1px solid #fff;
+    background: transparent;
+    margin-top: 16px;
+    line-height: 36px;
+    border-radius: 2px;
+  }
+  .border-btn:hover {
+    background: #fff;
+    color: #1179ef;
+  }
+  p {
+    color: #51565e;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+  @media (max-width: 767px) {
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+      width: 100%;
+      display: inline-block;
+      padding: 0 30px;
+    }
+  }
+  @media (min-width: 992px) {
+    .btn {
+      width: 100%;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    h2 {
+      font-size: 32px;
+      line-height: 1.33;
+      letter-spacing: 1.5px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+  }
+  @media (min-width: 1200px) {
+    h2 {
+      margin-top: 64px;
+    }
+  }
+  @media (max-width: 767px) {
+    h3 {
+      margin-top: 32px;
+    }
+  }
+  /*! CSS Used from: Embedded */
+  #self-placed-read-more,
+  #enterprise-read-more {
+    text-align: center;
+  }
+  .trining-options {
+    background: #ebf1f8;
+    padding-bottom: 56px;
+    display: inline-block;
+    width: 100%;
+  }
+  .trining-options h2 {
+    padding-left: 0px;
+  }
+  .trining-options .col-md-4 {
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 0 15px;
+    display: inline-block;
+    width: 100%;
+    margin-top: 24px;
+    padding-bottom: 32px;
+  }
+  .trining-options .col-md-4 p {
+    position: relative;
+  }
+  .trining-options label.badge {
+    display: inline-block;
+    width: 70px;
+    height: 20px;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -136px -149px;
+    margin: 0;
+    margin-right: -15px;
+    float: right;
+  }
+  .trining-options h3 {
+    font-size: 18px;
+  }
+  .trining-options h3.cp-type {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .trining-options .strike-line,
+  .trining-options .strike-line + span {
+    font-size: 12px;
+    color: #6c7480;
+    font-weight: 500;
+  }
+  .trining-options .strike-line + span {
+    color: #fda954;
+  }
+  .trining-options .tr-head {
+    border-bottom: 1px solid #dde6ed;
+    margin-top: 24px;
+    min-height: 50px;
+    padding-bottom: 0px;
+    display: table;
+    width: 100%;
+    position: relative;
+  }
+  .trining-options .tr-head .type-info {
+    display: table-cell;
+    width: 50%;
+    text-align: left;
+    padding-bottom: 10px;
+  }
+  .trining-options .tr-head .price {
+    font-size: 18px;
+    font-weight: 400;
+    color: #272c37;
+    margin-bottom: 10px;
+    display: block;
+    line-height: normal;
+  }
+  .trining-options .tr-head.no-emi p.type-info {
+    text-align: center;
+  }
+  .trining-options .list-info {
+    margin-top: 0px;
+    padding-top: 16px;
+    margin-bottom: 0;
+    word-break: break-word;
+  }
+  .trining-options .list-info li {
+    padding-left: 34px;
+    font-size: 14px;
+    color: #51565e;
+    margin-bottom: 20px;
+    line-height: 1.43;
+    position: relative;
+  }
+  .trining-options .list-info li:last-child {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+  .trining-options .list-info li:before {
+    content: "";
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -362px -81px;
+    position: absolute;
+    left: 0;
+  }
+  .trining-options .list-info li.blended-txt {
+    color: #272c37;
+    font-weight: 500;
+  }
+  .trining-options .list-info li.blended-txt::before {
+    background-position: -381px -207px;
+  }
+  .trining-options .list-info.str-dt {
+    padding-top: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .trining-options .list-info.str-dt li {
+    padding: 0;
+    color: #272c37;
+    font-weight: 500;
+  }
+  .trining-options .list-info.str-dt li::before {
+    display: none;
+  }
+  .trining-options .btn {
+    background: #ff8000;
+    margin-top: 32px;
+  }
+  .trining-options .btn:hover,
+  .trining-options .btn:active,
+  .trining-options .btn:focus {
+    color: #fff;
+  }
+  .trining-options .btn:hover {
+    background: #ea6400;
+  }
+  .trining-options button.btn {
+    line-height: 36px;
+  }
+  .trining-options .border-btn {
+    background: transparent;
+    color: #1179ef;
+    width: 100%;
+    padding: 0;
+    line-height: 38px;
+    margin-top: 0px;
+  }
+  .trining-options .border-btn:hover,
+  .trining-options .border-btn:focus {
+    background: transparent;
+    color: #1179ef;
+    text-decoration: none;
+  }
+  .trining-options a.show {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .trining-options .show-dates {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .trining-options .show-dates .clear {
+    margin-bottom: 8px;
+  }
+  .trining-options .show-dates .clear:last-child {
+    margin-bottom: 0;
+  }
+  .trining-options .show-dates span {
+    font-size: 14px;
+    line-height: 1.29;
+    color: #51565e;
+    display: inline-block;
+  }
+  .trining-options .show-dates span::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    background-position: -264px -197px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 7px;
+  }
+  .trining-options .last-card .tr-head {
+    margin-top: 16px;
+  }
+  .trining-options .last-card .tr-head p {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c7480;
+  }
+  .trining-options .last-card .tr-head p a {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    background: url(https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz)
+      no-repeat;
+    margin-left: 5px;
+    background-position: -203px -329px;
+    margin-top: -5px;
+  }
+  .trining-options .no-bar .tr-head {
+    min-height: 50px;
+  }
+  .trining-options .no-bar .tr-head p.type-info .strike-line,
+  .trining-options .no-bar .tr-head p.type-info .strike-line + span {
+    display: none;
+  }
+  .trining-options .no-bar .tr-head p.type-info .price {
+    margin-bottom: 0;
+  }
+  .trining-options .no-bar .last-card .tr-head {
+    min-height: 36px;
+   
+  }
+  @media (min-width: 992px) {
+    #self-placed-read-more,
+    #enterprise-read-more {
+      display: none;
+    }
+    .trining-options {
+      padding-bottom: 64px;
+    }
+    .trining-options h2 {
+      padding-left: 0;
+    }
+    .trining-options .option-list {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -moz-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    .trining-options .col-md-4 {
+      width: calc(33.333% - 20px);
+      display: inline-block;
+      padding-bottom: 88px;
+      position: relative;
+      margin-right: 30px;
+      margin-top: 40px;
+    }
+    .trining-options .col-md-4 .btn {
+      line-height: 40px;
+      max-width: 200px;
+    }
+    .trining-options .col-md-4 button.btn {
+      line-height: 38px;
+    }
+    .trining-options .col-md-4 .opt-btn {
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+    }
+    .trining-options .col-md-4 .border-btn {
+      position: static;
+    }
+    .trining-options .col-md-4 li.hide {
+      display: block !important;
+    }
+    .trining-options .last-card {
+      margin-right: 0;
+    }
+    .trining-options .blended .border-btn {
+      margin-top: 16px;
+      border: 0;
+      font-size: 14px;
+      line-height: normal;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+    .trining-options .blended .border-btn:hover,
+    .trining-options .blended .border-btn:active,
+    .trining-options .blended .border-btn:focus {
+      background: transparent;
+      text-decoration: none;
+    }
+    .trining-options h3.cp-type {
+      margin-top: 32px;
+    }
+    .trining-options .tr-head {
+      margin-top: 24px;
+      min-height: 72px;
+    }
+    .trining-options .strike-line + span {
+      color: #27ba44;
+    }
+    .trining-options .last-card .tr-head {
+      min-height: 70px;
+      margin-top: 26px;
+    }
+    .trining-options .list-info li {
+      margin-bottom: 20px;
+    }
+    .trining-options .list-info.str-dt {
+      margin-top: 26px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .trining-options .col-md-4 {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .trining-options label.badge {
+      margin-right: -20px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .trining-options .list-info {
+      margin-left: 135px;
+    }
+    .trining-options .list-info.str-dt {
+      margin-left: 0;
+    }
+  }
+  @media (max-width: 991px) {
+    .course-info .container {
+      width: 100%;
+    }
+  }
+  @media (max-width: 991px) {
+    .course-info .container {
+      padding: 0 20px;
+    }
+  }
+  /*! CSS Used from: https://www.simplilearn.com/static-frs/css/course-lazy.0490ca.css */
+  @media (max-width: 991px) {
+    li.active {
+      font-weight: 400;
+    }
+  }
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  ::-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-ms-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  .trining-options .modal.show-batches {
+    display: block;
+    background: #fff;
+  }
+  .trining-options .modal.show-batches a.close {
+    background: url("https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz")
+      no-repeat;
+    background-position: -74px -246px;
+    top: 15px;
+    right: 15px;
+    height: 20px;
+  }
+  .trining-options .modal.show-batches .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .trining-options .show-batches h3 {
+    color: #293031;
+    font-weight: 500;
+    margin-top: 24px;
+    padding: 0;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+  }
+  .trining-options .show-batches ul li.panels {
+    background: #ebf1f8;
+    border: 1px solid #dde6ed;
+    border-radius: 4px;
+    margin-top: 16px;
+    padding: 20px 10px;
+  }
+  .trining-options .show-batches ul .pannel-head {
+    padding-right: 54px;
+    position: relative;
+  }
+  .trining-options .show-batches ul .pannel-head p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #293031;
+    margin-bottom: 24px;
+  }
+  .trining-options .show-batches ul .pannel-head p span {
+    font-size: 12px;
+    color: #808890;
+    float: right;
+  }
+  .trining-options .show-batches ul .pannel-head p:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url("https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz")
+      no-repeat;
+    background-position: -263px -195px;
+    vertical-align: middle;
+    margin-right: 16px;
+  }
+  .trining-options .show-batches ul .pannel-head p.time {
+    margin-bottom: 0;
+  }
+  .trining-options .show-batches ul .pannel-head p.time::before {
+    background-position: -263px -249px;
+  }
+  .trining-options .show-batches ul .pannel-head .arrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: right;
+    width: 100%;
+    height: 100%;
+  }
+  .trining-options .show-batches ul .pannel-head .arrow::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url("https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz")
+      no-repeat;
+    background-position: -169px -245px;
+    margin-right: 0;
+    margin-top: 0;
+  }
+  .trining-options .show-batches ul .panel-body {
+    padding-top: 27px;
+    position: relative;
+    display: none;
+  }
+  .trining-options .show-batches ul .panel-body::before {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    background: #d2d6de;
+    position: absolute;
+    top: 0px;
+    right: 24px;
+    left: 24px;
+  }
+  .trining-options .show-batches ul .panel-body .start-week {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 3px;
+  }
+  .trining-options .show-batches ul .panel-body .start-week::-webkit-scrollbar {
+    display: none;
+  }
+  .trining-options .show-batches ul li.active .panel-body {
+    display: block;
+  }
+  .trining-options .show-batches ul li.active .pannel-head p.time {
+    margin-bottom: 24px;
+  }
+  .trining-options .show-batches ul li.active .pannel-head .arrow::after {
+    -ms-transform: skewY(180deg);
+    -webkit-transform: skewY(180deg);
+    transform: rotate(180deg);
+  }
+  .trining-options .show-batches .weeks {
+    background: #fff;
+    width: auto;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    vertical-align: top;
+  }
+  .trining-options .show-batches .weeks span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #293031;
+  }
+  .trining-options .show-batches .weeks ul {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .trining-options .show-batches .weeks li {
+    display: inline-block;
+  }
+  .trining-options .show-batches .weeks li span {
+    display: block;
+    float: left;
+    min-width: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #293031;
+    width: auto;
+    clear: both;
+    margin: 2px 6px;
+  }
+  .trining-options .show-batches .weeks li span:first-child {
+    font-size: 12px;
+    color: #808890;
+    font-weight: 400;
+  }
+  .trining-options .show-batches .fits {
+    display: none;
+  }
+  .trining-options .show-batches .down-sched {
+    position: fixed;
+    bottom: 0;
+    line-height: 38px;
+    background: #1179ef;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  @media (max-width: 991px) {
+    .trining-options .modal.show-batches .col-md-8 {
+      margin-bottom: 40px;
+    }
+    .trining-options .modal.show-batches .col-md-4 {
+      box-shadow: none;
+    }
+  }
+  @media (min-width: 992px) {
+    .trining-options .modal.show-batches .container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .trining-options .modal.show-batches a.close {
+      top: 35px;
+      right: 30px;
+    }
+    .trining-options .show-batches .col-md-8 {
+      width: 627px;
+      float: left;
+    }
+    .trining-options .show-batches .col-md-4 {
+      width: calc(100% - 627px);
+      float: left;
+      margin: 0;
+      box-shadow: none;
+      padding: 0;
+      padding-left: 30px;
+    }
+    .trining-options .show-batches .col-md-4 .fits {
+      display: block;
+    }
+    .trining-options .show-batches h3 {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+    .trining-options .show-batches .fits ul li {
+      padding-left: 48px;
+      position: relative;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #51565e;
+      margin-bottom: 24px;
+    }
+    .trining-options .show-batches .fits ul li::before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background: url("https://www.simplilearn.com/ice9/assets/course_sprite_7.svgz")
+        no-repeat;
+      background-position: -215px -249px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+    .trining-options .show-batches .down-sched {
+      position: relative;
+      margin-top: 16px;
+      border-radius: 2px;
+      border: 1px solid #1179ef;
+      background: transparent;
+      line-height: 40px;
+      color: #1179ef;
+      display: inline-block;
+      padding: 0 30px;
+      margin-left: 48px;
+    }
+    .trining-options .show-batches .down-sched:hover {
+      background: #1179ef;
+      color: #fff;
+    }
+    .trining-options .show-batches ul li.panels {
+      padding: 22px 20px;
+      display: inline-block;
+      width: 100%;
+    }
+    .trining-options .show-batches ul li.panels:first-child {
+      margin-top: 0;
+    }
+    .trining-options .show-batches ul .pannel-head {
+      display: inline-block;
+      width: 100%;
+    }
+    .trining-options .show-batches ul .pannel-head p {
+      width: 44%;
+      float: left;
+      margin-bottom: 0;
+    }
+    .trining-options .show-batches ul .pannel-head p:first-child span {
+      display: block;
+      width: 100%;
+      padding-left: 40px;
+      margin-top: 10px;
+    }
+    .trining-options .show-batches ul .pannel-head p.time {
+      width: calc(100% - 44%);
+    }
+    .trining-options .show-batches ul .panel-body::before {
+      left: 0;
+      right: 0;
+    }
+    .trining-options .show-batches ul li.active .pannel-head p {
+      margin-bottom: 24px;
+    }
+    .trining-options .show-batches .weeks {
+      margin-right: 20px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .trining-options .show-batches .weeks li span {
+      margin: 2px 8px;
+    }
+    .batch-scroll {
+      max-height: calc(100vh - 154px);
+      overflow-y: auto;
+      padding-right: 10px;
+      padding-bottom: 48px;
+    }
+    .batch-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .batch-scroll::-webkit-scrollbar {
+      display: block;
+    }
+    .batch-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .batch-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .batch-scroll::-webkit-scrollbar-thumb {
+      background: #d2d6de;
+      border-radius: 2px;
+    }
+    .batch-scroll::-webkit-scrollbar-thumb:hover {
+      background: #cbced3;
+    }
+    #LvcBatch {
+      position: relative;
+    }
+    #LvcBatch::after {
+      content: "";
+      height: 48px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        #fff
+      );
+    }
+  }
+  @media (min-width: 768px) {
+    .modal a.close {
+      position: absolute;
+      right: -32px;
+      top: 0;
+    }
+  }
+  .modal {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 9999;
+    overflow: hidden;
+    outline: 0px;
+    background: rgba(39, 44, 55, 0.6);
+    overflow-y: auto;
+    height: 100%;
+  }
+  .modal a.close {
+    position: absolute;
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 0;
+    background: url("https://www.simplilearn.com/ice9/assets/frs-sprite_4.svgz")
+      no-repeat;
+    background-position: -43px -40px;
+    top: 0px;
+    right: 0px;
+    width: 48px;
+    height: 48px;
+    text-indent: -99999px;
+    z-index: 3;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  ::-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-ms-input-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  :-moz-placeholder {
+    font-size: 14px;
+    font-weight: normal;
+    color: #6c7480;
+  }
+  /*! CSS Used fontfaces */
+  @font-face {
+    font-family: "Roboto";
+    src: url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff2)
+        format("woff2"),
+      url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Regular_v1.woff)
+        format("woff");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Roboto";
+    src: url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff2)
+        format("woff2"),
+      url(https://www.simplilearn.com/ice9/assets/fonts/Roboto-Medium_v1.woff)
+        format("woff");
+    font-weight: 500;
+    font-display: swap;
+  }
+</style>
+
+
+
+<section>
+  <div
+    data-track="true"
+    data-track-app="front_page"
+    data-track-page="front_page_story"
+    data-track-action="click"
+    data-track-component="enterprise_cta_view"
+    class="css-1wg4got"
+    role="presentation"
+  >
+    <section class="rc-EnterpriseCtaRebrand css-4c78qm">
+      <div class="css-17wkacp">
+        <h2 class="cds-7 css-102hgme cds-9">gravitonweb for Placements</h2>
+        <p class="cds-7 css-745l8r cds-9">
+          Get world-class training and development programs developed by top
+          universities and companies. All on whtiehr for Business.
+        </p>
+        <div class="css-d29qp5">
+          <a
+            data-click-key="front_page.front_page_story.click.coursera_for_enterprise"
+            data-click-value='{"href":"/business?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-enterprise&amp;utm_medium=coursera&amp;utm_source=enterprise","namespace":{"action":"click","app":"front_page","component":"coursera_for_enterprise","page":"front_page_story"},"schema_type":"FRONTEND"}'
+            data-track="true"
+            data-track-app="front_page"
+            data-track-page="front_page_story"
+            data-track-action="click"
+            data-track-component="coursera_for_enterprise"
+            data-track-href="/business?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-enterprise&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            href="/business?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-enterprise&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            to="/business?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-enterprise&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            class="cds-66 cds-37 cds-39 css-l8m146 cds-48 cds-button-disableElevation"
+            tabindex="0"
+            aria-disabled="false"
+            role="button"
+            ><span class="cds-38 cds-button-label"
+              >gravitonweb for Enterprise</span
+            ></a
+          ><a
+            data-click-key="front_page.front_page_story.click.coursera_for_teams"
+            data-click-value='{"href":"/business/teams?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-teams&amp;utm_medium=coursera&amp;utm_source=enterprise","namespace":{"action":"click","app":"front_page","component":"coursera_for_teams","page":"front_page_story"},"schema_type":"FRONTEND"}'
+            data-track="true"
+            data-track-app="front_page"
+            data-track-page="front_page_story"
+            data-track-action="click"
+            data-track-component="coursera_for_teams"
+            data-track-href="/business/teams?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-teams&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            href="/business/teams?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-teams&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            to="/business/teams?utm_campaign=website&amp;utm_content=banner-from-B2C-home-for-teams&amp;utm_medium=coursera&amp;utm_source=enterprise"
+            class="cds-66 cds-37 cds-39 css-l8m146 cds-48 cds-button-disableElevation"
+            tabindex="0"
+            aria-disabled="false"
+            role="button"
+            ><span class="cds-38 cds-button-label">gravitonweb for Teams</span></a
+          >
+        </div>
+      </div>
+      <div class="css-bjriq3">
+        <p class="css-tttaxl">
+          <span class="cds-7 css-1wpet1o cds-9"
+            >Thousands of institutions use gravitonweb enterprise offering.</span
+          >
+        </p>
+        <ul class="css-18zzja8">
+          <li class="css-9c3b03">
+            <div class="_cdrzxu">
+              <div class="lazyload-wrapper">
+                <img
+                  src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2SUxbvCqY1DfFP6aprn1DW/0ff43fdadfb3d8ef2ab606a33da9c060/logo-mindtree-color.png?auto=format%2Ccompress&amp;dpr=1&amp;w=90&amp;h=30&amp;q=40"
+                  srcset="
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2SUxbvCqY1DfFP6aprn1DW/0ff43fdadfb3d8ef2ab606a33da9c060/logo-mindtree-color.png?auto=format%2Ccompress&amp;dpr=2&amp;w=90&amp;h=30&amp;q=40 2x,
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2SUxbvCqY1DfFP6aprn1DW/0ff43fdadfb3d8ef2ab606a33da9c060/logo-mindtree-color.png?auto=format%2Ccompress&amp;dpr=3&amp;w=90&amp;h=30&amp;q=40 3x
+                  "
+                  class="css-jbpof6"
+                  alt="Mindtree"
+                  style="max-width: 90px; max-height: 30px"
+                />
+              </div>
+            </div>
+          </li>
+          <li class="css-9c3b03">
+            <img
+              alt="Tata Communications"
+              src="https://images.ctfassets.net/wp1lcwdav1p1/2gSh2ySvHF7nLxtb9dlQEt/764bae06b9276de25caa4ed11bf14000/tata.svg"
+              height="30"
+              width="90"
+            />
+          </li>
+          <li class="css-9c3b03">
+            <div class="_cdrzxu">
+              <div class="lazyload-wrapper">
+                <img
+                  src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3YzQz3Vh4YTiGqLELGNyu9/722d2f138687a1cef279e637f71e7ead/logo-reliance-industries-color.png?auto=format%2Ccompress&amp;dpr=1&amp;w=90&amp;h=30&amp;q=40"
+                  srcset="
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3YzQz3Vh4YTiGqLELGNyu9/722d2f138687a1cef279e637f71e7ead/logo-reliance-industries-color.png?auto=format%2Ccompress&amp;dpr=2&amp;w=90&amp;h=30&amp;q=40 2x,
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/3YzQz3Vh4YTiGqLELGNyu9/722d2f138687a1cef279e637f71e7ead/logo-reliance-industries-color.png?auto=format%2Ccompress&amp;dpr=3&amp;w=90&amp;h=30&amp;q=40 3x
+                  "
+                  class="css-jbpof6"
+                  alt="Reliance"
+                  style="max-width: 90px; max-height: 30px"
+                />
+              </div>
+            </div>
+          </li>
+          <li class="css-9c3b03">
+            <img
+              alt="Axis Bank"
+              src="https://images.ctfassets.net/wp1lcwdav1p1/41QtOC7ZCIBCQa7hslWPne/265786c423394ff4b8ccc0717355593e/axisbank.svg"
+              height="30"
+              width="90"
+            />
+          </li>
+          <li class="css-9c3b03">
+            <div class="_cdrzxu">
+              <div class="lazyload-wrapper">
+                <img
+                  src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6EliaRChToTNA8VBDbD0vj/0cd6751a3fde4dca165c40eadfdb1bc0/logo-generalelectric-color.png?auto=format%2Ccompress&amp;dpr=1&amp;w=90&amp;h=30&amp;q=40"
+                  srcset="
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6EliaRChToTNA8VBDbD0vj/0cd6751a3fde4dca165c40eadfdb1bc0/logo-generalelectric-color.png?auto=format%2Ccompress&amp;dpr=2&amp;w=90&amp;h=30&amp;q=40 2x,
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6EliaRChToTNA8VBDbD0vj/0cd6751a3fde4dca165c40eadfdb1bc0/logo-generalelectric-color.png?auto=format%2Ccompress&amp;dpr=3&amp;w=90&amp;h=30&amp;q=40 3x
+                  "
+                  class="css-jbpof6"
+                  alt="General Electric"
+                  style="max-width: 90px; max-height: 30px"
+                />
+              </div>
+            </div>
+          </li>
+          <li class="css-9c3b03">
+            <div class="_cdrzxu">
+              <div class="lazyload-wrapper">
+                <img
+                  src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/R60gBTM79KUHbqnvpypJL/bfba4ab09adbf049303409b97d996176/logo-mahindra-color.png?auto=format%2Ccompress&amp;dpr=1&amp;w=90&amp;h=30&amp;q=40"
+                  srcset="
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/R60gBTM79KUHbqnvpypJL/bfba4ab09adbf049303409b97d996176/logo-mahindra-color.png?auto=format%2Ccompress&amp;dpr=2&amp;w=90&amp;h=30&amp;q=40 2x,
+                    https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/R60gBTM79KUHbqnvpypJL/bfba4ab09adbf049303409b97d996176/logo-mahindra-color.png?auto=format%2Ccompress&amp;dpr=3&amp;w=90&amp;h=30&amp;q=40 3x
+                  "
+                  class="css-jbpof6"
+                  alt="Mahindra"
+                  style="max-width: 90px; max-height: 30px"
+                />
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</section>
+<section>
+  <div
+    class="trining-options sticky_place"
+    id="trainingOptions"
+    data-sticky-name="Training Options"
+  >
+    <div class="container">
+      <h2>Training <b>Options</b></h2>
+      <div class="option-list no-bar">
+        {% for x in training %}
+        <div class="col-md-4 selfpaced">
+          <h3 class="cp-type" data-test="selfpaced-cp-type">
+            Training({{x.title}})
+          </h3>
+          <div class="tr-head no-emi">
+            <p class="type-info">
+              <span
+                id="osl-strike-final"
+                class="price"
+                data-test="selfpaced-price"
+                > ₹ {{x.price}}</span
+              ><span class="strike-line" id="osl-strike"></span>
+              <span class="osl-discount"></span>
+            </p>
+          </div>
+          <div
+            class="list-info"
+            id="self-placed"
+            data-test="self-placed-list-info"
+          >
+            <ul>
+              <li>{{x.feature1}} </li>
+              <li>{{x.feature2}}</li>
+              <li>{{x.feature3}}</li>
+              <li class="">{{x.feature4}}</li>
+              <li class="">{{x.featured5}}</li>
+              <li class="">{{x.featured6}}</li>
+              <li class="">{{x.skill}}</li>
+              <li class="">{{x.Technology}}</li>
+            </ul>
+          </div>
+          <div id="" class="" style="text-align: center!important;">
+            <a href="{% url 'jobs:traninPlacementDetails' x.pk %}">Read More</a>
+           
+          </div>
+          <div
+            class="mEnrollNow wingchak"
+            data-product_id="670"
+            data-trainingtypeid="2"
+            data-access_days="180"
+            data-form_id="oslEnrollBtn"
+          >
+          <div id="ContactUsForm">
+            <a href="{% url 'jobs:memberplanPricing' x.pk %}" class="btn opt-btn">Enroll now</a>
+          </div>  
+          </div>
+        </div>
+        {% endfor %}
+        {% for x in placement %}
+        <div class="col-md-4 blended">
+          <h3 class="cp-type" data-test="blended-cp-type">{{x.title}}(Training & Certificate)</h3>
+          <div class="tr-head no-emi">
+            <p class="type-info">
+              <span style="text-align: center;"
+                id="lvc-strike-final"
+                class="price"
+                data-test="blended-price"
+                >₹ {{x.price}}<!-- --> </span
+              ><span class="strike-line" id="lvc-strike"></span>
+              <span class="lvc-discount"></span>
+            </p>
+          </div>
+          <label class="badge"></label>
+          <div
+            class="list-info"
+            id="blended-learning"
+            data-test="blended-learning-list-info"
+          >
+          <ul>
+            <li>{{x.feature1}} </li>
+            <li>{{x.feature2}}</li>
+            <li>{{x.feature3}}</li>
+            <li class="">{{x.feature4}}</li>
+            <li class="">{{x.featured5}}</li>
+            <li class="">{{x.featured6}}</li>
+            <li class="">{{x.skill}}</li>
+            <li class="">{{x.Technology}}</li>
+          </ul>
+          </div>
+          <ul class="list-info str-dt">
+            <li>
+             <a href="{% url 'jobs:traninPlacementDetails' x.pk %}">Read More</a>
+            </li>
+          </ul>
+          <div
+            class="show-dates lvc-dates-course"
+            data-test="blended-show-dates"
+          >
+           
+          </div>
+         
+          <div
+            class="mEnrollNow"
+            data-product_id="670"
+            data-trainingtypeid="9"
+            data-access_days="90"
+            data-form_id="lvcEnrollBtn"
+          >
+          <div id="ContactUsForm">
+            <a href="{% url 'jobs:memberplanPricing' x.pk %}" class="btn opt-btn">Enroll now</a>
+          </div>  
+          </div>
+        </div>
+        {% endfor %}
+        {% for x in certificate %}
+        <div class="col-md-4 last-card">
+          <h3 class="cp-type" data-test="last-card-cp-type">
+            {{x.title}}() Placement Service)
+          </h3>
+          <div class="tr-head">
+            <p class="type-info">
+              <span
+                id="lvc-strike-final"
+                class="price"
+                data-test="blended-price"
+                >₹ {{x.price}}<!-- --> </span
+              ><span class="strike-line" id="lvc-strike"></span>
+              <span class="lvc-discount"></span>
+            </p>
+          </div>
+          <div
+            class="list-info"
+            id="enterprise-learning"
+            data-test="enterprise-learning-list-info"
+          >
+          <ul>
+            <li>{{x.feature1}} </li>
+            <li>{{x.feature2}}</li>
+            <li>{{x.feature3}}</li>
+            <li class="">{{x.feature4}}</li>
+            <li class="">{{x.featured5}}</li>
+            <li class="">{{x.featured6}}</li>
+            <li class="">{{x.skill}}</li>
+            <li class="">{{x.Technology}}</li>
+          </ul>
+          </div>
+          <div id="" class="">
+            <a class="show more show"  href="{% url 'jobs:traninPlacementDetails' x.pk %}">Read More</a>
+          </div>
+          <div id="ContactUsForm">
+            <a href="{% url 'jobs:memberplanPricing' x.pk %}" class="btn opt-btn">Enroll now</a>
+          </div>  
+        </div>
+        {% endfor %}
+        {% for x in allresource %}
+        <div class="col-md-4 blended">
+            <h3 class="cp-type" data-test="last-card-cp-type">
+           {{x.title}} Training & Certificate & Placement
+            </h3>
+            <div class="tr-head" style="text-align:center"> 
+              ₹ {{x.price}}
+            </div>
+            <div
+              class="list-info"
+              id="enterprise-learning"
+              data-test="enterprise-learning-list-info"
+            >
+            <ul>
+              <li>{{x.feature1}} </li>
+              <li>{{x.feature2}}</li>
+              <li>{{x.feature3}}</li>
+              <li class="">{{x.feature4}}</li>
+              <li class="">{{x.featured5}}</li>
+              <li class="">{{x.featured6}}</li>
+              <li class="">{{x.skill}}</li>
+              <li class="">{{x.Technology}}</li>
+            </ul>
+            </div>
+            <div id="" class="more">
+              <a class="" href="{% url 'jobs:traninPlacementDetails' x.pk %}">Read More</a>
+            </div>
+            <div id="ContactUsForm">
+              <a href="{% url 'jobs:memberplanPricing' x.pk %}" class="btn opt-btn">Enroll now</a>
+            </div>  
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main-content %}

@@ -1,0 +1,772 @@
+{% extends 'jobPortal/base.html' %} {% block main-content %} {% load static %}
+
+<style>
+    /*! CSS Used from: https://media.monsterindia.com/trex/public/default/dist/css/career-services.css?ver=301120211110 */
+a{color:#5d4da8;cursor:pointer;text-decoration:none;}
+a:hover{color:#4a2189;}
+p{line-height:24px;}
+i{font-style:normal;}
+label{cursor:pointer;}
+.wrapper{margin:0 auto;max-width:1188px;}
+a{-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
+.wrapper{box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.mb10{margin-bottom:10px;}
+.mb10{margin-bottom:10px!important;}
+@media only screen and (max-width:736px){
+.container{max-width:100%!important;padding-left:0!important;padding-right:0!important;}
+}
+select::-ms-expand{display:none;}
+*{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.wrapper{-webkit-transition:all .2s linear;-moz-transition:all .2s linear;transition:all .2s linear;}
+.container{margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;clear:both;}
+.container:after,.container:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+@media (min-width:320px){
+.container{max-width:480px;}
+}
+@media (min-width:480px){
+.container{max-width:480px;}
+}
+@media (min-width:640px){
+.container{max-width:640px;}
+}
+@media (min-width:768px){
+.container{max-width:768px;}
+}
+@media (min-width:990px){
+.container{max-width:990px;}
+}
+@media (min-width:1188px){
+.container{max-width:1188px;}
+}
+.container-fluid{margin-left:auto;margin-right:auto;padding-left:10px;padding-right:10px;clear:both;}
+.container-fluid:after,.container-fluid:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+.row{clear:both;margin-left:-10px;margin-right:-10px;}
+.row:after,.row:before{clear:both;content:" ";display:block;height:0;overflow:hidden;visibility:hidden;}
+.col-md-5,.col-md-7{position:relative;min-height:1px;padding-left:10px;padding-right:10px;width:100%;}
+@media (min-width:768px){
+.col-md-5,.col-md-7{float:left;}
+.col-md-5{width:41.66667%;}
+.col-md-7{width:58.33333%;}
+}
+.btn:disabled{cursor:not-allowed;opacity:.5;}
+.career-contact-us-anchor{display:block;height:92px;margin-top:-92px;visibility:hidden;}
+@media only screen and (max-width:1270px){
+.services-right .career-contact-us .wrapper{padding:19px 10px;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper{flex-direction:column-reverse;align-items:center;background:#e2f0ff;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper .leftSection{display:flex;flex-direction:column-reverse;align-items:center;padding-top:60px;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper .leftHeading{margin-top:25px;margin-left:0;text-align:center;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper .rightSection{width:100%;display:flex;justify-content:center;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper .rightSection .rightBody{width:80%;}
+}
+@media only screen and (max-width:480px){
+.services-right .career-contact-us .wrapper .rightSection .rightBody{width:100%;}
+}
+@media only screen and (max-width:1400px){
+.services-right .career-contact-us .wrapper .rightInputBoxes .mobile-box,.services-right .career-contact-us .wrapper .rightInputBoxes .mobile-box .mobile-boxHolder,.services-right .career-contact-us .wrapper .rightInputBoxes input,.services-right .career-contact-us .wrapper .rightInputBoxes input:last-child{width:100%;}
+}
+@media only screen and (max-width:1150px){
+.services-right .career-contact-us .wrapper .cta-btn-link{width:100%;}
+}
+.career-contact-us .wrapper{background:#e2f0ff url(https://media.monsterindia.com/trex/public/default/dist/images/background.svg?dc4ff674ca2ae02554b253bb8d0997ab) no-repeat;display:flex;flex-wrap:wrap;min-height:100px;width:100%;max-width:1045px;margin:30px auto 0;border-radius:7px;padding:19px 40px;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper{margin-top:16px;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper{flex-direction:column-reverse;align-items:center;background:#e2f0ff;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper{padding:19px 10px;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .leftSection{display:flex;flex-direction:column-reverse;align-items:center;padding-top:60px;}
+}
+.career-contact-us .wrapper .leftHeading{margin:25px 0 0 30px;}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .leftHeading{margin-top:25px;margin-left:0;text-align:center;}
+}
+.career-contact-us .wrapper .leftHeading div{font-size:18px;line-height:21px;color:#454647;margin-bottom:7px;font-weight:600;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftHeading div{font-size:16px;}
+}
+.career-contact-us .wrapper .leftHeading div:first-child{font-size:24px;color:#1d1e1f;margin-bottom:13px;font-family:avenir-bold;font-weight:900;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftHeading div:first-child{font-size:18px;}
+}
+.career-contact-us .wrapper .leftHeading div:last-child{margin-bottom:33px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftImageHolder{width:209px;height:157px;}
+}
+.career-contact-us .wrapper .leftImageHolder img{width:320px;height:241px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .leftImageHolder img{width:100%;height:100%;}
+}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .rightSection{width:100%;display:flex;justify-content:center;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightSection .rightBody{width:100%;height:100%;}
+}
+.career-contact-us .wrapper .rightHeading{color:#454647;font-size:16px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightHeading{font-size:14px;}
+}
+.career-contact-us .wrapper .rightHeading div:first-child{text-transform:uppercase;font-size:20px;font-family:avenir-bold;font-weight:900;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightHeading div:first-child{font-size:18px;}
+}
+.career-contact-us .wrapper .rightInputBoxes>*{display:block;}
+.career-contact-us .wrapper .rightInputBoxes{font-size:14px;}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes label{margin-top:14px;margin-bottom:8px;}
+.career-contact-us .wrapper .rightInputBoxes span{color:#ff5257;}
+.career-contact-us .wrapper .rightInputBoxes input{width:536px;height:46px;padding-left:17px;border-radius:3px;border:1px solid #cdcdcd;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes input{width:400px;height:40px;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes input{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:440px;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:315px;}
+}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes input:last-child{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes .mobileDetailsWrapper{display:flex;gap:10px;align-items:center;}
+.career-contact-us .wrapper .rightInputBoxes .isdInput{position:relative;width:85px;min-width:85px;cursor:pointer;overflow:hidden;}
+@media only screen and (max-width:1024px){
+.career-contact-us .wrapper .rightInputBoxes .isdInput{width:75px;min-width:75px;}
+}
+.career-contact-us .wrapper .rightInputBoxes .isdInput input{width:100%;cursor:pointer;}
+.career-contact-us .wrapper .rightInputBoxes .isdInput .mqfi-arrow-filled-down{position:absolute;top:54%;right:0;color:#505050;-webkit-transform:translate(-10px,-50%);-moz-transform:translate(-10px,-50%);-o-transform:translate(-10px,-50%);-ms-transform:translate(-10px,-50%);transform:translate(-10px,-50%);}
+@media only screen and (max-width:480px){
+.career-contact-us .wrapper .rightInputBoxes .mobile-box,.career-contact-us .wrapper .rightInputBoxes .mobile-box .mobile-boxHolder{width:100%;}
+}
+.career-contact-us .wrapper .rightInputBoxes select{width:100%;height:100%;position:absolute;left:0;top:0;z-index:1;min-width:300px;}
+.career-contact-us .wrapper .cta-btn-link{width:240px;height:46px;padding:12px 18px;margin-top:24px;font-size:1.143em;line-height:normal;display:inline-block;cursor:pointer;border:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#007aff;border:1px solid #007aff;color:#fff;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;text-transform:uppercase;}
+@media only screen and (max-width:768px){
+.career-contact-us .wrapper .cta-btn-link{width:100%;}
+}
+.benifts-main{display:flex;width:100%;flex-wrap:wrap;}
+.benifts-main .right{width:100%;min-width:calc(50% + 28px);max-width:calc(50% + 28px);padding-left:36px;padding-right:70px;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:26px;}
+@media only screen and (max-width:990px){
+.benifts-main .right{padding-right:30px;}
+}
+@media only screen and (max-width:768px){
+.benifts-main .right{padding-left:20px;}
+}
+@media only screen and (max-width:576px){
+.benifts-main .right{padding:32px;min-width:100%;max-width:100%;}
+}
+@media only screen and (max-width:480px){
+.benifts-main .right{padding:20px 14px;min-width:100%;max-width:100%;}
+}
+.benifts-main .right .content{padding-top:15px;}
+@media only screen and (max-width:576px){
+.benifts-main .right .content{padding-top:0;}
+}
+.benifts-main .right .content .benifits-list{width:100%;margin-top:26px;}
+.benifts-main .right .content .benifits-list .list{width:100%;position:relative;padding-left:39px;margin-bottom:20px;}
+.benifts-main .right .content .benifits-list .list:last-child{margin-bottom:0;}
+.benifts-main .right .content .benifits-list .list i{position:absolute;left:0;font-size:1.714em;line-height:23px;}
+.benifts-main .right .content .benifits-list .list i.cs-theme-mock-blue{color:#6653a2;}
+.benifts-main .right .content .benifits-list .list .text{font-size:1.286em;color:#1d1e1f;line-height:24px;}
+.benifts-main.benifts-specific{margin-top:36px;margin-bottom:44px;padding-left:20px;padding-right:40px;}
+@media only screen and (max-width:920px){
+.benifts-main.benifts-specific{margin-top:44px;padding:0;flex-direction:column-reverse;}
+}
+.benifts-main.benifts-specific .right{padding:0;min-width:calc(50% + 57px);max-width:calc(50% + 57px);}
+.benifts-main.benifts-specific .right.benifit-full{min-width:100%;max-width:100%;}
+@media only screen and (max-width:920px){
+.benifts-main.benifts-specific .right{min-width:100%;max-width:100%;}
+}
+.benifts-main.benifts-specific .right .content{padding-top:0;padding-right:16px;}
+.benifts-main.benifts-specific .right .content .benifits-list{margin-top:36px;}
+@media only screen and (max-width:920px){
+.benifts-main.benifts-specific .right .content .benifits-list{margin-top:24px;padding-left:28px;}
+}
+.services-main{display:flex;width:100%;flex-wrap:wrap;margin-top:11px;}
+@media only screen and (max-width:920px){
+.services-main{margin-top:0;}
+}
+.services-main .services-left{width:100%;min-width:300px;max-width:300px;}
+@media only screen and (max-width:1024px){
+.services-main .services-left{min-width:270px;max-width:270px;}
+}
+@media only screen and (max-width:920px){
+.services-main .services-left{display:none;}
+}
+.services-main .services-right{width:100%;min-width:calc(100% - 315px);max-width:calc(100% - 315px);margin-left:15px;}
+@media only screen and (max-width:1024px){
+.services-main .services-right{min-width:calc(100% - 285px);max-width:calc(100% - 285px);}
+}
+@media only screen and (max-width:920px){
+.services-main .services-right{margin-left:0;min-width:100%;max-width:100%;}
+}
+.services-main .service-buy-section{padding-left:20px;}
+@media only screen and (max-width:920px){
+.services-main .service-buy-section{padding-left:0;}
+}
+.services-main .service-buy-section .service-heading{position:relative;}
+.services-main .service-buy-section .customise-heading{margin-bottom:24px;display:inline-block;}
+@media only screen and (max-width:920px){
+.services-main .service-buy-section .customise-heading{margin-bottom:0;}
+}
+.services-main .service-buy-section.service-buy-xpress-resume{padding-top:38px;}
+@media only screen and (max-width:920px){
+.services-main .service-buy-section.service-buy-xpress-resume{padding-top:18px;}
+}
+.cs-menu-left{width:100%;border:1px solid #e8e8e8;padding-bottom:22px;border-radius:6px 6px 6px 6px;-webkit-border-radius:6px 6px 6px 6px;-moz-border-radius:6px 6px 6px 6px;}
+.cs-menu-left .menu-head{padding:20px 21px 14px;}
+.cs-menu-left .menu-head .sub-heading-h2{margin-top:2px;}
+.cs-menu-left .menu-list{width:100%;}
+.cs-menu-left .menu-list ul>li{width:100%;padding:0 43px;}
+.cs-menu-left .menu-list ul>li a{color:#454647;font-size:1.143em;font-family:SourceSansPro-smbold;transition:none;padding:12px 0;display:inline-block;}
+.cs-menu-left .menu-list ul>li.active,.cs-menu-left .menu-list ul>li:hover{background:#007aff;}
+.cs-menu-left .menu-list ul>li.active a,.cs-menu-left .menu-list ul>li:hover a{color:#fff;}
+.cs-banner{display:flex;justify-content:space-between;width:100%;min-height:150px;max-height:150px;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;}
+@media only screen and (max-width:920px){
+.cs-banner{min-height:auto;max-height:none;}
+}
+.cs-banner .banner-left{display:flex;flex-wrap:wrap;align-items:center;padding-left:20px;padding-right:20px;}
+@media only screen and (max-width:920px){
+.cs-banner .banner-left{padding:0;}
+}
+.cs-banner .banner-left .content .banner-heading{color:#1d1e1f;font-size:2em;line-height:38px;font-family:avenir-bold;margin-bottom:5px;}
+@media only screen and (max-width:920px){
+.cs-banner .banner-right{display:none;}
+}
+.cs-banner .banner-right .banner-img{padding-right:92px;}
+@media only screen and (max-width:1180px){
+.cs-banner .banner-right .banner-img{padding-right:40px;}
+}
+@media only screen and (max-width:1024px){
+.cs-banner .banner-right .banner-img{padding-right:20px;}
+}
+.cs-banner .banner-right .banner-img img{width:100%;height:auto;position:relative;}
+.cs-banner.mock-interview-banner{background:rgba(231,224,252,.34);}
+.cs-banner.mock-interview-banner .banner-right .banner-img{padding-right:115px;padding-top:20px;}
+@media only screen and (max-width:1180px){
+.cs-banner.mock-interview-banner .banner-right .banner-img{padding-right:40px;}
+}
+@media only screen and (max-width:1024px){
+.cs-banner.mock-interview-banner .banner-right .banner-img{padding-right:20px;}
+}
+.cs-banner.mock-interview-banner .banner-right .banner-img img{max-width:184px;}
+@media only screen and (max-width:920px){
+.cs-banner.mock-interview-banner{background:transparent;}
+}
+.price-card-wrapper{overflow-x:auto;padding:6px;margin-left:-6px;margin-right:-6px;}
+@media only screen and (max-width:640px){
+.price-card-wrapper{flex-wrap:wrap;width:100%;padding-left:0;padding-right:0;}
+}
+.price-card-wrapper .price-card{border-radius:6px 6px 6px 6px;-webkit-border-radius:6px 6px 6px 6px;-moz-border-radius:6px 6px 6px 6px;border:1px solid #e8e8e8;padding:25px 10px 16px 13px;margin-right:14px;max-width:177px;min-width:150px;min-height:140px;flex:1;-webkit-animation:zoomanim 1s ease-in;animation:zoomanim 1s ease-in;}
+@media only screen and (max-width:1199px){
+.price-card-wrapper .price-card{max-width:160px;min-width:160px;}
+}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card{margin-right:0;margin-bottom:12px;max-width:100%;min-width:100%;padding:16px;min-height:auto;}
+}
+.price-card-wrapper .price-card:last-child{margin-right:0;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card:last-child{margin-bottom:0;}
+}
+.price-card-wrapper .price-card label{display:flex;width:100%;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label{align-items:center;}
+}
+@media only screen and (max-width:319px){
+.price-card-wrapper .price-card label{align-items:flex-start;}
+}
+.price-card-wrapper .price-card label .content{width:100%;padding-left:10px;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label .content{display:flex;align-items:center;justify-content:space-between;}
+}
+@media only screen and (max-width:319px){
+.price-card-wrapper .price-card label .content{flex-wrap:wrap;}
+}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label .content .detail{width:100%;min-width:135px;max-width:135px;}
+}
+@media only screen and (max-width:319px){
+.price-card-wrapper .price-card label .content .detail{min-width:auto;max-width:100%;}
+}
+.price-card-wrapper .price-card label .content .detail .title{font-family:SourceSansPro-Bold;font-size:1.143em;line-height:22px;color:#1d1e1f;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label .content .detail .exp-dt{display:flex;flex-wrap:wrap;width:100%;}
+}
+.price-card-wrapper .price-card label .content .detail .exp-dt .exp-text{font-size:14px;color:#454647;line-height:19px;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label .content .detail .exp-dt .exp-text{padding-right:5px;}
+}
+.price-card-wrapper .price-card label .content .price-text{width:100%;text-align:right;font-family:SourceSansPro-Bold;font-size:1.143em;line-height:21px;color:#454647;margin-top:15px;}
+@media only screen and (max-width:640px){
+.price-card-wrapper .price-card label .content .price-text{margin-top:0;width:100%;min-width:calc(100% - 135px);max-width:calc(100% - 135px);}
+}
+@media only screen and (max-width:319px){
+.price-card-wrapper .price-card label .content .price-text{min-width:auto;max-width:100%;margin-top:5px;}
+}
+.how-it-work{width:100%;}
+.how-it-work .border-box{width:100%;height:43px;border-bottom:5px solid transparent;background:transparent;}
+@media only screen and (max-width:920px){
+.how-it-work .border-box{width:auto;margin-left:-24px;margin-right:-24px;}
+}
+.how-it-work .border-box.class-mock-interview{border-bottom:5px solid #6653a2;background:rgba(102,83,162,.1);}
+.how-it-work .step-section{width:100%;padding:44px 52px 0 33px;}
+@media only screen and (max-width:920px){
+.how-it-work .step-section{padding:44px 0 0;}
+.how-it-work .step-section .heading-box{padding-left:16px;padding-right:16px;}
+}
+.how-it-work .step-section .step-parent{margin-top:35px;width:100%;display:flex;justify-content:space-between;}
+@media only screen and (max-width:1180px){
+.how-it-work .step-section .step-parent{flex-wrap:wrap;}
+}
+.how-it-work .step-section .step-parent .boxes{flex:1;}
+@media only screen and (max-width:1180px){
+.how-it-work .step-section .step-parent .boxes{flex:auto;margin-bottom:40px;padding-right:20px;}
+.how-it-work .step-section .step-parent .boxes:last-child{margin-bottom:0;}
+}
+.how-it-work .step-section .step-parent .boxes.col-3{width:32%;}
+@media only screen and (max-width:1180px){
+.how-it-work .step-section .step-parent .boxes.col-3{width:50%;}
+}
+@media only screen and (max-width:640px){
+.how-it-work .step-section .step-parent .boxes.col-3{width:100%;}
+}
+.how-it-work .step-section .step-parent .boxes .tag{display:inline-block;background:#e5f1ff;border-radius:20px 20px 20px 20px;-webkit-border-radius:20px 20px 20px 20px;-moz-border-radius:20px 20px 20px 20px;font-size:14px;color:#1d1e1f;font-family:SourceSansPro-smbold;line-height:21px;padding:5px 24px 3px;}
+.how-it-work .step-section .step-parent .boxes .content{padding-left:24px;padding-right:14px;}
+.how-it-work .step-section .step-parent .boxes .content:last-child{padding-right:0;}
+.how-it-work .step-section .step-parent .boxes .content .heading-h2{margin-top:17px;margin-bottom:14px;}
+.how-it-work .step-section .step-parent .boxes .content .desc{font-size:1.286em;color:#1d1e1f;line-height:24px;}
+.disclaimer{width:100%;margin-top:44px;margin-bottom:80px;padding:0 33px;}
+@media only screen and (max-width:920px){
+.disclaimer{padding:0;margin-bottom:20px;}
+}
+@media only screen and (max-width:576px){
+.disclaimer{margin-bottom:80px;}
+}
+.disclaimer .content{margin-top:4px;margin-bottom:22px;padding-bottom:8px;max-width:911px;}
+@media only screen and (max-width:920px){
+.disclaimer .content{padding-bottom:0;}
+}
+.disclaimer .content:last-child{margin-bottom:0;padding-bottom:0;}
+.disclaimer .content .desc{color:#1d1e1f;font-size:1.286em;line-height:21px;font-family:SourceSansPro-Regular;}
+.cs-notification{display:flex;align-items:center;padding:10px 16px;position:fixed;width:100%;min-height:80px;left:0;top:-100%;z-index:1000;webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;transition:all .4s ease-in-out;}
+.cs-notification .container{min-width:100%;}
+.cs-notification .cs-notify-content{width:100%;text-align:left;position:relative;padding-right:30px;}
+.cs-notification .cs-notify-content i{position:absolute;right:0;top:50%;margin-top:-15px;font-size:1.714em;cursor:pointer;}
+.cs-notification .cs-notify-content .cs-notify-text{font-size:1.286em;}
+*{margin:0;outline:none;padding:0;font-weight:400;list-style:none;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+section{display:block;}
+a{background-color:transparent;}
+a:active,a:hover{outline:0;}
+img{border:0;}
+button,input,select{color:inherit;font:inherit;margin:0;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button{-webkit-appearance:button;cursor:pointer;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+input{line-height:normal;}
+input[type=radio]{box-sizing:border-box;padding:0;}
+[class^=mqfi-]:before{display:inline-block;speak:none;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:fontello;}
+.mqfi-arrow-filled-down:before{content:"\E809";font-size:18px;}
+[class^=mqfics-]:before{display:inline-block;speak:none;font-style:normal;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:fonticoncs;}
+.mqfics-ok-circle:before{content:"\C804";}
+.mqfics-cross:before{content:"\C807";}
+input[type=email]:focus,input[type=text]:focus{background-size:100% 1px;}
+input[type=email],input[type=text]{background-image:-webkit-linear-gradient(#3c3c3c,#3c3c3c);background-image:linear-gradient(#3c3c3c,#3c3c3c);background-size:0 1px;background-repeat:no-repeat;background-position:bottom,50% calc(100% - 1px);-webkit-transition:background .3s ease-out;transition:background .3s ease-out;}
+.input{border:1px solid #a9a9aa;box-shadow:none;color:#787878;font-size:14px;padding:15px 15px 13px;}
+.input:focus{color:#3c3c3c;border:1px solid #575757;}
+.radio{position:relative;width:21px;height:21px;float:left;}
+.radio input[type=radio]{opacity:0;position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;}
+.radio input[type=radio]:hover{cursor:pointer;}
+.radio input[type=radio]+i{left:0;top:0;width:21px;height:21px;background:#fff;border:1px solid #cdcdcd;border-radius:50% 50% 50% 50%;}
+.radio input[type=radio]+i,.radio input[type=radio]+i:before{position:absolute;-webkit-border-radius:50% 50% 50% 50%;-moz-border-radius:50% 50% 50% 50%;}
+.radio input[type=radio]+i:before{content:"";left:calc(50% - 4.5px);top:calc(50% - 4.5px);width:9px;height:9px;background:#cdcdcd;border-radius:50% 50% 50% 50%;}
+.radio input[type=radio]:checked+i{background:#007aff;border:1px solid #007aff;}
+.radio input[type=radio]:checked+i:before{background:#fff;}
+.radio input[type=radio]:checked:before{background:#007aff;border:1px solid #007aff;}
+.cs-full-section .btn{padding:12px 18px;font-size:1.143em;line-height:normal;display:inline-block;cursor:pointer;border:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#007aff;border:1px solid #007aff;color:#fff;border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;}
+.cs-full-section .btn:hover{opacity:1;background:#007aff;border:1px solid #007aff;color:#fff;}
+.cs-full-section .btn:disabled{background:#cdcdcd;border:1px solid #cdcdcd;opacity:1;}
+.heading-default{color:#1d1e1f;font-size:1.714em;line-height:33px;font-family:avenir-bold;font-weight:900;}
+.heading-default-h3{color:#1d1e1f;font-size:1.286em;line-height:25px;font-family:SourceSansPro-smbold;font-weight:600;}
+.sub-heading-default{color:#8c8c8c;font-size:1.286em;line-height:24px;}
+.heading-h2{color:#454647;font-size:1.429em;line-height:27px;font-family:avenir-bold;font-weight:900;}
+.sub-heading-h2{color:#454647;font-family:SourceSansPro-Regular;}
+.sub-heading-h2{font-size:1.143em;line-height:21px;}
+.csf-default{font-family:SourceSansPro-Regular;}
+.csf-bold{font-family:SourceSansPro-Bold;font-weight:700;}
+.cs-tab{width:100%;margin-bottom:10px;}
+@media only screen and (max-width:640px){
+.cs-tab{margin-bottom:0;}
+}
+.cs-tab .cs-tab-content{padding:15px 0;}
+.cs-tab .cs-tab-content.pt-0{padding-top:0;}
+@media (min-width:320px) and (min-width:320px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:480px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:640px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:768px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:990px){
+.career-services .container{max-width:100%;}
+}
+@media (min-width:320px) and (min-width:1180px){
+.career-services .container{max-width:1385px;}
+}
+.cs-full-section{padding-left:27px;padding-right:27px;font-family:SourceSansPro-Regular;}
+@media only screen and (max-width:1180px){
+.cs-full-section{padding-left:14px;padding-right:14px;}
+}
+.d-flex{display:flex;}
+.pt-0{padding-top:0;}
+.link-default{color:#007aff;}
+.link-default:hover{color:#006de3;}
+@media only screen and (max-width:576px){
+.btn-wrapper{position:fixed;bottom:0;left:0;right:0;width:100%;z-index:1000;padding:8px 14px;background:#fff;box-shadow:0 -1px 4px rgba(0,0,0,.29);-webkit-box-shadow:0 -1px 4px rgba(0,0,0,.29);-moz-box-shadow:0 -1px 4px rgba(0,0,0,.29);}
+.btn-wrapper .btn{width:100%;}
+}
+.btn-wrapper .btn-buy-cs{position:relative;}
+.link-scroll-benefits{display:inline-block;margin-top:22px;font-size:18px;text-decoration:underline;font-family:SourceSansPro-smbold;}
+/*! CSS Used keyframes */
+@-webkit-keyframes zoomanim{0%{opacity:0;}50%{opacity:.5;}to{opacity:1;}}
+@keyframes zoomanim{0%{opacity:0;}50%{opacity:.5;}to{opacity:1;}}
+/*! CSS Used fontfaces */
+@font-face{font-family:avenir-bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.ttf?001) format("truetype");font-style:normal;font-weight:900;}
+@font-face{font-family:avenir-bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/avenir-bold.ttf?001) format("truetype");font-style:normal;font-weight:900;}
+@font-face{font-family:SourceSansPro-smbold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.ttf?001) format("truetype");font-style:normal;font-weight:600;}
+@font-face{font-family:SourceSansPro-smbold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-smbold.ttf?001) format("truetype");font-style:normal;font-weight:600;}
+@font-face{font-family:SourceSansPro-Bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.ttf?001) format("truetype");font-style:normal;font-weight:700;}
+@font-face{font-family:SourceSansPro-Bold;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Bold.ttf?001) format("truetype");font-style:normal;font-weight:700;}
+@font-face{font-family:SourceSansPro-Regular;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.ttf?001) format("truetype");font-style:normal;font-weight:400;}
+@font-face{font-family:SourceSansPro-Regular;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.eot?001?#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.woff2?001) format("woff2"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/SourceSansPro-Regular.ttf?001) format("truetype");font-style:normal;font-weight:400;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.eot?2fa952a2fde505296d492f6ad795961e);src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.eot?2fa952a2fde505296d492f6ad795961e#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/search/public/fonts/fontello.woff?2fa952a2fde505296d492f6ad795961e) format("woff"),url(https://media.monsterindia.com/trex/search/public/fonts/fontello.ttf?2fa952a2fde505296d492f6ad795961e) format("truetype"),url(https://media.monsterindia.com/trex/search/public/fonts/fontello.svg?2fa952a2fde505296d492f6ad795961e#fontello) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fontello.svg?7a7582aed9753c03aa0bff6cff018a18#fontello) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:fontello;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fontello.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fontello.svg?7a7582aed9753c03aa0bff6cff018a18#fontello) format("svg");font-style:normal;font-weight:400;}
+@font-face{font-family:fonticoncs;font-display:swap;src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.eot?001);src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.eot?001#iefix) format("embedded-opentype");src:url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.woff?001) format("woff"),url(https://media.monsterindia.com/trex/public/default/dist/fonts/fonticoncs.ttf?001) format("truetype"),url(https://media.monsterindia.com/trex/public/default/dist/images/fonticoncs.svg?27fc1de1788e632d03935caebc226c08#fonticoncs) format("svg");font-style:normal;font-weight:400;}
+</style>
+
+<section class="container-fluid cs-full-section">
+  <div class="container">
+    <div class="cs-notification">
+      <div class="container">
+        <div class="cs-notify-content">
+          <div class="cs-notify-text"></div>
+          <i class="mqfics-cross"></i>
+        </div>
+      </div>
+    </div>
+    <div class="services-main">
+      <div class="services-left">
+        <div class="cs-menu-left">
+          <div class="menu-head">
+            <h2 class="heading-h2">Buy Career services</h2>
+            <div class="sub-heading-h2">Give your job hunt a boost</div>
+          </div>
+         <div class="menu-list">
+            <ul>
+              <li >
+                <a href="{% url 'jobs:featuredProfile' %}">Featured Profile</a>
+              </li>
+              <li class=""><a href="{% url 'jobs:resumeWriting' %}">Resume Writing</a></li>
+              <li class=""><a href="{% url 'jobs:careerBooster' %}">Career Booster</a></li>
+              <li class="">
+                <a href="{% url 'jobs:profileHightligter' %}">Profile Highlighter</a>
+              </li>
+              <li class="">
+                <a href="{% url 'jobs:linkdinMakeover' %}">LinkedIn Makeover</a>
+              </li >
+              <li class="active"><a href="{% url 'jobs:mockInterview' %}">Mock Interview</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="services-right">
+        <div class="cs-banner mock-interview-banner">
+          <div class="banner-left">
+            <div class="content">
+              <h1 class="banner-heading">
+                Mock Interview
+                <!---->
+                <!---->
+              </h1>
+              <div class="sub-heading-default">
+                Get confident and interview ready with mock interviews
+              </div>
+              <a
+                href="javascript:void(0)"
+                class="link-default link-scroll-benefits"
+                >Benefits</a
+              >
+            </div>
+          </div>
+          <div class="banner-right">
+            <div class="banner-img">
+              <img
+                src="//media.monsterindia.com/trex/public/default/images/career-services/mock-interview.png"
+                width="154"
+                height="166"
+                alt="Mock Interview"
+                class="load-lazily"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="service-buy-section service-buy-xpress-resume">
+          <div class="service-heading">
+            <h2 class="heading-default-h3 customise-heading">
+              Service Offered
+            </h2>
+          </div>
+          <!---->
+          <div class="cs-tab">
+            <!---->
+            <div class="cs-tab-content pt-0">
+              <div>
+                <div class="price-card-wrapper d-flex">
+                  <div id="card-2012" class="price-card">
+                    <label
+                      ><span class="radio"
+                        ><input
+                          type="radio"
+                          id="card-input-2012"
+                          data-card-deatil='{"id":2012,"price_params":{"for_site_context":null,"experience_range":{"name":"Entry Level","experience_range_id":1,"minimum_experience":0,"maximum_experience":4},"duration":{"value":1,"type":"YEAR"}},"price_details":{"actual_price":2599,"discounted_price":null,"currency":"INR"},"order":20,"sku":"mock-interview","for_site_context":["rexmonster"],"add_on_benefits":null}'
+                          data-radio="mock-interview-0-4"
+                          name="radio-mock-interview"
+                          value="2012" />
+                        <i></i
+                      ></span>
+                      <div class="content">
+                        <div class="detail">
+                          <h2 class="title">Entry Level</h2>
+                          <div class="exp-dt">
+                            <div class="exp-text">Experience</div>
+                            <div class="exp-text">0 - 4 Years</div>
+                          </div>
+                        </div>
+                        <div class="price-text">Rs 2599</div>
+                      </div></label
+                    >
+                  </div>
+                  <div id="card-2013" class="price-card">
+                    <label
+                      ><span class="radio"
+                        ><input
+                          type="radio"
+                          id="card-input-2013"
+                          data-card-deatil='{"id":2013,"price_params":{"for_site_context":null,"experience_range":{"name":"Mid Level","experience_range_id":2,"minimum_experience":4,"maximum_experience":8},"duration":{"value":1,"type":"YEAR"}},"price_details":{"actual_price":3599,"discounted_price":null,"currency":"INR"},"order":50,"sku":"mock-interview","for_site_context":["rexmonster"],"add_on_benefits":null}'
+                          data-radio="mock-interview-4-8"
+                          name="radio-mock-interview"
+                          value="2013" />
+                        <i></i
+                      ></span>
+                      <div class="content">
+                        <div class="detail">
+                          <h2 class="title">Mid Level</h2>
+                          <div class="exp-dt">
+                            <div class="exp-text">Experience</div>
+                            <div class="exp-text">4 - 8 Years</div>
+                          </div>
+                        </div>
+                        <div class="price-text">Rs 3599</div>
+                      </div></label
+                    >
+                  </div>
+                  <div id="card-2014" class="price-card">
+                    <label
+                      ><span class="radio"
+                        ><input
+                          type="radio"
+                          id="card-input-2014"
+                          data-card-deatil='{"id":2014,"price_params":{"for_site_context":null,"experience_range":{"name":"Senior Level","experience_range_id":3,"minimum_experience":8,"maximum_experience":15},"duration":{"value":1,"type":"YEAR"}},"price_details":{"actual_price":4599,"discounted_price":null,"currency":"INR"},"order":60,"sku":"mock-interview","for_site_context":["rexmonster"],"add_on_benefits":null}'
+                          data-radio="mock-interview-8-15"
+                          name="radio-mock-interview"
+                          value="2014" />
+                        <i></i
+                      ></span>
+                      <div class="content">
+                        <div class="detail">
+                          <h2 class="title">Senior Level</h2>
+                          <div class="exp-dt">
+                            <div class="exp-text">Experience</div>
+                            <div class="exp-text">8 - 15 Years</div>
+                          </div>
+                        </div>
+                        <div class="price-text">Rs 4599</div>
+                      </div></label
+                    >
+                  </div>
+                  <div id="card-2015" class="price-card">
+                    <label
+                      ><span class="radio"
+                        ><input
+                          type="radio"
+                          id="card-input-2015"
+                          data-card-deatil='{"id":2015,"price_params":{"for_site_context":null,"experience_range":{"name":"Executive Level","experience_range_id":4,"minimum_experience":15,"maximum_experience":100},"duration":{"value":1,"type":"YEAR"}},"price_details":{"actual_price":6599,"discounted_price":null,"currency":"INR"},"order":70,"sku":"mock-interview","for_site_context":["rexmonster"],"add_on_benefits":null}'
+                          data-radio="mock-interview-15-100"
+                          name="radio-mock-interview"
+                          value="2015" />
+                        <i></i
+                      ></span>
+                      <div class="content">
+                        <div class="detail">
+                          <h2 class="title">Executive Level</h2>
+                          <div class="exp-dt">
+                            <div class="exp-text">Experience</div>
+                            <div class="exp-text">over 15 years</div>
+                          </div>
+                        </div>
+                        <div class="price-text">Rs 6599</div>
+                      </div></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-wrapper">
+            <!---->
+            <button type="button" class="btn btn-buy-cs"><!---->Buy Now</button>
+          </div>
+        </div>
+        <div id="benefits">
+          <div></div>
+          <div>
+            <div class="benifts-main benifts-specific">
+              <!---->
+              <div class="right benifit-full">
+                <div class="content">
+                  <h2 class="heading-default heading-desktop">Benefits</h2>
+                  <div class="benifits-list">
+                    <div class="list">
+                      <i class="mqfics-ok-circle cs-theme-mock-blue"></i>
+                      <h3 class="text">
+                        Experienced industry interview experts who provide
+                        constructive inputs
+                      </h3>
+                    </div>
+                    <div class="list">
+                      <i class="mqfics-ok-circle cs-theme-mock-blue"></i>
+                      <h3 class="text">
+                        A risk-free environment to test and identify key
+                        improvement areas
+                      </h3>
+                    </div>
+                    <div class="list">
+                      <i class="mqfics-ok-circle cs-theme-mock-blue"></i>
+                      <h3 class="text">
+                        Detailed written and video feedback on your interview
+                        performance
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <div>
+          <div class="how-it-work">
+            <div class="border-box class-mock-interview"></div>
+            <div class="step-section">
+              <div class="heading-box">
+                <h2 class="heading-default">How it works</h2>
+                <h3 class="heading-default-h3 csf-default">
+                  You can achieve this in just 3 simple steps
+                </h3>
+              </div>
+              <div class="step-parent">
+                <div class="boxes col-3">
+                  <span class="tag">STEP 1</span>
+                  <div class="content">
+                    <h3 class="heading-h2 csf-bold">Tell us your goal</h3>
+                    <p class="desc">
+                      We will get in touch with you to take details of your
+                      dream company along with your updated profile
+                    </p>
+                  </div>
+                </div>
+                <div class="boxes col-3">
+                  <span class="tag">STEP 2</span>
+                  <div class="content">
+                    <h3 class="heading-h2 csf-bold">
+                      Personalized Industry Expert match
+                    </h3>
+                    <p class="desc">
+                      Get matched to an interviewer within 24 hours from the
+                      same/equivalent company with the right experience and
+                      skills to assess you
+                    </p>
+                  </div>
+                </div>
+                <div class="boxes col-3">
+                  <span class="tag">STEP 3</span>
+                  <div class="content">
+                    <h3 class="heading-h2 csf-bold">
+                      Attend 45 mins 1:1 mock interview with industry expert
+                    </h3>
+                    <p class="desc">
+                      Participate in a 45-minute interview session followed by a
+                      15-minute feedback session with the interviewer
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <div>
+          <div class="disclaimer">
+            <h2 class="heading-default">Disclaimer</h2>
+            <div class="content">
+              <!---->
+              <div>
+                <p class="desc mb10">
+                  1. We would need 36 hours to schedule your mock interview to
+                  ensure the best experience by picking the right experts as per
+                  your profile &amp; requirements.
+                </p>
+                <p class="desc mb10">
+                  2. You can reschedule your interview maximum once 4 hours
+                  prior to your booked slot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span id="career-contact-us" class="career-contact-us-anchor"></span>
+        <div></div>
+        <div>
+          <div>
+            <!---->
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main-content %}

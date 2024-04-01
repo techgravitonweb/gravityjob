@@ -1,0 +1,1471 @@
+﻿{% comment %} {% extends 'jobPortal/base.html' %} 
+{% block main-content %} {% endcomment %}
+{% block content %}
+{% load static %}
+{% load tag_exists %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gravitonweb.com </title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'dash/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'dash/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'dash/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+   <link rel="shortcut icon" type="image/png" href="{% static 'jobPortal/gravitonLogo.png' %}" style="width: 100px; padding-top:10px;  height: auto;"/>
+   <!--Font Awesme 5-->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <style>
+
+    body{
+        background: #fefefe;
+      }
+      
+      h1{
+        font-family: Helvetica;
+        text-align: center;
+        font-size: 70px;
+        margin: 150px 0;
+        display: block;
+      }
+      
+      #newsletter-popup{
+        margin: 70px auto;
+        padding:30px 40px 40px;
+        background: #f5828a;
+        border-radius: 5px;
+        width: 25%;
+        position: relative;
+        transition: all 1s ease-in-out;
+      }
+      
+      @media screen and (max-width: 1366px){
+        #newsletter-popup{
+          width: 40%;
+        }
+      }
+      
+      @media screen and (max-width: 992px){
+        #newsletter-popup{
+          width: 70%;
+        }
+      }
+      
+      .newsletter-overlay{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: visible;
+        opacity: 1;
+        display: none;
+      }
+      
+      #newsletter-popup h3{
+        color: #fff;
+        font-size: 24px;
+        margin: 0 0 10px;
+        font-family: 'Gloria Hallelujah',cursive;
+      }
+      
+      #newsletter-popup input[type="text"]{
+          width: 100%;
+          height: 36px;
+          border: none;
+          text-indent: 10px;
+          font-size: 13px;
+          border-bottom: 2px solid #faeaec;
+          border-top: 2px solid #fff;
+          padding: 0;
+          color: #666;
+          margin-bottom: 15px;
+      }
+      
+      #newsletter-popup input[type="submit"]{
+        background: #6EC5D9;
+          border: none;
+          border-bottom: 3px solid #57B8CE;
+          color: #fff;
+          text-align: center;
+          display: block;
+          padding: 0;
+          line-height: 1.5;
+          width: 100%;
+          cursor: pointer;
+          margin: 0;
+          font-size: 21px;
+          font-family: "Gloria Hallelujah",cursive;
+      }
+      
+      #newsletter-popup .popup-close{
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        text-decoration: none;
+        line-height: 30px;
+        font-family:  "Gloria Hallelujah",cursive;
+        font-weight: bold;
+      }
+    #page-inner {
+    width: 100%;
+    margin: 10px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+    min-height: auto;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+.hideContent {
+    overflow: hidden;
+    line-height: 1em;
+    height: 2em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+</style>
+  
+
+</head>
+<body>
+    
+    <div id="wrapper" style="background-color:white;">
+        
+
+        <!-- </nav>    -->
+
+      
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0; margin-top:0px; background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+            <div class="navbar-header" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only" >Toggle navigation</span>
+                    <span class="icon-bar" ></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'jobs:home' %}" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">gravitonweb.com</a> 
+            </div>
+<!-- <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">  {{ request.user.role }}  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
+<div style="color: white; padding: 15px ; float: right; margin-right:5px; font-size: 16px;"> <i class="fas fa-sign-in-alt">&nbsp;  <a href="{% url 'accounts:logout' %}" 
+    style="color:white; font-size:20px;">  Logout </a>   &nbsp;</i></div>
+
+<div style="color: white; padding: 15px; float: right;  font-size: 16px;"> <i class="fas fa-user-plus">&nbsp;<a style="color:white; font-size:20px;"> {{ request.user.first_name }} </a>  &nbsp;</i></div>
+
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation" style="display:block; background-color:white;">
+            <div class="sidebar-collapse" >
+                    <ul class="nav" id="main-menu">
+                        
+                        <!-- <li class="text-center">
+                        <div style="width:100px; height:100px; border-radius:50px; border:1px solid black; border-color:black; 
+                         margin:10px;">
+                         <img src="https://thedailyq.org/wp-content/uploads/2020/08/Person.jpg" style="width:60%; margin:10px;">
+                         <span>information</span>
+                         
+                    </div>
+                    
+                         </li> -->
+                        
+                        
+                        <li class="active"><a style="background-color: white; color:black;"  href="{% url 'jobs:employer-dashboard' %}">
+                            <i class="fas fa-briefcase"  style="color:#248ae4; font-size: 20px; "></i>Dashboard</a></li>
+
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:companyProfile' %}"><i class="fas fa-user"
+                         style="color:#248ae4; font-size: 20px; "></i>Company Profile</a> </li>
+
+                         <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:viewProfile' %}"><i class="fas fa-user"
+                            style="color:#248ae4; font-size: 20px; "></i>Edit Profile</a> </li>
+
+                        <li><a  style="background-color: white; color:black;" href="{% url 'jobs:postjobDash' %}"><i class="fas fa-file-alt"
+                            style="color:#248ae4; font-size: 20px; "></i></i>Post Jobs</a></li>
+
+                       
+                            <li><a  style="background-color: white; color:black;" href="{% url 'jobs:myjobs' %}"><i class="fas fa-file-alt"
+                                style="color:#248ae4; font-size: 20px; "></i></i>My Jobs</a></li>
+                                
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:changepassword' %}"><i class="fas fa-user-lock"
+                            style="color:#248ae4; font-size: 20px; "></i>Change Password</a></li>
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:faqEmp' %}"><i class="fas fa-user-lock"
+                                style="color:#248ae4; font-size: 20px; "></i>Faq</a></li>
+                            
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"
+                            style="color:#248ae4; font-size: 20px; "></i>Logout</a></li>
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:supportEmp' %}"><i class="fas fa-user-lock"
+                                style="color:#248ae4; font-size: 20px; "></i>Support</a></li>
+
+                      </ul>
+                      
+			
+               
+            </div>
+            
+        </nav>  
+      
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner" style="padding:20px; margin:0px;">
+               <!-- Button trigger modal -->
+               {% if blockIf is  None  %}
+               <div class="modal fade"  data-backdrop="static" data-keyboard="false" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+               <div class="modal-dialog modal-dialog-centered" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLongTitle">Verify As a Employer</h5>
+           
+                   </div>
+                   <form action="{% url 'jobs:documentEmp' %}" method="POST">
+                       {% csrf_token %}
+                   <div class="modal-body" style="padding-top: 0px;">
+                       <div class="mb-3">
+                           <label for="formFile" class="form-label">companyIdCard</label>
+                           <input class="form-control" type="file" name="companyIdCard" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">shopStablished</label>
+                           <input class="form-control" type="file" name="shopStablished" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">udyogAAdhar</label>
+                           <input class="form-control" type="file" name="udyogAAdhar" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">certificateOfIncorpation</label>
+                           <input class="form-control" type="file" name="certificateOfIncorpation" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">msmacertificate</label>
+                           <input class="form-control" type="file" name="msmacertificate" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">Tan</label>
+                           <input class="form-control" type="file" name="Tan" id="formFile" >
+                         </div>
+                         <h6 style="text-align: center;
+                         font-size: 26px;
+                         color: green;
+                         margin: 0px;">OR</h6>
+                         <div class="mb-3">
+                           <label for="formFile" class="form-label">Din</label>
+                           <input class="form-control" type="file" name="Din" id="formFile" >
+                         </div>
+                   </div>
+                   <div class="modal-footer">
+           
+                     <button type="submit" class="btn btn-primary">Submit</button>
+                   </div>
+               </form>
+                 </div>
+               </div>
+               </div>
+               {% else %}
+               {% if not verification.verified %}
+               <div class="modal fade"  data-backdrop="static" data-keyboard="false" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+               <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLongTitle">Verify As a Employer</h5>
+                           Document is On verification 
+                     </div>
+
+                   </div>
+               </div>
+           </div>
+          
+               {% endif %}
+               {% endif  %}
+           
+  <!-- Modal -->
+ 
+                 <!-- /. ROW  -->
+                 <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>Application statistics</h3>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-12 col-xs-12">           
+                    <!-- <div class="panel panel-back noti-box" style="box-shadow: 5px 10px 20px #093efb inset;"> -->
+                        <div class="panel panel-back noti-box" style="box-shadow: 3px 5px 10px #248ae4 ;">
+
+                        <span class="icon-box bg-color-red set-icon" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                            <i class="fas fa-briefcase"></i>                        </span>
+                        <div class="text-box" >
+                           {% for x in PostJobCount %}
+                            <p class="main-text">{{x}}</p>
+                            {% endfor %}
+                            <p class="text-muted">Posted Jobs</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 3px 5px 10px #248ae4 ;">
+                        <span class="icon-box bg-color-green set-icon" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                            <i class="fas fa-address-card"></i>                        </span>
+                        <div class="text-box" >
+                            <p class="main-text">{{applicantCount}}</p>
+                            <p class="text-muted">Application</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 3px 5px 10px #248ae4;">
+                        <span class="icon-box bg-color-blue set-icon" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                            <i class="fas fa-comment-alt"></i>                       
+                         </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Review</p>
+                        </div>
+                     </div>
+                     </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">           
+                    <div class="panel panel-back noti-box" style="box-shadow: 3px 5px 10px #248ae4 ; ">
+                        <span class="icon-box bg-color-brown set-icon" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                            <i class="fas fa-bookmark"></i>                       
+                         </span>
+                        <div class="text-box" >
+                            <p class="main-text">0</p>
+                            <p class="text-muted">Shortlist</p>
+                        </div>
+                     </div>
+                     </div>
+
+                   
+
+                    <!----Last section-->
+         <div class="row" >
+        <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="panel panel-primary  bg-color-white" style="box-shadow: 5px 5px 5px rgba(156, 156, 248, 0.63);" >
+        <div class="panel-heading text-center" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+            company Posted
+        </div>
+                           
+        <ul style="list-style:none; margin:20px;">
+            {% for x in job %}
+            <li>
+            <label>{{x.company_name}}</label>&nbsp;<span class="text-color-blue"></span>
+            </li>
+          {% endfor %}
+             {% comment %} <li  style="margin-top:20px;">
+                <i class="fas fa-plus-circle" style="color:#248ae4;"></i>&nbsp;<span class="text-center" style="color:#248ae4;">SHOW MORE</span>
+             </li> {% endcomment %}
+             
+            
+          </ul>
+            
+            
+                        </div>
+                        </div>
+                        {% for x in PostJobCount1 %}
+                        <div class="col-md-4 col-sm-4" >
+                            <!-- <div class="panel panel-info"> -->
+                                <!-- <div class="panel-heading">
+                                    Info Panel
+                                </div> -->
+                                <div class="panel-body" style=" margin-top:0px; display:flex; box-shadow: 2px 2px 2px  rgba(156, 156, 248, 0.63);
+                                border:1px solid rgba(0, 0, 255, 0.288);">
+                                    <div>
+                                    <b>
+                                    <a href="{% url 'jobs:jobs-detail' x.id %}"> {{x.title}} </a></b>
+                                 
+                                        <h4 style="color:#093efb; margin-top:1px;">{{x.category}}</h4>
+
+                                       <h5 style="margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:green"></i>&nbsp;<span> <b style="color:#4d4d4dbd;">{{x.location}} </b></span></h5>
+
+                                        <div > <span>
+                                            <a href="#candidates" class="btn btn-danger">{{x.opening}} Active jobs</a>
+                                            <span style="padding-left: 10px">  <a href="{% url 'jobs:posted_jobs' x.pk %}"> edit</a>
+                                            <a style="padding-left:4px;" href="{% url 'jobs:people_applied' x.pk %}"> Candidats</a>
+                                            </span>
+                                        </span>
+                                            </div>
+                                     </div>
+                                     <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:25px; border:1px solid black;">
+                                        <img src="{% static 'img/company1.jpg' %}" style="width:100%;">
+                                    </div>
+                                 </div>
+                                <div class="panel-footer" style="margin-bottom:15px; background-color:#428bca2d; border:1px solid rgba(0, 0, 255, 0.507); color:black; box-shadow: 2px 2px 2px rgba(14, 14, 211, 0.384);">
+                                    <i class="fas fa-mars-double" style="color:#093efb;"></i>
+                                    <b>Keywords:   </b><span>ui designer , 
+                                        {% for tag in job.tags.all %}
+                                        {{ tag.name }}
+                                       {% endfor %}
+                                        </span>
+                                </div>
+                                
+                            <!-- </div> -->
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>                   
+                 </div>
+
+               
+               
+
+                 <!-----------uSER PROFILE-->
+                    <div id="profile" class="tab-pane fade ">
+                        <h3><b>Company Profile</b></h3>
+                        <div id="page-inner">
+                            <div class="tab-content">
+                                 <div class="tab-pane fade active in" id="home">
+                                     <!-- <div class="panel panel-default"> -->
+                                        
+                                         
+                                         
+                                         <div class="panel-body">
+                                             {% if checkUserDetails is  None %}
+                                            <form action="{% url 'jobs:updateEmployer' %}" method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                             <div class="row">
+                                                <div class="col-md-12" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462;
+                                                border-radius:10px; margin-top:1px; margin-bottom:20px;">  
+                                                
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <input type="file" name="employprofileImageerData" required  style="margin-top:3px;">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                                        <input type="file" name="coverPic" required style="margin-top:3px;">
+                                        </div>
+                                        
+                                        </div>
+                                                               <div class="col-md-12" style="border:1px solid #248ae494; padding:5px; box-shadow: 3px 5px 10px #248ae462;
+                                              border-radius:10px; margin-top:1px;">
+                                                                <div class="col-md-6">
+                                                                 <label>Company name</label>
+                                                                 <input required class="form-control" placeholder="name" style="border-color:#248ae4; margin-top:5px;" name="employerName" value="{{x.employerName}}" />
+                                                             </div>
+               
+                                                             <div class="col-md-6">
+                                                               <label>phone number</label>
+                                                               <input required class="form-control" type="text" placeholder="phoneNumber" style="border-color:#248ae4;" name="phoneNumber"  />
+                                                           </div>
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                               <label>Categories</label>
+                                                               <select class="form-control" style="border-color:rgba(0, 0, 255, 0.377);" name="category" value="{{x.category}}">
+                                                               
+                                                                   <option value="1">Developer</option>
+                                                                   <option value="2">Technology</option>
+                                                                   <option value="3">Accounting</option>
+                                                                   <option value="4">Medical</option>
+                                                                   <option value="5">Government</option>
+                                                                
+                                                                
+                                                               </select>
+                                                           </div>
+                                                         
+                                                          
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                            <label>Email</label>
+                                                            <input required class="form-control" placeholder="john@gmail.com" name="Email" value="{{x.Email}}" style="border-color:#248ae4;" />
+                                                        </div>
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                              <label>Website</label>
+                                                              <input required class="form-control" name="website" value="{{x.website}}" style="border-color:#248ae4;" />
+                                                          </div>
+                                                          <div class="col-md-12" style="margin-top:20px;">
+                                                            <label>About Company</label>
+                                                            <textarea style="border-color:#248ae4;" class="form-control" rows="3" name="aboutCompany" value="{{x.aboutCompany}}" placeholder="Give concise text to attract right seekers"></textarea>
+                                                            <div>Max 800 characters</div>
+                                                        </div>
+                                                           </div>
+               
+                                                            
+                                                           <div class="col-md-12" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462;
+                                                            border-radius:10px; margin-top:30px;">
+                                                            <h3>Contact Information</h3>
+                                                        
+                                                                <div class="col-md-12">
+                                                                    <label>location</label>
+                                                                   <input required type="text" name="location" value={{x.location}}>
+                                                                </div>
+                                                                
+                                                         <div class="col-md-6" >
+                                                         <label >social network</label>
+                                                        <select class="form-control" style="border-color:#248ae4;" >
+                                                                    <option>facebook</option>
+                                                                    <option>Linkdin</option>
+                                                                    <option>instagram</option>
+                                                                    
+                                                                </select>
+                                                         </div>
+                                                        <div class="col-md-6" >
+                                                         <input required class="form-control" style="margin-top:23px;" placeholder="url" name="socailNetwork" value={{x.socailNetwork}} style="border-color:#248ae4;"/>
+                                                         </div>  
+                                                            </div>   
+                                                        
+                                                          
+                                                            </div>
+                                             <button class="btn btn-primary save-btn"   style="margin-top:20px; font-family: 'Lato', sans-serif;
+                                             font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                             background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); text-align: center; text-transform: uppercase;
+                                             border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                             </form>
+                                             {% else %}
+                                             <h1>succsfully uploaded</h1>
+                                             {% endif%}
+                                         </div>
+                                     <!-- </div> -->
+                                 </div>
+                             </div>
+                           </div>
+                             <div id="page-inner">
+                             <div class="tab-content">
+                                  <div class="tab-pane fade active in" id="home">
+                                    <form action="{% url 'jobs:updateProfile' %}" method="post">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            {% if field.name == 'gender' %}
+                        
+                                                <div class="form-group">
+                                                    <label for="gender">Gender</label>
+                                                    <br>
+                                                    <div class="form-check form-check-inline">
+                                                        <input required class="form-check-input" {% if field.value == 'male' %} checked {% endif %}
+                                                               type="radio" name="gender" id="male gender"
+                                                               value="male">
+                                                        <label class="form-check-label" for="male">Male</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input required class="form-check-input" {% if field.value == 'female' %} checked {% endif %}
+                                                               type="radio" name="gender" id="female"
+                                                               value="female">
+                                                        <label class="form-check-label" for="female">Female</label>
+                                                    </div>
+                                                </div>
+                        
+                                            {% else %}
+                        
+                                                <div class="form-group">
+                                                    <label for="id_{{ field.name }}">{{ field.label }}</label>
+                                                    <input required type="{{ field.field.widget.input_type }}"
+                                                           class="form-control"
+                                                           name="{{ field.name }}"
+                                                           id="id_{{ field.name }}"
+                                                           value="{{ field.value }}"
+                                                           placeholder="{{ field.field.widget.attrs.placeholder }}">
+                                                </div>
+                        
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-outline-white-primary">
+                                                <i class="fa fa-signing"></i> Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                  </div>
+                              </div>
+                            </div> 
+                          </div>                     
+                         
+                        
+                          <!---view Profile---->
+                          <!-- <div id="view" class="tab-pane fade ">
+                            <h3 class="text-center"><b>View Company Profile</b></h3>
+                            <div id="page-inner">
+                                <div class="tab-content">
+                                     <div class="tab-pane fade active in" id="home">
+                                          -->
+                                             <!-- <div class="panel-heading">
+                                                 View Profile
+                                             </div> -->
+                                             <!-- <div class="panel-body">
+                                        {% if viewProfileVar is not None %}
+                                             {% for x in viewProfile %}
+                                             <div class="panel-body" style="padding: 0px !important;">
+                                                <div class="col-lg-12 col-md-offset-1 col-sm-12">
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between; 
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Email</b></h5>
+                                                     <h5 style=" color:#466bee;">srishtisrija@gmail.com</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Phone Number</b></h5>
+                                                     <h5 style=" color:#466bee;">9340083841</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Address</b></h5>
+                                                     <h5 style=" color:#466bee;">ncl colony singrauli</h5>
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.247);
+                                                    box-shadow: 5px 5px #248ae423; border-radius:10px; display:flex; justify-content: space-between;
+                                                    margin-top:10px; margin-bottom:10px;">
+                                                     <h5><b style="color:rgba(0, 0, 0, 0.589);">Full Name</b></h5>
+                                                     <h5 style=" color:#466bee;">seriij</h5>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                             
+                                    {% else %}
+                                    Upload the details 
+                                    {% endif %}
+                                </div>
+                                         
+                                     </div>
+                                 </div>
+                               </div>
+                                 <div id="page-inner">
+                                 <div class="tab-content">
+                                      <div class="tab-pane fade active in" id="home">
+                                        <form action="{% url 'jobs:updateProfile' %}" method="post">
+                                            {% csrf_token %}
+                                            {% for field in form %}
+                                                {% if field.name == 'gender' %}
+                            
+                                                    <div class="form-group">
+                                                        <label for="gender">Gender</label>
+                                                        <br>
+                                                        <div class="form-check form-check-inline">
+                                                            <input required class="form-check-input" {% if field.value == 'male' %} checked {% endif %}
+                                                                   type="radio" name="gender" id="male gender"
+                                                                   value="male">
+                                                            <label class="form-check-label" for="male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input required class="form-check-input" {% if field.value == 'female' %} checked {% endif %}
+                                                                   type="radio" name="gender" id="female"
+                                                                   value="female">
+                                                            <label class="form-check-label" for="female">Female</label>
+                                                        </div>
+                                                    </div>
+                            
+                                                {% else %}
+                            
+                                                    <div class="form-group">
+                                                        <label for="id_{{ field.name }}">{{ field.label }}</label>
+                                                        <input required type="{{ field.field.widget.input_type }}"
+                                                               class="form-control"
+                                                               name="{{ field.name }}"
+                                                               id="id_{{ field.name }}"
+                                                               value="{{ field.value }}"
+                                                               placeholder="{{ field.field.widget.attrs.placeholder }}">
+                                                    </div>
+                            
+                                                {% endif %}
+                                            {% endfor %}
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-outline-white-primary">
+                                                    <i class="fa fa-signing"></i> Update
+                                                </button>
+                                            </div>
+                                        </form>
+                                      </div>
+                                  </div>
+                                </div> 
+                              </div>                     
+
+
+
+                            </div>
+
+                    <div id="postjob" class="tab-pane fade">
+                        <div class="text-center">
+                            <h3><b> post jobs</b></h3>
+                         </div>
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ field.label }}: {{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                           
+    
+                                <div class="tab-content">
+                                   
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">                                                        
+                                            <form id="job-main-form"   method="post" action="{% url 'jobs:employer-jobs-create' %}" class="job-add-form">
+                                                {% csrf_token %}
+                            <div class="col-md-9">
+                             <label>Job Title</label>
+                             <input required id="title" name="title" type="text" style="border-color:#248ae4;"  class="form-control" value="{{ form.title.value|default_if_none:"" }}">
+                            </div>
+
+                            <div class="col-md-9" style="margin-bottom:20px;">
+                            <label for="type">Job Type</label>
+                            <select id="type" name="type" style="border-color:#248ae4;"  placeholder="Choose job type"
+                                    class="form-control select2">
+                                <option value="1" {% if form.type.value == "1" %} selected {% endif %}>Full time</option>
+                                <option value="2" {% if form.type.value == "2" %} selected {% endif %}>Part time</option>
+                                <option value="3" {% if form.type.value == "3" %} selected {% endif %}>Internship</option>
+                            </select>
+                                                            </div>
+                                                            <div class="col-md-12 ">      
+                                                                <h3 style="margin-bottom:10px;">Job Description</h3>                                                                <label>Job Summary</label>
+                                                                <textarea id="text" name="description" rows="5" style="border-color:#248ae4;"  class="form-control">{{ form.description.value|default_if_none:"" }}</textarea>
+                                                                <div>Max 250 characters</div>
+                                                            </div>
+                                                       
+                                                    </div>
+                                                        </div>
+    
+                                                        <div class="row" style="margin-top:30px;">
+                                                            <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                <div class="text-center"><h3>Matching Criteria</h3></div> -->
+                                                                <!-- <div class="col-md-12">
+                                                                    <label  style="margin-top:20px !important;">Keyword/skills*</label>
+                                                                    <input required class="form-control" style="border-color:#248ae4;"  placeholder="e.g: Software development,dot net,java etc." />
+                                                                </div> -->
+                                                                <!-- <div class="col-sm-12">
+
+                                                             <div class="col-md-6">
+                                                                <div style="margin-top:20px !important;">
+                                                                    <label>MinExperience*</label>
+                                                                     <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                            <option value="(0-1 year)">(0-1 year)</option>
+                                                                            <option value="(1-2 year)">(1-2 year)</option>
+                                                                            <option value="(2-3 year)">(2-3 year)</option>
+                                                                            <option value="(>3 year )">(>3 year )</option>
+                                                                           
+                                                                        </select>
+                                                                     </div>
+                                                                     </div>
+
+                                                                     <div class="col-md-6">
+
+                                                                        <div style="margin-top:20px !important;">
+                                                                            <label> Max Experience*</label> -->
+                                                                            <!-- <div class="col-md-6"> -->
+                                                                             <!-- <select class="form-control" name="experence" style="border-color:#248ae4;" >
+                                                                                    <option value="(0-1 year)">(0-1 year)</option>
+                                                                                    <option value="(1-2 year)">(1-2 year)</option>
+                                                                                    <option value="(2-3 year)">(2-3 year)</option>
+                                                                                    <option value="(>3 year )">(>3 year )</option>
+                                                                                   
+                                                                                </select> -->
+                                                                             <!-- </div>  -->
+                                                                             <!-- </div>
+                                                                         </div>
+                                                                         </div>
+                                                            
+                                                                        <div class="col-sm-12">
+                                                                         <div class="col-md-6"> 
+                                                                <label  style="margin-top:22px !important;">Category*</label>
+                                                                <div class="form-group" style="margin-top:0px;">
+                                                                    <select id="category" name="category" style="border-color:#248ae4;"  class="form-control select2">
+                                                                        <option value="web-design" {% if form.category.value == "web-design" %} selected {% endif %}>Web design</option>
+                                                                        <option value="graphic-design" {% if form.category.value == "graphic-design" %} selected {% endif %}>Graphic design</option>
+                                                                        <option value="web-development" {% if form.category.value == "web-development" %} selected {% endif %}>Web development</option>
+                                                                        <option value="human-resource" {% if form.category.value == "human-resource" %} selected {% endif %}>Human Resources</option>
+                                                                        <option value="support" {% if form.category.value == "support" %} selected {% endif %}>Support</option>
+                                                                        <option value="android" {% if form.category.value == "android" %} selected {% endif %}>Android</option>
+                                                                    </select>
+                                                                    </div>
+                                                                    
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label  style="margin-top:20px !important;">Nationality</label>
+                                                                        <select class="form-control"  name="maincategory" style="margin:5px; border-color:#248ae4;">
+                                                                            <option value="1">developer</option>
+                                                                            <option  value="2">technology</option>
+                                                                            <option  value="3">accounting</option>
+                                                                            <option  value="4">medical</option>
+                                                                            <option  value="5">government</option>
+                                                                        </select>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <div class="col-md-6">
+                                                                       
+                                                                        <label for="location" style="margin-top:10px;" > JobLocation</label>
+                                                                        <input required id="location"  name="location" style="border-color:#248ae4;"  type="text" placeholder="e.g. Dhaka, Bangladesh"
+                                                                               class="form-control" value="{{ form.location.value|default_if_none:"" }}">
+                                                                        </div>
+                                                            <div class="col-md-6">  -->
+                                                            <!-- <form autocomplete="off" action="/action_page.php"> -->
+                                                                <!-- <div class="autocomplete " style="width:100%; margin-top:22px !important;">
+                                                                  <input id="myInput" type="text" name="myCountry" placeholder="Keywords/Skills">
+                                                                </div>
+                                                                -->
+                                                              <!-- </form> -->
+                                                              <!-- </div>
+                                                              </div>
+                                                              <div class="col-lg-12 col-md-12 col-am-12" style="margin-bottom:10px;">
+                                                                <div class="col-md-6">
+                                                                    <label>Qualification</label>
+                                                                    <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                        <option value="1">developer</option>
+                                                                        <option  value="2">technology</option>
+                                                                        <option  value="3">accounting</option>
+                                                                        <option  value="4">medical</option>
+                                                                        <option  value="5">government</option>
+                                                                    </select>
+                                                                    </div>
+                                                                    <div class="col-md-6"  style="margin-top:24px;">
+                                                                        <select class="form-control"  name="maincategory" style=" border-color:#248ae4;">
+                                                                            <option value="1">Specialization</option>
+                                                                            <option  value="2">technology</option>
+                                                                            <option  value="3">accounting</option>
+                                                                            <option  value="4">medical</option>
+                                                                            <option  value="5">government</option>
+                                                                        </select>
+                                                                        </div>
+                                                                        </div>
+                                                                                           
+                                                                                               
+                                                                                               
+                                                                            
+                                                                            
+                                                                                        </div>
+                                                                   
+                                                                </div>
+                                                                <div class="row" style="margin-top:30px;">
+                                                                    <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+    
+                                                                        <div class="text-center"> <h3>Company Owner Details</h3></div>
+                                                                
+                                                                <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:20px;">
+                                                                <div class="col-md-4">
+                                                                    <label for="company_name">Company name</label>
+                                <input required id="company_name" name="company_name" type="text" class="form-control" style="margin-bottom:1px; border-color:#248ae4;" value="{{ form.company_name.value|default_if_none:"" }}">
+                                                                </div> 
+                                                                <div class="col-md-4" style="margin-top:5px;">
+                                                                    <label for="company_website">Company Url</label>
+                                <input required id="company_website" name="website" type="url" style="border-color:#248ae4;"  class="form-control" value="{{ form.website.value|default_if_none:"" }}">
+                                                                </div>
+                                                                <div class="col-md-4" style="margin-top:1px;">
+                                                                    <label for="company_website">Phone Number</label>
+                                <input required id="company_website" name="phoneNumber" type="text" style="border-color:#248ae4;"  class="form-control" >
+                                                                </div>
+                                                                <div class="col-md-12" style="margin-bottom:20px;">
+                                                                    <p class="text-danger">{{ form.company_description.errors }}</p>#}
+                                                                    <label for="company_description">Company Description</label>
+                                                                    <textarea id="company_description" name="company_description" rows="3"
+                                                                    style="border-color:#248ae4;"    class="form-control" required>{{ form.company_description.value|default_if_none:"" }}</textarea>
+                                                                </div> 
+                                                                </div>
+                                                                 
+                                                                </div>
+                                                                </div>
+                                                                      
+                                                             <div class="row" style=" margin-top:10px;">
+                                                                <div class="col-md-12" style="border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">    
+                                                                    <div class="text-center">
+                                                                     <h3 style="margin-bottom:20px;">Scheduled Job</h3>
+                                                                    </div>
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <div class="col-md-6" style="margin-bottom:20px;border:1px solid #248ae494; padding:3px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                    <label for="type">Make live</label>
+                                                                    <select id="day" name="day"></select>
+                                                                    <script>
+                                                                        (function (){
+                                                                            let day_selected = new Date()
+                                                                            let option = '';
+                                                                            for (let i=1; i<15; i++){
+                                                                                day_selected.setDate(new Date().getDate()+i-1)
+                                                                                option += '<option value =" ' + day_selected+' " ' +'>' + day_selected.toDateString() +'</option>';
+                                                                            }
+                                                                            document.getElementById("day").innerHTML = option;
+
+                                                                        })();
+                                                                    </script>
+                             
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                <label for="salary">Closing Date</label>
+                                                                <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <div class="col-md-4">
+                                                                    <label for="salary">From</label>
+                                                                    <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                 </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="salary">To</label>
+                                                                        <input required id="salary" name="last_date" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                     </div>
+                                                                     
+                                                                        <div class="col-md-3">
+                                                                            <label for="salary">Auto Renew</label> -->
+                                                                            <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="date" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                            <!-- <select class="form-control"  name="auto_renew" style=" border-color:#248ae4;">
+                                                                                <option value="1">disabled</option>
+                                                                                <option  value="2">Every Week</option>
+                                                                                <option  value="3">Every Fortnight</option>
+                                                                                <option  value="4">Every Month</option>
+                                                                            </select>
+                                                                            </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                                                            <div class="col-md-2" >
+                                                                                <label for="salary" style="margin-top:20px !important;">in lacs</label> -->
+                                                                                <!-- <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}"> -->
+                                                                                <!-- <select class="form-control"  name="inlacs" style=" border-color:#248ae4;"> -->
+                                                                                  <!-- {% for x in valuecount %}
+                                                                                    <option value="1">{{x}}</option>
+                                                                                  {% endfor %} -->
+                                                                                  <!-- <option value="1">1</option>
+                                                                                </select>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                    <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <label for="salary" style="margin-top:20px !important;">in lacs</label>
+                                                                                        <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <label for="salary" style="margin-top:20px !important;">in thousands</label>
+                                                                                            <input required id="salary" name="salary" style="border-color:#248ae4;"  type="number" min="1000" class="form-control" value="{{ form.salary.value|default_if_none:"" }}">
+                                                                                            </div>
+                                                                                            </div>
+                                                                
+                                                                </div>
+                                                                </div>
+                                                                </div> 
+
+                                                                <div class="row" style=" margin-top:30px;">
+                                                                    <div class="col-md-6" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462; border-radius:10px;">
+                                                                <label>Checkboxes</label>
+                                                                
+                                                                
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox"  value="" /> send auto-matched resumes from database
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value=""/>keep company name confidential
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value=""/>Don't send applications in email
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> Reveal contact details to job applicants
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> showcase this job to women on the go
+                                                                    </label>
+                                                                </div>
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input required type="checkbox" value="" /> use screening for this job
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            </div> -->
+                                                           
+                                                     
+                        
+                                                    
+                                                   
+                                                    
+                                                <!-- </div> -->
+                                            <!-- </div>
+                                        </div>
+                                        <button  type="submit" class="btn btn-primary save-btn"   style="margin-top:20px; font-family: 'Lato', sans-serif;
+                                        font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                        background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); text-align: center; text-transform: uppercase;
+                                        border-radius: 10px; transition: all 0.5s;"> Post Job</button> -->
+                                        <!-- <button type="submit"> Post Job</button> -->
+                                    <!-- </form>
+               
+                 <div id="candidates" class="tab-pane fade">
+                     <h3><b>Candidates</b></h3>
+                     {% for applicant in allApplicant %}
+                     
+                     <div class="col-lg-6">
+                         <div class="box applicant">
+                             <div class="row">
+                                 <div class="col-md-3 mr-4">
+                                     <p class="intro"></p>
+                                     <div class="image">
+                                         <img src="{% static 'img/avatar.png' %}" alt=""
+                                              class="img-fluid rounded-circle">
+                                     </div>
+                                 </div>
+                                 <div class="col-md-8">
+                                     <h4><a href="{% url 'jobs:applied-applicant-view' applicant.job.id applicant.id %}">{{ applicant.user.get_full_name }}</a><small>({{ applicant.get_status }})</small></h4>
+                                     <h6>Skills:
+                                         {% for tag in applicant.user.profile.tags.all %}
+                                             <span style="color: #ffffff;" class="badge featured-badge badge-secondary">{{ tag.name }}</span>
+                                         {% endfor %}
+                                     </h6>
+                                     <a href="mailto:{{ applicant.user.email }}?Subject=Interested"
+                                        class="btn btn-outline-white-secondary btn-sm">
+                                         <i class="fa fa-envelope"></i>Contact
+                                     </a>
+                                     <p>
+                                         <span class="badge badge-info">Applied {{ applicant.created_at.astimezone }}</span>
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 {% endfor %}  
+                                     
+                     </div>
+                    -->
+                    <!-- <div id="message" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                    <div id="changepswd" class="tab-pane fade">
+                        <h3 class="text-center">Change Password</h3>
+                        <div class="row" style=" margin:10px; ">
+                           
+                        <div class="col-lg-6 col-md-6 col-sm-6 align-middle" >
+                            <form action="{% url 'jobs:changePasswordEmp' %}" method="POST">
+                                {% csrf_token %}
+                             <div class="form-group has-warning has-feedback align-middle">
+                                <label class="control-label" for="password">Old Password</label>
+                                <input required type="password" class="form-control" id="password"  name="old" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">New Password</label>
+                                <input required type="password" class="form-control" name="new" id="password" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                              <div class="form-group has-warning has-feedback">
+                                <label class="control-label" for="password">Retype Password</label>
+                                <input required type="password" class="form-control"  name="new1" id="password" aria-describedby="passwordStatus">
+                                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                              </div>
+                            
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 align-middle">
+                            <img src="{% static 'lap.png' %}" style="width:100%;">
+                            </div>
+
+
+                        </div>
+                        <div class="text-center ">
+                        <button type="submit" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); 
+                        width:40%; font-size:20px; border:1px solid #248ae4; border-radius:10px; color:white;
+                        padding:5px; margin-top:20px; ">change password</button>
+                        </div>
+                    </form>
+                    </div> -->
+                    
+                      <!-- <div id="logout" class="tab-pane fade">
+                          
+                        <h3>Menu 3</h3>
+                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                      </div> -->
+                      </div>
+                  </div>
+                </div>
+                
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <h1>Wait for 5 seconds!</h1>
+
+
+    <script>
+        var delay = 5000; //in milleseconds
+
+jQuery(document).ready(function($){
+  setTimeout(function(){ showNewsletterPopup(); }, delay);
+  
+  $('.popup-close').click(function(){
+      $('.newsletter-overlay').hide();
+      
+      //when closed create a cookie to prevent popup to show again on refresh
+      setCookie('newsletter-popup', 'popped', 30);
+  });
+});
+
+function showNewsletterPopup(){
+  if( getCookie('newsletter-popup') == ""){
+     $('.newsletter-overlay').show();
+     setCookie('newsletter-popup', 'popped', 30);
+  }
+  else{
+    console.log("Newsletter popup blocked.");
+  }
+}
+
+
+function setCookie(cname,cvalue,exdays)
+{
+    var d = new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires+"; path=/";
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) 
+    {
+        var c = jQuery.trim(ca[i]);
+        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+    </script>
+    <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        /*An array containing all the country names in the world:*/
+        var countries = ["Application developer","Apple iOS","Application Servers","Application","Application Support",
+        "Apps","Application Security","Application Packaging","application Developers","Application Engineer","Application Development",
+        "Application Testing","Bartender","Banking Operations","Banquet Sales","Basic","Base24","BAAN","Banking","BA","Backend","Back Office",
+        "Backup Engineer","Backup Administrator","Back-office Operations","Backend Developer","Backend Executive","CA","CAll Center Executive",
+        "Cabin Crew","Cashier","Cash Management","Cardiologist","Cash Management Operations","Calypso","Catia",
+        "Data Entry","Database Administrator","Database Architect","Data Processing","database","Data Structures","datastage","Database Developer",
+        "Acoustical engineering","space engineering","Agricultural engineering",
+"Aquatic and environmental engineering",
+"Architectural engineering and Architecture",
+"Automotive systems engineering (or Automotive engineering)",
+"Biological engineering",
+"Biomaterials engineering",
+"Biomedical engineering",
+"Bioresource engineering",
+"Building services engineering",
+"Ceramic engineering",
+"Chemical engineering",
+"Civil engineering",
+"Coastal engineering",
+"Combat engineering: the use of engineering skills for military purposes",
+"Commercial engineering",
+"Communication engineering Communication",
+"Computer engineering",
+"Conservation engineering Conservation",
+"Conversion engineering Conversion",
+"Construction engineering Construction",
+"Control systems engineering (or Control engineering)",
+"Demolition engineering Demolition",
+"Electrical engineering",
+"Electromechanical engineering",
+"Electronic warfare (EW) engineering",
+"Electronics engineering (or Microelectronics engineering, Microelectronics and semiconductor engineering)",
+"Engineering physics (or Engineering science)",
+"Environmental engineering",
+"Fire protection engineering",
+"Food process engineering",
+"Forensic engineering",
+"Forest engineering",
+"Genetic engineering",
+"Geomatics engineering",
+"Geotechnical engineering",
+"Industrial engineering",
+"Information technology Information",
+"Instrumentation engineering Instrumentation",
+"Landscape engineering See: Landscape Architecture",
+"Logistic engineering",
+"Manufacturing engineering Production",
+"Marine engineering",
+"Materials engineering",
+"Mechanical engineering",
+"Mechatronics",
+"Microsystems engineering",
+"Military engineering",
+"Minerals process engineering",
+"Mining engineering",
+"Nanoengineering",
+"Naval architecture",
+"Nuclear engineering",
+"Ocean engineering",
+"Optical engineering",
+"Paper engineering",
+"Petroleum engineering",
+"Plastics engineering",
+"Preservation engineering Preservation",
+"Quality assurance engineering (or Quality engineering)",
+"Reliability engineering",
+"Renovation engineering Renovation",
+"Residential engineering",
+"Restoration engineering Restoration",
+"Retro-engineering",
+"Safety engineering",
+"Security engineering",
+"Sewage engineering",
+"Software engineering",
+"Structural engineering",
+"Support engineering",
+"Surveying",
+"Systems engineering (or Systems design engineering)",
+"Traffic engineering",];
+        
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), countries);
+        </script>
+    <script src="{% static 'dash/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'dash/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'dash/assets/js/custom.js' %}"></script>
+
+   
+    <script>
+
+
+        var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "rgba(0,0,255,0.1)",
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+        </script>
+
+
+        <script>
+            setTimeout(function() {
+                $('#exampleModalCenter').click();
+                $("#exampleModalCenter").modal();
+                }, 2000);
+            
+            $(document).ready(function(){
+                setTimeout(function(){
+                    console.log("popup")
+                   PopUp();
+                },1); // 5000 to load it after 5 seconds from page load
+             });
+          </script>
+
+   
+</body>
+</html>
+{% endblock content %}
+{% comment %} {% endblock main-content %} {% endcomment %}
+

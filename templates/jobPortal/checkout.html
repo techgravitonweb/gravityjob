@@ -1,0 +1,190 @@
+{% extends 'jobPortal/base.html' %}
+{% block main-content %}
+
+
+
+<div class="container-fluid" style="display:flex; margin-bottom:40px; justify-content:space-between; padding:5px; margin:5px;">
+    <form method="POST" action="{% url 'jobs:memberplan' %}">
+        {% csrf_token %}
+    <div class="col-lg-6 col-md-6 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.322);   box-shadow: 10px 10px 10px #88888860;
+
+    border-radius:10px; height:auto;">
+        <h4 style="margin-left:30px;">Billing Details</h4>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:20px;">
+            <label for="fname"> First Name</label>
+            <input type="text" id="fname" name="fname" style="width:100%; padding:5px;
+            " >
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:20px;">
+            <label for="lname" style=";"> last Name</label>
+            <input type="text" id="lname" name="lname" style="width:100%; padding:5px;
+            " >
+        </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <label for="cname" style="margin-top:20px; ;"> Company Name</label>
+            <input type="text" id="cname" name="cname" style="width:100%;  padding:5px;
+             " >
+        </div>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <label for="cars" style="margin-top:20px; ;">Country/Reigon:</label><br>
+            <select name="cars" id="cars" style="width:100%;  padding:5px;
+            "  name="contry">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-12 col-md-6 col-sm-12">
+            <label for="street" style="margin-top:20px; ;"> Street address*</label>
+            <input type="text" id="streed" name="streed" placeholder="House number and street name" style="width:100%; padding:5px;
+            " >
+        </div>
+        
+</div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="city" style="margin-top:20px; "><i class="fa fa-institution"></i> Town/City</label>
+            <input type="text" id="city" name="city" style="width:100%;  padding:5px;
+            " >
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="cars" style="margin-top:20px; ;">State:</label><br>
+            <select name="state" id="cars" style="width:100%;  padding:5px;
+            ">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="zip" style="margin-top:20px; ">Pin</label><br>
+            <input type="text" id="zip" name="pin" placeholder="10001"  style="width:100%;  padding:5px;
+            ">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="phone" style="margin-top:20px; ">Phone</label><br>
+            <input type="text" id="phone" name="phone" style="width:100%;  padding:5px;
+            ">
+        </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <label for="email" style="margin-top:20px; "> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com" style="width:100%;
+             padding:5px; margin-bottom:20px;
+            ">
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12" >
+            <h3 style="margin-top:20px;">Additional Information</h3><br>
+            <h5 style="margin-bottom:10px;">Order notes (optional)</h5>
+    <textarea id="w3review" name="w3review" rows="6" cols="50" style="width:100%; border-color:#248ae4;
+    border-radius:10px;">
+      
+      </textarea>
+      <input type="checkbox" >
+      <label >Yes, i'm ok with you sending me additional newsletter and email content (optional) </label><br>
+        </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12" style=" 
+    height:auto;  ">
+        <div class=" col-lg-12 col-md-12 col-sm-12 "  style="  box-shadow: 10px 10px 10px #88888860; border:1px solid rgba(128, 128, 128, 0); 
+        margin-bottom:60px; margin:auto; height:200px; background-color:rgba(128, 128, 128, 0.274);">
+          <div class="text-center" style="color:#248ae4; font-size:20px;">Your Order<hr>
+           
+            <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="display:flex; justify-content: space-between;">
+          <h4 style="color:black;">Product</h4> 
+          <h5> Subtotal </h5></li>
+        <li class="list-group-item" style="display:flex; justify-content: space-between;">
+          <h4 style="color:black;">Subtotal </h4>
+            <h5> {{value}}</h5></li>
+            <li class="list-group-item" style="display:flex; justify-content: space-between;">
+                <h4 style="color:black;">Total </h4>
+                <input type="number" value="{{value}}" name="amount" hidden > 
+                  <h5> {{value}}</h5></li>
+        <!-- <li class="list-group-item">
+            <button style="border:1px solid #248ae4; background-color:#248ae4;
+            color:white; width:100%; border-radius:10px;">Proceed</button>
+        </li> -->
+      </ul> 
+      </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12" style="border:1px solid rgba(128, 128, 128, 0.315); margin-top:50px;
+            padding:5px; border-radius:10px; box-shadow: 10px 10px 10px #88888860; background-color:#248ae413">
+                <h4>Pay with UPI QR code</h4>
+                <ul style="display:flex; list-style-type:none; justify-content: space-between; margin-top:30px; margin-bottom:20px;">
+                    <li> bhim</li>
+                    <li> phonepay</li>
+                    <li> googlepay</li>
+                    <li> paytm</li>
+                </ul>
+                <p style="padding:20px;">It uses UPI apps like BHIM, Paytm, Google Pay, PhonePe or any Banking UPI app to make payment.</p>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-6 col-md-6 col-sm-12" >
+                    <label for="upi" style="margin-top:20px;">UPI address*</label><br>
+                    <input type="text" id="upi" name="upi" style="width:100%; padding:3px;  border-radius:10px;
+                 border-color:#248ae4;">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <label for="cars" style="margin-top:20px;">UPI Handle</label><br>
+                    <select name="cars" id="cars" style="width:100%;  padding:5px; border-radius:10px;
+                     border-color:#248ae4;">
+                      <option value="volvo"></option>
+                      <option value="saab">@airtel</option>
+                      <option value="opel">Opel</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                </div>
+                </div>
+
+                <input type="checkbox" style="margin-top:30px; padding:20px;" >
+                <label >I would like to receive exclusive emails with discounts and product information (optional) </label>
+
+                <p style="margin-top:30px; padding:20px; font-family: sans-serif;">Your personal data will be used to process your order, support your experience throughout this website,
+                     and for other purposes described in our <span style="color:#248ae4;">privacy policy.</span></p>
+
+                     <button tybe="submit" style="border:1px solid #248ae4; background-color:#248ae4;  
+              color:white; font-size:20px; padding:5px; width:100%; border-radius:10px;">Proceed to payment</button>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock main-content %}

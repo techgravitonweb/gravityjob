@@ -1,0 +1,611 @@
+{% comment %} {% extends 'jobPortal/base.html' %} 
+{% block main-content %} {% endcomment %}
+{% block content %}
+{% load static %}
+{% load tag_exists %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gravitonweb.com </title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'dash/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'dash/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'dash/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+   <link rel="shortcut icon" type="image/png" href="{% static 'jobPortal/gravitonLogo.png'  %}" />
+   <!--Font Awesme 5-->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <style>
+    #page-inner {
+    width: 100%;
+    margin: 10px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+    min-height: auto;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+.hideContent {
+    overflow: hidden;
+    line-height: 1em;
+    height: 2em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+</style>
+   
+
+</head>
+<body>
+    
+    <div id="wrapper" style="background-color:white;">
+        
+
+        <!-- </nav>    -->
+
+      
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0; margin-top:0px; background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+            <div class="navbar-header" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only" >Toggle navigation</span>
+                    <span class="icon-bar" ></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'jobs:home' %}" style="background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%);">gravitonweb.com</a> 
+            </div>
+<!-- <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">  {{ request.user.role }}  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
+<div style="color: white; padding: 15px ; float: right; margin-right:5px; font-size: 16px;"> <i class="fas fa-sign-in-alt">&nbsp;  <a href="{% url 'accounts:logout' %}" 
+    style="color:white; font-size:20px;">  Logout </a>   &nbsp;</i></div>
+
+<div style="color: white; padding: 15px; float: right;  font-size: 16px;"> <i class="fas fa-user-plus">&nbsp;<a style="color:white; font-size:20px;"> {{ request.user.first_name }} </a>  &nbsp;</i></div>
+
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation" style="display:block; background-color:white;">
+            <div class="sidebar-collapse" >
+                    <ul class="nav" id="main-menu">
+                        
+                        <!-- <li class="text-center">
+                        <div style="width:100px; height:100px; border-radius:50px; border:1px solid black; border-color:black; 
+                         margin:10px;">
+                         <img src="https://thedailyq.org/wp-content/uploads/2020/08/Person.jpg" style="width:60%; margin:10px;">
+                         <span>information</span>
+                         
+                    </div>
+                    
+                         </li> -->
+                        
+                        
+                        <li class="active"><a style="background-color: white; color:black;"  href="{% url 'jobs:employer-dashboard' %}">
+                            <i class="fas fa-briefcase"  style="color:#248ae4; font-size: 20px; "></i>Dashboard</a></li>
+
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:companyProfile' %}"><i class="fas fa-user"
+                         style="color:#248ae4; font-size: 20px; "></i>Company Profile</a> </li>
+
+                         <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:viewProfile' %}"><i class="fas fa-user"
+                            style="color:#248ae4; font-size: 20px; "></i>Edit Profile</a> </li>
+
+                        <li><a  style="background-color: white; color:black;" href="{% url 'jobs:postjobDash' %}"><i class="fas fa-file-alt"
+                            style="color:#248ae4; font-size: 20px; "></i></i>Post Jobs</a></li>
+
+                       
+                            <li><a  style="background-color: white; color:black;" href="{% url 'jobs:myjobs' %}"><i class="fas fa-file-alt"
+                                style="color:#248ae4; font-size: 20px; "></i></i>My Jobs</a></li>
+
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:changepassword' %}"><i class="fas fa-user-lock"
+                            style="color:#248ae4; font-size: 20px; "></i>Change Password</a></li>
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:faqEmp' %}"><i class="fas fa-user-lock"
+                              style="color:#248ae4; font-size: 20px; "></i>Faq</a></li>
+                        <li><a  style="background-color: white; color:black;"  href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"
+                            style="color:#248ae4; font-size: 20px; "></i>Logout</a></li>
+                            <li><a  style="background-color: white; color:black;"  href="{% url 'jobs:supportEmp' %}"><i class="fas fa-user-lock"
+                              style="color:#248ae4; font-size: 20px; "></i>Support</a></li>
+
+                      </ul>
+                      
+			
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner" style="padding:20px; margin:0px;">
+               
+                 <!-- /. ROW  -->
+                
+
+                    <!----Last section-->
+         <div class="row" >
+      
+                        {% for x in jobs %}
+                        <div class="col-md-4 col-sm-4" >
+                            <!-- <div class="panel panel-info"> -->
+                                <!-- <div class="panel-heading">
+                                    Info Panel
+                                </div> -->
+                                <div class="panel-body" style=" margin-top:0px; display:flex; box-shadow: 2px 2px 2px  rgba(156, 156, 248, 0.63);
+                                border:1px solid rgba(0, 0, 255, 0.288);">
+                                    <div>
+                                    <b>
+                                    <a href="{% url 'jobs:jobs-detail' x.id %}"> {{x.title}} </a></b>
+                                    <a href="{% url 'jobs:posted_jobs' x.pk %}"> Edit</a>
+                                    <a style="padding-left:4px;" href="{% url 'jobs:people_applied' x.pk %}"> Candidats</a>
+                                        <h4 style="color:#093efb; margin-top:1px;">{{x.category}}</h4>
+
+                                       <h5 style="margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:green"></i>&nbsp;<span> <b style="color:#4d4d4dbd;">{{x.location}} </b></span></h5>
+
+                                        <div><a href="#candidates" class="btn btn-danger">{{x.opening}} Openings    </a></div>
+                                     </div>
+                                     <div class="uploadimg" style="width:70px; height:70px; position:absolute; right:60px; border:1px solid black;">
+                                        <img src="{% static 'img/company1.jpg' %}" style="width:100%;">
+                                    </div>
+                                 </div>
+                                <div class="panel-footer" style="margin-bottom:15px; background-color:#428bca2d; border:1px solid rgba(0, 0, 255, 0.507); color:black; box-shadow: 2px 2px 2px rgba(14, 14, 211, 0.384);">
+                                    <i class="fas fa-mars-double" style="color:#093efb;"></i>
+                                    <b>Keywords:   </b><span>ui designer , 
+                                        {% for tag in job.tags.all %}
+                                        {{ tag.name }}
+                                       {% endfor %}
+                                        </span>
+                                </div>
+                                
+                            <!-- </div> -->
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>                   
+                 </div>
+
+
+
+                 <!-----------uSER PROFILE-->
+                    <div id="profile" class="tab-pane fade ">
+                        <h3><b>Company Profile</b></h3>
+                        <div id="page-inner">
+                            <div class="tab-content">
+                                 <div class="tab-pane fade active in" id="home">
+                                     <!-- <div class="panel panel-default"> -->
+                                        
+                                         
+                                         
+                                         <div class="panel-body">
+                                             {% if checkUserDetails is  None %}
+                                            <form action="{% url 'jobs:updateEmployer' %}" method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                             <div class="row">
+                                                <div class="col-md-12" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462;
+                                                border-radius:10px; margin-top:1px; margin-bottom:20px;">  
+                                                
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <input type="file" name="employprofileImageerData" required  style="margin-top:3px;">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+
+                                        <input type="file" name="coverPic" required style="margin-top:3px;">
+                                        </div>
+                                        
+                                        </div>
+                                                               <div class="col-md-12" style="border:1px solid #248ae494; padding:5px; box-shadow: 3px 5px 10px #248ae462;
+                                              border-radius:10px; margin-top:1px;">
+                                                                <div class="col-md-6">
+                                                                 <label>Company name</label>
+                                                                 <input required class="form-control" placeholder="name" style="border-color:#248ae4; margin-top:5px;" name="employerName" value="{{x.employerName}}" />
+                                                             </div>
+               
+                                                             <div class="col-md-6">
+                                                               <label>phone number</label>
+                                                               <input required class="form-control" type="text" placeholder="phoneNumber" style="border-color:#248ae4;" name="phoneNumber"  />
+                                                           </div>
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                               <label>Categories</label>
+                                                               <select class="form-control" style="border-color:rgba(0, 0, 255, 0.377);" name="category" value="{{x.category}}">
+                                                               
+                                                                   <option value="1">Developer</option>
+                                                                   <option value="2">Technology</option>
+                                                                   <option value="3">Accounting</option>
+                                                                   <option value="4">Medical</option>
+                                                                   <option value="5">Government</option>
+                                                                
+                                                                
+                                                               </select>
+                                                           </div>
+                                                         
+                                                          
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                            <label>Email</label>
+                                                            <input required class="form-control" placeholder="john@gmail.com" name="Email" value="{{x.Email}}" style="border-color:#248ae4;" />
+                                                        </div>
+                                                           <div class="col-md-4" style="margin-top:10px;">
+                                                              <label>Website</label>
+                                                              <input required class="form-control" name="website" value="{{x.website}}" style="border-color:#248ae4;" />
+                                                          </div>
+                                                          <div class="col-md-12" style="margin-top:20px;">
+                                                            <label>About Company</label>
+                                                            <textarea style="border-color:#248ae4;" class="form-control" rows="3" name="aboutCompany" value="{{x.aboutCompany}}" placeholder="Give concise text to attract right seekers"></textarea>
+                                                            <div>Max 800 characters</div>
+                                                        </div>
+                                                           </div>
+               
+                                                            
+                                                           <div class="col-md-12" style="border:1px solid #248ae494; padding:20px; box-shadow: 3px 5px 10px #248ae462;
+                                                            border-radius:10px; margin-top:30px;">
+                                                            <h3>Contact Information</h3>
+                                                        
+                                                                <div class="col-md-12">
+                                                                    <label>location</label>
+                                                                   <input required type="text" name="location" value={{x.location}}>
+                                                                </div>
+                                                                
+                                                         <div class="col-md-6" >
+                                                         <label >social network</label>
+                                                        <select class="form-control" style="border-color:#248ae4;" >
+                                                                    <option>facebook</option>
+                                                                    <option>Linkdin</option>
+                                                                    <option>instagram</option>
+                                                                    
+                                                                </select>
+                                                         </div>
+                                                        <div class="col-md-6" >
+                                                         <input required class="form-control" style="margin-top:23px;" placeholder="url" name="socailNetwork" value={{x.socailNetwork}} style="border-color:#248ae4;"/>
+                                                         </div>  
+                                                            </div>   
+                                                        
+                                                          
+                                                            </div>
+                                             <button class="btn btn-primary save-btn"   style="margin-top:20px; font-family: 'Lato', sans-serif;
+                                             font-size: 16px; float: left; width: 170px; height: 50px;  color: #ffffff;
+                                             background-image: linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%); text-align: center; text-transform: uppercase;
+                                             border-radius: 10px; transition: all 0.5s;"> save profile</button>
+                                             </form>
+                                             {% else %}
+                                             <h1>succsfully uploaded</h1>
+                                             {% endif%}
+                                         </div>
+                                     <!-- </div> -->
+                                 </div>
+                             </div>
+                           </div>
+                             <div id="page-inner">
+                             <div class="tab-content">
+                                  <div class="tab-pane fade active in" id="home">
+                                    <form action="{% url 'jobs:updateProfile' %}" method="post">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            {% if field.name == 'gender' %}
+                        
+                                                <div class="form-group">
+                                                    <label for="gender">Gender</label>
+                                                    <br>
+                                                    <div class="form-check form-check-inline">
+                                                        <input required class="form-check-input" {% if field.value == 'male' %} checked {% endif %}
+                                                               type="radio" name="gender" id="male gender"
+                                                               value="male">
+                                                        <label class="form-check-label" for="male">Male</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input required class="form-check-input" {% if field.value == 'female' %} checked {% endif %}
+                                                               type="radio" name="gender" id="female"
+                                                               value="female">
+                                                        <label class="form-check-label" for="female">Female</label>
+                                                    </div>
+                                                </div>
+                        
+                                            {% else %}
+                        
+                                                <div class="form-group">
+                                                    <label for="id_{{ field.name }}">{{ field.label }}</label>
+                                                    <input required type="{{ field.field.widget.input_type }}"
+                                                           class="form-control"
+                                                           name="{{ field.name }}"
+                                                           id="id_{{ field.name }}"
+                                                           value="{{ field.value }}"
+                                                           placeholder="{{ field.field.widget.attrs.placeholder }}">
+                                                </div>
+                        
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-outline-white-primary">
+                                                <i class="fa fa-signing"></i> Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                  </div>
+                              </div>
+                            </div> 
+                          </div>                     
+                      </div>
+                  </div>
+                </div>
+                
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    
+    <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        /*An array containing all the country names in the world:*/
+        var countries = ["Application developer","Apple iOS","Application Servers","Application","Application Support",
+        "Apps","Application Security","Application Packaging","application Developers","Application Engineer","Application Development",
+        "Application Testing","Bartender","Banking Operations","Banquet Sales","Basic","Base24","BAAN","Banking","BA","Backend","Back Office",
+        "Backup Engineer","Backup Administrator","Back-office Operations","Backend Developer","Backend Executive","CA","CAll Center Executive",
+        "Cabin Crew","Cashier","Cash Management","Cardiologist","Cash Management Operations","Calypso","Catia",
+        "Data Entry","Database Administrator","Database Architect","Data Processing","database","Data Structures","datastage","Database Developer",
+        "Acoustical engineering","space engineering","Agricultural engineering",
+"Aquatic and environmental engineering",
+"Architectural engineering and Architecture",
+"Automotive systems engineering (or Automotive engineering)",
+"Biological engineering",
+"Biomaterials engineering",
+"Biomedical engineering",
+"Bioresource engineering",
+"Building services engineering",
+"Ceramic engineering",
+"Chemical engineering",
+"Civil engineering",
+"Coastal engineering",
+"Combat engineering: the use of engineering skills for military purposes",
+"Commercial engineering",
+"Communication engineering Communication",
+"Computer engineering",
+"Conservation engineering Conservation",
+"Conversion engineering Conversion",
+"Construction engineering Construction",
+"Control systems engineering (or Control engineering)",
+"Demolition engineering Demolition",
+"Electrical engineering",
+"Electromechanical engineering",
+"Electronic warfare (EW) engineering",
+"Electronics engineering (or Microelectronics engineering, Microelectronics and semiconductor engineering)",
+"Engineering physics (or Engineering science)",
+"Environmental engineering",
+"Fire protection engineering",
+"Food process engineering",
+"Forensic engineering",
+"Forest engineering",
+"Genetic engineering",
+"Geomatics engineering",
+"Geotechnical engineering",
+"Industrial engineering",
+"Information technology Information",
+"Instrumentation engineering Instrumentation",
+"Landscape engineering See: Landscape Architecture",
+"Logistic engineering",
+"Manufacturing engineering Production",
+"Marine engineering",
+"Materials engineering",
+"Mechanical engineering",
+"Mechatronics",
+"Microsystems engineering",
+"Military engineering",
+"Minerals process engineering",
+"Mining engineering",
+"Nanoengineering",
+"Naval architecture",
+"Nuclear engineering",
+"Ocean engineering",
+"Optical engineering",
+"Paper engineering",
+"Petroleum engineering",
+"Plastics engineering",
+"Preservation engineering Preservation",
+"Quality assurance engineering (or Quality engineering)",
+"Reliability engineering",
+"Renovation engineering Renovation",
+"Residential engineering",
+"Restoration engineering Restoration",
+"Retro-engineering",
+"Safety engineering",
+"Security engineering",
+"Sewage engineering",
+"Software engineering",
+"Structural engineering",
+"Support engineering",
+"Surveying",
+"Systems engineering (or Systems design engineering)",
+"Traffic engineering",];
+        
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), countries);
+        </script>
+    <script src="{% static 'dash/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'dash/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'dash/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'dash/assets/js/custom.js' %}"></script>
+
+    
+    <script>
+        var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+        
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "rgba(0,0,255,0.1)",
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+        </script>
+   
+</body>
+</html>
+{% endblock content %}
+{% comment %} {% endblock main-content %} {% endcomment %}
+
